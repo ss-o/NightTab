@@ -8,7 +8,7 @@ module.exports = {
   extends: ["eslint:recommended", "prettier"],
   ignorePatterns: ["webpack.*", "dist/", "babel.*"],
   parserOptions: {
-    ecmaVersion: 12,
+    ecmaVersion: 13,
     sourceType: "module",
   },
   plugins: ["unused-imports", "jest"],
@@ -33,7 +33,11 @@ module.exports = {
   overrides: [
     {
       files: ["**/*.ts"],
-      extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+      extends: [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier",
+      ],
       parser: "@typescript-eslint/parser",
       plugins: ["@typescript-eslint", "unused-imports", "jest"],
       rules: {

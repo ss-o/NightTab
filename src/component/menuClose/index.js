@@ -7,9 +7,8 @@ import { node } from '../../utility/node';
 import './index.css';
 
 export const MenuClose = function () {
-
   this.element = {
-    close: node('div|class:menu-close')
+    close: node('div|class:menu-close'),
   };
 
   this.button = new Button({
@@ -20,21 +19,16 @@ export const MenuClose = function () {
     classList: ['menu-close-button'],
     func: () => {
       menu.close();
-    }
+    },
   });
 
   this.assemble = () => {
-
     this.element.close.appendChild(this.button.button);
-
   };
 
   this.close = () => {
-
     return this.element.close;
-
   };
 
   this.assemble();
-
 };

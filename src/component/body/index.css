@@ -43,7 +43,6 @@ html.is-theme-style-light,
 }
 
 @media (prefers-color-scheme: light) {
-
   html.is-theme-style-system,
   .is-theme-style-system body {
     background-color: hsl(var(--theme-primary-010));
@@ -52,7 +51,6 @@ html.is-theme-style-light,
 }
 
 @media (prefers-color-scheme: dark) {
-
   html.is-theme-style-system,
   .is-theme-style-system body {
     background-color: hsl(var(--theme-primary-010));

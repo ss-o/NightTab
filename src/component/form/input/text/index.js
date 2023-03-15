@@ -9,10 +9,11 @@ export const text = ({
   max = false,
   placeholder = false,
   classList = [],
-  func = false
+  func = false,
 } = {}) => {
-
-  const input = node('input|type:text,autocomplete:off,autocorrect:off,autocapitalize:off,spellcheck:false,tabindex:1');
+  const input = node(
+    'input|type:text,autocomplete:off,autocorrect:off,autocapitalize:off,spellcheck:false,tabindex:1'
+  );
 
   if (id) {
     input.setAttribute('id', id);
@@ -35,21 +36,16 @@ export const text = ({
   }
 
   if (classList.length > 0) {
-
     classList.forEach((item) => {
       input.classList.add(item);
     });
-
   }
 
   if (func) {
-
     input.addEventListener('input', () => {
       func();
     });
-
   }
 
   return input;
-
 };

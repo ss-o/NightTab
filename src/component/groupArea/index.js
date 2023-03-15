@@ -16,10 +16,7 @@ import { node } from '../../utility/node';
 import { isValidString } from '../../utility/isValidString';
 import { clearChildNode } from '../../utility/clearChildNode';
 
-export const GroupArea = function({
-  groupData = {}
-} = {}) {
-
+export const GroupArea = function ({ groupData = {} } = {}) {
   this.data = groupData;
 
   this.element = {
@@ -27,17 +24,21 @@ export const GroupArea = function({
     header: node('div|class:group-header'),
     name: {
       name: node('div|class:group-name'),
-      text: node('h1|class:group-name-text')
+      text: node('h1|class:group-name-text'),
     },
     control: {
       control: node('div|class:group-control'),
-      group: node('div|class:group-control-group form-group form-group-horizontal')
+      group: node(
+        'div|class:group-control-group form-group form-group-horizontal'
+      ),
     },
     toolbar: {
       toolbar: node('div|class:group-toolbar'),
-      group: node('div|class:group-toolbar-group form-group form-group-horizontal')
+      group: node(
+        'div|class:group-toolbar-group form-group form-group-horizontal'
+      ),
     },
-    body: node('div|class:group-body')
+    body: node('div|class:group-body'),
   };
 
   this.control = {};
@@ -51,7 +52,6 @@ export const GroupArea = function({
       title: message.get('groupAreaControlUp'),
       classList: ['group-control-button', 'group-control-up'],
       func: () => {
-
         groupData.position.destination--;
 
         if (groupData.position.destination < 0) {
@@ -63,8 +63,7 @@ export const GroupArea = function({
         groupAndBookmark.render();
 
         data.save();
-
-      }
+      },
     }),
     sort: new Button({
       text: message.get('groupAreaControlSort'),
@@ -82,7 +81,6 @@ export const GroupArea = function({
       title: message.get('groupAreaControlDown'),
       classList: ['group-control-button', 'group-control-up'],
       func: () => {
-
         groupData.position.destination++;
 
         if (groupData.position.destination > bookmark.all.length - 1) {
@@ -94,8 +92,7 @@ export const GroupArea = function({
         groupAndBookmark.render();
 
         data.save();
-
-      }
+      },
     }),
     edit: new Button({
       text: message.get('groupAreaControlEdit'),
@@ -105,7 +102,6 @@ export const GroupArea = function({
       title: message.get('groupAreaControlEdit'),
       classList: ['group-control-button', 'group-control-edit'],
       func: () => {
-
         let newGroupData = new StagedGroup();
 
         newGroupData.group = JSON.parse(JSON.stringify(groupData.group));
@@ -117,25 +113,26 @@ export const GroupArea = function({
         const groupForm = new GroupForm({ groupData: newGroupData });
 
         const editModal = new Modal({
-          heading: isValidString(newGroupData.group.name.text) ? `${message.get('groupEditHeadingName')} ${newGroupData.group.name.text}` : message.get('groupEditHeadingUnnamed'),
+          heading: isValidString(newGroupData.group.name.text)
+            ? `${message.get('groupEditHeadingName')} ${
+              newGroupData.group.name.text
+            }`
+            : message.get('groupEditHeadingUnnamed'),
           content: groupForm.form(),
           successText: message.get('groupEditSuccessText'),
           cancelText: message.get('groupEditCancelText'),
           width: 40,
           successAction: () => {
-
             group.item.mod.edit(newGroupData);
 
             groupAndBookmark.render();
 
             data.save();
-
-          }
+          },
         });
 
         editModal.open();
-
-      }
+      },
     }),
     remove: new Button({
       text: message.get('groupAreaControlRemove'),
@@ -145,15 +142,17 @@ export const GroupArea = function({
       title: message.get('groupAreaControlRemove'),
       classList: ['group-control-button', 'group-control-remove'],
       func: () => {
-
         const removeModal = new Modal({
-          heading: isValidString(groupData.group.name.text) ? `${message.get('groupRemoveHeadingName')} ${groupData.group.name.text}` : message.get('groupRemoveHeadingUnnamed'),
+          heading: isValidString(groupData.group.name.text)
+            ? `${message.get('groupRemoveHeadingName')} ${
+              groupData.group.name.text
+            }`
+            : message.get('groupRemoveHeadingUnnamed'),
           content: message.get('groupRemoveContent'),
           successText: message.get('groupRemoveSuccessText'),
           cancelText: message.get('groupRemoveCancelText'),
           width: 'small',
           successAction: () => {
-
             group.item.mod.remove(groupData);
 
             layout.area.assemble();
@@ -161,14 +160,12 @@ export const GroupArea = function({
             groupAndBookmark.render();
 
             data.save();
-
-          }
+          },
         });
 
         removeModal.open();
-
-      }
-    })
+      },
+    }),
   };
 
   this.openAll = {
@@ -181,20 +178,15 @@ export const GroupArea = function({
       classList: ['group-toolbar-button', 'group-toolbar-open-all'],
       func: () => {
         this.openAll.open();
-      }
+      },
     }),
     open: () => {
-
       if ('tabs' in chrome) {
-
         if (state.get.current().bookmark.newTab) {
-
           groupData.group.items.forEach((item) => {
             chrome.tabs.create({ url: item.url });
           });
-
         } else {
-
           const first = groupData.group.items.shift();
 
           groupData.group.items.forEach((item) => {
@@ -202,12 +194,9 @@ export const GroupArea = function({
           });
 
           window.location.href = first.url;
-
         }
-
       }
-
-    }
+    },
   };
 
   this.collapse = {
@@ -223,21 +212,17 @@ export const GroupArea = function({
         this.collapse.video();
         this.update.style();
         data.save();
-      }
+      },
     }),
     toggle: () => {
-
       if (groupData.group.collapse) {
         groupData.group.collapse = false;
       } else {
         groupData.group.collapse = true;
       }
-
     },
     video: () => {
-
       bookmark.tile.current.forEach((item) => {
-
         if (item.data.position.origin.group === groupData.position.origin) {
           if (item.video) {
             if (groupData.group.collapse) {
@@ -247,46 +232,40 @@ export const GroupArea = function({
             }
           }
         }
-
       });
-
-    }
+    },
   };
 
   this.style = () => {
-
     if (groupData.group.name.show && isValidString(groupData.group.name.text)) {
       this.element.group.classList.add('is-group-header');
     }
 
-    if (groupData.group.toolbar.collapse.show || (groupData.group.toolbar.openAll.show && groupData.group.items.length > 0)) {
+    if (
+      groupData.group.toolbar.collapse.show ||
+      (groupData.group.toolbar.openAll.show && groupData.group.items.length > 0)
+    ) {
       this.element.group.classList.add('is-group-toolbar');
     }
-
   };
 
   this.control.disable = () => {
-
     for (var key in this.control.button) {
       this.control.button[key].disable();
     }
 
     this.control.searchState();
-
   };
 
   this.control.enable = () => {
-
     for (var key in this.control.button) {
       this.control.button[key].enable();
     }
 
     this.control.searchState();
-
   };
 
   this.control.searchState = () => {
-
     if (state.get.current().search) {
       this.control.button.up.disable();
       this.control.button.down.disable();
@@ -296,11 +275,9 @@ export const GroupArea = function({
       this.control.button.down.enable();
       this.control.button.sort.enable();
     }
-
   };
 
   this.assemble = () => {
-
     this.element.name.text.innerHTML = groupData.group.name.text;
 
     this.element.name.name.appendChild(this.element.name.text);
@@ -327,16 +304,20 @@ export const GroupArea = function({
       this.element.toolbar.group.appendChild(this.collapse.button.button);
     }
 
-    if (groupData.group.toolbar.openAll.show && groupData.group.items.length > 0) {
+    if (
+      groupData.group.toolbar.openAll.show &&
+      groupData.group.items.length > 0
+    ) {
       this.element.toolbar.group.appendChild(this.openAll.button.button);
     }
 
-    if (groupData.group.toolbar.collapse.show || (groupData.group.toolbar.openAll.show && groupData.group.items.length > 0)) {
-
+    if (
+      groupData.group.toolbar.collapse.show ||
+      (groupData.group.toolbar.openAll.show && groupData.group.items.length > 0)
+    ) {
       this.element.toolbar.toolbar.appendChild(this.element.toolbar.group);
 
       this.element.header.appendChild(this.element.toolbar.toolbar);
-
     }
 
     this.element.group.appendChild(this.element.header);
@@ -350,55 +331,40 @@ export const GroupArea = function({
     } else {
       this.control.disable();
     }
-
   };
 
   this.clear = () => {
-
     clearChildNode(this.element.body);
-
   };
 
   this.group = () => {
-
     return this.element.group;
-
   };
 
   this.update = {};
 
   this.update.style = () => {
-
     const html = document.querySelector('html');
 
     if (state.get.current().theme.group.toolbar.opacity < 40) {
-
       html.classList.add('is-group-toolbar-opacity-low');
 
       this.openAll.button.style.update(['link']);
 
       this.collapse.button.style.update(['link']);
-
     } else {
-
       html.classList.remove('is-group-toolbar-opacity-low');
 
       this.openAll.button.style.update(['line']);
 
       this.collapse.button.style.update(['line']);
-
     }
 
     if (groupData.group.collapse) {
-
       this.element.group.classList.add('is-group-collapse');
-
     } else {
-
       this.element.group.classList.remove('is-group-collapse');
-
     }
-
   };
 
   this.style();
@@ -406,5 +372,4 @@ export const GroupArea = function({
   this.assemble();
 
   this.update.style();
-
 };

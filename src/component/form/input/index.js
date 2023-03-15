@@ -21,5 +21,5 @@ export {
   text,
   textarea,
   inputButton,
-  select
+  select,
 };

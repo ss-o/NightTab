@@ -25,5 +25,5 @@ export {
   Control_sliderSlim,
   Control_sliderDouble,
   Control_text,
-  Control_select
+  Control_select,
 };

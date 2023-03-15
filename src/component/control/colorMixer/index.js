@@ -22,9 +22,8 @@ export const Control_colorMixer = function ({
   labelText = 'name',
   srOnly = false,
   randomColor = false,
-  action = false
+  action = false,
 } = {}) {
-
   this.moreControlsToggle = new Button({
     text: message.get('controlColorMixerMoreControls'),
     iconName: 'arrowKeyboardDown',
@@ -35,7 +34,7 @@ export const Control_colorMixer = function ({
     func: () => {
       this.moreControlsCollapse.toggle();
       this.moreControlsUpdate();
-    }
+    },
   });
 
   this.color = new Control_color({
@@ -52,7 +51,9 @@ export const Control_colorMixer = function ({
       set({
         object: object,
         path: path + '.hsl',
-        value: convertColor.rgb.hsl(get({ object: object, path: path + '.rgb' }))
+        value: convertColor.rgb.hsl(
+          get({ object: object, path: path + '.rgb' })
+        ),
       });
       this.colorSliderR.update();
       this.colorSliderG.update();
@@ -63,7 +64,7 @@ export const Control_colorMixer = function ({
       if (action) {
         action();
       }
-    }
+    },
   });
 
   this.colorSliderH = new Control_sliderSlim({
@@ -78,7 +79,9 @@ export const Control_colorMixer = function ({
       set({
         object: object,
         path: path + '.rgb',
-        value: convertColor.hsl.rgb(get({ object: object, path: path + '.hsl' }))
+        value: convertColor.hsl.rgb(
+          get({ object: object, path: path + '.hsl' })
+        ),
       });
       this.color.update({ all: true });
       this.colorSliderR.update();
@@ -89,7 +92,7 @@ export const Control_colorMixer = function ({
       if (action) {
         action();
       }
-    }
+    },
   });
 
   this.colorSliderS = new Control_sliderSlim({
@@ -104,7 +107,9 @@ export const Control_colorMixer = function ({
       set({
         object: object,
         path: path + '.rgb',
-        value: convertColor.hsl.rgb(get({ object: object, path: path + '.hsl' }))
+        value: convertColor.hsl.rgb(
+          get({ object: object, path: path + '.hsl' })
+        ),
       });
       this.color.update({ all: true });
       this.colorSliderR.update();
@@ -115,7 +120,7 @@ export const Control_colorMixer = function ({
       if (action) {
         action();
       }
-    }
+    },
   });
 
   this.colorSliderL = new Control_sliderSlim({
@@ -130,7 +135,9 @@ export const Control_colorMixer = function ({
       set({
         object: object,
         path: path + '.rgb',
-        value: convertColor.hsl.rgb(get({ object: object, path: path + '.hsl' }))
+        value: convertColor.hsl.rgb(
+          get({ object: object, path: path + '.hsl' })
+        ),
       });
       this.color.update({ all: true });
       this.colorSliderR.update();
@@ -141,7 +148,7 @@ export const Control_colorMixer = function ({
       if (action) {
         action();
       }
-    }
+    },
   });
 
   this.colorSliderR = new Control_sliderSlim({
@@ -156,7 +163,9 @@ export const Control_colorMixer = function ({
       set({
         object: object,
         path: path + '.hsl',
-        value: convertColor.rgb.hsl(get({ object: object, path: path + '.rgb' }))
+        value: convertColor.rgb.hsl(
+          get({ object: object, path: path + '.rgb' })
+        ),
       });
       this.color.update({ all: true });
       this.colorSliderG.update();
@@ -167,7 +176,7 @@ export const Control_colorMixer = function ({
       if (action) {
         action();
       }
-    }
+    },
   });
 
   this.colorSliderG = new Control_sliderSlim({
@@ -182,7 +191,9 @@ export const Control_colorMixer = function ({
       set({
         object: object,
         path: path + '.hsl',
-        value: convertColor.rgb.hsl(get({ object: object, path: path + '.rgb' }))
+        value: convertColor.rgb.hsl(
+          get({ object: object, path: path + '.rgb' })
+        ),
       });
       this.color.update({ all: true });
       this.colorSliderR.update();
@@ -193,7 +204,7 @@ export const Control_colorMixer = function ({
       if (action) {
         action();
       }
-    }
+    },
   });
 
   this.colorSliderB = new Control_sliderSlim({
@@ -208,7 +219,9 @@ export const Control_colorMixer = function ({
       set({
         object: object,
         path: path + '.hsl',
-        value: convertColor.rgb.hsl(get({ object: object, path: path + '.rgb' }))
+        value: convertColor.rgb.hsl(
+          get({ object: object, path: path + '.rgb' })
+        ),
       });
       this.color.update({ all: true });
       this.colorSliderR.update();
@@ -219,7 +232,7 @@ export const Control_colorMixer = function ({
       if (action) {
         action();
       }
-    }
+    },
   });
 
   this.moreControls = node('div', [
@@ -228,15 +241,17 @@ export const Control_colorMixer = function ({
     this.colorSliderL.wrap(),
     this.colorSliderR.wrap(),
     this.colorSliderG.wrap(),
-    this.colorSliderB.wrap()
+    this.colorSliderB.wrap(),
   ]);
 
   this.moreControlsCollapse = new Collapse({
     type: 'toggle',
-    target: [{
-      toggle: this.moreControlsToggle.button,
-      content: this.moreControls
-    }]
+    target: [
+      {
+        toggle: this.moreControlsToggle.button,
+        content: this.moreControls,
+      },
+    ],
   });
 
   this.wrap = () => {
@@ -246,13 +261,11 @@ export const Control_colorMixer = function ({
         form.wrap({
           children: [
             form.indent({
-              children: [
-                this.moreControlsCollapse.collapse()
-              ]
-            })
-          ]
-        })
-      ]
+              children: [this.moreControlsCollapse.collapse()],
+            }),
+          ],
+        }),
+      ],
     });
   };
 
@@ -287,7 +300,6 @@ export const Control_colorMixer = function ({
   };
 
   this.moreControlsUpdate = () => {
-
     if (this.moreControlsCollapse.target()[0].state.collapsed) {
       this.colorSliderH.disable();
       this.colorSliderS.disable();
@@ -303,7 +315,6 @@ export const Control_colorMixer = function ({
       this.colorSliderG.enable();
       this.colorSliderB.enable();
     }
-
   };
 
   this.update = () => {
@@ -317,5 +328,4 @@ export const Control_colorMixer = function ({
   };
 
   this.moreControlsUpdate();
-
 };

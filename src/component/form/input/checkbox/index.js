@@ -7,9 +7,8 @@ export const checkbox = ({
   value = false,
   checked = false,
   classList = [],
-  func = false
+  func = false,
 } = {}) => {
-
   const input = node('input|type:checkbox,tabindex:1');
 
   if (id) {
@@ -25,21 +24,16 @@ export const checkbox = ({
   }
 
   if (classList.length > 0) {
-
     classList.forEach((item) => {
       input.classList.add(item);
     });
-
   }
 
   if (func) {
-
     input.addEventListener('change', () => {
       func();
     });
-
   }
 
   return input;
-
 };

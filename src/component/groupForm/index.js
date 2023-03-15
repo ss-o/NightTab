@@ -17,23 +17,18 @@ import { randomNumber } from '../../utility/randomNumber';
 
 import './index.css';
 
-export const GroupForm = function({
-  groupData = false
-} = {}) {
-
+export const GroupForm = function ({ groupData = false } = {}) {
   this.element = {
     form: node('form|class:group-form'),
-    main: node('div|class:group-form-main')
+    main: node('div|class:group-form-main'),
   };
 
   this.selectOption = {};
 
   this.selectOption.group = () => {
-
     const option = [];
 
     if (bookmark.all.length > 0) {
-
       let count = bookmark.all.length;
 
       if (groupData.type.new) {
@@ -41,19 +36,13 @@ export const GroupForm = function({
       }
 
       for (var i = 1; i <= count; i++) {
-
         option.push(ordinalNumber(i));
-
       }
-
     } else {
-
       option.push(ordinalNumber(1));
-
     }
 
     return option;
-
   };
 
   this.control = {};
@@ -67,7 +56,7 @@ export const GroupForm = function({
         labelText: message.get('groupFormNameShow'),
         action: () => {
           this.disable();
-        }
+        },
       }),
       text: new Control_text({
         object: groupData.group,
@@ -76,16 +65,18 @@ export const GroupForm = function({
         value: groupData.group.name.text,
         placeholder: message.get('groupFormNameTextPlaceholder'),
         labelText: message.get('groupFormNameTextLabel'),
-        srOnly: true
+        srOnly: true,
       }),
       random: new Button({
         text: message.get('groupFormNameRandom'),
         style: ['line'],
         func: () => {
-          groupData.group.name.text = randomString({ adjectivesCount: randomNumber(1, 3) });
+          groupData.group.name.text = randomString({
+            adjectivesCount: randomNumber(1, 3),
+          });
           this.control.group.name.text.update();
-        }
-      })
+        },
+      }),
     },
     collapse: {
       show: new Control_checkbox({
@@ -93,8 +84,8 @@ export const GroupForm = function({
         path: 'toolbar.collapse.show',
         id: 'toolbar-collapse-show',
         labelText: message.get('groupFormCollapseShowLabel'),
-        description: message.get('groupFormCollapseShowDescription')
-      })
+        description: message.get('groupFormCollapseShowDescription'),
+      }),
     },
     openAll: {
       show: new Control_checkbox({
@@ -102,9 +93,9 @@ export const GroupForm = function({
         path: 'toolbar.openAll.show',
         id: 'toolbar-openAll-show',
         labelText: message.get('groupFormOpenAllShowLabel'),
-        description: message.get('groupFormOpenAllShowDescription')
-      })
-    }
+        description: message.get('groupFormOpenAllShowDescription'),
+      }),
+    },
   };
 
   this.control.destination = new Control_select({
@@ -113,11 +104,10 @@ export const GroupForm = function({
     id: 'position-destination',
     labelText: message.get('groupFormDestination'),
     option: this.selectOption.group(),
-    selected: groupData.position.destination
+    selected: groupData.position.destination,
   });
 
   this.disable = () => {
-
     if (groupData.group.name.show) {
       this.control.group.name.text.enable();
       this.control.group.name.random.enable();
@@ -125,7 +115,6 @@ export const GroupForm = function({
       this.control.group.name.text.disable();
       this.control.group.name.random.disable();
     }
-
   };
 
   this.update = () => {
@@ -134,7 +123,6 @@ export const GroupForm = function({
   };
 
   this.assemble = () => {
-
     this.element.main.appendChild(
       form.fieldset({
         children: [
@@ -142,9 +130,9 @@ export const GroupForm = function({
             children: [
               node('div|class:group-form-description', [
                 node(`h2:${message.get('groupFormSectionNameHeading')}`),
-                node(`p:${message.get('groupFormSectionNameDescription')}`)
-              ])
-            ]
+                node(`p:${message.get('groupFormSectionNameDescription')}`),
+              ]),
+            ],
           }),
           form.wrap({
             children: [
@@ -156,22 +144,20 @@ export const GroupForm = function({
                       form.indent({
                         children: [
                           this.control.group.name.text.wrap(),
-                          this.control.group.name.random.wrap()
-                        ]
-                      })
-                    ]
-                  })
-                ]
-              })
-            ]
-          })
-        ]
+                          this.control.group.name.random.wrap(),
+                        ],
+                      }),
+                    ],
+                  }),
+                ],
+              }),
+            ],
+          }),
+        ],
       })
     );
 
-    this.element.main.appendChild(
-      node('hr'),
-    );
+    this.element.main.appendChild(node('hr'));
 
     this.element.main.appendChild(
       form.fieldset({
@@ -180,27 +166,25 @@ export const GroupForm = function({
             children: [
               node('div|class:group-form-description', [
                 node(`h2:${message.get('groupFormSectionToolbarHeading')}`),
-                node(`p:${message.get('groupFormSectionToolbarDescription')}`)
-              ])
-            ]
+                node(`p:${message.get('groupFormSectionToolbarDescription')}`),
+              ]),
+            ],
           }),
           form.wrap({
             children: [
               form.indent({
                 children: [
                   this.control.group.collapse.show.wrap(),
-                  this.control.group.openAll.show.wrap()
-                ]
-              })
-            ]
-          })
-        ]
+                  this.control.group.openAll.show.wrap(),
+                ],
+              }),
+            ],
+          }),
+        ],
       })
     );
 
-    this.element.main.appendChild(
-      node('hr'),
-    );
+    this.element.main.appendChild(node('hr'));
 
     this.element.main.appendChild(
       form.fieldset({
@@ -209,43 +193,37 @@ export const GroupForm = function({
             children: [
               node('div|class:group-form-description', [
                 node(`h2:${message.get('groupFormSectionOrderingHeading')}`),
-                node(`p:${message.get('groupFormSectionOrderingDescription')}`)
-              ])
-            ]
+                node(`p:${message.get('groupFormSectionOrderingDescription')}`),
+              ]),
+            ],
           }),
           form.wrap({
             children: [
               form.indent({
-                children: [
-                  this.control.destination.wrap()
-                ]
-              })
-            ]
-          })
-        ]
+                children: [this.control.destination.wrap()],
+              }),
+            ],
+          }),
+        ],
       })
     );
 
     this.element.form.appendChild(this.element.main);
 
     this.bind();
-
   };
 
   this.bind = () => {
-
     this.element.form.addEventListener('keydown', (event) => {
-
-      if (event.keyCode == 13) { event.preventDefault(); return false; }
-
+      if (event.keyCode == 13) {
+        event.preventDefault();
+        return false;
+      }
     });
-
   };
 
   this.form = () => {
-
     return this.element.form;
-
   };
 
   this.assemble();
@@ -253,5 +231,4 @@ export const GroupForm = function({
   this.disable();
 
   this.update();
-
 };

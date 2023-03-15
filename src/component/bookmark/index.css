@@ -41,40 +41,57 @@
 }
 
 .is-theme-bookmark-color-by-custom .bookmark-area {
-  background-color: hsla(var(--theme-bookmark-color-hsl-h), calc(var(--theme-bookmark-color-hsl-s) * 1%), calc(var(--theme-bookmark-color-hsl-l) * 1%), calc(var(--theme-bookmark-color-opacity) / 100));
+  background-color: hsla(
+    var(--theme-bookmark-color-hsl-h),
+    calc(var(--theme-bookmark-color-hsl-s) * 1%),
+    calc(var(--theme-bookmark-color-hsl-l) * 1%),
+    calc(var(--theme-bookmark-color-opacity) / 100)
+  );
   border-radius: calc(var(--theme-radius) * 0.01em);
 }
 
-.is-layout-order-header-bookmark.is-layout-direction-vertical.is-theme-layout-divider-size.is-theme-bookmark-color-by-custom .bookmark-area,
-.is-layout-order-header-bookmark.is-layout-direction-vertical.is-theme-layout-color-by-custom .bookmark-area,
-.is-layout-order-header-bookmark.is-layout-direction-vertical.is-theme-bookmark-color-by-custom.is-theme-header-color-by-custom .bookmark-area {
+.is-layout-order-header-bookmark.is-layout-direction-vertical.is-theme-layout-divider-size.is-theme-bookmark-color-by-custom
+  .bookmark-area,
+.is-layout-order-header-bookmark.is-layout-direction-vertical.is-theme-layout-color-by-custom
+  .bookmark-area,
+.is-layout-order-header-bookmark.is-layout-direction-vertical.is-theme-bookmark-color-by-custom.is-theme-header-color-by-custom
+  .bookmark-area {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border-bottom-left-radius: calc(var(--theme-radius) * 0.01em);
   border-bottom-right-radius: calc(var(--theme-radius) * 0.01em);
 }
 
-.is-layout-order-bookmark-header.is-layout-direction-vertical.is-theme-layout-divider-size.is-theme-bookmark-color-by-custom .bookmark-area,
-.is-layout-order-bookmark-header.is-layout-direction-vertical.is-theme-layout-color-by-custom .bookmark-area,
-.is-layout-order-bookmark-header.is-layout-direction-vertical.is-theme-bookmark-color-by-custom.is-theme-header-color-by-custom .bookmark-area {
+.is-layout-order-bookmark-header.is-layout-direction-vertical.is-theme-layout-divider-size.is-theme-bookmark-color-by-custom
+  .bookmark-area,
+.is-layout-order-bookmark-header.is-layout-direction-vertical.is-theme-layout-color-by-custom
+  .bookmark-area,
+.is-layout-order-bookmark-header.is-layout-direction-vertical.is-theme-bookmark-color-by-custom.is-theme-header-color-by-custom
+  .bookmark-area {
   border-top-left-radius: calc(var(--theme-radius) * 0.01em);
   border-top-right-radius: calc(var(--theme-radius) * 0.01em);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.is-layout-order-header-bookmark.is-layout-direction-horizontal.is-theme-layout-divider-size.is-theme-bookmark-color-by-custom .bookmark-area,
-.is-layout-order-header-bookmark.is-layout-direction-horizontal.is-theme-layout-color-by-custom .bookmark-area,
-.is-layout-order-header-bookmark.is-layout-direction-horizontal.is-theme-bookmark-color-by-custom.is-theme-header-color-by-custom .bookmark-area {
+.is-layout-order-header-bookmark.is-layout-direction-horizontal.is-theme-layout-divider-size.is-theme-bookmark-color-by-custom
+  .bookmark-area,
+.is-layout-order-header-bookmark.is-layout-direction-horizontal.is-theme-layout-color-by-custom
+  .bookmark-area,
+.is-layout-order-header-bookmark.is-layout-direction-horizontal.is-theme-bookmark-color-by-custom.is-theme-header-color-by-custom
+  .bookmark-area {
   border-top-left-radius: 0;
   border-top-right-radius: calc(var(--theme-radius) * 0.01em);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: calc(var(--theme-radius) * 0.01em);
 }
 
-.is-layout-order-bookmark-header.is-layout-direction-horizontal.is-theme-layout-divider-size.is-theme-bookmark-color-by-custom .bookmark-area,
-.is-layout-order-bookmark-header.is-layout-direction-horizontal.is-theme-layout-color-by-custom .bookmark-area,
-.is-layout-order-bookmark-header.is-layout-direction-horizontal.is-theme-bookmark-color-by-custom.is-theme-header-color-by-custom .bookmark-area {
+.is-layout-order-bookmark-header.is-layout-direction-horizontal.is-theme-layout-divider-size.is-theme-bookmark-color-by-custom
+  .bookmark-area,
+.is-layout-order-bookmark-header.is-layout-direction-horizontal.is-theme-layout-color-by-custom
+  .bookmark-area,
+.is-layout-order-bookmark-header.is-layout-direction-horizontal.is-theme-bookmark-color-by-custom.is-theme-header-color-by-custom
+  .bookmark-area {
   border-top-left-radius: calc(var(--theme-radius) * 0.01em);
   border-top-right-radius: 0;
   border-bottom-left-radius: calc(var(--theme-radius) * 0.01em);
@@ -135,7 +152,6 @@
 }
 
 @media (min-width: 900px) {
-
   .is-layout-breakpoint-md.is-bookmark-style-list .bookmark-wide,
   .is-layout-breakpoint-lg.is-bookmark-style-list .bookmark-wide,
   .is-layout-breakpoint-xl.is-bookmark-style-list .bookmark-wide,
@@ -159,7 +175,6 @@
 }
 
 @media (min-width: 900px) {
-
   .is-layout-breakpoint-md.is-bookmark-orientation-top .bookmark-wide,
   .is-layout-breakpoint-lg.is-bookmark-orientation-top .bookmark-wide,
   .is-layout-breakpoint-xl.is-bookmark-orientation-top .bookmark-wide,
@@ -173,8 +188,12 @@
 }
 
 .bookmark-front {
-  background-color: hsla(var(--bookmark-color), calc(var(--theme-bookmark-item-opacity) / 100));
-  border: calc(var(--bookmark-border) * var(--layout-line-width)) solid rgb(var(--theme-accent));
+  background-color: hsla(
+    var(--bookmark-color),
+    calc(var(--theme-bookmark-item-opacity) / 100)
+  );
+  border: calc(var(--bookmark-border) * var(--layout-line-width)) solid
+    rgb(var(--theme-accent));
   border-radius: calc(var(--theme-radius) * 0.01em);
   position: absolute;
   left: 0;
@@ -187,7 +206,10 @@
   text-decoration: none;
   outline: none;
   user-select: none;
-  transition: background-color var(--layout-transition-extra-fast), border-radius var(--layout-transition-extra-fast), height var(--layout-transition-extra-fast), box-shadow var(--layout-transition-extra-fast);
+  transition: background-color var(--layout-transition-extra-fast),
+    border-radius var(--layout-transition-extra-fast),
+    height var(--layout-transition-extra-fast),
+    box-shadow var(--layout-transition-extra-fast);
 }
 
 .bookmark:focus-within .bookmark-front,
@@ -195,7 +217,10 @@
 .bookmark:hover .bookmark-front,
 .bookmark-front:focus,
 .bookmark-front:hover {
-  background-color: hsla(var(--bookmark-color-focus-hover), calc(var(--theme-bookmark-item-opacity) / 100));
+  background-color: hsla(
+    var(--bookmark-color-focus-hover),
+    calc(var(--theme-bookmark-item-opacity) / 100)
+  );
 }
 
 .is-bookmark-edit .bookmark-front {
@@ -217,16 +242,28 @@
   bottom: inherit;
 }
 
-.is-bookmark-url-show.is-bookmark-orientation-top .bookmark:focus .bookmark-front,
-.is-bookmark-url-show.is-bookmark-orientation-top .bookmark:focus-within .bookmark-front,
-.is-bookmark-url-show.is-bookmark-orientation-top .bookmark:hover .bookmark-front {
+.is-bookmark-url-show.is-bookmark-orientation-top
+  .bookmark:focus
+  .bookmark-front,
+.is-bookmark-url-show.is-bookmark-orientation-top
+  .bookmark:focus-within
+  .bookmark-front,
+.is-bookmark-url-show.is-bookmark-orientation-top
+  .bookmark:hover
+  .bookmark-front {
   border-top-left-radius: calc((var(--theme-radius) * 0.25) * 0.01em);
   border-top-right-radius: calc((var(--theme-radius) * 0.25) * 0.01em);
 }
 
-.is-bookmark-url-show.is-bookmark-orientation-bottom .bookmark:focus .bookmark-front,
-.is-bookmark-url-show.is-bookmark-orientation-bottom .bookmark:focus-within .bookmark-front,
-.is-bookmark-url-show.is-bookmark-orientation-bottom .bookmark:hover .bookmark-front {
+.is-bookmark-url-show.is-bookmark-orientation-bottom
+  .bookmark:focus
+  .bookmark-front,
+.is-bookmark-url-show.is-bookmark-orientation-bottom
+  .bookmark:focus-within
+  .bookmark-front,
+.is-bookmark-url-show.is-bookmark-orientation-bottom
+  .bookmark:hover
+  .bookmark-front {
   border-bottom-left-radius: calc((var(--theme-radius) * 0.25) * 0.01em);
   border-bottom-right-radius: calc((var(--theme-radius) * 0.25) * 0.01em);
 }
@@ -239,33 +276,61 @@
 }
 
 .is-bookmark-edit.is-bookmark-orientation-bottom .bookmark .bookmark-front,
-.is-bookmark-edit.is-bookmark-orientation-bottom .bookmark:hover .bookmark-front,
-.is-bookmark-edit.is-bookmark-orientation-bottom .bookmark:focus .bookmark-front {
+.is-bookmark-edit.is-bookmark-orientation-bottom
+  .bookmark:hover
+  .bookmark-front,
+.is-bookmark-edit.is-bookmark-orientation-bottom
+  .bookmark:focus
+  .bookmark-front {
   border-bottom-left-radius: calc((var(--theme-radius) * 0.25) * 0.01em);
   border-bottom-right-radius: calc((var(--theme-radius) * 0.25) * 0.01em);
 }
 
-.is-bookmark-shadow-show.is-bookmark-orientation-bottom .bookmark:focus .bookmark-front,
-.is-bookmark-shadow-show.is-bookmark-orientation-bottom .bookmark:focus-within .bookmark-front,
-.is-bookmark-shadow-show.is-bookmark-orientation-bottom .bookmark:hover .bookmark-front {
+.is-bookmark-shadow-show.is-bookmark-orientation-bottom
+  .bookmark:focus
+  .bookmark-front,
+.is-bookmark-shadow-show.is-bookmark-orientation-bottom
+  .bookmark:focus-within
+  .bookmark-front,
+.is-bookmark-shadow-show.is-bookmark-orientation-bottom
+  .bookmark:hover
+  .bookmark-front {
   box-shadow: var(--theme-shadow-bottom-large);
 }
 
-.is-bookmark-shadow-show.is-bookmark-orientation-top .bookmark:focus .bookmark-front,
-.is-bookmark-shadow-show.is-bookmark-orientation-top .bookmark:focus-within .bookmark-front,
-.is-bookmark-shadow-show.is-bookmark-orientation-top .bookmark:hover .bookmark-front {
+.is-bookmark-shadow-show.is-bookmark-orientation-top
+  .bookmark:focus
+  .bookmark-front,
+.is-bookmark-shadow-show.is-bookmark-orientation-top
+  .bookmark:focus-within
+  .bookmark-front,
+.is-bookmark-shadow-show.is-bookmark-orientation-top
+  .bookmark:hover
+  .bookmark-front {
   box-shadow: var(--theme-shadow-top-large);
 }
 
-.is-bookmark-shadow-show.is-bookmark-orientation-bottom.is-bookmark-edit .bookmark .bookmark-front,
-.is-bookmark-shadow-show.is-bookmark-orientation-bottom.is-bookmark-edit .bookmark:hover .bookmark-front,
-.is-bookmark-shadow-show.is-bookmark-orientation-bottom.is-bookmark-edit .bookmark:focus .bookmark-front {
+.is-bookmark-shadow-show.is-bookmark-orientation-bottom.is-bookmark-edit
+  .bookmark
+  .bookmark-front,
+.is-bookmark-shadow-show.is-bookmark-orientation-bottom.is-bookmark-edit
+  .bookmark:hover
+  .bookmark-front,
+.is-bookmark-shadow-show.is-bookmark-orientation-bottom.is-bookmark-edit
+  .bookmark:focus
+  .bookmark-front {
   box-shadow: var(--theme-shadow-bottom-medium);
 }
 
-.is-bookmark-shadow-show.is-bookmark-orientation-top.is-bookmark-edit .bookmark .bookmark-front,
-.is-bookmark-shadow-show.is-bookmark-orientation-top.is-bookmark-edit .bookmark:hover .bookmark-front,
-.is-bookmark-shadow-show.is-bookmark-orientation-top.is-bookmark-edit .bookmark:focus .bookmark-front {
+.is-bookmark-shadow-show.is-bookmark-orientation-top.is-bookmark-edit
+  .bookmark
+  .bookmark-front,
+.is-bookmark-shadow-show.is-bookmark-orientation-top.is-bookmark-edit
+  .bookmark:hover
+  .bookmark-front,
+.is-bookmark-shadow-show.is-bookmark-orientation-top.is-bookmark-edit
+  .bookmark:focus
+  .bookmark-front {
   box-shadow: var(--theme-shadow-top-medium);
 }
 
@@ -285,7 +350,8 @@
 }
 
 .is-bookmark-style-list .bookmark-link {
-  padding: calc((var(--bookmark-padding) * 0.5) * 0.1em) calc((var(--bookmark-padding) * 1.25) * 0.1em);
+  padding: calc((var(--bookmark-padding) * 0.5) * 0.1em)
+    calc((var(--bookmark-padding) * 1.25) * 0.1em);
 }
 
 .bookmark-link:focus,
@@ -309,7 +375,9 @@
   gap: calc(var(--bookmark-display-gutter) * 0.025em);
   font-size: 1em;
   transition: font-size var(--layout-transition-extra-fast);
-  transform: translateX(calc(var(--bookmark-display-translate-x) * 0.1em)) translateY(calc(var(--bookmark-display-translate-y) * 0.1em)) rotate(calc(var(--bookmark-display-rotate) * 1deg));
+  transform: translateX(calc(var(--bookmark-display-translate-x) * 0.1em))
+    translateY(calc(var(--bookmark-display-translate-y) * 0.1em))
+    rotate(calc(var(--bookmark-display-rotate) * 1deg));
 }
 
 .is-bookmark-edit .bookmark-display {
@@ -362,198 +430,238 @@
   align-items: flex-end;
 }
 
-.is-bookmark-direction-horizontal.is-bookmark-order-visual-name .bookmark-display {
+.is-bookmark-direction-horizontal.is-bookmark-order-visual-name
+  .bookmark-display {
   flex-direction: row;
 }
 
-.is-bookmark-direction-horizontal.is-bookmark-order-name-visual .bookmark-display {
+.is-bookmark-direction-horizontal.is-bookmark-order-name-visual
+  .bookmark-display {
   flex-direction: row-reverse;
 }
 
-.is-bookmark-direction-vertical.is-bookmark-order-visual-name .bookmark-display {
+.is-bookmark-direction-vertical.is-bookmark-order-visual-name
+  .bookmark-display {
   flex-direction: column;
 }
 
-.is-bookmark-direction-vertical.is-bookmark-order-name-visual .bookmark-display {
+.is-bookmark-direction-vertical.is-bookmark-order-name-visual
+  .bookmark-display {
   flex-direction: column-reverse;
 }
 
-.is-bookmark-direction-vertical.is-bookmark-order-visual-name.is-bookmark-alignment-top-left .bookmark-display {
+.is-bookmark-direction-vertical.is-bookmark-order-visual-name.is-bookmark-alignment-top-left
+  .bookmark-display {
   justify-content: flex-start;
   align-items: flex-start;
 }
 
-.is-bookmark-direction-vertical.is-bookmark-order-visual-name.is-bookmark-alignment-top-center .bookmark-display {
+.is-bookmark-direction-vertical.is-bookmark-order-visual-name.is-bookmark-alignment-top-center
+  .bookmark-display {
   justify-content: flex-start;
   align-items: center;
 }
 
-.is-bookmark-direction-vertical.is-bookmark-order-visual-name.is-bookmark-alignment-top-right .bookmark-display {
+.is-bookmark-direction-vertical.is-bookmark-order-visual-name.is-bookmark-alignment-top-right
+  .bookmark-display {
   justify-content: flex-start;
   align-items: flex-end;
 }
 
-.is-bookmark-direction-vertical.is-bookmark-order-visual-name.is-bookmark-alignment-center-left .bookmark-display {
+.is-bookmark-direction-vertical.is-bookmark-order-visual-name.is-bookmark-alignment-center-left
+  .bookmark-display {
   justify-content: center;
   align-items: flex-start;
 }
 
-.is-bookmark-direction-vertical.is-bookmark-order-visual-name.is-bookmark-alignment-center-center .bookmark-display {
+.is-bookmark-direction-vertical.is-bookmark-order-visual-name.is-bookmark-alignment-center-center
+  .bookmark-display {
   justify-content: center;
   align-items: center;
 }
 
-.is-bookmark-direction-vertical.is-bookmark-order-visual-name.is-bookmark-alignment-center-right .bookmark-display {
+.is-bookmark-direction-vertical.is-bookmark-order-visual-name.is-bookmark-alignment-center-right
+  .bookmark-display {
   justify-content: center;
   align-items: flex-end;
 }
 
-.is-bookmark-direction-vertical.is-bookmark-order-visual-name.is-bookmark-alignment-bottom-left .bookmark-display {
+.is-bookmark-direction-vertical.is-bookmark-order-visual-name.is-bookmark-alignment-bottom-left
+  .bookmark-display {
   justify-content: flex-end;
   align-items: flex-start;
 }
 
-.is-bookmark-direction-vertical.is-bookmark-order-visual-name.is-bookmark-alignment-bottom-center .bookmark-display {
+.is-bookmark-direction-vertical.is-bookmark-order-visual-name.is-bookmark-alignment-bottom-center
+  .bookmark-display {
   justify-content: flex-end;
   align-items: center;
 }
 
-.is-bookmark-direction-vertical.is-bookmark-order-visual-name.is-bookmark-alignment-bottom-right .bookmark-display {
+.is-bookmark-direction-vertical.is-bookmark-order-visual-name.is-bookmark-alignment-bottom-right
+  .bookmark-display {
   justify-content: flex-end;
   align-items: flex-end;
 }
 
-.is-bookmark-direction-vertical.is-bookmark-order-name-visual.is-bookmark-alignment-top-left .bookmark-display {
+.is-bookmark-direction-vertical.is-bookmark-order-name-visual.is-bookmark-alignment-top-left
+  .bookmark-display {
   justify-content: flex-end;
   align-items: flex-start;
 }
 
-.is-bookmark-direction-vertical.is-bookmark-order-name-visual.is-bookmark-alignment-top-center .bookmark-display {
+.is-bookmark-direction-vertical.is-bookmark-order-name-visual.is-bookmark-alignment-top-center
+  .bookmark-display {
   justify-content: flex-end;
   align-items: center;
 }
 
-.is-bookmark-direction-vertical.is-bookmark-order-name-visual.is-bookmark-alignment-top-right .bookmark-display {
+.is-bookmark-direction-vertical.is-bookmark-order-name-visual.is-bookmark-alignment-top-right
+  .bookmark-display {
   justify-content: flex-end;
   align-items: flex-end;
 }
 
-.is-bookmark-direction-vertical.is-bookmark-order-name-visual.is-bookmark-alignment-center-left .bookmark-display {
+.is-bookmark-direction-vertical.is-bookmark-order-name-visual.is-bookmark-alignment-center-left
+  .bookmark-display {
   justify-content: center;
   align-items: flex-start;
 }
 
-.is-bookmark-direction-vertical.is-bookmark-order-name-visual.is-bookmark-alignment-center-center .bookmark-display {
+.is-bookmark-direction-vertical.is-bookmark-order-name-visual.is-bookmark-alignment-center-center
+  .bookmark-display {
   justify-content: center;
   align-items: center;
 }
 
-.is-bookmark-direction-vertical.is-bookmark-order-name-visual.is-bookmark-alignment-center-right .bookmark-display {
+.is-bookmark-direction-vertical.is-bookmark-order-name-visual.is-bookmark-alignment-center-right
+  .bookmark-display {
   justify-content: center;
   align-items: flex-end;
 }
 
-.is-bookmark-direction-vertical.is-bookmark-order-name-visual.is-bookmark-alignment-bottom-left .bookmark-display {
+.is-bookmark-direction-vertical.is-bookmark-order-name-visual.is-bookmark-alignment-bottom-left
+  .bookmark-display {
   justify-content: flex-start;
   align-items: flex-start;
 }
 
-.is-bookmark-direction-vertical.is-bookmark-order-name-visual.is-bookmark-alignment-bottom-center .bookmark-display {
+.is-bookmark-direction-vertical.is-bookmark-order-name-visual.is-bookmark-alignment-bottom-center
+  .bookmark-display {
   justify-content: flex-start;
   align-items: center;
 }
 
-.is-bookmark-direction-vertical.is-bookmark-order-name-visual.is-bookmark-alignment-bottom-right .bookmark-display {
-  justify-content: flex-start;
-  align-items: flex-end;
-}
-
-.is-bookmark-direction-horizontal.is-bookmark-order-visual-name.is-bookmark-alignment-top-left .bookmark-display {
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.is-bookmark-direction-horizontal.is-bookmark-order-visual-name.is-bookmark-alignment-top-center .bookmark-display {
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.is-bookmark-direction-horizontal.is-bookmark-order-visual-name.is-bookmark-alignment-top-right .bookmark-display {
-  justify-content: flex-end;
-  align-items: flex-start;
-}
-
-.is-bookmark-direction-horizontal.is-bookmark-order-visual-name.is-bookmark-alignment-center-left .bookmark-display {
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.is-bookmark-direction-horizontal.is-bookmark-order-visual-name.is-bookmark-alignment-center-center .bookmark-display {
-  justify-content: center;
-  align-items: center;
-}
-
-.is-bookmark-direction-horizontal.is-bookmark-order-visual-name.is-bookmark-alignment-center-right .bookmark-display {
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.is-bookmark-direction-horizontal.is-bookmark-order-visual-name.is-bookmark-alignment-bottom-left .bookmark-display {
+.is-bookmark-direction-vertical.is-bookmark-order-name-visual.is-bookmark-alignment-bottom-right
+  .bookmark-display {
   justify-content: flex-start;
   align-items: flex-end;
 }
 
-.is-bookmark-direction-horizontal.is-bookmark-order-visual-name.is-bookmark-alignment-bottom-center .bookmark-display {
-  justify-content: center;
-  align-items: flex-end;
-}
-
-.is-bookmark-direction-horizontal.is-bookmark-order-visual-name.is-bookmark-alignment-bottom-right .bookmark-display {
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-
-.is-bookmark-direction-horizontal.is-bookmark-order-name-visual.is-bookmark-alignment-top-left .bookmark-display {
-  justify-content: flex-end;
-  align-items: flex-start;
-}
-
-.is-bookmark-direction-horizontal.is-bookmark-order-name-visual.is-bookmark-alignment-top-center .bookmark-display {
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.is-bookmark-direction-horizontal.is-bookmark-order-name-visual.is-bookmark-alignment-top-right .bookmark-display {
+.is-bookmark-direction-horizontal.is-bookmark-order-visual-name.is-bookmark-alignment-top-left
+  .bookmark-display {
   justify-content: flex-start;
   align-items: flex-start;
 }
 
-.is-bookmark-direction-horizontal.is-bookmark-order-name-visual.is-bookmark-alignment-center-left .bookmark-display {
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.is-bookmark-direction-horizontal.is-bookmark-order-name-visual.is-bookmark-alignment-center-center .bookmark-display {
+.is-bookmark-direction-horizontal.is-bookmark-order-visual-name.is-bookmark-alignment-top-center
+  .bookmark-display {
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
-.is-bookmark-direction-horizontal.is-bookmark-order-name-visual.is-bookmark-alignment-center-right .bookmark-display {
+.is-bookmark-direction-horizontal.is-bookmark-order-visual-name.is-bookmark-alignment-top-right
+  .bookmark-display {
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.is-bookmark-direction-horizontal.is-bookmark-order-visual-name.is-bookmark-alignment-center-left
+  .bookmark-display {
   justify-content: flex-start;
   align-items: center;
 }
 
-.is-bookmark-direction-horizontal.is-bookmark-order-name-visual.is-bookmark-alignment-bottom-left .bookmark-display {
+.is-bookmark-direction-horizontal.is-bookmark-order-visual-name.is-bookmark-alignment-center-center
+  .bookmark-display {
+  justify-content: center;
+  align-items: center;
+}
+
+.is-bookmark-direction-horizontal.is-bookmark-order-visual-name.is-bookmark-alignment-center-right
+  .bookmark-display {
   justify-content: flex-end;
+  align-items: center;
+}
+
+.is-bookmark-direction-horizontal.is-bookmark-order-visual-name.is-bookmark-alignment-bottom-left
+  .bookmark-display {
+  justify-content: flex-start;
   align-items: flex-end;
 }
 
-.is-bookmark-direction-horizontal.is-bookmark-order-name-visual.is-bookmark-alignment-bottom-center .bookmark-display {
+.is-bookmark-direction-horizontal.is-bookmark-order-visual-name.is-bookmark-alignment-bottom-center
+  .bookmark-display {
   justify-content: center;
   align-items: flex-end;
 }
 
-.is-bookmark-direction-horizontal.is-bookmark-order-name-visual.is-bookmark-alignment-bottom-right .bookmark-display {
+.is-bookmark-direction-horizontal.is-bookmark-order-visual-name.is-bookmark-alignment-bottom-right
+  .bookmark-display {
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.is-bookmark-direction-horizontal.is-bookmark-order-name-visual.is-bookmark-alignment-top-left
+  .bookmark-display {
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.is-bookmark-direction-horizontal.is-bookmark-order-name-visual.is-bookmark-alignment-top-center
+  .bookmark-display {
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.is-bookmark-direction-horizontal.is-bookmark-order-name-visual.is-bookmark-alignment-top-right
+  .bookmark-display {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.is-bookmark-direction-horizontal.is-bookmark-order-name-visual.is-bookmark-alignment-center-left
+  .bookmark-display {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.is-bookmark-direction-horizontal.is-bookmark-order-name-visual.is-bookmark-alignment-center-center
+  .bookmark-display {
+  justify-content: center;
+  align-items: center;
+}
+
+.is-bookmark-direction-horizontal.is-bookmark-order-name-visual.is-bookmark-alignment-center-right
+  .bookmark-display {
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.is-bookmark-direction-horizontal.is-bookmark-order-name-visual.is-bookmark-alignment-bottom-left
+  .bookmark-display {
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.is-bookmark-direction-horizontal.is-bookmark-order-name-visual.is-bookmark-alignment-bottom-center
+  .bookmark-display {
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.is-bookmark-direction-horizontal.is-bookmark-order-name-visual.is-bookmark-alignment-bottom-right
+  .bookmark-display {
   justify-content: flex-start;
   align-items: flex-end;
 }
@@ -613,12 +721,16 @@
   --bookmark-display-name-color-focus-hover: var(--theme-primary-text-010);
 }
 
-.is-theme-background-type-accent .is-bookmark-opacity-low .bookmark-display-name {
+.is-theme-background-type-accent
+  .is-bookmark-opacity-low
+  .bookmark-display-name {
   --bookmark-display-name-color: var(--theme-accent-text);
   --bookmark-display-name-color-focus-hover: var(--theme-accent-text);
 }
 
-.is-theme-background-type-color .is-bookmark-opacity-low .bookmark-display-name {
+.is-theme-background-type-color
+  .is-bookmark-opacity-low
+  .bookmark-display-name {
   --bookmark-display-name-color: var(--theme-background-color-text);
   --bookmark-display-name-color-focus-hover: var(--theme-background-color-text);
 }
@@ -653,7 +765,10 @@
   display: flex;
   flex-direction: column;
   z-index: 2;
-  transition: height var(--layout-transition-extra-fast), border-radius var(--layout-transition-extra-fast), top var(--layout-transition-extra-fast), clip-path var(--layout-transition-extra-fast);
+  transition: height var(--layout-transition-extra-fast),
+    border-radius var(--layout-transition-extra-fast),
+    top var(--layout-transition-extra-fast),
+    clip-path var(--layout-transition-extra-fast);
 }
 
 .is-bookmark-edit .bookmark-back {
@@ -663,7 +778,11 @@
 }
 
 .is-theme-accent-cycle-active .bookmark-back {
-  transition: background-color var(--layout-transition-extra-fast), height var(--layout-transition-extra-fast), border-radius var(--layout-transition-extra-fast), top var(--layout-transition-extra-fast), clip-path var(--layout-transition-extra-fast);
+  transition: background-color var(--layout-transition-extra-fast),
+    height var(--layout-transition-extra-fast),
+    border-radius var(--layout-transition-extra-fast),
+    top var(--layout-transition-extra-fast),
+    clip-path var(--layout-transition-extra-fast);
   transition-delay: none;
 }
 
@@ -683,25 +802,55 @@
   height: 100%;
 }
 
-.is-bookmark-edit.is-bookmark-line-show.is-bookmark-orientation-top .bookmark-back,
-.is-bookmark-edit.is-bookmark-line-show.is-bookmark-orientation-bottom .bookmark-back {
+.is-bookmark-edit.is-bookmark-line-show.is-bookmark-orientation-top
+  .bookmark-back,
+.is-bookmark-edit.is-bookmark-line-show.is-bookmark-orientation-bottom
+  .bookmark-back {
   top: 0;
 }
 
 .is-bookmark-orientation-top .bookmark-back {
-  clip-path: polygon(0 0, 100% 0, 100% calc((var(--bookmark-clip-padding) * 1em)), 0 calc((var(--bookmark-clip-padding) * 1em)));
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc((var(--bookmark-clip-padding) * 1em)),
+    0 calc((var(--bookmark-clip-padding) * 1em))
+  );
 }
 
 .is-bookmark-orientation-bottom .bookmark-back {
-  clip-path: polygon(0 calc(100% - calc(var(--bookmark-clip-padding) * 1em)), 100% calc(100% - calc(var(--bookmark-clip-padding) * 1em)), 100% 100%, 0 100%);
+  clip-path: polygon(
+    0 calc(100% - calc(var(--bookmark-clip-padding) * 1em)),
+    100% calc(100% - calc(var(--bookmark-clip-padding) * 1em)),
+    100% 100%,
+    0 100%
+  );
 }
 
 .is-bookmark-orientation-top.is-bookmark-line-show .bookmark-back {
-  clip-path: polygon(0 0, 100% 0, 100% calc(var(--layout-line-width) + (var(--bookmark-clip-padding) * 1em)), 0 calc(var(--layout-line-width) + (var(--bookmark-clip-padding) * 1em)));
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(var(--layout-line-width) + (var(--bookmark-clip-padding) * 1em)),
+    0 calc(var(--layout-line-width) + (var(--bookmark-clip-padding) * 1em))
+  );
 }
 
 .is-bookmark-orientation-bottom.is-bookmark-line-show .bookmark-back {
-  clip-path: polygon(0 calc(100% - var(--layout-line-width) - calc(var(--bookmark-clip-padding) * 1em)), 100% calc(100% - var(--layout-line-width) - calc(var(--bookmark-clip-padding) * 1em)), 100% 100%, 0 100%);
+  clip-path: polygon(
+    0
+      calc(
+        100% - var(--layout-line-width) -
+          calc(var(--bookmark-clip-padding) * 1em)
+      ),
+    100%
+      calc(
+        100% - var(--layout-line-width) -
+          calc(var(--bookmark-clip-padding) * 1em)
+      ),
+    100% 100%,
+    0 100%
+  );
 }
 
 .is-bookmark-orientation-top .bookmark:focus .bookmark-back,
@@ -714,30 +863,102 @@
   height: 100%;
 }
 
-.is-bookmark-url-show.is-bookmark-orientation-top .bookmark:focus .bookmark-back,
-.is-bookmark-url-show.is-bookmark-orientation-top .bookmark:focus-within .bookmark-back,
-.is-bookmark-url-show.is-bookmark-orientation-top .bookmark:hover .bookmark-back {
-  clip-path: polygon(0 0, 100% 0, 100% calc(var(--bookmark-url-height) + calc(var(--bookmark-clip-padding) * 1em)), 0 calc(var(--bookmark-url-height) + calc(var(--bookmark-clip-padding) * 1em)));
+.is-bookmark-url-show.is-bookmark-orientation-top
+  .bookmark:focus
+  .bookmark-back,
+.is-bookmark-url-show.is-bookmark-orientation-top
+  .bookmark:focus-within
+  .bookmark-back,
+.is-bookmark-url-show.is-bookmark-orientation-top
+  .bookmark:hover
+  .bookmark-back {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100%
+      calc(
+        var(--bookmark-url-height) + calc(var(--bookmark-clip-padding) * 1em)
+      ),
+    0
+      calc(
+        var(--bookmark-url-height) + calc(var(--bookmark-clip-padding) * 1em)
+      )
+  );
 }
 
-.is-bookmark-url-show.is-bookmark-orientation-bottom .bookmark:focus .bookmark-back,
-.is-bookmark-url-show.is-bookmark-orientation-bottom .bookmark:focus-within .bookmark-back,
-.is-bookmark-url-show.is-bookmark-orientation-bottom .bookmark:hover .bookmark-back {
-  clip-path: polygon(0 calc(100% - calc(var(--bookmark-url-height) + calc(var(--bookmark-clip-padding) * 1em))), 100% calc(100% - calc(var(--bookmark-url-height) + calc(var(--bookmark-clip-padding) * 1em))), 100% 100%, 0 100%);
+.is-bookmark-url-show.is-bookmark-orientation-bottom
+  .bookmark:focus
+  .bookmark-back,
+.is-bookmark-url-show.is-bookmark-orientation-bottom
+  .bookmark:focus-within
+  .bookmark-back,
+.is-bookmark-url-show.is-bookmark-orientation-bottom
+  .bookmark:hover
+  .bookmark-back {
+  clip-path: polygon(
+    0
+      calc(
+        100% -
+          calc(
+            var(--bookmark-url-height) +
+              calc(var(--bookmark-clip-padding) * 1em)
+          )
+      ),
+    100%
+      calc(
+        100% -
+          calc(
+            var(--bookmark-url-height) +
+              calc(var(--bookmark-clip-padding) * 1em)
+          )
+      ),
+    100% 100%,
+    0 100%
+  );
 }
 
 .is-bookmark-edit.is-bookmark-orientation-top .bookmark .bookmark-back,
 .is-bookmark-edit.is-bookmark-orientation-top .bookmark:focus .bookmark-back,
-.is-bookmark-edit.is-bookmark-orientation-top .bookmark:focus-within .bookmark-back,
+.is-bookmark-edit.is-bookmark-orientation-top
+  .bookmark:focus-within
+  .bookmark-back,
 .is-bookmark-edit.is-bookmark-orientation-top .bookmark:hover .bookmark-back {
-  clip-path: polygon(0 0, 100% 0, 100% calc(var(--bookmark-edit-height) + calc(var(--bookmark-clip-padding) * 1em)), 0 calc(var(--bookmark-edit-height) + calc(var(--bookmark-clip-padding) * 1em)));
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100%
+      calc(
+        var(--bookmark-edit-height) + calc(var(--bookmark-clip-padding) * 1em)
+      ),
+    0
+      calc(
+        var(--bookmark-edit-height) + calc(var(--bookmark-clip-padding) * 1em)
+      )
+  );
 }
 
 .is-bookmark-edit.is-bookmark-orientation-bottom .bookmark .bookmark-back,
 .is-bookmark-edit.is-bookmark-orientation-bottom .bookmark:focus .bookmark-back,
-.is-bookmark-edit.is-bookmark-orientation-bottom .bookmark:focus-within .bookmark-back,
-.is-bookmark-edit.is-bookmark-orientation-bottom .bookmark:hover .bookmark-back {
-  clip-path: polygon(0 calc(100% - var(--bookmark-edit-height) - calc(var(--bookmark-clip-padding) * 1em)), 100% calc(100% - var(--bookmark-edit-height) - calc(var(--bookmark-clip-padding) * 1em)), 100% 100%, 0 100%);
+.is-bookmark-edit.is-bookmark-orientation-bottom
+  .bookmark:focus-within
+  .bookmark-back,
+.is-bookmark-edit.is-bookmark-orientation-bottom
+  .bookmark:hover
+  .bookmark-back {
+  clip-path: polygon(
+    0
+      calc(
+        100% - var(--bookmark-edit-height) -
+          calc(var(--bookmark-clip-padding) * 1em)
+      ),
+    100%
+      calc(
+        100% - var(--bookmark-edit-height) -
+          calc(var(--bookmark-clip-padding) * 1em)
+      ),
+    100% 100%,
+    0 100%
+  );
 }
 
 .bookmark-background-wrap {
@@ -803,7 +1024,8 @@
   grid-template-rows: repeat(2, 1fr);
   overflow: hidden;
   pointer-events: none;
-  transition: top var(--layout-transition-extra-fast), bottom var(--layout-transition-extra-fast);
+  transition: top var(--layout-transition-extra-fast),
+    bottom var(--layout-transition-extra-fast);
   transition-delay: calc(var(--bookmark-transition-delay) * 0.03s);
 }
 
@@ -818,30 +1040,52 @@
 }
 
 @media (min-width: 900px) {
-
-  .is-layout-breakpoint-md.is-bookmark-style-block .bookmark-wide .bookmark-control,
-  .is-layout-breakpoint-lg.is-bookmark-style-block .bookmark-wide .bookmark-control,
-  .is-layout-breakpoint-xl.is-bookmark-style-block .bookmark-wide .bookmark-control,
-  .is-layout-breakpoint-xxl.is-bookmark-style-block .bookmark-wide .bookmark-control {
+  .is-layout-breakpoint-md.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control,
+  .is-layout-breakpoint-lg.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control,
+  .is-layout-breakpoint-xl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control,
+  .is-layout-breakpoint-xxl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control {
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 1fr;
   }
 }
 
 @media (min-width: 900px) {
-
-  .is-layout-breakpoint-md.is-bookmark-style-block .bookmark-wide .bookmark-control,
-  .is-layout-breakpoint-lg.is-bookmark-style-block .bookmark-wide .bookmark-control,
-  .is-layout-breakpoint-xl.is-bookmark-style-block .bookmark-wide .bookmark-control,
-  .is-layout-breakpoint-xxl.is-bookmark-style-block .bookmark-wide .bookmark-control {
+  .is-layout-breakpoint-md.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control,
+  .is-layout-breakpoint-lg.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control,
+  .is-layout-breakpoint-xl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control,
+  .is-layout-breakpoint-xxl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control {
     padding-left: 3em;
     padding-right: 3em;
   }
 
-  .is-layout-breakpoint-md.is-bookmark-style-list .bookmark-wide .bookmark-control,
-  .is-layout-breakpoint-lg.is-bookmark-style-list .bookmark-wide .bookmark-control,
-  .is-layout-breakpoint-xl.is-bookmark-style-list .bookmark-wide .bookmark-control,
-  .is-layout-breakpoint-xxl.is-bookmark-style-list .bookmark-wide .bookmark-control {
+  .is-layout-breakpoint-md.is-bookmark-style-list
+    .bookmark-wide
+    .bookmark-control,
+  .is-layout-breakpoint-lg.is-bookmark-style-list
+    .bookmark-wide
+    .bookmark-control,
+  .is-layout-breakpoint-xl.is-bookmark-style-list
+    .bookmark-wide
+    .bookmark-control,
+  .is-layout-breakpoint-xxl.is-bookmark-style-list
+    .bookmark-wide
+    .bookmark-control {
     padding-left: 10em;
     padding-right: 10em;
   }
@@ -857,13 +1101,15 @@
 
 .is-bookmark-edit.is-bookmark-orientation-top .bookmark-control {
   top: 0;
-  transition: top var(--layout-duration-04) var(--layout-timing-bounce) var(--layout-duration-01);
+  transition: top var(--layout-duration-04) var(--layout-timing-bounce)
+    var(--layout-duration-01);
   transition-delay: calc(var(--bookmark-transition-delay) * 0.03s);
 }
 
 .is-bookmark-edit.is-bookmark-orientation-bottom .bookmark-control {
   bottom: 0;
-  transition: bottom var(--layout-duration-04) var(--layout-timing-bounce) var(--layout-duration-01);
+  transition: bottom var(--layout-duration-04) var(--layout-timing-bounce)
+    var(--layout-duration-01);
   transition-delay: calc(var(--bookmark-transition-delay) * 0.03s);
 }
 
@@ -873,7 +1119,11 @@
   min-height: initial;
   position: relative;
   color: hsl(var(--theme-accent-text));
-  transition: background-color var(--layout-transition-fast), border-color var(--layout-transition-fast), color var(--layout-transition-fast), top var(--layout-transition-fast), right var(--layout-transition-fast), bottom var(--layout-transition-fast), left var(--layout-transition-fast);
+  transition: background-color var(--layout-transition-fast),
+    border-color var(--layout-transition-fast),
+    color var(--layout-transition-fast), top var(--layout-transition-fast),
+    right var(--layout-transition-fast), bottom var(--layout-transition-fast),
+    left var(--layout-transition-fast);
 }
 
 .bookmark-control-button:hover,
@@ -927,7 +1177,8 @@
   grid-row: 1;
 }
 
-.is-bookmark-orientation-bottom.is-bookmark-style-block .bookmark-control-right {
+.is-bookmark-orientation-bottom.is-bookmark-style-block
+  .bookmark-control-right {
   grid-column: 5 / span 2;
   grid-row: 1;
 }
@@ -937,7 +1188,8 @@
   grid-row: 2;
 }
 
-.is-bookmark-orientation-bottom.is-bookmark-style-block .bookmark-control-remove {
+.is-bookmark-orientation-bottom.is-bookmark-style-block
+  .bookmark-control-remove {
   grid-column: 4 / span 3;
   grid-row: 2;
 }
@@ -963,62 +1215,141 @@
 }
 
 @media (min-width: 900px) {
-
-  .is-layout-breakpoint-md.is-bookmark-style-block .bookmark-wide .bookmark-control-left,
-  .is-layout-breakpoint-lg.is-bookmark-style-block .bookmark-wide .bookmark-control-left,
-  .is-layout-breakpoint-xl.is-bookmark-style-block .bookmark-wide .bookmark-control-left,
-  .is-layout-breakpoint-xxl.is-bookmark-style-block .bookmark-wide .bookmark-control-left,
-  .is-layout-breakpoint-md.is-bookmark-style-block .bookmark-wide .bookmark-control-sort,
-  .is-layout-breakpoint-lg.is-bookmark-style-block .bookmark-wide .bookmark-control-sort,
-  .is-layout-breakpoint-xl.is-bookmark-style-block .bookmark-wide .bookmark-control-sort,
-  .is-layout-breakpoint-xxl.is-bookmark-style-block .bookmark-wide .bookmark-control-sort,
-  .is-layout-breakpoint-md.is-bookmark-style-block .bookmark-wide .bookmark-control-right,
-  .is-layout-breakpoint-lg.is-bookmark-style-block .bookmark-wide .bookmark-control-right,
-  .is-layout-breakpoint-xl.is-bookmark-style-block .bookmark-wide .bookmark-control-right,
-  .is-layout-breakpoint-xxl.is-bookmark-style-block .bookmark-wide .bookmark-control-right,
-  .is-layout-breakpoint-md.is-bookmark-style-block .bookmark-wide .bookmark-control-edit,
-  .is-layout-breakpoint-lg.is-bookmark-style-block .bookmark-wide .bookmark-control-edit,
-  .is-layout-breakpoint-xl.is-bookmark-style-block .bookmark-wide .bookmark-control-edit,
-  .is-layout-breakpoint-xxl.is-bookmark-style-block .bookmark-wide .bookmark-control-edit,
-  .is-layout-breakpoint-md.is-bookmark-style-block .bookmark-wide .bookmark-control-remove,
-  .is-layout-breakpoint-lg.is-bookmark-style-block .bookmark-wide .bookmark-control-remove,
-  .is-layout-breakpoint-xl.is-bookmark-style-block .bookmark-wide .bookmark-control-remove,
-  .is-layout-breakpoint-xxl.is-bookmark-style-block .bookmark-wide .bookmark-control-remove {
+  .is-layout-breakpoint-md.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-left,
+  .is-layout-breakpoint-lg.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-left,
+  .is-layout-breakpoint-xl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-left,
+  .is-layout-breakpoint-xxl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-left,
+  .is-layout-breakpoint-md.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-sort,
+  .is-layout-breakpoint-lg.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-sort,
+  .is-layout-breakpoint-xl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-sort,
+  .is-layout-breakpoint-xxl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-sort,
+  .is-layout-breakpoint-md.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-right,
+  .is-layout-breakpoint-lg.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-right,
+  .is-layout-breakpoint-xl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-right,
+  .is-layout-breakpoint-xxl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-right,
+  .is-layout-breakpoint-md.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-edit,
+  .is-layout-breakpoint-lg.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-edit,
+  .is-layout-breakpoint-xl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-edit,
+  .is-layout-breakpoint-xxl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-edit,
+  .is-layout-breakpoint-md.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-remove,
+  .is-layout-breakpoint-lg.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-remove,
+  .is-layout-breakpoint-xl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-remove,
+  .is-layout-breakpoint-xxl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-remove {
     grid-row: 1;
   }
 
-  .is-layout-breakpoint-md.is-bookmark-style-block .bookmark-wide .bookmark-control-left,
-  .is-layout-breakpoint-lg.is-bookmark-style-block .bookmark-wide .bookmark-control-left,
-  .is-layout-breakpoint-xl.is-bookmark-style-block .bookmark-wide .bookmark-control-left,
-  .is-layout-breakpoint-xxl.is-bookmark-style-block .bookmark-wide .bookmark-control-left {
+  .is-layout-breakpoint-md.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-left,
+  .is-layout-breakpoint-lg.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-left,
+  .is-layout-breakpoint-xl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-left,
+  .is-layout-breakpoint-xxl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-left {
     grid-column: 1;
   }
 
-  .is-layout-breakpoint-md.is-bookmark-style-block .bookmark-wide .bookmark-control-sort,
-  .is-layout-breakpoint-lg.is-bookmark-style-block .bookmark-wide .bookmark-control-sort,
-  .is-layout-breakpoint-xl.is-bookmark-style-block .bookmark-wide .bookmark-control-sort,
-  .is-layout-breakpoint-xxl.is-bookmark-style-block .bookmark-wide .bookmark-control-sort {
+  .is-layout-breakpoint-md.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-sort,
+  .is-layout-breakpoint-lg.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-sort,
+  .is-layout-breakpoint-xl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-sort,
+  .is-layout-breakpoint-xxl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-sort {
     grid-column: 2;
   }
 
-  .is-layout-breakpoint-md.is-bookmark-style-block .bookmark-wide .bookmark-control-right,
-  .is-layout-breakpoint-lg.is-bookmark-style-block .bookmark-wide .bookmark-control-right,
-  .is-layout-breakpoint-xl.is-bookmark-style-block .bookmark-wide .bookmark-control-right,
-  .is-layout-breakpoint-xxl.is-bookmark-style-block .bookmark-wide .bookmark-control-right {
+  .is-layout-breakpoint-md.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-right,
+  .is-layout-breakpoint-lg.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-right,
+  .is-layout-breakpoint-xl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-right,
+  .is-layout-breakpoint-xxl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-right {
     grid-column: 3;
   }
 
-  .is-layout-breakpoint-md.is-bookmark-style-block .bookmark-wide .bookmark-control-edit,
-  .is-layout-breakpoint-lg.is-bookmark-style-block .bookmark-wide .bookmark-control-edit,
-  .is-layout-breakpoint-xl.is-bookmark-style-block .bookmark-wide .bookmark-control-edit,
-  .is-layout-breakpoint-xxl.is-bookmark-style-block .bookmark-wide .bookmark-control-edit {
+  .is-layout-breakpoint-md.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-edit,
+  .is-layout-breakpoint-lg.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-edit,
+  .is-layout-breakpoint-xl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-edit,
+  .is-layout-breakpoint-xxl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-edit {
     grid-column: 4;
   }
 
-  .is-layout-breakpoint-md.is-bookmark-style-block .bookmark-wide .bookmark-control-remove,
-  .is-layout-breakpoint-lg.is-bookmark-style-block .bookmark-wide .bookmark-control-remove,
-  .is-layout-breakpoint-xl.is-bookmark-style-block .bookmark-wide .bookmark-control-remove,
-  .is-layout-breakpoint-xxl.is-bookmark-style-block .bookmark-wide .bookmark-control-remove {
+  .is-layout-breakpoint-md.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-remove,
+  .is-layout-breakpoint-lg.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-remove,
+  .is-layout-breakpoint-xl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-remove,
+  .is-layout-breakpoint-xxl.is-bookmark-style-block
+    .bookmark-wide
+    .bookmark-control-remove {
     grid-column: 5;
   }
 }
@@ -1035,7 +1366,8 @@
   display: none;
   justify-content: var(--bookmark-display-justify);
   align-items: center;
-  transition: top var(--layout-duration-04) var(--layout-timing-bounce), bottom var(--layout-duration-04) var(--layout-timing-bounce);
+  transition: top var(--layout-duration-04) var(--layout-timing-bounce),
+    bottom var(--layout-duration-04) var(--layout-timing-bounce);
 }
 
 .is-bookmark-url-show .bookmark-url {
@@ -1061,7 +1393,9 @@
 }
 
 .is-bookmark-url-show:not(.is-bookmark-edit) .bookmark:focus .bookmark-front,
-.is-bookmark-url-show:not(.is-bookmark-edit) .bookmark:focus-within .bookmark-front,
+.is-bookmark-url-show:not(.is-bookmark-edit)
+  .bookmark:focus-within
+  .bookmark-front,
 .is-bookmark-url-show:not(.is-bookmark-edit) .bookmark:hover .bookmark-front {
   height: calc(100% - var(--bookmark-url-height));
 }
@@ -1074,24 +1408,48 @@
   bottom: calc(-1 * var(--bookmark-url-height));
 }
 
-.is-bookmark-edit.is-bookmark-orientation-top.is-bookmark-url-show .bookmark:focus-within .bookmark-url,
-.is-bookmark-edit.is-bookmark-orientation-top.is-bookmark-url-show .bookmark:focus .bookmark-url,
-.is-bookmark-edit.is-bookmark-orientation-top.is-bookmark-url-show .bookmark:hover .bookmark-url,
-.is-bookmark-edit.is-bookmark-orientation-bottom.is-bookmark-url-show .bookmark:focus-within .bookmark-url,
-.is-bookmark-edit.is-bookmark-orientation-bottom.is-bookmark-url-show .bookmark:focus .bookmark-url,
-.is-bookmark-edit.is-bookmark-orientation-bottom.is-bookmark-url-show .bookmark:hover .bookmark-url {
+.is-bookmark-edit.is-bookmark-orientation-top.is-bookmark-url-show
+  .bookmark:focus-within
+  .bookmark-url,
+.is-bookmark-edit.is-bookmark-orientation-top.is-bookmark-url-show
+  .bookmark:focus
+  .bookmark-url,
+.is-bookmark-edit.is-bookmark-orientation-top.is-bookmark-url-show
+  .bookmark:hover
+  .bookmark-url,
+.is-bookmark-edit.is-bookmark-orientation-bottom.is-bookmark-url-show
+  .bookmark:focus-within
+  .bookmark-url,
+.is-bookmark-edit.is-bookmark-orientation-bottom.is-bookmark-url-show
+  .bookmark:focus
+  .bookmark-url,
+.is-bookmark-edit.is-bookmark-orientation-bottom.is-bookmark-url-show
+  .bookmark:hover
+  .bookmark-url {
   transition-delay: calc(var(--bookmark-transition-delay) * 0.03s);
 }
 
-.is-bookmark-orientation-top.is-bookmark-url-show:not(.is-bookmark-edit) .bookmark:focus-within .bookmark-url,
-.is-bookmark-orientation-top.is-bookmark-url-show:not(.is-bookmark-edit) .bookmark:focus .bookmark-url,
-.is-bookmark-orientation-top.is-bookmark-url-show:not(.is-bookmark-edit) .bookmark:hover .bookmark-url {
+.is-bookmark-orientation-top.is-bookmark-url-show:not(.is-bookmark-edit)
+  .bookmark:focus-within
+  .bookmark-url,
+.is-bookmark-orientation-top.is-bookmark-url-show:not(.is-bookmark-edit)
+  .bookmark:focus
+  .bookmark-url,
+.is-bookmark-orientation-top.is-bookmark-url-show:not(.is-bookmark-edit)
+  .bookmark:hover
+  .bookmark-url {
   top: 0;
 }
 
-.is-bookmark-orientation-bottom.is-bookmark-url-show:not(.is-bookmark-edit) .bookmark:focus-within .bookmark-url,
-.is-bookmark-orientation-bottom.is-bookmark-url-show:not(.is-bookmark-edit) .bookmark:focus .bookmark-url,
-.is-bookmark-orientation-bottom.is-bookmark-url-show:not(.is-bookmark-edit) .bookmark:hover .bookmark-url {
+.is-bookmark-orientation-bottom.is-bookmark-url-show:not(.is-bookmark-edit)
+  .bookmark:focus-within
+  .bookmark-url,
+.is-bookmark-orientation-bottom.is-bookmark-url-show:not(.is-bookmark-edit)
+  .bookmark:focus
+  .bookmark-url,
+.is-bookmark-orientation-bottom.is-bookmark-url-show:not(.is-bookmark-edit)
+  .bookmark:hover
+  .bookmark-url {
   bottom: 0;
 }
 

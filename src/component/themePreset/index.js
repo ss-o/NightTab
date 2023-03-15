@@ -92,7 +92,7 @@ themePreset.get = () => {
     trine,
     umbra,
     vanadium,
-    viper
+    viper,
   ];
 };
 

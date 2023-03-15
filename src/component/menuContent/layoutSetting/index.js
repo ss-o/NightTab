@@ -31,43 +31,32 @@ layoutSetting.control = {
   padding: {},
   gutter: {},
   alignment: {},
-  page: {}
+  page: {},
 };
 
 layoutSetting.disable = () => {
-
   if (state.get.current().bookmark.show) {
-
     layoutSetting.control.area.bookmark.width.enable();
     layoutSetting.control.area.bookmark.justify.enable();
     layoutSetting.control.area.bookmark.justifyHelper1.enable();
-
   } else {
-
     layoutSetting.control.area.bookmark.width.disable();
     layoutSetting.control.area.bookmark.justify.disable();
     layoutSetting.control.area.bookmark.justifyHelper1.disable();
-
   }
 
   if (state.get.current().header.order.length > 0) {
-
     layoutSetting.control.area.header.width.enable();
     layoutSetting.control.area.header.justify.enable();
     layoutSetting.control.area.header.justifyHelper1.enable();
-
   } else {
-
     layoutSetting.control.area.header.width.disable();
     layoutSetting.control.area.header.justify.disable();
     layoutSetting.control.area.header.justifyHelper1.disable();
-
   }
 
   if (state.get.current().bookmark.show) {
-
     switch (state.get.current().layout.direction) {
-
       case 'vertical':
         layoutSetting.control.area.header.justify.enable();
         layoutSetting.control.area.header.justifyHelper1.enable();
@@ -81,9 +70,7 @@ layoutSetting.disable = () => {
         layoutSetting.control.area.bookmark.justify.disable();
         layoutSetting.control.area.bookmark.justifyHelper1.disable();
         break;
-
     }
-
   }
 
   if (state.get.current().layout.overscroll.active) {
@@ -91,7 +78,6 @@ layoutSetting.disable = () => {
   } else {
     layoutSetting.control.page.overscroll.unblur.disable();
   }
-
 };
 
 layoutSetting.edge = {
@@ -99,12 +85,13 @@ layoutSetting.edge = {
   area: {},
   padding: {},
   gutter: {},
-  alignment: {}
+  alignment: {},
 };
 
 layoutSetting.scaling = (parent) => {
-
-  layoutSetting.edge.scaling.size = new Edge({ primary: layout.element.layout });
+  layoutSetting.edge.scaling.size = new Edge({
+    primary: layout.element.layout,
+  });
 
   layoutSetting.control.scaling.size = new Control_slider({
     object: state.get.current(),
@@ -125,24 +112,24 @@ layoutSetting.scaling = (parent) => {
     },
     mouseUpAction: () => {
       layoutSetting.edge.scaling.size.hide();
-    }
+    },
   });
 
-  parent.appendChild(
-    node('div', [
-      layoutSetting.control.scaling.size.wrap()
-    ])
-  );
-
+  parent.appendChild(node('div', [layoutSetting.control.scaling.size.wrap()]));
 };
 
 layoutSetting.area = (parent) => {
-
   layoutSetting.edge.area.width = new Edge({ primary: layout.element.layout });
 
-  layoutSetting.edge.area.header = new Edge({ primary: header.element.area, secondary: [layout.element.layout] });
+  layoutSetting.edge.area.header = new Edge({
+    primary: header.element.area,
+    secondary: [layout.element.layout],
+  });
 
-  layoutSetting.edge.area.bookmark = new Edge({ primary: bookmark.element.area, secondary: [layout.element.layout] });
+  layoutSetting.edge.area.bookmark = new Edge({
+    primary: bookmark.element.area,
+    secondary: [layout.element.layout],
+  });
 
   layoutSetting.control.area.width = new Control_slider({
     object: state.get.current(),
@@ -163,7 +150,7 @@ layoutSetting.area = (parent) => {
     },
     mouseUpAction: () => {
       layoutSetting.edge.area.width.hide();
-    }
+    },
   });
 
   layoutSetting.control.area.header = {
@@ -186,14 +173,29 @@ layoutSetting.area = (parent) => {
       },
       mouseUpAction: () => {
         layoutSetting.edge.area.header.hide();
-      }
+      },
     }),
     justify: new Control_radioGrid({
       object: state.get.current(),
       radioGroup: [
-        { id: 'layout-area-header-justify-left', labelText: message.get('menuContentLayoutAreaHeaderJustifyLeft'), value: 'left', position: 1 },
-        { id: 'layout-area-header-justify-center', labelText: message.get('menuContentLayoutAreaHeaderJustifyCenter'), value: 'center', position: 2 },
-        { id: 'layout-area-header-justify-right', labelText: message.get('menuContentLayoutAreaHeaderJustifyRight'), value: 'right', position: 3 }
+        {
+          id: 'layout-area-header-justify-left',
+          labelText: message.get('menuContentLayoutAreaHeaderJustifyLeft'),
+          value: 'left',
+          position: 1,
+        },
+        {
+          id: 'layout-area-header-justify-center',
+          labelText: message.get('menuContentLayoutAreaHeaderJustifyCenter'),
+          value: 'center',
+          position: 2,
+        },
+        {
+          id: 'layout-area-header-justify-right',
+          labelText: message.get('menuContentLayoutAreaHeaderJustifyRight'),
+          value: 'right',
+          position: 3,
+        },
       ],
       label: message.get('menuContentLayoutAreaHeaderJustifyLabel'),
       groupName: 'layout-area-header-justify',
@@ -202,15 +204,15 @@ layoutSetting.area = (parent) => {
       action: () => {
         applyCSSClass('layout.area.header.justify');
         data.save();
-      }
+      },
     }),
     justifyHelper1: new Control_helperText({
-      text: [message.get('menuContentLayoutAreaHeaderJustifyHelper1Para1')]
+      text: [message.get('menuContentLayoutAreaHeaderJustifyHelper1Para1')],
     }),
     justifyHelper2: new Control_helperText({
       complexText: true,
-      text: [message.get('menuContentLayoutAreaHeaderJustifyHelper2Para1')]
-    })
+      text: [message.get('menuContentLayoutAreaHeaderJustifyHelper2Para1')],
+    }),
   };
 
   layoutSetting.control.area.bookmark = {
@@ -233,14 +235,29 @@ layoutSetting.area = (parent) => {
       },
       mouseUpAction: () => {
         layoutSetting.edge.area.bookmark.hide();
-      }
+      },
     }),
     justify: new Control_radioGrid({
       object: state.get.current(),
       radioGroup: [
-        { id: 'layout-area-bookmark-justify-left', labelText: message.get('menuContentLayoutAreaBookmarkJustifyLeft'), value: 'left', position: 1 },
-        { id: 'layout-area-bookmark-justify-center', labelText: message.get('menuContentLayoutAreaBookmarkJustifyCenter'), value: 'center', position: 2 },
-        { id: 'layout-area-bookmark-justify-right', labelText: message.get('menuContentLayoutAreaBookmarkJustifyRight'), value: 'right', position: 3 }
+        {
+          id: 'layout-area-bookmark-justify-left',
+          labelText: message.get('menuContentLayoutAreaBookmarkJustifyLeft'),
+          value: 'left',
+          position: 1,
+        },
+        {
+          id: 'layout-area-bookmark-justify-center',
+          labelText: message.get('menuContentLayoutAreaBookmarkJustifyCenter'),
+          value: 'center',
+          position: 2,
+        },
+        {
+          id: 'layout-area-bookmark-justify-right',
+          labelText: message.get('menuContentLayoutAreaBookmarkJustifyRight'),
+          value: 'right',
+          position: 3,
+        },
       ],
       label: message.get('menuContentLayoutAreaBookmarkJustifyLabel'),
       groupName: 'layout-area-bookmark-justify',
@@ -249,15 +266,15 @@ layoutSetting.area = (parent) => {
       action: () => {
         applyCSSClass('layout.area.bookmark.justify');
         data.save();
-      }
+      },
     }),
     justifyHelper1: new Control_helperText({
-      text: [message.get('menuContentLayoutAreaBookmarkJustifyHelper1Para1')]
+      text: [message.get('menuContentLayoutAreaBookmarkJustifyHelper1Para1')],
     }),
     justifyHelper2: new Control_helperText({
       complexText: true,
-      text: [message.get('menuContentLayoutAreaBookmarkJustifyHelper2Para1')]
-    })
+      text: [message.get('menuContentLayoutAreaBookmarkJustifyHelper2Para1')],
+    }),
   };
 
   parent.appendChild(
@@ -276,19 +293,20 @@ layoutSetting.area = (parent) => {
               layoutSetting.control.area.bookmark.width.wrap(),
               layoutSetting.control.area.bookmark.justify.wrap(),
               layoutSetting.control.area.bookmark.justifyHelper1.wrap(),
-              layoutSetting.control.area.bookmark.justifyHelper2.wrap()
-            ]
-          })
-        ]
-      })
+              layoutSetting.control.area.bookmark.justifyHelper2.wrap(),
+            ],
+          }),
+        ],
+      }),
     ])
   );
-
 };
 
 layoutSetting.padding = (parent) => {
-
-  layoutSetting.edge.padding = new Edge({ primary: layout.element.layout, secondary: [header.element.header, bookmark.element.group] });
+  layoutSetting.edge.padding = new Edge({
+    primary: layout.element.layout,
+    secondary: [header.element.header, bookmark.element.group],
+  });
 
   layoutSetting.control.padding = new Control_slider({
     object: state.get.current(),
@@ -309,20 +327,17 @@ layoutSetting.padding = (parent) => {
     },
     mouseUpAction: () => {
       layoutSetting.edge.padding.hide();
-    }
+    },
   });
 
-  parent.appendChild(
-    node('div', [
-      layoutSetting.control.padding.wrap()
-    ])
-  );
-
+  parent.appendChild(node('div', [layoutSetting.control.padding.wrap()]));
 };
 
 layoutSetting.gutter = (parent) => {
-
-  layoutSetting.edge.gutter = new Edge({ primary: layout.element.layout, secondary: [header.element.header, bookmark.element.group] });
+  layoutSetting.edge.gutter = new Edge({
+    primary: layout.element.layout,
+    secondary: [header.element.header, bookmark.element.group],
+  });
 
   layoutSetting.control.gutter = new Control_slider({
     object: state.get.current(),
@@ -343,31 +358,70 @@ layoutSetting.gutter = (parent) => {
     },
     mouseUpAction: () => {
       layoutSetting.edge.gutter.hide();
-    }
+    },
   });
 
-  parent.appendChild(
-    node('div', [
-      layoutSetting.control.gutter.wrap()
-    ])
-  );
-
+  parent.appendChild(node('div', [layoutSetting.control.gutter.wrap()]));
 };
 
 layoutSetting.alignment = (parent) => {
-
   layoutSetting.control.alignment.alignment = new Control_radioGrid({
     object: state.get.current(),
     radioGroup: [
-      { id: 'layout-alignment-top-left', labelText: message.get('menuContentLayoutAlignmentTopLeft'), value: 'top-left', position: 1 },
-      { id: 'layout-alignment-top-center', labelText: message.get('menuContentLayoutAlignmentTopCenter'), value: 'top-center', position: 2 },
-      { id: 'layout-alignment-top-right', labelText: message.get('menuContentLayoutAlignmentTopRight'), value: 'top-right', position: 3 },
-      { id: 'layout-alignment-center-left', labelText: message.get('menuContentLayoutAlignmentCenterLeft'), value: 'center-left', position: 4 },
-      { id: 'layout-alignment-center-center', labelText: message.get('menuContentLayoutAlignmentCenterCenter'), value: 'center-center', position: 5 },
-      { id: 'layout-alignment-center-right', labelText: message.get('menuContentLayoutAlignmentCenterRight'), value: 'center-right', position: 6 },
-      { id: 'layout-alignment-bottom-left', labelText: message.get('menuContentLayoutAlignmentBottomLeft'), value: 'bottom-left', position: 7 },
-      { id: 'layout-alignment-bottom-center', labelText: message.get('menuContentLayoutAlignmentBottomCenter'), value: 'bottom-center', position: 8 },
-      { id: 'layout-alignment-bottom-right', labelText: message.get('menuContentLayoutAlignmentBottomRight'), value: 'bottom-right', position: 9 }
+      {
+        id: 'layout-alignment-top-left',
+        labelText: message.get('menuContentLayoutAlignmentTopLeft'),
+        value: 'top-left',
+        position: 1,
+      },
+      {
+        id: 'layout-alignment-top-center',
+        labelText: message.get('menuContentLayoutAlignmentTopCenter'),
+        value: 'top-center',
+        position: 2,
+      },
+      {
+        id: 'layout-alignment-top-right',
+        labelText: message.get('menuContentLayoutAlignmentTopRight'),
+        value: 'top-right',
+        position: 3,
+      },
+      {
+        id: 'layout-alignment-center-left',
+        labelText: message.get('menuContentLayoutAlignmentCenterLeft'),
+        value: 'center-left',
+        position: 4,
+      },
+      {
+        id: 'layout-alignment-center-center',
+        labelText: message.get('menuContentLayoutAlignmentCenterCenter'),
+        value: 'center-center',
+        position: 5,
+      },
+      {
+        id: 'layout-alignment-center-right',
+        labelText: message.get('menuContentLayoutAlignmentCenterRight'),
+        value: 'center-right',
+        position: 6,
+      },
+      {
+        id: 'layout-alignment-bottom-left',
+        labelText: message.get('menuContentLayoutAlignmentBottomLeft'),
+        value: 'bottom-left',
+        position: 7,
+      },
+      {
+        id: 'layout-alignment-bottom-center',
+        labelText: message.get('menuContentLayoutAlignmentBottomCenter'),
+        value: 'bottom-center',
+        position: 8,
+      },
+      {
+        id: 'layout-alignment-bottom-right',
+        labelText: message.get('menuContentLayoutAlignmentBottomRight'),
+        value: 'bottom-right',
+        position: 9,
+      },
     ],
     label: message.get('menuContentLayoutAlignmentLabel'),
     groupName: 'layout-alignment',
@@ -376,14 +430,28 @@ layoutSetting.alignment = (parent) => {
     action: () => {
       applyCSSClass('layout.alignment');
       data.save();
-    }
+    },
   });
 
   layoutSetting.control.alignment.direction = new Control_radio({
     object: state.get.current(),
     radioGroup: [
-      { id: 'layout-direction-horizontal', labelText: message.get('menuContentLayoutDirectionHorizontalLabel'), description: message.get('menuContentLayoutDirectionHorizontalDescription'), value: 'horizontal' },
-      { id: 'layout-direction-vertical', labelText: message.get('menuContentLayoutDirectionVerticalLabel'), description: message.get('menuContentLayoutDirectionVerticalDescription'), value: 'vertical' }
+      {
+        id: 'layout-direction-horizontal',
+        labelText: message.get('menuContentLayoutDirectionHorizontalLabel'),
+        description: message.get(
+          'menuContentLayoutDirectionHorizontalDescription'
+        ),
+        value: 'horizontal',
+      },
+      {
+        id: 'layout-direction-vertical',
+        labelText: message.get('menuContentLayoutDirectionVerticalLabel'),
+        description: message.get(
+          'menuContentLayoutDirectionVerticalDescription'
+        ),
+        value: 'vertical',
+      },
     ],
     groupName: 'layout-direction',
     path: 'layout.direction',
@@ -391,14 +459,28 @@ layoutSetting.alignment = (parent) => {
       applyCSSClass('layout.direction');
       layoutSetting.disable();
       data.save();
-    }
+    },
   });
 
   layoutSetting.control.alignment.order = new Control_radio({
     object: state.get.current(),
     radioGroup: [
-      { id: 'layout-order-header-bookmark', labelText: message.get('menuContentLayoutOrderHeaderBookmarkLabel'), description: message.get('menuContentLayoutOrderHeaderBookmarkDescription'), value: 'header-bookmark' },
-      { id: 'layout-order-bookmark-header', labelText: message.get('menuContentLayoutOrderBookmarkHeaderLabel'), description: message.get('menuContentLayoutOrderBookmarkHeaderDescription'), value: 'bookmark-header' }
+      {
+        id: 'layout-order-header-bookmark',
+        labelText: message.get('menuContentLayoutOrderHeaderBookmarkLabel'),
+        description: message.get(
+          'menuContentLayoutOrderHeaderBookmarkDescription'
+        ),
+        value: 'header-bookmark',
+      },
+      {
+        id: 'layout-order-bookmark-header',
+        labelText: message.get('menuContentLayoutOrderBookmarkHeaderLabel'),
+        description: message.get(
+          'menuContentLayoutOrderBookmarkHeaderDescription'
+        ),
+        value: 'bookmark-header',
+      },
     ],
     groupName: 'layout-order',
     path: 'layout.order',
@@ -406,7 +488,7 @@ layoutSetting.alignment = (parent) => {
       layout.area.assemble();
       applyCSSClass('layout.order');
       data.save();
-    }
+    },
   });
 
   parent.appendChild(
@@ -415,14 +497,12 @@ layoutSetting.alignment = (parent) => {
       node('hr'),
       layoutSetting.control.alignment.direction.wrap(),
       node('hr'),
-      layoutSetting.control.alignment.order.wrap()
+      layoutSetting.control.alignment.order.wrap(),
     ])
   );
-
 };
 
 layoutSetting.page = (parent) => {
-
   layoutSetting.control.page.title = new Control_textReset({
     object: state.get.current(),
     path: 'layout.title',
@@ -434,7 +514,7 @@ layoutSetting.page = (parent) => {
     action: () => {
       layout.title.render();
       data.save();
-    }
+    },
   });
 
   layoutSetting.control.page.favicon = new Control_textReset({
@@ -448,31 +528,43 @@ layoutSetting.page = (parent) => {
     action: () => {
       layout.favicon.render();
       data.save();
-    }
+    },
   });
 
   layoutSetting.control.page.faviconHelper = new Control_helperText({
-    text: [message.get('menuContentLayoutPageFaviconHelperPara1')]
+    text: [message.get('menuContentLayoutPageFaviconHelperPara1')],
   });
 
   layoutSetting.control.page.scrollbar = new Control_radio({
     object: state.get.current(),
     label: message.get('menuContentLayoutPageScrollbarLabel'),
     radioGroup: [
-      { id: 'layout-scrollbar-auto', labelText: message.get('menuContentLayoutPageScrollbarAuto'), value: 'auto' },
-      { id: 'layout-scrollbar-thin', labelText: message.get('menuContentLayoutPageScrollbarThin'), value: 'thin' },
-      { id: 'layout-scrollbar-none', labelText: message.get('menuContentLayoutPageScrollbarNone'), value: 'none' }
+      {
+        id: 'layout-scrollbar-auto',
+        labelText: message.get('menuContentLayoutPageScrollbarAuto'),
+        value: 'auto',
+      },
+      {
+        id: 'layout-scrollbar-thin',
+        labelText: message.get('menuContentLayoutPageScrollbarThin'),
+        value: 'thin',
+      },
+      {
+        id: 'layout-scrollbar-none',
+        labelText: message.get('menuContentLayoutPageScrollbarNone'),
+        value: 'none',
+      },
     ],
     groupName: 'layout-scrollbar',
     path: 'layout.scrollbar',
     action: () => {
       applyCSSClass('layout.scrollbar');
       data.save();
-    }
+    },
   });
 
   layoutSetting.control.page.scrollbarHelper = new Control_helperText({
-    text: [message.get('menuContentLayoutPageScrollbarHelperPara1')]
+    text: [message.get('menuContentLayoutPageScrollbarHelperPara1')],
   });
 
   layoutSetting.control.page.overscroll = {
@@ -485,7 +577,7 @@ layoutSetting.page = (parent) => {
         applyCSSState('layout.overscroll.active');
         layoutSetting.disable();
         data.save();
-      }
+      },
     }),
     unblur: new Control_checkbox({
       object: state.get.current(),
@@ -494,7 +586,7 @@ layoutSetting.page = (parent) => {
       labelText: message.get('menuContentLayoutPageOverscrollUnblurLabel'),
       description: [
         message.get('menuContentLayoutPageOverscrollUnblurDescriptionPara1'),
-        message.get('menuContentLayoutPageOverscrollUnblurDescriptionPara2')
+        message.get('menuContentLayoutPageOverscrollUnblurDescriptionPara2'),
       ],
       action: () => {
         theme.background.image.render();
@@ -502,8 +594,8 @@ layoutSetting.page = (parent) => {
         theme.background.video.render();
         layout.overscroll.bind();
         data.save();
-      }
-    })
+      },
+    }),
   };
 
   parent.appendChild(
@@ -519,15 +611,12 @@ layoutSetting.page = (parent) => {
       form.wrap({
         children: [
           form.indent({
-            children: [
-              layoutSetting.control.page.overscroll.unblur.wrap()
-            ]
-          })
-        ]
-      })
+            children: [layoutSetting.control.page.overscroll.unblur.wrap()],
+          }),
+        ],
+      }),
     ])
   );
-
 };
 
 export { layoutSetting };

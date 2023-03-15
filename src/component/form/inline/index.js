@@ -10,9 +10,8 @@ export const inline = function ({
   justify = 'left',
   gap = 'medium',
   equalGap = false,
-  children = false
+  children = false,
 } = {}) {
-
   const inline = node('div|class:form-inline', children);
 
   switch (direction) {
@@ -26,7 +25,6 @@ export const inline = function ({
   }
 
   switch (gap) {
-
     case 'small':
       inline.classList.add('form-inline-gap-small');
       break;
@@ -38,7 +36,6 @@ export const inline = function ({
     case 'large':
       inline.classList.add('form-inline-gap-large');
       break;
-
   }
 
   if (equalGap) {
@@ -46,7 +43,6 @@ export const inline = function ({
   }
 
   switch (justify) {
-
     case 'left':
       inline.classList.add('form-inline-justify-left');
       break;
@@ -58,7 +54,6 @@ export const inline = function ({
     case 'right':
       inline.classList.add('form-inline-justify-right');
       break;
-
   }
 
   if (reverse) {
@@ -74,5 +69,4 @@ export const inline = function ({
   }
 
   return inline;
-
 };

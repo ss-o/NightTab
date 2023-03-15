@@ -6,9 +6,8 @@ export const color = function ({
   id = false,
   value = '#000000',
   classList = [],
-  func = false
+  func = false,
 } = {}) {
-
   const input = node('input|type:color,value:' + value + ',tabindex:1');
 
   if (id) {
@@ -16,21 +15,16 @@ export const color = function ({
   }
 
   if (classList.length > 0) {
-
     classList.forEach((item) => {
       input.classList.add(item);
     });
-
   }
 
   if (func) {
-
     input.addEventListener('change', () => {
       func();
     });
-
   }
 
   return input;
-
 };

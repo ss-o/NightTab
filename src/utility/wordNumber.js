@@ -1,5 +1,4 @@
 export const wordNumber = (number) => {
-
   const ten = 10;
 
   const oneHundred = 100;
@@ -16,13 +15,43 @@ export const wordNumber = (number) => {
 
   const max = 9007199254740992; // 9,007,199,254,740,992 (15)
 
-  const lessThanTwenty = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+  const lessThanTwenty = [
+    'Zero',
+    'One',
+    'Two',
+    'Three',
+    'Four',
+    'Five',
+    'Six',
+    'Seven',
+    'Eight',
+    'Nine',
+    'Ten',
+    'Eleven',
+    'Twelve',
+    'Thirteen',
+    'Fourteen',
+    'Fifteen',
+    'Sixteen',
+    'Seventeen',
+    'Eighteen',
+    'Nineteen',
+  ];
 
-  const tenthsLessThanHundred = ['Zero', 'Ten', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+  const tenthsLessThanHundred = [
+    'Zero',
+    'Ten',
+    'Twenty',
+    'Thirty',
+    'Forty',
+    'Fifty',
+    'Sixty',
+    'Seventy',
+    'Eighty',
+    'Ninety',
+  ];
 
-
-  const generateWords = function(number) {
-
+  const generateWords = function (number) {
     let remainder;
 
     let word;
@@ -73,7 +102,8 @@ export const wordNumber = (number) => {
       word = generateWords(Math.floor(number / oneTrillion)) + ' Trillion,';
     } else if (number <= max) {
       remainder = number % oneQuadrillion;
-      word = generateWords(Math.floor(number / oneQuadrillion)) + ' Quadrillion,';
+      word =
+        generateWords(Math.floor(number / oneQuadrillion)) + ' Quadrillion,';
     }
 
     words.push(word);

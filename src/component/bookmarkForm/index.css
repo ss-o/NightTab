@@ -20,7 +20,8 @@
   margin-bottom: var(--bookmark-form-space);
 }
 
-.bookmark-form-main {}
+.bookmark-form-main {
+}
 
 .bookmark-form-aside {
   display: none;

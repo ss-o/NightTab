@@ -19,8 +19,8 @@ updateLegacy.get = () => {
               day: false,
               month: true,
               year: false,
-              separator: true
-            }
+              separator: true,
+            },
           },
           clock: {
             hour24: true,
@@ -29,14 +29,14 @@ updateLegacy.get = () => {
               minutes: true,
               hours: true,
               separator: true,
-              meridiem: true
-            }
+              meridiem: true,
+            },
           },
           editAdd: {
-            active: true
+            active: true,
           },
           accent: {
-            active: true
+            active: true,
           },
           search: {
             searching: false,
@@ -45,29 +45,29 @@ updateLegacy.get = () => {
             engine: {
               selected: 'google',
               google: {
-                url: 'https://www.google.com/search'
+                url: 'https://www.google.com/search',
               },
               duckduckgo: {
-                url: 'https://duckduckgo.com/'
+                url: 'https://duckduckgo.com/',
               },
               giphy: {
-                url: 'https://giphy.com/search/'
+                url: 'https://giphy.com/search/',
               },
               custom: {
-                url: ''
-              }
-            }
+                url: '',
+              },
+            },
           },
           buttons: {
-            show: true
-          }
+            show: true,
+          },
         },
         link: {
           editObject: null,
           action: null,
           newTab: false,
           style: 'block',
-          sort: 'none'
+          sort: 'none',
         },
         layout: {
           alignment: 'left',
@@ -77,21 +77,21 @@ updateLegacy.get = () => {
             current: {
               r: 255,
               g: 170,
-              b: 51
+              b: 51,
             },
-            random: false
-          }
+            random: false,
+          },
         },
         edit: {
-          active: false
+          active: false,
         },
         menu: {
           open: false,
-          active: false
+          active: false,
         },
         modal: {
-          active: false
-        }
+          active: false,
+        },
       };
       // version 1.0.0 bookmarks are not compatible so need to be reset
       data.bookmarks = [];
@@ -100,14 +100,14 @@ updateLegacy.get = () => {
     '2.1.0': function (data) {
       data.state.layout.theme = {
         current: data.state.layout.theme.current,
-        random: false
+        random: false,
       };
       return data;
     },
     '2.3.0': function (data) {
       data.state.layout.theme.random = {
         active: data.state.layout.theme.random,
-        style: 'any'
+        style: 'any',
       };
       return data;
     },
@@ -115,11 +115,11 @@ updateLegacy.get = () => {
       data.state.link.show = {
         active: true,
         name: true,
-        url: true
+        url: true,
       };
       data.state.layout.alignment = {
         horizontal: 'left',
-        vertical: 'top'
+        vertical: 'top',
       };
       data.state.background = {
         image: {
@@ -128,8 +128,8 @@ updateLegacy.get = () => {
           blur: 0,
           opacity: 1,
           grayscale: 0,
-          accentOpacity: 0
-        }
+          accentOpacity: 0,
+        },
       };
       return data;
     },
@@ -140,7 +140,7 @@ updateLegacy.get = () => {
     '2.7.0': function (data) {
       // update date character length
       data.state.header.date.character = {
-        length: data.state.header.date.characterLength
+        length: data.state.header.date.characterLength,
       };
       // change editAdd active to show
       data.state.header.editAdd.show = data.state.header.editAdd.active;
@@ -151,7 +151,7 @@ updateLegacy.get = () => {
       // move alignment into header
       data.state.header.alignment = {
         horizontal: data.state.layout.alignment.horizontal,
-        vertical: data.state.layout.alignment.vertical
+        vertical: data.state.layout.alignment.vertical,
       };
       delete data.state.layout.alignment;
       // change header search
@@ -159,7 +159,7 @@ updateLegacy.get = () => {
       delete data.state.header.search.active;
       // move searching
       data.state.search = {
-        active: false
+        active: false,
       };
       delete data.state.header.search.searching;
       // change links to bookmarks
@@ -178,7 +178,8 @@ updateLegacy.get = () => {
       data.state.background.image.show = data.state.background.image.active;
       delete data.state.background.image.active;
       // change background accent
-      data.state.background.image.accent = data.state.background.image.accentOpacity;
+      data.state.background.image.accent =
+        data.state.background.image.accentOpacity;
       delete data.state.background.image.accentOpacity;
       // change menu active
       data.state.menu.show = data.state.menu.active;
@@ -200,8 +201,8 @@ updateLegacy.get = () => {
         opacity: 0.95,
         border: {
           top: false,
-          bottom: false
-        }
+          bottom: false,
+        },
       };
       return data;
     },
@@ -213,8 +214,8 @@ updateLegacy.get = () => {
         opacity: 0.95,
         border: {
           top: false,
-          bottom: false
-        }
+          bottom: false,
+        },
       };
       return data;
     },
@@ -222,28 +223,28 @@ updateLegacy.get = () => {
       data.state.header.greeting = {
         show: false,
         type: 'good',
-        name: ''
+        name: '',
       };
       return data;
     },
     '2.12.0': function (data) {
       data.state.bookmarks.link = {
-        show: data.state.bookmarks.show.link
+        show: data.state.bookmarks.show.link,
       };
       data.state.bookmarks.name = {
-        show: data.state.bookmarks.show.name
+        show: data.state.bookmarks.show.name,
       };
       data.state.bookmarks.url = {
         show: data.state.bookmarks.show.url,
-        style: 'dark'
+        style: 'dark',
       };
       delete data.state.bookmarks.show;
       data.state.theme = {
         accent: {
           current: data.state.layout.theme.current,
-          random: data.state.layout.theme.random
+          random: data.state.layout.theme.random,
         },
-        style: 'dark'
+        style: 'dark',
       };
       delete data.state.layout.theme;
       return data;
@@ -255,17 +256,17 @@ updateLegacy.get = () => {
     '2.16.0': function (data) {
       data.state.header.shade.padding = {
         top: data.state.header.shade.padding,
-        bottom: data.state.header.shade.padding
+        bottom: data.state.header.shade.padding,
       };
       data.state.header.shade.border = {
         top: {
           show: data.state.header.shade.border.top,
-          width: 1
+          width: 1,
         },
         bottom: {
           show: data.state.header.shade.border.bottom,
-          width: 1
-        }
+          width: 1,
+        },
       };
       return data;
     },
@@ -278,7 +279,7 @@ updateLegacy.get = () => {
     '2.19.0': function (data) {
       data.state.header.search.engine.youtube = {
         url: 'https://www.youtube.com/results?search_query=',
-        name: 'YouTube'
+        name: 'YouTube',
       };
       data.state.header.search.engine.custom.name = '';
       return data;
@@ -286,10 +287,10 @@ updateLegacy.get = () => {
     '2.20.0': function (data) {
       data.state.header.search.width = {
         style: 'auto',
-        custom: 30
+        custom: 30,
       };
       data.state.header.search.text = {
-        align: 'left'
+        align: 'left',
       };
       delete data.state.header.search.grow;
       return data;
@@ -298,56 +299,56 @@ updateLegacy.get = () => {
       data.state.header.clock = {
         hours: {
           show: data.state.header.clock.show.hours,
-          display: 'number'
+          display: 'number',
         },
         minutes: {
           show: data.state.header.clock.show.minutes,
-          display: 'number'
+          display: 'number',
         },
         seconds: {
           show: data.state.header.clock.show.seconds,
-          display: 'number'
+          display: 'number',
         },
         separator: {
-          show: data.state.header.clock.show.separator
+          show: data.state.header.clock.show.separator,
         },
         meridiem: {
-          show: data.state.header.clock.show.meridiem
+          show: data.state.header.clock.show.meridiem,
         },
         hour24: {
-          show: data.state.header.clock.hour24
-        }
+          show: data.state.header.clock.hour24,
+        },
       };
       data.state.header.date = {
         day: {
           show: data.state.header.date.show.day,
           display: 'word',
           weekStart: 'monday',
-          length: data.state.header.date.character.length
+          length: data.state.header.date.character.length,
         },
         date: {
           show: data.state.header.date.show.date,
           display: 'number',
-          ordinal: true
+          ordinal: true,
         },
         month: {
           show: data.state.header.date.show.month,
           display: 'word',
           length: data.state.header.date.character.length,
-          ordinal: true
+          ordinal: true,
         },
         year: {
           show: data.state.header.date.show.year,
-          display: 'number'
+          display: 'number',
         },
         separator: {
-          show: data.state.header.date.show.separator
+          show: data.state.header.date.show.separator,
         },
-        format: 'datemonth'
+        format: 'datemonth',
       };
       data.state.header.transitional = {
         show: false,
-        type: 'timeanddate'
+        type: 'timeanddate',
       };
       return data;
     },
@@ -358,8 +359,8 @@ updateLegacy.get = () => {
           color: {
             r: null,
             g: null,
-            b: null
-          }
+            b: null,
+          },
         };
       });
       return data;
@@ -370,7 +371,7 @@ updateLegacy.get = () => {
         arrayItem.icon = {
           name: null,
           prefix: null,
-          label: null
+          label: null,
         };
       });
       return data;
@@ -379,13 +380,13 @@ updateLegacy.get = () => {
       data.state.header.area = {
         width: 90,
         alignment: {
-          horizontal: 'center'
-        }
+          horizontal: 'center',
+        },
       };
       data.state.header.items = {
         alignment: {
-          horizontal: 'left'
-        }
+          horizontal: 'left',
+        },
       };
       delete data.state.header.alignment;
       data.state.link = data.state.bookmarks;
@@ -393,14 +394,14 @@ updateLegacy.get = () => {
       data.state.link.area = {
         width: 90,
         alignment: {
-          horizontal: 'center'
-        }
+          horizontal: 'center',
+        },
       };
       data.state.link.items = {
         width: 12,
         alignment: {
-          horizontal: 'left'
-        }
+          horizontal: 'left',
+        },
       };
       data.state.link.show = data.state.link.link.show;
       delete data.state.link.link;
@@ -408,7 +409,7 @@ updateLegacy.get = () => {
       delete data.state.link.editObject;
       data.state.layout.alignment = {
         horizontal: 'center',
-        vertical: 'center'
+        vertical: 'center',
       };
       data.state.edge = false;
       data.state.autoSuggest = false;
@@ -419,14 +420,14 @@ updateLegacy.get = () => {
         show: true,
         alignment: {
           horizontal: 'center',
-          vertical: 'center'
+          vertical: 'center',
         },
         letter: {
-          size: 2
+          size: 2,
         },
         icon: {
-          size: 2.5
-        }
+          size: 2.5,
+        },
       };
       return data;
     },
@@ -446,7 +447,7 @@ updateLegacy.get = () => {
         size: 1,
         display: data.state.link.display,
         name: data.state.link.name,
-        url: data.state.link.url
+        url: data.state.link.url,
       };
       data.state.link.item.name.size = 0.9;
       delete data.state.link.display;
@@ -456,7 +457,7 @@ updateLegacy.get = () => {
     },
     '3.7.0': function (data) {
       data.state.link.item.line = {
-        show: true
+        show: true,
       };
       return data;
     },
@@ -470,12 +471,12 @@ updateLegacy.get = () => {
       data.state.header.search.size = 1;
       data.state.header.button = {
         editAdd: {
-          show: data.state.header.editAdd.show
+          show: data.state.header.editAdd.show,
         },
         accent: {
-          show: data.state.header.accent.show
+          show: data.state.header.accent.show,
         },
-        size: 1
+        size: 1,
       };
       delete data.state.header.editAdd;
       data.state.theme.radius = 0.2;
@@ -486,7 +487,7 @@ updateLegacy.get = () => {
       data.state.header.radius = false;
       data.state.header.border = {
         top: 0,
-        bottom: 0
+        bottom: 0,
       };
       data.state.layout.padding = 4;
       data.state.layout.gutter = 2;
@@ -522,19 +523,27 @@ updateLegacy.get = () => {
     '3.27.0': function (data) {
       // swicth to single values for alignment controls
       // no more horizontal or vertical keys in state object
-      data.state.header.area.alignment = data.state.header.area.alignment.horizontal;
-      data.state.header.item.alignment = data.state.header.item.alignment.horizontal;
-      data.state.header.search.text.alignment = data.state.header.search.text.align;
+      data.state.header.area.alignment =
+        data.state.header.area.alignment.horizontal;
+      data.state.header.item.alignment =
+        data.state.header.item.alignment.horizontal;
+      data.state.header.search.text.alignment =
+        data.state.header.search.text.align;
       delete data.state.header.search.text.align;
-      data.state.link.area.alignment = data.state.link.area.alignment.horizontal;
-      data.state.link.item.display.alignment = data.state.link.item.display.alignment.vertical + data.state.link.item.display.alignment.horizontal;
-      data.state.layout.alignment = data.state.layout.alignment.vertical + data.state.layout.alignment.horizontal;
+      data.state.link.area.alignment =
+        data.state.link.area.alignment.horizontal;
+      data.state.link.item.display.alignment =
+        data.state.link.item.display.alignment.vertical +
+        data.state.link.item.display.alignment.horizontal;
+      data.state.layout.alignment =
+        data.state.layout.alignment.vertical +
+        data.state.layout.alignment.horizontal;
       return data;
     },
     '3.28.0': function (data) {
       data.state.header.search.engine.bing = {
         url: 'https://www.bing.com/search?q=',
-        name: 'Bing'
+        name: 'Bing',
       };
       return data;
     },
@@ -544,13 +553,13 @@ updateLegacy.get = () => {
       delete data.state.link.newTab;
       // bring url and line inline with other show controls
       data.state.link.item.url = {
-        show: data.state.link.item.url
+        show: data.state.link.item.url,
       };
       data.state.link.item.line = {
-        show: data.state.link.item.line
+        show: data.state.link.item.line,
       };
       data.state.link.item.hoverScale = {
-        show: data.state.link.item.hoverScale
+        show: data.state.link.item.hoverScale,
       };
       data.state.layout.order = data.state.layout.order.toLowerCase();
       return data;
@@ -567,7 +576,7 @@ updateLegacy.get = () => {
       }
       data.state.background.image.file = {
         name: '',
-        data: ''
+        data: '',
       };
       return data;
     },
@@ -586,8 +595,8 @@ updateLegacy.get = () => {
         custom: {
           r: 0,
           g: 0,
-          b: 0
-        }
+          b: 0,
+        },
       };
       return data;
     },
@@ -602,36 +611,38 @@ updateLegacy.get = () => {
     },
     '3.82.0': function (data) {
       data.state.link.item.shadow = {
-        show: true
+        show: true,
       };
       return data;
     },
     '4.0.0': function (data) {
-      data.bookmarks = [{
-        name: 'Group 1',
-        items: data.bookmarks
-      }];
+      data.bookmarks = [
+        {
+          name: 'Group 1',
+          items: data.bookmarks,
+        },
+      ];
       data.state.layout.size = 1;
       data.state.header.position = 'sticky';
       data.state.link.item.display.rotate = 0;
       data.state.link.item.display.translate = {
         x: 0,
-        y: 0
+        y: 0,
       };
       data.state.link.item.hoverScale = {
-        show: true
+        show: true,
       };
       data.state.group = {
         area: {
-          alignment: 'left'
+          alignment: 'left',
         },
         name: {
           show: true,
-          size: 1
+          size: 1,
         },
         border: 0,
         order: 'headerbody',
-        add: false
+        add: false,
       };
       data.state.dropdown = false;
       delete data.state.link.item.display.size;
@@ -640,11 +651,11 @@ updateLegacy.get = () => {
       data.state.link.item.display.letcon = {
         show: data.state.link.item.display.show,
         letter: {
-          size: data.state.link.item.display.letter.size
+          size: data.state.link.item.display.letter.size,
         },
         icon: {
-          size: data.state.link.item.display.icon.size
-        }
+          size: data.state.link.item.display.icon.size,
+        },
       };
       delete data.state.link.item.display.show;
       delete data.state.link.item.display.letter;
@@ -652,7 +663,7 @@ updateLegacy.get = () => {
       data.state.link.item.display.rotate = 0;
       data.state.link.item.display.translate = {
         x: 0,
-        y: 0
+        y: 0,
       };
       if (data.state.link.item.order == 'displayname') {
         data.state.link.item.display.order = 'letconname';
@@ -684,21 +695,21 @@ updateLegacy.get = () => {
         hsl: {
           h: 222,
           s: 14,
-          l: 56
+          l: 56,
         },
         rgb: {
           r: 129,
           g: 138,
-          b: 160
-        }
+          b: 160,
+        },
       };
       data.state.link.item.color = {
         by: 'theme',
         custom: {
           r: 0,
           g: 0,
-          b: 0
-        }
+          b: 0,
+        },
       };
       data.state.header.button.colorAccent = data.state.header.button.accent;
       delete data.state.header.button.accent;
@@ -706,14 +717,14 @@ updateLegacy.get = () => {
     },
     '4.4.0': function (data) {
       data.state.header.button.colorAccent.dot = {
-        show: true
+        show: true,
       };
       return data;
     },
     '4.6.0': function (data) {
       data.state.theme.font = {
         display: '',
-        ui: ''
+        ui: '',
       };
       return data;
     },
@@ -721,12 +732,12 @@ updateLegacy.get = () => {
       data.state.theme.font.display = {
         name: data.state.theme.font.display,
         weight: 400,
-        style: 'normal'
+        style: 'normal',
       };
       data.state.theme.font.ui = {
         name: data.state.theme.font.ui,
         weight: 400,
-        style: 'normal'
+        style: 'normal',
       };
       return data;
     },
@@ -737,7 +748,7 @@ updateLegacy.get = () => {
     '4.9.0': function (data) {
       data.state.theme.color.contrast = {
         light: 4,
-        dark: 4
+        dark: 4,
       };
       return data;
     },
@@ -748,13 +759,13 @@ updateLegacy.get = () => {
     '4.11.0': function (data) {
       data.state.theme.custom = {
         all: data.state.theme.custom,
-        edit: false
+        edit: false,
       };
       return data;
     },
     '4.17.0': function (data) {
       data.state.theme.shade = {
-        opacity: 0.4
+        opacity: 0.4,
       };
       return data;
     },
@@ -785,7 +796,7 @@ updateLegacy.get = () => {
       data.state.header.color.rgb = {
         r: 0,
         g: 0,
-        b: 0
+        b: 0,
       };
       return data;
     },
@@ -794,26 +805,35 @@ updateLegacy.get = () => {
       return data;
     },
     '4.37.0': function (data) {
-      data.state.header.order = ['greeting', 'transitional', 'clock', 'date', 'search', 'editAdd', 'colorAccent', 'menu'];
+      data.state.header.order = [
+        'greeting',
+        'transitional',
+        'clock',
+        'date',
+        'search',
+        'editAdd',
+        'colorAccent',
+        'menu',
+      ];
       data.state.header.menu = {
         show: true,
         size: data.state.header.button.size,
-        style: data.state.header.button.style
+        style: data.state.header.button.style,
       };
       data.state.header.editAdd = {
         show: data.state.header.button.editAdd.show,
         size: data.state.header.button.size,
         style: data.state.header.button.style,
-        newLine: false
+        newLine: false,
       };
       data.state.header.colorAccent = {
         dot: {
-          show: data.state.header.button.colorAccent.dot.show
+          show: data.state.header.button.colorAccent.dot.show,
         },
         show: data.state.header.button.colorAccent.show,
         size: data.state.header.button.size,
         style: data.state.header.button.style,
-        newLine: false
+        newLine: false,
       };
       data.state.header.greeting.newLine = false;
       data.state.header.clock.newLine = false;
@@ -825,7 +845,7 @@ updateLegacy.get = () => {
       data.state.header.menu.newLine = false;
       data.state.header.search.width = {
         by: data.state.header.search.style,
-        size: data.state.header.search.width
+        size: data.state.header.search.width,
       };
       data.state.header.search.style = 'box';
       delete data.state.header.button;
@@ -840,7 +860,8 @@ updateLegacy.get = () => {
       delete data.state.header.area.alignment;
       data.state.header.item.justify = data.state.header.item.alignment;
       delete data.state.header.item.alignment;
-      data.state.header.search.text.justify = data.state.header.search.text.alignment;
+      data.state.header.search.text.justify =
+        data.state.header.search.text.alignment;
       delete data.state.header.search.text.alignment;
       data.state.link.area.justify = data.state.link.area.alignment;
       delete data.state.link.area.alignment;
@@ -857,7 +878,7 @@ updateLegacy.get = () => {
       data.state.group.openAll = {
         show: true,
         size: 1,
-        style: 'box'
+        style: 'box',
       };
       return data;
     },
@@ -874,10 +895,10 @@ updateLegacy.get = () => {
       data.bookmarks.forEach(function (arrayItem) {
         arrayItem.name = {
           show: data.state.group.name.show,
-          text: arrayItem.name
+          text: arrayItem.name,
         };
         arrayItem.openAll = {
-          show: data.state.group.openAll.show
+          show: data.state.group.openAll.show,
         };
       });
       delete data.state.group.name.show;
@@ -885,7 +906,7 @@ updateLegacy.get = () => {
       data.state.theme.accent.cycle = {
         active: false,
         speed: 300,
-        step: 10
+        step: 10,
       };
       data.state.header.clock.separator.text = ':';
       data.state.header.date.separator.text = '/';
@@ -929,12 +950,14 @@ updateLegacy.get = () => {
       return data;
     },
     '5.3.0': function (data) {
-      data.state.theme.accent.hsl = convertColor.rgb.hsl(data.state.theme.accent.rgb);
+      data.state.theme.accent.hsl = convertColor.rgb.hsl(
+        data.state.theme.accent.rgb
+      );
       data.state.theme.custom.all.forEach(function (arrayItem) {
         arrayItem.accent.rgb = {
           r: arrayItem.accent.r,
           g: arrayItem.accent.g,
-          b: arrayItem.accent.b
+          b: arrayItem.accent.b,
         };
         arrayItem.accent.hsl = convertColor.rgb.hsl(arrayItem.accent.rgb);
         arrayItem.accent.hsl.h = Math.round(arrayItem.accent.hsl.h);
@@ -950,14 +973,13 @@ updateLegacy.get = () => {
       data.state.background.image.vignette = {
         opacity: 0,
         start: 90,
-        end: 70
+        end: 70,
       };
       return data;
     },
     '5.37.1': function (data) {
       data.bookmarks.forEach(function (arrayItem) {
         arrayItem.items.forEach(function (arrayItem) {
-
           if (arrayItem.name == null) {
             arrayItem.name = '';
           }
@@ -972,13 +994,13 @@ updateLegacy.get = () => {
           arrayItem.accent.rgb = {
             r: arrayItem.accent.color.r,
             g: arrayItem.accent.color.g,
-            b: arrayItem.accent.color.b
+            b: arrayItem.accent.color.b,
           };
           delete arrayItem.accent.color;
           arrayItem.accent.hsl = {
             h: 0,
             s: 0,
-            l: 0
+            l: 0,
           };
           if (arrayItem.accent.override) {
             arrayItem.accent.by = 'custom';
@@ -991,20 +1013,20 @@ updateLegacy.get = () => {
             hsl: {
               h: 0,
               s: 0,
-              l: 0
+              l: 0,
             },
             rgb: {
               r: 0,
               g: 0,
-              b: 0
-            }
+              b: 0,
+            },
           };
           arrayItem.image = '';
           arrayItem.visual = {
             display: arrayItem.display,
             letter: arrayItem.letter,
             image: '',
-            icon: arrayItem.icon
+            icon: arrayItem.icon,
           };
           delete arrayItem.display;
           delete arrayItem.letter;
@@ -1021,42 +1043,41 @@ updateLegacy.get = () => {
           if (arrayItem.visual.icon.prefix == null) {
             arrayItem.visual.icon.prefix = '';
           }
-
         });
       });
       data.state.header.color.hsl = {
         h: 0,
         s: 0,
-        l: 0
+        l: 0,
       };
       data.state.link.item.color = {
         hsl: {
           h: 0,
           s: 0,
-          l: 0
+          l: 0,
         },
         rgb: {
           r: 0,
           g: 0,
-          b: 0
-        }
+          b: 0,
+        },
       };
       data.state.link.item.accent = {
         hsl: {
           h: 0,
           s: 0,
-          l: 0
+          l: 0,
         },
         rgb: {
           r: 0,
           g: 0,
-          b: 0
-        }
+          b: 0,
+        },
       };
       data.state.link.item.display.visual = data.state.link.item.display.letcon;
       delete data.state.link.item.display.letcon;
       data.state.link.item.display.visual.image = {
-        size: 3
+        size: 3,
       };
       if (data.state.link.item.display.order == 'letconname') {
         data.state.link.item.display.order = 'visualname';
@@ -1066,11 +1087,11 @@ updateLegacy.get = () => {
       data.state.background.color.hsl = {
         h: 0,
         s: 0,
-        l: 0
+        l: 0,
       };
       data.state.header.search.engine.custom.queryName = '';
       data.state.link.item.display.visual.shadow = {
-        size: 0
+        size: 0,
       };
       return data;
     },
@@ -1086,7 +1107,7 @@ updateLegacy.get = () => {
       data.state.link.item.color.opacity = data.state.link.item.opacity;
       delete data.state.link.item.opacity;
       data.state.link.item.image = {
-        opacity: 1
+        opacity: 1,
       };
       return data;
     },
@@ -1112,34 +1133,34 @@ updateLegacy.get = () => {
               rotate: data.state.link.item.display.rotate,
               translate: {
                 x: data.state.link.item.display.translate.x,
-                y: data.state.link.item.display.translate.y
+                y: data.state.link.item.display.translate.y,
               },
               visual: {
                 show: data.state.link.item.display.visual.show,
                 type: item.visual.display,
                 letter: {
                   size: data.state.link.item.display.visual.letter.size,
-                  text: item.visual.letter
+                  text: item.visual.letter,
                 },
                 image: {
                   size: data.state.link.item.display.visual.image.size,
-                  url: item.visual.image
+                  url: item.visual.image,
                 },
                 icon: {
                   size: data.state.link.item.display.visual.icon.size,
                   name: item.visual.icon.name,
                   prefix: item.visual.icon.prefix,
-                  label: item.visual.icon.label
+                  label: item.visual.icon.label,
                 },
                 shadow: {
-                  size: data.state.link.item.display.visual.shadow.size
-                }
+                  size: data.state.link.item.display.visual.shadow.size,
+                },
               },
               name: {
                 show: data.state.link.item.display.name.show,
                 text: item.name,
-                size: data.state.link.item.display.name.size
-              }
+                size: data.state.link.item.display.name.size,
+              },
             },
             url: item.url,
             accent: {
@@ -1147,78 +1168,123 @@ updateLegacy.get = () => {
               hsl: {
                 h: item.accent.hsl.h,
                 s: item.accent.hsl.s,
-                l: item.accent.hsl.l
+                l: item.accent.hsl.l,
               },
               rgb: {
                 r: item.accent.rgb.r,
                 g: item.accent.rgb.g,
-                b: item.accent.rgb.b
-              }
+                b: item.accent.rgb.b,
+              },
             },
             color: {
               by: item.color.by,
               hsl: {
                 h: item.color.hsl.h,
                 s: item.color.hsl.s,
-                l: item.color.hsl.l
+                l: item.color.hsl.l,
               },
               rgb: {
                 r: item.color.rgb.r,
                 g: item.color.rgb.g,
-                b: item.color.rgb.b
+                b: item.color.rgb.b,
               },
-              opacity: data.state.link.item.color.opacity
+              opacity: data.state.link.item.color.opacity,
             },
             image: {
               url: item.image,
-              opacity: data.state.link.item.image.opacity
+              opacity: data.state.link.item.image.opacity,
             },
             wide: item.wide,
             tall: item.tall,
             searchMatch: false,
-            timeStamp: item.timeStamp
+            timeStamp: item.timeStamp,
           };
 
-          if ((bookmarkData.display.direction != 'vertical' && bookmarkData.display.direction != 'horizontal') || bookmarkData.display.direction == undefined) {
+          if (
+            (bookmarkData.display.direction != 'vertical' &&
+              bookmarkData.display.direction != 'horizontal') ||
+            bookmarkData.display.direction == undefined
+          ) {
             bookmarkData.display.direction = 'vertical';
           }
-          if ((bookmarkData.display.order != 'visualname' && bookmarkData.display.order != 'namevisual') || bookmarkData.display.order == undefined) {
+          if (
+            (bookmarkData.display.order != 'visualname' &&
+              bookmarkData.display.order != 'namevisual') ||
+            bookmarkData.display.order == undefined
+          ) {
             bookmarkData.display.order = 'visualname';
           }
-          if ((bookmarkData.display.alignment != 'topleft' && bookmarkData.display.alignment != 'topcenter' && bookmarkData.display.alignment != 'topright' && bookmarkData.display.alignment != 'centerleft' && bookmarkData.display.alignment != 'centercenter' && bookmarkData.display.alignment != 'centerright' && bookmarkData.display.alignment != 'bottomleft' && bookmarkData.display.alignment != 'bottomcenter' && bookmarkData.display.alignment != 'bottomright') || bookmarkData.display.alignment == undefined) {
+          if (
+            (bookmarkData.display.alignment != 'topleft' &&
+              bookmarkData.display.alignment != 'topcenter' &&
+              bookmarkData.display.alignment != 'topright' &&
+              bookmarkData.display.alignment != 'centerleft' &&
+              bookmarkData.display.alignment != 'centercenter' &&
+              bookmarkData.display.alignment != 'centerright' &&
+              bookmarkData.display.alignment != 'bottomleft' &&
+              bookmarkData.display.alignment != 'bottomcenter' &&
+              bookmarkData.display.alignment != 'bottomright') ||
+            bookmarkData.display.alignment == undefined
+          ) {
             bookmarkData.display.alignment = 'centercenter';
           }
-          if (typeof bookmarkData.display.gutter != 'number' || bookmarkData.display.gutter == undefined) {
+          if (
+            typeof bookmarkData.display.gutter != 'number' ||
+            bookmarkData.display.gutter == undefined
+          ) {
             bookmarkData.display.gutter = 2;
           }
-          if (typeof bookmarkData.display.rotate != 'number' || bookmarkData.display.rotate == undefined) {
+          if (
+            typeof bookmarkData.display.rotate != 'number' ||
+            bookmarkData.display.rotate == undefined
+          ) {
             bookmarkData.display.rotate = 0;
           }
-          if (typeof bookmarkData.display.translate.x != 'number' || bookmarkData.display.translate.x == undefined) {
+          if (
+            typeof bookmarkData.display.translate.x != 'number' ||
+            bookmarkData.display.translate.x == undefined
+          ) {
             bookmarkData.display.translate.x = 0;
           }
-          if (typeof bookmarkData.display.translate.y != 'number' || bookmarkData.display.translate.y == undefined) {
+          if (
+            typeof bookmarkData.display.translate.y != 'number' ||
+            bookmarkData.display.translate.y == undefined
+          ) {
             bookmarkData.display.translate.y = 0;
           }
           if (bookmarkData.display.visual.show == undefined) {
             bookmarkData.display.visual.show = true;
           }
-          if ((bookmarkData.display.visual.type != 'letter' && bookmarkData.display.visual.type != 'icon' && bookmarkData.display.visual.type != 'image') || bookmarkData.display.visual.type == undefined) {
+          if (
+            (bookmarkData.display.visual.type != 'letter' &&
+              bookmarkData.display.visual.type != 'icon' &&
+              bookmarkData.display.visual.type != 'image') ||
+            bookmarkData.display.visual.type == undefined
+          ) {
             bookmarkData.display.visual.type = 'letter';
           }
-          if (typeof bookmarkData.display.visual.letter.size != 'number' || bookmarkData.display.visual.letter.size == undefined) {
+          if (
+            typeof bookmarkData.display.visual.letter.size != 'number' ||
+            bookmarkData.display.visual.letter.size == undefined
+          ) {
             bookmarkData.display.visual.letter.size = 3;
           }
           if (bookmarkData.display.visual.letter.text == undefined) {
             bookmarkData.display.visual.letter.text = '';
           }
-          if (typeof bookmarkData.display.visual.image.size != 'number' || bookmarkData.display.visual.image.size == undefined) {
+          if (
+            typeof bookmarkData.display.visual.image.size != 'number' ||
+            bookmarkData.display.visual.image.size == undefined
+          ) {
             bookmarkData.display.visual.image.size = 3;
           }
           if (bookmarkData.display.visual.image.url == undefined) {
             bookmarkData.display.visual.image.url = '';
           }
-          if (typeof bookmarkData.display.visual.icon.size != 'number' || bookmarkData.display.visual.icon.size == undefined) {
+          if (
+            typeof bookmarkData.display.visual.icon.size != 'number' ||
+            bookmarkData.display.visual.icon.size == undefined
+          ) {
             bookmarkData.display.visual.icon.size = 3;
           }
           if (bookmarkData.display.visual.icon.name == undefined) {
@@ -1230,7 +1296,10 @@ updateLegacy.get = () => {
           if (bookmarkData.display.visual.icon.label == undefined) {
             bookmarkData.display.visual.icon.label = '';
           }
-          if (typeof bookmarkData.display.visual.shadow.size != 'number' || bookmarkData.display.visual.shadow.size == undefined) {
+          if (
+            typeof bookmarkData.display.visual.shadow.size != 'number' ||
+            bookmarkData.display.visual.shadow.size == undefined
+          ) {
             bookmarkData.display.visual.shadow.size = 0;
           }
           if (bookmarkData.display.name.show == undefined) {
@@ -1239,61 +1308,114 @@ updateLegacy.get = () => {
           if (bookmarkData.display.name.text == undefined) {
             bookmarkData.display.name.text = '';
           }
-          if (typeof bookmarkData.display.name.size != 'number' || bookmarkData.display.name.size == undefined) {
+          if (
+            typeof bookmarkData.display.name.size != 'number' ||
+            bookmarkData.display.name.size == undefined
+          ) {
             bookmarkData.display.name.size = 0.9;
           }
           if (bookmarkData.url == undefined) {
             bookmarkData.url = '';
           }
-          if ((bookmarkData.accent.by != 'theme' && bookmarkData.accent.by != 'custom') || bookmarkData.accent.by == undefined) {
+          if (
+            (bookmarkData.accent.by != 'theme' &&
+              bookmarkData.accent.by != 'custom') ||
+            bookmarkData.accent.by == undefined
+          ) {
             bookmarkData.accent.by = 'theme';
           }
-          if (typeof bookmarkData.accent.hsl.h != 'number' || bookmarkData.accent.hsl.h == undefined) {
+          if (
+            typeof bookmarkData.accent.hsl.h != 'number' ||
+            bookmarkData.accent.hsl.h == undefined
+          ) {
             bookmarkData.accent.hsl.h = 0;
           }
-          if (typeof bookmarkData.accent.hsl.s != 'number' || bookmarkData.accent.hsl.s == undefined) {
+          if (
+            typeof bookmarkData.accent.hsl.s != 'number' ||
+            bookmarkData.accent.hsl.s == undefined
+          ) {
             bookmarkData.accent.hsl.s = 0;
           }
-          if (typeof bookmarkData.accent.hsl.l != 'number' || bookmarkData.accent.hsl.l == undefined) {
+          if (
+            typeof bookmarkData.accent.hsl.l != 'number' ||
+            bookmarkData.accent.hsl.l == undefined
+          ) {
             bookmarkData.accent.hsl.l = 0;
           }
-          if (typeof bookmarkData.accent.rgb.r != 'number' || bookmarkData.accent.rgb.r == undefined) {
+          if (
+            typeof bookmarkData.accent.rgb.r != 'number' ||
+            bookmarkData.accent.rgb.r == undefined
+          ) {
             bookmarkData.accent.rgb.r = 0;
           }
-          if (typeof bookmarkData.accent.rgb.g != 'number' || bookmarkData.accent.rgb.g == undefined) {
+          if (
+            typeof bookmarkData.accent.rgb.g != 'number' ||
+            bookmarkData.accent.rgb.g == undefined
+          ) {
             bookmarkData.accent.rgb.g = 0;
           }
-          if (typeof bookmarkData.accent.rgb.b != 'number' || bookmarkData.accent.rgb.b == undefined) {
+          if (
+            typeof bookmarkData.accent.rgb.b != 'number' ||
+            bookmarkData.accent.rgb.b == undefined
+          ) {
             bookmarkData.accent.rgb.b = 0;
           }
-          if ((bookmarkData.color.by != 'theme' && bookmarkData.color.by != 'custom') || bookmarkData.color.by == undefined) {
+          if (
+            (bookmarkData.color.by != 'theme' &&
+              bookmarkData.color.by != 'custom') ||
+            bookmarkData.color.by == undefined
+          ) {
             bookmarkData.color.by = 'theme';
           }
-          if (typeof bookmarkData.color.hsl.h != 'number' || bookmarkData.color.hsl.h == undefined) {
+          if (
+            typeof bookmarkData.color.hsl.h != 'number' ||
+            bookmarkData.color.hsl.h == undefined
+          ) {
             bookmarkData.color.hsl.h = 0;
           }
-          if (typeof bookmarkData.color.hsl.s != 'number' || bookmarkData.color.hsl.s == undefined) {
+          if (
+            typeof bookmarkData.color.hsl.s != 'number' ||
+            bookmarkData.color.hsl.s == undefined
+          ) {
             bookmarkData.color.hsl.s = 0;
           }
-          if (typeof bookmarkData.color.hsl.l != 'number' || bookmarkData.color.hsl.l == undefined) {
+          if (
+            typeof bookmarkData.color.hsl.l != 'number' ||
+            bookmarkData.color.hsl.l == undefined
+          ) {
             bookmarkData.color.hsl.l = 0;
           }
-          if (typeof bookmarkData.color.rgb.r != 'number' || bookmarkData.color.rgb.r == undefined) {
+          if (
+            typeof bookmarkData.color.rgb.r != 'number' ||
+            bookmarkData.color.rgb.r == undefined
+          ) {
             bookmarkData.color.rgb.r = 0;
           }
-          if (typeof bookmarkData.color.rgb.g != 'number' || bookmarkData.color.rgb.g == undefined) {
+          if (
+            typeof bookmarkData.color.rgb.g != 'number' ||
+            bookmarkData.color.rgb.g == undefined
+          ) {
             bookmarkData.color.rgb.g = 0;
           }
-          if (typeof bookmarkData.color.rgb.b != 'number' || bookmarkData.color.rgb.b == undefined) {
+          if (
+            typeof bookmarkData.color.rgb.b != 'number' ||
+            bookmarkData.color.rgb.b == undefined
+          ) {
             bookmarkData.color.rgb.b = 0;
           }
-          if (typeof bookmarkData.color.opacity != 'number' || bookmarkData.color.opacity == undefined) {
+          if (
+            typeof bookmarkData.color.opacity != 'number' ||
+            bookmarkData.color.opacity == undefined
+          ) {
             bookmarkData.color.opacity = 1;
           }
           if (bookmarkData.image.url == undefined) {
             bookmarkData.image.url = '';
           }
-          if (typeof bookmarkData.image.opacity != 'number' || bookmarkData.image.opacity == undefined) {
+          if (
+            typeof bookmarkData.image.opacity != 'number' ||
+            bookmarkData.image.opacity == undefined
+          ) {
             bookmarkData.image.opacity = 1;
           }
           if (bookmarkData.wide == undefined) {
@@ -1322,11 +1444,11 @@ updateLegacy.get = () => {
             type: 'image',
             opacity: item.image.opacity,
             image: {
-              url: item.image.url
+              url: item.image.url,
             },
             video: {
-              url: ''
-            }
+              url: '',
+            },
           };
           if (item.image.url != '') {
             item.background.show = true;
@@ -1346,12 +1468,12 @@ updateLegacy.get = () => {
           type: data.state.background.image.from,
           file: {
             name: data.state.background.image.file.name,
-            data: data.state.background.image.file.data
+            data: data.state.background.image.file.data,
           },
           url: data.state.background.image.url,
         },
         video: {
-          url: ''
+          url: '',
         },
         blur: data.state.background.image.blur,
         scale: data.state.background.image.scale,
@@ -1361,8 +1483,8 @@ updateLegacy.get = () => {
         vignette: {
           opacity: data.state.background.image.vignette.opacity,
           start: data.state.background.image.vignette.start,
-          end: data.state.background.image.vignette.end
-        }
+          end: data.state.background.image.vignette.end,
+        },
       };
       if (data.state.background.image.show) {
         backgroundData.type = 'image';
@@ -1374,7 +1496,7 @@ updateLegacy.get = () => {
     '6.5.0': function (data) {
       data.state.header.greeting.custom = '';
       return data;
-    }
+    },
   };
 };
 

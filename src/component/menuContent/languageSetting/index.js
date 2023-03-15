@@ -19,19 +19,16 @@ import { node } from '../../../utility/node';
 const languageSetting = {};
 
 languageSetting.control = {
-  language: {}
+  language: {},
 };
 
 languageSetting.language = (parent) => {
-
   const selectedLanguageIndex = () => {
-
     let index = 0;
 
     index = message.language.code().indexOf(state.get.current().language);
 
     return index;
-
   };
 
   languageSetting.control.language.selected = new Control_select({
@@ -42,8 +39,10 @@ languageSetting.language = (parent) => {
     option: message.language.list(),
     selected: selectedLanguageIndex(),
     action: () => {
-
-      state.get.current().language = message.language.code()[languageSetting.control.language.selected.selected()];
+      state.get.current().language =
+        message.language.code()[
+          languageSetting.control.language.selected.selected()
+        ];
       data.save();
       toolbar.bar.render();
       header.item.clear();
@@ -51,31 +50,29 @@ languageSetting.language = (parent) => {
       groupAndBookmark.render();
       menu.close();
       menu.open();
-
-    }
+    },
   });
 
   languageSetting.control.link = new Link({
     text: message.get('menuContentLanguageAlertLink'),
     href: `https://github.com/zombieFox/${APP_NAME}`,
-    openNew: true
+    openNew: true,
   });
 
   languageSetting.control.alert = new Alert({
     iconName: 'globe',
     children: [
       node(`p:${message.get('menuContentLanguageAlertPara')}`),
-      node('p', languageSetting.control.link.link())
-    ]
+      node('p', languageSetting.control.link.link()),
+    ],
   });
 
   parent.appendChild(
     node('div', [
       languageSetting.control.language.selected.wrap(),
-      languageSetting.control.alert.wrap()
+      languageSetting.control.alert.wrap(),
     ])
   );
-
 };
 
 export { languageSetting };

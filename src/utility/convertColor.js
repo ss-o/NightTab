@@ -1,7 +1,7 @@
 export const convertColor = {
   rgb: {},
   hsl: {},
-  hex: {}
+  hex: {},
 };
 
 convertColor.rgb.hsl = (rgb) => {
@@ -43,14 +43,15 @@ convertColor.rgb.hsl = (rgb) => {
   return {
     h: Math.round(h),
     s: Math.round(s * 100),
-    l: Math.round(l * 100)
+    l: Math.round(l * 100),
   };
 };
 
 convertColor.rgb.hex = (args) => {
-  var integer = ((Math.round(args.r) & 0xFF) << 16) +
-    ((Math.round(args.g) & 0xFF) << 8) +
-    (Math.round(args.b) & 0xFF);
+  var integer =
+    ((Math.round(args.r) & 0xff) << 16) +
+    ((Math.round(args.g) & 0xff) << 8) +
+    (Math.round(args.b) & 0xff);
 
   var string = integer.toString(16);
 
@@ -70,7 +71,7 @@ convertColor.hsl.rgb = (hsl) => {
     return {
       r: Math.round(val),
       g: Math.round(val),
-      b: Math.round(val)
+      b: Math.round(val),
     };
   }
 
@@ -85,7 +86,7 @@ convertColor.hsl.rgb = (hsl) => {
   var rgb = [0, 0, 0];
 
   for (var i = 0; i < 3; i++) {
-    t3 = h + 1 / 3 * -(i - 1);
+    t3 = h + (1 / 3) * -(i - 1);
 
     if (t3 < 0) {
       t3++;
@@ -111,7 +112,7 @@ convertColor.hsl.rgb = (hsl) => {
   return {
     r: Math.round(rgb[0]),
     g: Math.round(rgb[1]),
-    b: Math.round(rgb[2])
+    b: Math.round(rgb[2]),
   };
 };
 
@@ -122,26 +123,29 @@ convertColor.hex.rgb = (args) => {
     return {
       r: 0,
       g: 0,
-      b: 0
+      b: 0,
     };
   }
 
   var colorString = match[0];
 
   if (match[0].length === 3) {
-    colorString = colorString.split('').map((char) => {
-      return char + char;
-    }).join('');
+    colorString = colorString
+      .split('')
+      .map((char) => {
+        return char + char;
+      })
+      .join('');
   }
 
   var integer = parseInt(colorString, 16);
-  var r = (integer >> 16) & 0xFF;
-  var g = (integer >> 8) & 0xFF;
-  var b = integer & 0xFF;
+  var r = (integer >> 16) & 0xff;
+  var g = (integer >> 8) & 0xff;
+  var b = integer & 0xff;
 
   return {
     r: r,
     g: g,
-    b: b
+    b: b,
   };
 };

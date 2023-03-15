@@ -1,11 +1,10 @@
 export const browserDetect = () => {
-
   const userAgent = navigator.userAgent;
 
   let browserName = {
     chrome: false,
     firefox: false,
-    none: false
+    none: false,
   };
 
   if (userAgent.match(/chrome|chromium|crios/i)) {
@@ -17,5 +16,4 @@ export const browserDetect = () => {
   }
 
   return browserName;
-
 };

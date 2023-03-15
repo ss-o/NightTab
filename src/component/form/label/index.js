@@ -9,9 +9,8 @@ export const label = ({
   srOnly = false,
   icon = false,
   noPadding = false,
-  classList = []
+  classList = [],
 } = {}) => {
-
   let label;
 
   if (forInput) {
@@ -40,15 +39,15 @@ export const label = ({
 
   if (description) {
     if (Array.isArray(description)) {
-
       description.forEach((item) => {
-        labelBlock.appendChild(node('span:' + item + '|class:label-block-item small muted'));
+        labelBlock.appendChild(
+          node('span:' + item + '|class:label-block-item small muted')
+        );
       });
-
     } else if (typeof description === 'string') {
-
-      labelBlock.appendChild(node('span:' + description + '|class:label-block-item small muted'));
-
+      labelBlock.appendChild(
+        node('span:' + description + '|class:label-block-item small muted')
+      );
     }
   }
 
@@ -61,13 +60,10 @@ export const label = ({
   }
 
   if (classList.length > 0) {
-
     classList.forEach((item) => {
       label.classList.add(item);
     });
-
   }
 
   return label;
-
 };

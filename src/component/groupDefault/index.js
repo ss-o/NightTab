@@ -4,7 +4,7 @@ export const groupDefault = {
   toolbar: {
     size: 100,
     openAll: { show: true },
-    collapse: { show: true }
+    collapse: { show: true },
   },
-  items: []
+  items: [],
 };

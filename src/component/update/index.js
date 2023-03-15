@@ -6,15 +6,18 @@ const update = {};
 
 update.mod = updateLegacy.get();
 
-update.mod['7.0.0'] = function(data) {
-
+update.mod['7.0.0'] = function (data) {
   data.state.header.order.splice(data.state.header.order.indexOf('editAdd'), 1);
-  data.state.header.order.splice(data.state.header.order.indexOf('colorAccent'), 1);
+  data.state.header.order.splice(
+    data.state.header.order.indexOf('colorAccent'),
+    1
+  );
   data.state.header.order.splice(data.state.header.order.indexOf('menu'), 1);
 
   data.state.header.greeting.size = data.state.header.greeting.size * 100;
   data.state.header.clock.size = data.state.header.clock.size * 100;
-  data.state.header.transitional.size = data.state.header.transitional.size * 100;
+  data.state.header.transitional.size =
+    data.state.header.transitional.size * 100;
   data.state.header.date.size = data.state.header.date.size * 100;
   data.state.header.search.size = data.state.header.search.size * 100;
 
@@ -33,7 +36,6 @@ update.mod['7.0.0'] = function(data) {
   delete data.state.header.position;
 
   switch (data.state.header.date.format) {
-
     case 'datemonth':
       data.state.header.date.format = 'date-month';
       break;
@@ -41,15 +43,12 @@ update.mod['7.0.0'] = function(data) {
     case 'monthdate':
       data.state.header.date.format = 'month-date';
       break;
-
   }
 
   switch (data.state.header.transitional.type) {
-
     case 'timeanddate':
       data.state.header.transitional.type = 'time-and-date';
       break;
-
   }
 
   data.state.header.order.push('toolbar');
@@ -69,12 +68,12 @@ update.mod['7.0.0'] = function(data) {
   data.state.layout.area = {
     header: {
       width: data.state.header.area.width,
-      justify: data.state.header.area.justify
+      justify: data.state.header.area.justify,
     },
     bookmark: {
       width: data.state.link.area.width,
-      justify: data.state.link.area.justify
-    }
+      justify: data.state.link.area.justify,
+    },
   };
 
   data.state.header.clock.hour = data.state.header.clock.hours;
@@ -101,7 +100,7 @@ update.mod['7.0.0'] = function(data) {
     accent: { show: true },
     add: { show: true },
     edit: { show: true },
-    newLine: data.state.header.menu.newLine
+    newLine: data.state.header.menu.newLine,
   };
 
   delete data.state.header.menu;
@@ -145,11 +144,9 @@ update.mod['7.0.0'] = function(data) {
     case 'bottomright':
       data.state.layout.alignment = 'bottom-right';
       break;
-
   }
 
   switch (data.state.layout.order) {
-
     case 'headerlink':
       data.state.layout.order = 'header-bookmark';
       break;
@@ -157,25 +154,41 @@ update.mod['7.0.0'] = function(data) {
     case 'linkheader':
       data.state.layout.order = 'bookmark-header';
       break;
-
   }
 
   data.state.theme.opacity = { general: 100 };
 
-  data.state.theme.group = { openAll: { opacity: data.state.group.openAll.opacity * 100 } };
+  data.state.theme.group = {
+    openAll: { opacity: data.state.group.openAll.opacity * 100 },
+  };
 
   delete data.state.group.openAll.opacity;
 
   data.state.theme.toolbar = { opacity: 100 };
 
-  data.state.theme.layout = { color: { by: 'theme', opacity: 10, hsl: { h: 0, s: 0, l: 0 }, rgb: { r: 0, g: 0, b: 0 }, blur: 0 }, divider: { size: 0 } };
+  data.state.theme.layout = {
+    color: {
+      by: 'theme',
+      opacity: 10,
+      hsl: { h: 0, s: 0, l: 0 },
+      rgb: { r: 0, g: 0, b: 0 },
+      blur: 0,
+    },
+    divider: { size: 0 },
+  };
 
-  data.state.theme.header = { color: { by: 'theme', opacity: 10, hsl: { h: 0, s: 0, l: 0 }, rgb: { r: 0, g: 0, b: 0 } }, search: { opacity: 100 } };
+  data.state.theme.header = {
+    color: {
+      by: 'theme',
+      opacity: 10,
+      hsl: { h: 0, s: 0, l: 0 },
+      rgb: { r: 0, g: 0, b: 0 },
+    },
+    search: { opacity: 100 },
+  };
 
   if (data.state.theme.header.color.show) {
-
     data.state.theme.header.color.by = data.state.header.color.by;
-
   }
 
   data.state.theme.header.color.hsl = data.state.header.color.hsl;
@@ -184,13 +197,22 @@ update.mod['7.0.0'] = function(data) {
 
   data.state.theme.header.color.opacity = data.state.header.color.opacity * 100;
 
-  data.state.theme.header.search.opacity = data.state.header.search.opacity * 100;
+  data.state.theme.header.search.opacity =
+    data.state.header.search.opacity * 100;
 
   delete data.state.header.search.opacity;
 
   delete data.state.header.color;
 
-  data.state.theme.bookmark = { color: { by: 'theme', opacity: 10, hsl: { h: 0, s: 0, l: 0 }, rgb: { r: 0, g: 0, b: 0 } }, item: { border: 0, opacity: 100 } };
+  data.state.theme.bookmark = {
+    color: {
+      by: 'theme',
+      opacity: 10,
+      hsl: { h: 0, s: 0, l: 0 },
+      rgb: { r: 0, g: 0, b: 0 },
+    },
+    item: { border: 0, opacity: 100 },
+  };
 
   data.state.theme.background = data.state.background;
 
@@ -199,11 +221,10 @@ update.mod['7.0.0'] = function(data) {
   data.state.theme.background.gradient = {
     angle: 160,
     start: { hsl: { h: 206, s: 16, l: 40 }, rgb: { r: 86, g: 104, b: 118 } },
-    end: { hsl: { h: 219, s: 28, l: 12 }, rgb: { r: 22, g: 28, b: 39 } }
+    end: { hsl: { h: 219, s: 28, l: 12 }, rgb: { r: 22, g: 28, b: 39 } },
   };
 
   if (data.state.theme.background.visual.show) {
-
     switch (data.state.theme.background.visual.type) {
       case 'image':
         data.state.theme.background.type = 'image';
@@ -213,34 +234,43 @@ update.mod['7.0.0'] = function(data) {
         data.state.theme.background.type = 'video';
         break;
     }
-
   } else {
-
     if (data.state.theme.background.color.by === 'custom') {
       data.state.theme.background.type = 'color';
     } else {
       data.state.theme.background.type = 'theme';
     }
-
   }
 
   delete data.state.theme.background.color.by;
 
   delete data.state.theme.background.visual.image.file;
 
-  data.state.theme.background.visual.image.blur = data.state.theme.background.visual.blur;
-  data.state.theme.background.visual.image.opacity = data.state.theme.background.visual.opacity * 100;
-  data.state.theme.background.visual.image.scale = data.state.theme.background.visual.scale * 100;
-  data.state.theme.background.visual.image.grayscale = data.state.theme.background.visual.grayscale * 100;
-  data.state.theme.background.visual.image.accent = data.state.theme.background.visual.accent * 100;
-  data.state.theme.background.visual.image.vignette = data.state.theme.background.visual.vignette;
+  data.state.theme.background.visual.image.blur =
+    data.state.theme.background.visual.blur;
+  data.state.theme.background.visual.image.opacity =
+    data.state.theme.background.visual.opacity * 100;
+  data.state.theme.background.visual.image.scale =
+    data.state.theme.background.visual.scale * 100;
+  data.state.theme.background.visual.image.grayscale =
+    data.state.theme.background.visual.grayscale * 100;
+  data.state.theme.background.visual.image.accent =
+    data.state.theme.background.visual.accent * 100;
+  data.state.theme.background.visual.image.vignette =
+    data.state.theme.background.visual.vignette;
 
-  data.state.theme.background.visual.video.blur = data.state.theme.background.visual.blur;
-  data.state.theme.background.visual.video.opacity = data.state.theme.background.visual.opacity * 100;
-  data.state.theme.background.visual.video.scale = data.state.theme.background.visual.scale * 100;
-  data.state.theme.background.visual.video.grayscale = data.state.theme.background.visual.grayscale * 100;
-  data.state.theme.background.visual.video.accent = data.state.theme.background.visual.accent * 100;
-  data.state.theme.background.visual.video.vignette = data.state.theme.background.visual.vignette;
+  data.state.theme.background.visual.video.blur =
+    data.state.theme.background.visual.blur;
+  data.state.theme.background.visual.video.opacity =
+    data.state.theme.background.visual.opacity * 100;
+  data.state.theme.background.visual.video.scale =
+    data.state.theme.background.visual.scale * 100;
+  data.state.theme.background.visual.video.grayscale =
+    data.state.theme.background.visual.grayscale * 100;
+  data.state.theme.background.visual.video.accent =
+    data.state.theme.background.visual.accent * 100;
+  data.state.theme.background.visual.video.vignette =
+    data.state.theme.background.visual.vignette;
 
   data.state.theme.background.image = data.state.theme.background.visual.image;
   data.state.theme.background.video = data.state.theme.background.visual.video;
@@ -257,43 +287,54 @@ update.mod['7.0.0'] = function(data) {
   data.state.theme.color.range = {
     primary: {
       h: data.state.theme.color.hsl.h,
-      s: data.state.theme.color.hsl.s
-    }
+      s: data.state.theme.color.hsl.s,
+    },
   };
 
   let l = data.state.theme.color.hsl.l;
 
-  let contrastStart = l - (data.state.theme.color.contrast.dark * 10);
+  let contrastStart = l - data.state.theme.color.contrast.dark * 10;
 
-  let contrastEnd = l + (data.state.theme.color.contrast.light * 10);
+  let contrastEnd = l + data.state.theme.color.contrast.light * 10;
 
   data.state.theme.color.contrast = {
     start: Math.round(contrastStart),
-    end: Math.round(contrastEnd)
+    end: Math.round(contrastEnd),
   };
 
-  if (data.state.theme.color.contrast.end <= data.state.theme.color.contrast.start) {
-    data.state.theme.color.contrast.end = data.state.theme.color.contrast.start + 10;
+  if (
+    data.state.theme.color.contrast.end <= data.state.theme.color.contrast.start
+  ) {
+    data.state.theme.color.contrast.end =
+      data.state.theme.color.contrast.start + 10;
   }
 
-  if (data.state.theme.color.contrast.start > state.get.minMax().theme.color.contrast.start.max) {
-
-    data.state.theme.color.contrast.start = state.get.minMax().theme.color.contrast.start.max;
-
-  } else if (data.state.theme.color.contrast.start < state.get.minMax().theme.color.contrast.start.min) {
-
-    data.state.theme.color.contrast.start = state.get.minMax().theme.color.contrast.start.min;
-
+  if (
+    data.state.theme.color.contrast.start >
+    state.get.minMax().theme.color.contrast.start.max
+  ) {
+    data.state.theme.color.contrast.start =
+      state.get.minMax().theme.color.contrast.start.max;
+  } else if (
+    data.state.theme.color.contrast.start <
+    state.get.minMax().theme.color.contrast.start.min
+  ) {
+    data.state.theme.color.contrast.start =
+      state.get.minMax().theme.color.contrast.start.min;
   }
 
-  if (data.state.theme.color.contrast.end > state.get.minMax().theme.color.contrast.end.max) {
-
-    data.state.theme.color.contrast.end = state.get.minMax().theme.color.contrast.end.max;
-
-  } else if (data.state.theme.color.contrast.end < state.get.minMax().theme.color.contrast.end.min) {
-
-    data.state.theme.color.contrast.end = state.get.minMax().theme.color.contrast.end.min;
-
+  if (
+    data.state.theme.color.contrast.end >
+    state.get.minMax().theme.color.contrast.end.max
+  ) {
+    data.state.theme.color.contrast.end =
+      state.get.minMax().theme.color.contrast.end.max;
+  } else if (
+    data.state.theme.color.contrast.end <
+    state.get.minMax().theme.color.contrast.end.min
+  ) {
+    data.state.theme.color.contrast.end =
+      state.get.minMax().theme.color.contrast.end.min;
   }
 
   data.state.theme.shade.opacity = data.state.theme.shade.opacity * 100;
@@ -304,59 +345,56 @@ update.mod['7.0.0'] = function(data) {
   delete data.state.theme.color.generated;
 
   data.state.theme.custom.all.forEach((item) => {
-
     item.color.range = {
       primary: {
         h: item.color.hsl.h,
-        s: item.color.hsl.s
-      }
+        s: item.color.hsl.s,
+      },
     };
 
     if (item.color.contrast.light > item.color.contrast.dark) {
-
       item.color.contrast = {
         start: Math.ceil((item.color.hsl.l * item.color.contrast.dark) / 10),
-        end: Math.ceil((item.color.hsl.l * item.color.contrast.light) / 3)
+        end: Math.ceil((item.color.hsl.l * item.color.contrast.light) / 3),
       };
-
     } else if (item.color.contrast.light < item.color.contrast.dark) {
-
       item.color.contrast = {
         start: Math.ceil((item.color.hsl.l * item.color.contrast.light) / 10),
-        end: Math.ceil((item.color.hsl.l * item.color.contrast.dark) / 3)
+        end: Math.ceil((item.color.hsl.l * item.color.contrast.dark) / 3),
       };
-
     } else {
-
       item.color.contrast = {
-        start: Math.ceil((item.color.contrast.light) * 4),
-        end: Math.ceil((item.color.contrast.dark) * 16)
+        start: Math.ceil(item.color.contrast.light * 4),
+        end: Math.ceil(item.color.contrast.dark * 16),
       };
-
     }
 
     if (item.color.contrast.end <= item.color.contrast.start) {
       item.color.contrast.end = item.color.contrast.start + 1;
     }
 
-    if (item.color.contrast.start > state.get.minMax().theme.color.contrast.start.max) {
-
-      item.color.contrast.start = state.get.minMax().theme.color.contrast.start.max;
-
-    } else if (item.color.contrast.start < state.get.minMax().theme.color.contrast.start.min) {
-
-      item.color.contrast.start = state.get.minMax().theme.color.contrast.start.min;
-
+    if (
+      item.color.contrast.start >
+      state.get.minMax().theme.color.contrast.start.max
+    ) {
+      item.color.contrast.start =
+        state.get.minMax().theme.color.contrast.start.max;
+    } else if (
+      item.color.contrast.start <
+      state.get.minMax().theme.color.contrast.start.min
+    ) {
+      item.color.contrast.start =
+        state.get.minMax().theme.color.contrast.start.min;
     }
 
-    if (item.color.contrast.end > state.get.minMax().theme.color.contrast.end.max) {
-
+    if (
+      item.color.contrast.end > state.get.minMax().theme.color.contrast.end.max
+    ) {
       item.color.contrast.end = state.get.minMax().theme.color.contrast.end.max;
-
-    } else if (item.color.contrast.end < state.get.minMax().theme.color.contrast.end.min) {
-
+    } else if (
+      item.color.contrast.end < state.get.minMax().theme.color.contrast.end.min
+    ) {
       item.color.contrast.end = state.get.minMax().theme.color.contrast.end.min;
-
     }
 
     delete item.color.hsl;
@@ -371,7 +409,7 @@ update.mod['7.0.0'] = function(data) {
       item.shade.opacity = item.shade.opacity * 100;
     } else {
       item.shade = {
-        opacity: 20
+        opacity: 20,
       };
     }
 
@@ -382,14 +420,40 @@ update.mod['7.0.0'] = function(data) {
       color: { hsl: { h: 221, s: 47, l: 17 }, rgb: { r: 23, g: 36, b: 64 } },
       gradient: {
         angle: 160,
-        start: { hsl: { h: 206, s: 16, l: 40 }, rgb: { r: 86, g: 104, b: 118 } },
-        end: { hsl: { h: 219, s: 28, l: 12 }, rgb: { r: 22, g: 28, b: 39 } }
+        start: {
+          hsl: { h: 206, s: 16, l: 40 },
+          rgb: { r: 86, g: 104, b: 118 },
+        },
+        end: { hsl: { h: 219, s: 28, l: 12 }, rgb: { r: 22, g: 28, b: 39 } },
       },
-      image: { url: '', blur: 0, grayscale: 0, scale: 100, accent: 0, opacity: 100 },
-      video: { url: '', blur: 0, grayscale: 0, scale: 100, accent: 0, opacity: 100 }
+      image: {
+        url: '',
+        blur: 0,
+        grayscale: 0,
+        scale: 100,
+        accent: 0,
+        opacity: 100,
+      },
+      video: {
+        url: '',
+        blur: 0,
+        grayscale: 0,
+        scale: 100,
+        accent: 0,
+        opacity: 100,
+      },
     };
 
-    item.layout = { color: { by: 'theme', opacity: 10, hsl: { h: 0, s: 0, l: 0 }, rgb: { r: 0, g: 0, b: 0 }, blur: 0 }, divider: { size: 0 } };
+    item.layout = {
+      color: {
+        by: 'theme',
+        opacity: 10,
+        hsl: { h: 0, s: 0, l: 0 },
+        rgb: { r: 0, g: 0, b: 0 },
+        blur: 0,
+      },
+      divider: { size: 0 },
+    };
 
     item.opacity = { general: 100 };
 
@@ -397,37 +461,61 @@ update.mod['7.0.0'] = function(data) {
 
     item.toolbar = { opacity: 100 };
 
-    item.header = { color: { by: 'theme', opacity: 10, hsl: { h: 0, s: 0, l: 0 }, rgb: { r: 0, g: 0, b: 0 } }, search: { opacity: 100 } };
+    item.header = {
+      color: {
+        by: 'theme',
+        opacity: 10,
+        hsl: { h: 0, s: 0, l: 0 },
+        rgb: { r: 0, g: 0, b: 0 },
+      },
+      search: { opacity: 100 },
+    };
 
-    item.bookmark = { color: { by: 'theme', opacity: 10, hsl: { h: 0, s: 0, l: 0 }, rgb: { r: 0, g: 0, b: 0 } }, item: { border: 0, opacity: 100 } };
-
+    item.bookmark = {
+      color: {
+        by: 'theme',
+        opacity: 10,
+        hsl: { h: 0, s: 0, l: 0 },
+        rgb: { r: 0, g: 0, b: 0 },
+      },
+      item: { border: 0, opacity: 100 },
+    };
   });
 
-  data.state.theme.custom.all.push(JSON.parse(JSON.stringify({
-    name: 'My custom theme',
-    color: {
-      range: {
-        primary: { h: data.state.theme.color.range.primary.h, s: data.state.theme.color.range.primary.s }
-      },
-      contrast: data.state.theme.color.contrast
-    },
-    accent: { hsl: data.state.theme.accent.hsl, rgb: data.state.theme.accent.rgb },
-    font: data.state.theme.font,
-    background: data.state.theme.background,
-    radius: data.state.theme.radius,
-    shadow: data.state.theme.shadow,
-    style: data.state.theme.style,
-    shade: data.state.theme.shade,
-    opacity: data.state.theme.opacity,
-    layout: data.state.theme.layout,
-    header: data.state.theme.header,
-    bookmark: data.state.theme.bookmark,
-    group: data.state.theme.group,
-    toolbar: data.state.theme.toolbar,
-  })));
+  data.state.theme.custom.all.push(
+    JSON.parse(
+      JSON.stringify({
+        name: 'My custom theme',
+        color: {
+          range: {
+            primary: {
+              h: data.state.theme.color.range.primary.h,
+              s: data.state.theme.color.range.primary.s,
+            },
+          },
+          contrast: data.state.theme.color.contrast,
+        },
+        accent: {
+          hsl: data.state.theme.accent.hsl,
+          rgb: data.state.theme.accent.rgb,
+        },
+        font: data.state.theme.font,
+        background: data.state.theme.background,
+        radius: data.state.theme.radius,
+        shadow: data.state.theme.shadow,
+        style: data.state.theme.style,
+        shade: data.state.theme.shade,
+        opacity: data.state.theme.opacity,
+        layout: data.state.theme.layout,
+        header: data.state.theme.header,
+        bookmark: data.state.theme.bookmark,
+        group: data.state.theme.group,
+        toolbar: data.state.theme.toolbar,
+      })
+    )
+  );
 
   switch (data.state.group.order) {
-
     case 'headerbody':
       data.state.group.order = 'header-body';
       break;
@@ -435,7 +523,6 @@ update.mod['7.0.0'] = function(data) {
     case 'bodyheader':
       data.state.group.order = 'body-header';
       break;
-
   }
 
   data.state.group.name.size = data.state.group.name.size * 100;
@@ -461,9 +548,7 @@ update.mod['7.0.0'] = function(data) {
   delete data.bookmarks;
 
   data.bookmark.forEach((item) => {
-
     item.items.forEach((item) => {
-
       item.timestamp = item.timeStamp;
 
       delete item.timeStamp;
@@ -484,7 +569,6 @@ update.mod['7.0.0'] = function(data) {
         case 'image':
           item.display.visual.size = item.display.visual.image.size * 10;
           break;
-
       }
 
       delete item.display.visual.letter.size;
@@ -505,7 +589,6 @@ update.mod['7.0.0'] = function(data) {
         case 'namevisual':
           item.display.order = 'name-visual';
           break;
-
       }
 
       switch (item.display.alignment) {
@@ -544,19 +627,16 @@ update.mod['7.0.0'] = function(data) {
         case 'bottomright':
           item.display.alignment = 'bottom-right';
           break;
-
       }
 
       item.shape = {
         wide: item.wide,
-        tall: item.tall
+        tall: item.tall,
       };
 
       delete item.wide;
       delete item.tall;
-
     });
-
   });
 
   data.state.layout.breakpoint = data.state.bookmark.breakpoint;
@@ -570,11 +650,9 @@ update.mod['7.0.0'] = function(data) {
   delete data.state.dropdown;
 
   return data;
-
 };
 
-update.mod['7.1.0'] = function(data) {
-
+update.mod['7.1.0'] = function (data) {
   data.state.layout.favicon = '';
 
   data.state.group.toolbar = data.state.group.openAll;
@@ -586,49 +664,39 @@ update.mod['7.1.0'] = function(data) {
   delete data.state.theme.group.openAll;
 
   data.state.theme.custom.all.forEach((item) => {
-
     item.group.toolbar = { opacity: item.group.openAll.opacity };
 
     delete item.group.openAll;
-
   });
 
   data.bookmark.forEach((item) => {
-
     item.toolbar = {
       openAll: { show: item.openAll.show },
-      collapse: { show: true }
+      collapse: { show: true },
     };
 
     delete item.openAll;
-
   });
 
   return data;
-
 };
 
-update.mod['7.4.0'] = function(data) {
-
+update.mod['7.4.0'] = function (data) {
   data.state.layout.overscroll = {
     active: data.state.layout.overscroll,
-    unblur: false
+    unblur: false,
   };
 
   return data;
-
 };
 
-update.mod['7.5.0'] = function(data) {
-
+update.mod['7.5.0'] = function (data) {
   data.state.language = 'system';
 
   return data;
-
 };
 
 update.run = (data) => {
-
   // loop over all updates in mod.all object
   for (var key in update.mod) {
     if (version.compare(data.version, key) == -1) {
@@ -640,12 +708,14 @@ update.run = (data) => {
 
   // if no update is needed version bump
   if (version.compare(data.version, version.number) == -1) {
-    console.log('\t > no state data to update, version bump to', version.number);
+    console.log(
+      '\t > no state data to update, version bump to',
+      version.number
+    );
     data.version = version.number;
   }
 
   return data;
-
 };
 
 export { update };

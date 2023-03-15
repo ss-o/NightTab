@@ -1,17 +1,10 @@
 import { makePath } from './makePath.js';
 
-export const set = ({
-  object = null,
-  path = null,
-  value = null
-} = {}) => {
-
+export const set = ({ object = null, path = null, value = null } = {}) => {
   const address = makePath(path);
 
   const setValue = () => {
-
     while (address.length > 1) {
-
       // shift off and store the first
       let currentKey = address.shift();
 
@@ -27,13 +20,11 @@ export const set = ({
 
       // drill down the object with the first key
       object = object[currentKey];
-
     }
 
     let finalKey = address.shift();
 
     object[finalKey] = value;
-
   };
 
   if (object != null && path != null && value != null) {
@@ -41,5 +32,4 @@ export const set = ({
   } else {
     return false;
   }
-
 };

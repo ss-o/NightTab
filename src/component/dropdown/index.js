@@ -5,18 +5,17 @@ import { node } from '../../utility/node';
 
 import './index.css';
 
-export const Dropdown = function({
+export const Dropdown = function ({
   title = false,
   text = 'Dropdown',
   menuItem = [],
   buttonStyle = [],
   buttonClassList = [],
   srOnly = false,
-  iconName = false
+  iconName = false,
 } = {}) {
-
   this.state = {
-    open: false
+    open: false,
   };
 
   this.element = {
@@ -30,15 +29,13 @@ export const Dropdown = function({
       style: buttonStyle,
       classList: buttonClassList,
       func: () => {
-
         if (this.state.open) {
           this.close();
         } else {
           this.open();
         }
-
-      }
-    })
+      },
+    }),
   };
 
   this.toggle = this.element.toggle.button;
@@ -46,13 +43,10 @@ export const Dropdown = function({
   this.buttonStyle = {};
 
   this.buttonStyle.update = (style) => {
-
     this.element.toggle.style.update(style);
-
   };
 
   this.open = () => {
-
     this.state.open = true;
 
     const body = document.querySelector('body');
@@ -62,11 +56,9 @@ export const Dropdown = function({
     this.position();
 
     this.bind.add();
-
   };
 
   this.close = () => {
-
     this.state.open = false;
 
     const body = document.querySelector('body');
@@ -76,20 +68,44 @@ export const Dropdown = function({
     }
 
     this.bind.remove();
-
   };
 
-  this.esc = new KeyboardShortcut({ keycode: 27, action: () => { this.close(); } });
+  this.esc = new KeyboardShortcut({
+    keycode: 27,
+    action: () => {
+      this.close();
+    },
+  });
 
-  this.ctrAltM = new KeyboardShortcut({ keycode: 77, ctrl: true, alt: true, action: () => { this.close(); } });
+  this.ctrAltM = new KeyboardShortcut({
+    keycode: 77,
+    ctrl: true,
+    alt: true,
+    action: () => {
+      this.close();
+    },
+  });
 
-  this.ctrAltG = new KeyboardShortcut({ keycode: 71, ctrl: true, alt: true, action: () => { this.close(); } });
+  this.ctrAltG = new KeyboardShortcut({
+    keycode: 71,
+    ctrl: true,
+    alt: true,
+    action: () => {
+      this.close();
+    },
+  });
 
-  this.ctrAltA = new KeyboardShortcut({ keycode: 65, ctrl: true, alt: true, action: () => { this.close(); } });
+  this.ctrAltA = new KeyboardShortcut({
+    keycode: 65,
+    ctrl: true,
+    alt: true,
+    action: () => {
+      this.close();
+    },
+  });
 
   this.bind = {
     add: () => {
-
       window.addEventListener('mouseup', this.clickOut);
 
       this.esc.add();
@@ -99,10 +115,8 @@ export const Dropdown = function({
       this.ctrAltG.add();
 
       this.ctrAltA.add();
-
     },
     remove: () => {
-
       window.removeEventListener('mouseup', this.clickOut);
 
       this.esc.remove();
@@ -112,24 +126,21 @@ export const Dropdown = function({
       this.ctrAltG.remove();
 
       this.ctrAltA.remove();
-
-    }
+    },
   };
 
   this.clickOut = (event) => {
-
     const path = event.path || (event.composedPath && event.composedPath());
 
-    if (!path.includes(this.element.toggle.button) && !path.includes(this.element.menu)) {
-
+    if (
+      !path.includes(this.element.toggle.button) &&
+      !path.includes(this.element.menu)
+    ) {
       this.close();
-
     }
-
   };
 
   this.position = () => {
-
     const vWidth = window.innerWidth;
 
     const vHeight = window.innerHeight;
@@ -140,58 +151,49 @@ export const Dropdown = function({
 
     let menuTop;
 
-    if ((dropdownRect.bottom + menuRect.height) > vHeight) {
+    if (dropdownRect.bottom + menuRect.height > vHeight) {
       menuTop = dropdownRect.top - menuRect.height;
     } else {
       menuTop = dropdownRect.bottom;
     }
 
-    let menuLeft = dropdownRect.left + (dropdownRect.width / 2) - (menuRect.width / 2);
+    let menuLeft =
+      dropdownRect.left + dropdownRect.width / 2 - menuRect.width / 2;
 
     if (menuLeft < 0) {
       menuLeft = 0;
-    } else if ((menuLeft + menuRect.width) > vWidth) {
+    } else if (menuLeft + menuRect.width > vWidth) {
       menuLeft = vWidth - menuRect.width;
     }
 
     this.element.menu.style.setProperty('--dropdown-menu-top', menuTop);
 
     this.element.menu.style.setProperty('--dropdown-menu-left', menuLeft);
-
   };
 
   this.assemble = () => {
-
     if (menuItem.length > 0) {
-
       menuItem.forEach((item) => {
-
         const dropdownMenuButton = new Button({
           text: item.text,
           iconName: item.iconName,
-          classList: ['dropdown-menu-button']
+          classList: ['dropdown-menu-button'],
         });
 
         dropdownMenuButton.button.addEventListener('click', () => {
-
           if (item.action()) {
             item.action();
           }
 
           this.close();
-
         });
 
         this.element.content.appendChild(dropdownMenuButton.button);
-
       });
 
       this.element.menu.appendChild(this.element.content);
-
     }
-
   };
 
   this.assemble();
-
 };

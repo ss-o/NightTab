@@ -5,13 +5,11 @@ version.number = '7.5.0';
 version.name = 'Delightful Komodo Dragon';
 
 version.compare = (a, b) => {
-
   let pa = a.split('.');
 
   let pb = b.split('.');
 
   for (let i = 0; i < 3; i++) {
-
     let na = Number(pa[i]);
 
     let nb = Number(pb[i]);
@@ -31,7 +29,6 @@ version.compare = (a, b) => {
     if (isNaN(na) && !isNaN(nb)) {
       return -1;
     }
-
   }
 
   return 0;

@@ -7,7 +7,7 @@ import { Button } from '../../button';
 import { get } from '../../../utility/get';
 import { set } from '../../../utility/set';
 
-export const Control_textReset = function({
+export const Control_textReset = function ({
   object = {},
   path = false,
   id = 'name',
@@ -19,12 +19,11 @@ export const Control_textReset = function({
   classList = [],
   labelText = 'Name',
   srOnly = false,
-  action = false
+  action = false,
 } = {}) {
-
   this.label = form.label({
     forInput: id,
-    text: labelText
+    text: labelText,
   });
 
   if (srOnly) {
@@ -39,13 +38,13 @@ export const Control_textReset = function({
         set({
           object: object,
           path: path,
-          value: this.text.value
+          value: this.text.value,
         });
       }
       if (action) {
         action();
       }
-    }
+    },
   });
 
   if (value) {
@@ -75,13 +74,13 @@ export const Control_textReset = function({
       set({
         object: object,
         path: path,
-        value: JSON.parse(JSON.stringify(defaultValue))
+        value: JSON.parse(JSON.stringify(defaultValue)),
       });
       this.update();
       if (action) {
         action();
       }
-    }
+    },
   });
 
   this.update = () => {
@@ -98,12 +97,9 @@ export const Control_textReset = function({
         form.group({
           direction: 'horizontal',
           block: true,
-          children: [
-            this.text,
-            this.reset.button
-          ]
-        })
-      ]
+          children: [this.text, this.reset.button],
+        }),
+      ],
     });
   };
 
@@ -118,5 +114,4 @@ export const Control_textReset = function({
     this.text.disabled = false;
     this.reset.enable();
   };
-
 };

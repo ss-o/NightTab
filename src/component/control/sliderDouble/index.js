@@ -29,7 +29,7 @@ export const Control_sliderDouble = function ({
     numberAction: false,
     resetAction: false,
     mouseDownAction: false,
-    mouseUpAction: false
+    mouseUpAction: false,
   },
   right = {
     path: false,
@@ -48,31 +48,33 @@ export const Control_sliderDouble = function ({
     numberAction: false,
     resetAction: false,
     mouseDownAction: false,
-    mouseUpAction: false
-  }
+    mouseUpAction: false,
+  },
 } = {}) {
-
   this.element = {
-    sliderDouble: node('div|class:slider-double')
+    sliderDouble: node('div|class:slider-double'),
   };
 
   this.label = form.label({
     forInput: left.id,
-    text: labelText
+    text: labelText,
   });
 
   this.rightClip = () => {
+    let rightClipPostion =
+      (this.range.right.value() - this.range.left.value()) / 2 +
+      this.range.left.value();
 
-    let rightClipPostion = ((this.range.right.value() - this.range.left.value()) / 2) + this.range.left.value();
-
-    if (this.range.right.value() < (right.max / 2)) {
+    if (this.range.right.value() < right.max / 2) {
       rightClipPostion = rightClipPostion + 1;
     } else {
       rightClipPostion = rightClipPostion - 1;
     }
 
-    this.element.sliderDouble.style.setProperty('--slider-double-right-clip', rightClipPostion);
-
+    this.element.sliderDouble.style.setProperty(
+      '--slider-double-right-clip',
+      rightClipPostion
+    );
   };
 
   this.range = {
@@ -89,13 +91,27 @@ export const Control_sliderDouble = function ({
       step: left.step,
       style: style,
       action: () => {
-
-        if (get({ object: state.get.current(), path: left.path }) > get({ object: state.get.minMax(), path: left.path }).max - 10) {
-          set({ object: state.get.current(), path: left.path, value: get({ object: state.get.minMax(), path: left.path }).max - 10 });
+        if (
+          get({ object: state.get.current(), path: left.path }) >
+          get({ object: state.get.minMax(), path: left.path }).max - 10
+        ) {
+          set({
+            object: state.get.current(),
+            path: left.path,
+            value:
+              get({ object: state.get.minMax(), path: left.path }).max - 10,
+          });
         }
 
-        if (get({ object: state.get.current(), path: left.path }) >= get({ object: state.get.current(), path: right.path }) - 10) {
-          set({ object: state.get.current(), path: right.path, value: get({ object: state.get.current(), path: left.path }) + 10 });
+        if (
+          get({ object: state.get.current(), path: left.path }) >=
+          get({ object: state.get.current(), path: right.path }) - 10
+        ) {
+          set({
+            object: state.get.current(),
+            path: right.path,
+            value: get({ object: state.get.current(), path: left.path }) + 10,
+          });
         }
 
         this.range.left.updateRange();
@@ -107,7 +123,6 @@ export const Control_sliderDouble = function ({
         if (left.action) {
           left.action();
         }
-
       },
       focusAction: left.focusAction,
       blurAction: left.blurAction,
@@ -115,7 +130,7 @@ export const Control_sliderDouble = function ({
       numberAction: left.numberAction,
       resetAction: left.resetAction,
       mouseDownAction: left.mouseDownAction,
-      mouseUpAction: left.mouseUpAction
+      mouseUpAction: left.mouseUpAction,
     }),
     right: new Control_slider({
       object: object,
@@ -130,13 +145,27 @@ export const Control_sliderDouble = function ({
       step: right.step,
       style: style,
       action: () => {
-
-        if (get({ object: state.get.current(), path: right.path }) < get({ object: state.get.minMax(), path: right.path }).min + 10) {
-          set({ object: state.get.current(), path: right.path, value: get({ object: state.get.minMax(), path: right.path }).min + 10 });
+        if (
+          get({ object: state.get.current(), path: right.path }) <
+          get({ object: state.get.minMax(), path: right.path }).min + 10
+        ) {
+          set({
+            object: state.get.current(),
+            path: right.path,
+            value:
+              get({ object: state.get.minMax(), path: right.path }).min + 10,
+          });
         }
 
-        if (get({ object: state.get.current(), path: right.path }) <= get({ object: state.get.current(), path: left.path }) + 10) {
-          set({ object: state.get.current(), path: left.path, value: get({ object: state.get.current(), path: right.path }) - 10 });
+        if (
+          get({ object: state.get.current(), path: right.path }) <=
+          get({ object: state.get.current(), path: left.path }) + 10
+        ) {
+          set({
+            object: state.get.current(),
+            path: left.path,
+            value: get({ object: state.get.current(), path: right.path }) - 10,
+          });
         }
 
         this.range.left.update();
@@ -148,7 +177,6 @@ export const Control_sliderDouble = function ({
         if (right.action) {
           right.action();
         }
-
       },
       focusAction: right.focusAction,
       blurAction: right.blurAction,
@@ -156,77 +184,66 @@ export const Control_sliderDouble = function ({
       numberAction: right.numberAction,
       resetAction: right.resetAction,
       mouseDownAction: right.mouseDownAction,
-      mouseUpAction: right.mouseUpAction
-    })
+      mouseUpAction: right.mouseUpAction,
+    }),
   };
 
   this.wrap = () => {
-
     const leftNumberReset = form.group({
-      children: [
-        this.range.left.number
-      ]
+      children: [this.range.left.number],
     });
 
-    if (left.defaultValue || (typeof left.defaultValue === 'number' && left.defaultValue === 0)) {
+    if (
+      left.defaultValue ||
+      (typeof left.defaultValue === 'number' && left.defaultValue === 0)
+    ) {
       leftNumberReset.prepend(this.range.left.reset.button);
     }
 
     const rightNumberReset = form.group({
-      children: [
-        this.range.right.number
-      ]
+      children: [this.range.right.number],
     });
 
-    if (right.defaultValue || (typeof right.defaultValue === 'number' && right.defaultValue === 0)) {
+    if (
+      right.defaultValue ||
+      (typeof right.defaultValue === 'number' && right.defaultValue === 0)
+    ) {
       rightNumberReset.appendChild(this.range.right.reset.button);
     }
 
     const wrap = form.wrap({
       children: [
         form.wrap({
-          children: [
-            this.label,
-            this.element.sliderDouble,
-          ]
+          children: [this.label, this.element.sliderDouble],
         }),
         form.wrap({
           children: [
             form.group({
               block: true,
               justify: 'space-between',
-              children: [
-                leftNumberReset,
-                rightNumberReset
-              ]
-            })
-          ]
-        })
-      ]
+              children: [leftNumberReset, rightNumberReset],
+            }),
+          ],
+        }),
+      ],
     });
 
     this.assemble = () => {
-
       this.element.sliderDouble.appendChild(this.range.left.range);
 
       this.element.sliderDouble.appendChild(this.range.right.range);
 
       this.rightClip();
-
     };
 
     this.assemble();
 
     return wrap;
-
   };
 
   this.delayedUpdate = null;
 
-  this.update = ({
-    delay = false
-  } = {}) => {
-
+  this.update = ({ delay = false } = {}) => {
     const updateControl = () => {
       this.range.left.update();
       this.range.right.update();
@@ -240,7 +257,6 @@ export const Control_sliderDouble = function ({
     }
 
     this.rightClip();
-
   };
 
   this.disable = () => {
@@ -252,5 +268,4 @@ export const Control_sliderDouble = function ({
     this.range.left.enable();
     this.range.right.enable();
   };
-
 };

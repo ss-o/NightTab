@@ -17,14 +17,18 @@ const keyboard = {};
 keyboard.esc = new KeyboardShortcut({
   keycode: 27,
   action: () => {
-    if (state.get.current().bookmark.edit && !state.get.current().modal && !state.get.current().menu) {
+    if (
+      state.get.current().bookmark.edit &&
+      !state.get.current().modal &&
+      !state.get.current().menu
+    ) {
       bookmark.edit.close();
       group.edit.close();
       header.edit.close();
       toolbar.current.update.edit();
     }
     data.save();
-  }
+  },
 });
 
 keyboard.ctrAltD = new KeyboardShortcut({
@@ -37,7 +41,7 @@ keyboard.ctrAltD = new KeyboardShortcut({
       themeSetting.control.style.update();
     }
     data.save();
-  }
+  },
 });
 
 keyboard.ctrAltA = new KeyboardShortcut({
@@ -48,7 +52,7 @@ keyboard.ctrAltA = new KeyboardShortcut({
     if (!state.get.current().bookmark.add) {
       bookmark.add.render();
     }
-  }
+  },
 });
 
 keyboard.ctrAltE = new KeyboardShortcut({
@@ -61,7 +65,7 @@ keyboard.ctrAltE = new KeyboardShortcut({
     header.edit.toggle();
     toolbar.current.update.edit();
     data.save();
-  }
+  },
 });
 
 keyboard.ctrAltG = new KeyboardShortcut({
@@ -73,7 +77,7 @@ keyboard.ctrAltG = new KeyboardShortcut({
       group.add.render();
     }
     data.save();
-  }
+  },
 });
 
 keyboard.ctrAltM = new KeyboardShortcut({
@@ -82,7 +86,7 @@ keyboard.ctrAltM = new KeyboardShortcut({
   alt: true,
   action: () => {
     menu.toggle();
-  }
+  },
 });
 
 keyboard.ctrAltR = new KeyboardShortcut({
@@ -101,9 +105,9 @@ keyboard.ctrAltR = new KeyboardShortcut({
       'theme.accent.rgb.b',
       'theme.accent.hsl.h',
       'theme.accent.hsl.s',
-      'theme.accent.hsl.l'
+      'theme.accent.hsl.l',
     ]);
-  }
+  },
 });
 
 keyboard.init = () => {

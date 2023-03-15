@@ -16,9 +16,8 @@ export const Button = function ({
   style = [],
   title = false,
   classList = [],
-  func = false
+  func = false,
 } = {}) {
-
   this.button = node('button|class:button,tabindex:1,type:button');
 
   if (text) {
@@ -32,9 +31,7 @@ export const Button = function ({
   }
 
   if (iconName) {
-
     switch (iconPosition) {
-
       case 'right':
         this.button.append(icon.render(iconName));
         break;
@@ -43,9 +40,7 @@ export const Button = function ({
       case 'left':
         this.button.prepend(icon.render(iconName));
         break;
-
     }
-
   }
 
   if (block) {
@@ -81,9 +76,7 @@ export const Button = function ({
   this.style = {};
 
   this.style.add = (style) => {
-
     if (style) {
-
       if (style.length > 0) {
         style.forEach((item) => {
           switch (item) {
@@ -101,27 +94,21 @@ export const Button = function ({
           }
         });
       }
-
     }
-
   };
 
   this.style.remove = () => {
-
     this.button.classList.remove('button-link');
 
     this.button.classList.remove('button-line');
 
     this.button.classList.remove('button-ring');
-
   };
 
   this.style.update = (style) => {
-
     this.style.remove();
 
     this.style.add(style);
-
   };
 
   this.style.add(style);
@@ -144,10 +131,7 @@ export const Button = function ({
 
   this.wrap = () => {
     return form.wrap({
-      children: [
-        this.button
-      ]
+      children: [this.button],
     });
   };
-
 };

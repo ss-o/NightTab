@@ -11,7 +11,8 @@ input[type="color"] {
   overflow: hidden;
   cursor: pointer;
   opacity: 1;
-  transition: box-shadow var(--layout-transition-extra-fast), opacity var(--layout-transition-extra-fast);
+  transition: box-shadow var(--layout-transition-extra-fast),
+    opacity var(--layout-transition-extra-fast);
 }
 
 input[type="color"]:hover {
@@ -88,12 +89,13 @@ input[type="color"]::-moz-focus-inner {
   box-shadow: none;
 }
 
-.input-color-dot input[type="color"]+label {
+.input-color-dot input[type="color"] + label {
   padding-right: calc(var(--form-thumb) + 2em);
   position: relative;
 }
 
 .input-color-dot.form-input-button-link input[type="color"] {
-  box-shadow: 0 0 0 calc(var(--layout-line-width) * 0.75) hsl(var(--button-link-text));
+  box-shadow: 0 0 0 calc(var(--layout-line-width) * 0.75)
+    hsl(var(--button-link-text));
   transition: box-shadow var(--layout-transition-extra-fast);
 }

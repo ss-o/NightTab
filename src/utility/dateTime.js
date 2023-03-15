@@ -1,8 +1,20 @@
 export const dateTime = () => {
-
   const date = new Date();
 
-  const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const month = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
 
   return {
     // string: date.constructor(),
@@ -15,7 +27,6 @@ export const dateTime = () => {
     minutes: date.getMinutes(),
     month: date.getMonth(),
     monthString: month[date.getMonth()],
-    seconds: date.getSeconds()
+    seconds: date.getSeconds(),
   };
-
 };

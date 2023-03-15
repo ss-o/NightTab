@@ -2,17 +2,18 @@ import * as form from '../../form';
 
 export const Control_helperText = function ({
   text = [],
-  complexText = false
+  complexText = false,
 } = {}) {
-
   this.para = [];
 
   text.forEach((item) => {
-    this.para.push(form.helper({
-      tag: 'p',
-      text: item,
-      complexText: complexText
-    }));
+    this.para.push(
+      form.helper({
+        tag: 'p',
+        text: item,
+        complexText: complexText,
+      })
+    );
   });
 
   this.wrap = () => {
@@ -36,5 +37,4 @@ export const Control_helperText = function ({
       item.classList.remove('disabled');
     });
   };
-
 };

@@ -28,7 +28,11 @@
 }
 
 .theme-accent-preset-preview {
-  background-color: hsl(var(--theme-accent-preset-color-hsl-h), calc(var(--theme-accent-preset-color-hsl-s) * 1%), calc(var(--theme-accent-preset-color-hsl-l) * 1%));
+  background-color: hsl(
+    var(--theme-accent-preset-color-hsl-h),
+    calc(var(--theme-accent-preset-color-hsl-s) * 1%),
+    calc(var(--theme-accent-preset-color-hsl-l) * 1%)
+  );
   position: absolute;
   top: 0;
   left: 0;

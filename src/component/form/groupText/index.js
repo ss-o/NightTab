@@ -2,11 +2,7 @@ import { node } from '../../../utility/node';
 
 import './index.css';
 
-export const groupText = ({
-  text = false,
-  classList = []
-} = {}) => {
-
+export const groupText = ({ text = false, classList = [] } = {}) => {
   const textElement = node('div|class:form-group-text,tabindex:1');
 
   if (text) {
@@ -14,13 +10,10 @@ export const groupText = ({
   }
 
   if (classList.length > 0) {
-
     classList.forEach((item) => {
       textElement.classList.add(item);
     });
-
   }
 
   return textElement;
-
 };

@@ -5,16 +5,14 @@ import { clearChildNode } from '../../../utility/clearChildNode';
 
 export const Control_groupText = function ({
   text = false,
-  classList = []
+  classList = [],
 } = {}) {
-
   this.groupText = form.groupText({
     text: text,
-    classList: classList
+    classList: classList,
   });
 
   this.update = (content) => {
-
     clearChildNode(this.groupText);
 
     if (typeof content === 'string' && isValidString(content)) {
@@ -26,9 +24,7 @@ export const Control_groupText = function ({
 
   this.wrap = () => {
     return form.wrap({
-      children: [
-        this.groupText
-      ]
+      children: [this.groupText],
     });
   };
 
@@ -39,5 +35,4 @@ export const Control_groupText = function ({
   this.enable = () => {
     this.groupText.classList.remove('disabled');
   };
-
 };

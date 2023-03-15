@@ -9,21 +9,16 @@ toolbar.current = null;
 toolbar.bar = {};
 
 toolbar.bar.render = () => {
-
   toolbar.current = new ToolbarControl();
 
   const body = document.querySelector('body');
 
   switch (state.get.current().toolbar.location) {
-
     case 'corner':
-
       body.appendChild(toolbar.current.toolbar());
 
       break;
-
   }
-
 };
 
 toolbar.init = () => {

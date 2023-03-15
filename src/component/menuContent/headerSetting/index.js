@@ -32,11 +32,10 @@ headerSetting.control = {
   transitional: {},
   clock: {},
   date: {},
-  search: {}
+  search: {},
 };
 
 headerSetting.disable = () => {
-
   if (state.get.current().header.greeting.show) {
     headerSetting.control.greeting.size.enable();
     headerSetting.control.greeting.newLine.enable();
@@ -50,9 +49,7 @@ headerSetting.disable = () => {
   }
 
   if (state.get.current().header.greeting.show) {
-
     switch (state.get.current().header.greeting.type) {
-
       case 'good':
       case 'hello':
       case 'hi':
@@ -62,19 +59,16 @@ headerSetting.disable = () => {
       case 'custom':
         headerSetting.control.greeting.custom.text.enable();
         break;
-
     }
-
   } else {
-
     headerSetting.control.greeting.custom.text.disable();
-
   }
 
-  if (state.get.current().header.clock.second.show ||
+  if (
+    state.get.current().header.clock.second.show ||
     state.get.current().header.clock.minute.show ||
-    state.get.current().header.clock.hour.show) {
-
+    state.get.current().header.clock.hour.show
+  ) {
     headerSetting.control.clock.hour24.show.enable();
     headerSetting.control.clock.size.enable();
     headerSetting.control.clock.newLine.enable();
@@ -102,99 +96,91 @@ headerSetting.disable = () => {
     } else {
       headerSetting.control.clock.meridiem.show.enable();
     }
-
   } else {
-
     headerSetting.control.clock.hour24.show.disable();
     headerSetting.control.clock.meridiem.show.disable();
     headerSetting.control.clock.size.disable();
     headerSetting.control.clock.newLine.disable();
-
-  }
-
-  if ([state.get.current().header.clock.second.show, state.get.current().header.clock.minute.show, state.get.current().header.clock.hour.show].filter(Boolean).length > 1) {
-
-    headerSetting.control.clock.separator.show.enable();
-
-  } else {
-
-    headerSetting.control.clock.separator.show.disable();
-
   }
 
   if (
-    [state.get.current().header.clock.second.show, state.get.current().header.clock.minute.show, state.get.current().header.clock.hour.show].filter(Boolean).length > 1 &&
+    [
+      state.get.current().header.clock.second.show,
+      state.get.current().header.clock.minute.show,
+      state.get.current().header.clock.hour.show,
+    ].filter(Boolean).length > 1
+  ) {
+    headerSetting.control.clock.separator.show.enable();
+  } else {
+    headerSetting.control.clock.separator.show.disable();
+  }
+
+  if (
+    [
+      state.get.current().header.clock.second.show,
+      state.get.current().header.clock.minute.show,
+      state.get.current().header.clock.hour.show,
+    ].filter(Boolean).length > 1 &&
     state.get.current().header.clock.separator.show
   ) {
-
     headerSetting.control.clock.separator.text.enable();
-
   } else {
-
     headerSetting.control.clock.separator.text.disable();
-
   }
 
   if (
-    (state.get.current().header.clock.second.show && state.get.current().header.clock.minute.show) ||
-    (state.get.current().header.clock.second.show && state.get.current().header.clock.hour.show) ||
-    (state.get.current().header.clock.minute.show && state.get.current().header.clock.hour.show)
+    (state.get.current().header.clock.second.show &&
+      state.get.current().header.clock.minute.show) ||
+    (state.get.current().header.clock.second.show &&
+      state.get.current().header.clock.hour.show) ||
+    (state.get.current().header.clock.minute.show &&
+      state.get.current().header.clock.hour.show)
   ) {
-
     headerSetting.control.clock.separator.show.enable();
-
   } else {
-
     headerSetting.control.clock.separator.show.disable();
-
   }
 
   if (
-    ((state.get.current().header.clock.second.show && state.get.current().header.clock.minute.show) ||
-      (state.get.current().header.clock.second.show && state.get.current().header.clock.hour.show) ||
-      (state.get.current().header.clock.minute.show && state.get.current().header.clock.hour.show)) &&
+    ((state.get.current().header.clock.second.show &&
+      state.get.current().header.clock.minute.show) ||
+      (state.get.current().header.clock.second.show &&
+        state.get.current().header.clock.hour.show) ||
+      (state.get.current().header.clock.minute.show &&
+        state.get.current().header.clock.hour.show)) &&
     state.get.current().header.clock.separator.show
   ) {
-
     headerSetting.control.clock.separator.text.enable();
-
   } else {
-
     headerSetting.control.clock.separator.text.disable();
-
   }
 
-  if (state.get.current().header.date.day.show ||
+  if (
+    state.get.current().header.date.day.show ||
     state.get.current().header.date.date.show ||
     state.get.current().header.date.month.show ||
-    state.get.current().header.date.year.show) {
-
+    state.get.current().header.date.year.show
+  ) {
     headerSetting.control.date.size.enable();
     headerSetting.control.date.newLine.enable();
-
   } else {
-
     headerSetting.control.date.size.disable();
     headerSetting.control.date.newLine.disable();
-
   }
 
-  if (state.get.current().header.date.date.show && state.get.current().header.date.month.show) {
-
+  if (
+    state.get.current().header.date.date.show &&
+    state.get.current().header.date.month.show
+  ) {
     headerSetting.control.date.format.enable();
-
   } else {
-
     headerSetting.control.date.format.disable();
-
   }
 
   if (state.get.current().header.date.day.show) {
-
     headerSetting.control.date.day.display.enable();
 
     switch (state.get.current().header.date.day.display) {
-
       case 'word':
         headerSetting.control.date.day.length.enable();
         headerSetting.control.date.day.weekStart.disable();
@@ -204,33 +190,23 @@ headerSetting.disable = () => {
         headerSetting.control.date.day.length.disable();
         headerSetting.control.date.day.weekStart.enable();
         break;
-
     }
-
   } else {
-
     headerSetting.control.date.day.display.disable();
     headerSetting.control.date.day.length.disable();
     headerSetting.control.date.day.weekStart.disable();
-
   }
 
   if (state.get.current().header.date.date.show) {
-
     headerSetting.control.date.date.display.enable();
     headerSetting.control.date.date.ordinal.enable();
-
   } else {
-
     headerSetting.control.date.date.display.disable();
     headerSetting.control.date.date.ordinal.disable();
-
   }
 
   if (state.get.current().header.date.month.show) {
-
     switch (state.get.current().header.date.month.display) {
-
       case 'word':
         headerSetting.control.date.month.ordinal.disable();
         headerSetting.control.date.month.length.enable();
@@ -240,50 +216,46 @@ headerSetting.disable = () => {
         headerSetting.control.date.month.ordinal.enable();
         headerSetting.control.date.month.length.disable();
         break;
-
     }
 
     headerSetting.control.date.month.display.enable();
-
   } else {
-
     headerSetting.control.date.month.display.disable();
     headerSetting.control.date.month.ordinal.disable();
     headerSetting.control.date.month.length.disable();
-
   }
 
   if (state.get.current().header.date.year.show) {
-
     headerSetting.control.date.year.display.enable();
-
   } else {
-
     headerSetting.control.date.year.display.disable();
-
-  }
-
-  if ([state.get.current().header.date.day.show, state.get.current().header.date.date.show, state.get.current().header.date.month.show, state.get.current().header.date.year.show].filter(Boolean).length > 1) {
-
-    headerSetting.control.date.separator.show.enable();
-
-  } else {
-
-    headerSetting.control.date.separator.show.disable();
-
   }
 
   if (
-    [state.get.current().header.date.day.show, state.get.current().header.date.date.show, state.get.current().header.date.month.show, state.get.current().header.date.year.show].filter(Boolean).length > 1 &&
+    [
+      state.get.current().header.date.day.show,
+      state.get.current().header.date.date.show,
+      state.get.current().header.date.month.show,
+      state.get.current().header.date.year.show,
+    ].filter(Boolean).length > 1
+  ) {
+    headerSetting.control.date.separator.show.enable();
+  } else {
+    headerSetting.control.date.separator.show.disable();
+  }
+
+  if (
+    [
+      state.get.current().header.date.day.show,
+      state.get.current().header.date.date.show,
+      state.get.current().header.date.month.show,
+      state.get.current().header.date.year.show,
+    ].filter(Boolean).length > 1 &&
     state.get.current().header.date.separator.show
   ) {
-
     headerSetting.control.date.separator.text.enable();
-
   } else {
-
     headerSetting.control.date.separator.text.disable();
-
   }
 
   if (
@@ -302,16 +274,16 @@ headerSetting.disable = () => {
     headerSetting.control.transitional.newLine.disable();
   }
 
-  if ((
-    state.get.current().header.clock.second.show ||
+  if (
+    (state.get.current().header.clock.second.show ||
       state.get.current().header.clock.minute.show ||
       state.get.current().header.clock.hour.show ||
       state.get.current().header.date.day.show ||
       state.get.current().header.date.date.show ||
       state.get.current().header.date.month.show ||
-      state.get.current().header.date.year.show
-  ) &&
-    state.get.current().header.transitional.show) {
+      state.get.current().header.date.year.show) &&
+    state.get.current().header.transitional.show
+  ) {
     headerSetting.control.transitional.type.enable();
     headerSetting.control.transitional.size.enable();
     headerSetting.control.transitional.newLine.enable();
@@ -334,28 +306,20 @@ headerSetting.disable = () => {
   }
 
   if (state.get.current().header.search.show) {
-
     switch (state.get.current().header.search.width.by) {
-
       case 'auto':
         headerSetting.control.search.width.size.disable();
         break;
 
-
       case 'custom':
         headerSetting.control.search.width.size.enable();
         break;
-
     }
-
   } else {
-
     headerSetting.control.search.width.size.disable();
-
   }
 
   switch (state.get.current().header.search.engine.selected) {
-
     case 'custom':
       headerSetting.control.search.engine.custom.name.enable();
       headerSetting.control.search.engine.custom.url.enable();
@@ -371,9 +335,7 @@ headerSetting.disable = () => {
       headerSetting.control.search.engine.custom.queryName.disable();
       headerSetting.control.search.engine.custom.queryNameHelper.disable();
       break;
-
   }
-
 };
 
 headerSetting.edge = {
@@ -382,29 +344,39 @@ headerSetting.edge = {
   transitional: {},
   clock: {},
   date: {},
-  search: {}
+  search: {},
 };
 
 headerSetting.update = () => {
-
   for (let key in headerSetting.control) {
-
     headerSetting.control[key].forEach((item) => {
       item.update();
     });
-
   }
-
 };
 
 headerSetting.alignment = (parent) => {
-
   headerSetting.alignment.alignment = new Control_radioGrid({
     object: state.get.current(),
     radioGroup: [
-      { id: 'header-item-justify-left', labelText: message.get('menuContentHeaderAlignmentJustifyLeft'), value: 'left', position: 1 },
-      { id: 'header-item-justify-center', labelText: message.get('menuContentHeaderAlignmentJustifyCenter'), value: 'center', position: 2 },
-      { id: 'header-item-justify-right', labelText: message.get('menuContentHeaderAlignmentJustifyRight'), value: 'right', position: 3 }
+      {
+        id: 'header-item-justify-left',
+        labelText: message.get('menuContentHeaderAlignmentJustifyLeft'),
+        value: 'left',
+        position: 1,
+      },
+      {
+        id: 'header-item-justify-center',
+        labelText: message.get('menuContentHeaderAlignmentJustifyCenter'),
+        value: 'center',
+        position: 2,
+      },
+      {
+        id: 'header-item-justify-right',
+        labelText: message.get('menuContentHeaderAlignmentJustifyRight'),
+        value: 'right',
+        position: 3,
+      },
     ],
     label: message.get('menuContentHeaderAlignmentJustifyLabel'),
     groupName: 'header-item-justify',
@@ -413,26 +385,27 @@ headerSetting.alignment = (parent) => {
     action: () => {
       applyCSSClass('header.item.justify');
       data.save();
-    }
+    },
   });
 
   headerSetting.alignment.alignmentHelper = new Control_helperText({
     complexText: true,
-    text: [message.get('menuContentHeaderAlignmentHelperPara1')]
+    text: [message.get('menuContentHeaderAlignmentHelperPara1')],
   });
 
   parent.appendChild(
     node('div', [
       headerSetting.alignment.alignment.wrap(),
-      headerSetting.alignment.alignmentHelper.wrap()
+      headerSetting.alignment.alignmentHelper.wrap(),
     ])
   );
-
 };
 
 headerSetting.greeting = (parent) => {
-
-  headerSetting.edge.greeting.size = new Edge({ primary: header.element.greeting.greeting(), secondary: [header.element.area] });
+  headerSetting.edge.greeting.size = new Edge({
+    primary: header.element.greeting.greeting(),
+    secondary: [header.element.area],
+  });
 
   headerSetting.control.greeting.show = new Control_checkbox({
     object: state.get.current(),
@@ -445,14 +418,22 @@ headerSetting.greeting = (parent) => {
       header.item.render();
       layout.area.assemble();
       headerSetting.disable();
-      headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-      headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-      headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
+      headerSetting.edge.greeting.size.update.primary(
+        header.element.greeting.greeting()
+      );
+      headerSetting.edge.transitional.size.update.primary(
+        header.element.transitional.transitional()
+      );
+      headerSetting.edge.clock.size.update.primary(
+        header.element.clock.clock()
+      );
       headerSetting.edge.date.size.update.primary(header.element.date.date());
-      headerSetting.edge.search.size.update.primary(header.element.search.search());
+      headerSetting.edge.search.size.update.primary(
+        header.element.search.search()
+      );
       headerSetting.control.greeting.collapse.update();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.greeting.size = new Control_sliderSlim({
@@ -474,7 +455,7 @@ headerSetting.greeting = (parent) => {
     },
     mouseUpAction: () => {
       headerSetting.edge.greeting.size.hide();
-    }
+    },
   });
 
   headerSetting.control.greeting.newLine = new Control_checkbox({
@@ -486,18 +467,45 @@ headerSetting.greeting = (parent) => {
     action: () => {
       applyCSSState('header.greeting.newLine');
       data.save();
-    }
+    },
   });
 
   headerSetting.control.greeting.type = new Control_radio({
     object: state.get.current(),
     label: message.get('menuContentHeaderGreetingTypeLabel'),
     radioGroup: [
-      { id: 'header-greeting-type-good', labelText: message.get('menuContentHeaderGreetingTypeGood'), value: 'good' },
-      { id: 'header-greeting-type-hello', labelText: message.get('menuContentHeaderGreetingTypeHello'), value: 'hello' },
-      { id: 'header-greeting-type-hi', labelText: message.get('menuContentHeaderGreetingTypeHi'), value: 'hi' },
-      { id: 'header-greeting-type-none', labelText: message.get('menuContentHeaderGreetingTypeNoneLabel'), description: message.get('menuContentHeaderGreetingTypeNoneDescription'), value: 'none' },
-      { id: 'header-greeting-type-custom', labelText: message.get('menuContentHeaderGreetingTypeCustomLabel'), description: [message.get('menuContentHeaderGreetingTypeCustomDescriptionPara1'), message.get('menuContentHeaderGreetingTypeCustomDescriptionPara2')], value: 'custom' }
+      {
+        id: 'header-greeting-type-good',
+        labelText: message.get('menuContentHeaderGreetingTypeGood'),
+        value: 'good',
+      },
+      {
+        id: 'header-greeting-type-hello',
+        labelText: message.get('menuContentHeaderGreetingTypeHello'),
+        value: 'hello',
+      },
+      {
+        id: 'header-greeting-type-hi',
+        labelText: message.get('menuContentHeaderGreetingTypeHi'),
+        value: 'hi',
+      },
+      {
+        id: 'header-greeting-type-none',
+        labelText: message.get('menuContentHeaderGreetingTypeNoneLabel'),
+        description: message.get(
+          'menuContentHeaderGreetingTypeNoneDescription'
+        ),
+        value: 'none',
+      },
+      {
+        id: 'header-greeting-type-custom',
+        labelText: message.get('menuContentHeaderGreetingTypeCustomLabel'),
+        description: [
+          message.get('menuContentHeaderGreetingTypeCustomDescriptionPara1'),
+          message.get('menuContentHeaderGreetingTypeCustomDescriptionPara2'),
+        ],
+        value: 'custom',
+      },
     ],
     groupName: 'header-greeting-type',
     path: 'header.greeting.type',
@@ -506,7 +514,7 @@ headerSetting.greeting = (parent) => {
       headerSetting.control.greeting.custom.collapse.update();
       headerSetting.disable();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.greeting.custom = {};
@@ -522,20 +530,24 @@ headerSetting.greeting = (parent) => {
     action: () => {
       header.element.greeting.update();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.greeting.custom.area = node('div', [
-    headerSetting.control.greeting.custom.text.wrap()
+    headerSetting.control.greeting.custom.text.wrap(),
   ]);
 
   headerSetting.control.greeting.custom.collapse = new Collapse({
     type: 'radio',
     radioGroup: headerSetting.control.greeting.type,
-    target: [{
-      id: headerSetting.control.greeting.type.radioSet[headerSetting.control.greeting.type.radioSet.length - 1].radio.value,
-      content: headerSetting.control.greeting.custom.area
-    }]
+    target: [
+      {
+        id: headerSetting.control.greeting.type.radioSet[
+          headerSetting.control.greeting.type.radioSet.length - 1
+        ].radio.value,
+        content: headerSetting.control.greeting.custom.area,
+      },
+    ],
   });
 
   headerSetting.control.greeting.name = new Control_text({
@@ -548,7 +560,7 @@ headerSetting.greeting = (parent) => {
     action: () => {
       header.element.greeting.update();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.greeting.area = node('div', [
@@ -556,26 +568,26 @@ headerSetting.greeting = (parent) => {
     form.wrap({
       children: [
         form.indent({
-          children: [
-            headerSetting.control.greeting.custom.collapse.collapse()
-          ]
-        })
-      ]
+          children: [headerSetting.control.greeting.custom.collapse.collapse()],
+        }),
+      ],
     }),
     node('hr'),
     headerSetting.control.greeting.name.wrap(),
     node('hr'),
     headerSetting.control.greeting.size.wrap(),
     node('hr'),
-    headerSetting.control.greeting.newLine.wrap()
+    headerSetting.control.greeting.newLine.wrap(),
   ]);
 
   headerSetting.control.greeting.collapse = new Collapse({
     type: 'checkbox',
     checkbox: headerSetting.control.greeting.show,
-    target: [{
-      content: headerSetting.control.greeting.area
-    }]
+    target: [
+      {
+        content: headerSetting.control.greeting.area,
+      },
+    ],
   });
 
   parent.appendChild(
@@ -584,20 +596,19 @@ headerSetting.greeting = (parent) => {
       form.wrap({
         children: [
           form.indent({
-            children: [
-              headerSetting.control.greeting.collapse.collapse()
-            ]
-          })
-        ]
-      })
+            children: [headerSetting.control.greeting.collapse.collapse()],
+          }),
+        ],
+      }),
     ])
   );
-
 };
 
 headerSetting.transitional = (parent) => {
-
-  headerSetting.edge.transitional.size = new Edge({ primary: header.element.transitional.transitional(), secondary: [header.element.area] });
+  headerSetting.edge.transitional.size = new Edge({
+    primary: header.element.transitional.transitional(),
+    secondary: [header.element.area],
+  });
 
   headerSetting.control.transitional.show = new Control_checkbox({
     object: state.get.current(),
@@ -610,26 +621,42 @@ headerSetting.transitional = (parent) => {
       header.item.render();
       layout.area.assemble();
       headerSetting.disable();
-      headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-      headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-      headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
+      headerSetting.edge.greeting.size.update.primary(
+        header.element.greeting.greeting()
+      );
+      headerSetting.edge.transitional.size.update.primary(
+        header.element.transitional.transitional()
+      );
+      headerSetting.edge.clock.size.update.primary(
+        header.element.clock.clock()
+      );
       headerSetting.edge.date.size.update.primary(header.element.date.date());
-      headerSetting.edge.search.size.update.primary(header.element.search.search());
+      headerSetting.edge.search.size.update.primary(
+        header.element.search.search()
+      );
       headerSetting.control.transitional.collapse.update();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.transitional.showHelper = new Control_helperText({
-    text: [message.get('menuContentHeaderTransitionalShowHelperPara1')]
+    text: [message.get('menuContentHeaderTransitionalShowHelperPara1')],
   });
 
   headerSetting.control.transitional.type = new Control_radio({
     object: state.get.current(),
     label: message.get('menuContentHeaderTransitionalTypeLabel'),
     radioGroup: [
-      { id: 'header-transitional-type-time-and-date', labelText: message.get('menuContentHeaderTransitionalTypeTimeAndDate'), value: 'time-and-date' },
-      { id: 'header-transitional-type-its', labelText: message.get('menuContentHeaderTransitionalTypeIts'), value: 'its' }
+      {
+        id: 'header-transitional-type-time-and-date',
+        labelText: message.get('menuContentHeaderTransitionalTypeTimeAndDate'),
+        value: 'time-and-date',
+      },
+      {
+        id: 'header-transitional-type-its',
+        labelText: message.get('menuContentHeaderTransitionalTypeIts'),
+        value: 'its',
+      },
     ],
     groupName: 'header-transitional-type',
     path: 'header.transitional.type',
@@ -637,7 +664,7 @@ headerSetting.transitional = (parent) => {
       header.element.transitional.update();
       headerSetting.disable();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.transitional.size = new Control_sliderSlim({
@@ -659,7 +686,7 @@ headerSetting.transitional = (parent) => {
     },
     mouseUpAction: () => {
       headerSetting.edge.transitional.size.hide();
-    }
+    },
   });
 
   headerSetting.control.transitional.newLine = new Control_checkbox({
@@ -671,7 +698,7 @@ headerSetting.transitional = (parent) => {
     action: () => {
       applyCSSState('header.transitional.newLine');
       data.save();
-    }
+    },
   });
 
   headerSetting.control.transitional.area = node('div', [
@@ -679,15 +706,17 @@ headerSetting.transitional = (parent) => {
     node('hr'),
     headerSetting.control.transitional.size.wrap(),
     node('hr'),
-    headerSetting.control.transitional.newLine.wrap()
+    headerSetting.control.transitional.newLine.wrap(),
   ]);
 
   headerSetting.control.transitional.collapse = new Collapse({
     type: 'checkbox',
     checkbox: headerSetting.control.transitional.show,
-    target: [{
-      content: headerSetting.control.transitional.area
-    }]
+    target: [
+      {
+        content: headerSetting.control.transitional.area,
+      },
+    ],
   });
 
   parent.appendChild(
@@ -697,20 +726,19 @@ headerSetting.transitional = (parent) => {
       form.wrap({
         children: [
           form.indent({
-            children: [
-              headerSetting.control.transitional.collapse.collapse()
-            ]
-          })
-        ]
-      })
+            children: [headerSetting.control.transitional.collapse.collapse()],
+          }),
+        ],
+      }),
     ])
   );
-
 };
 
 headerSetting.clock = (parent) => {
-
-  headerSetting.edge.clock.size = new Edge({ primary: header.element.clock.clock(), secondary: [header.element.area] });
+  headerSetting.edge.clock.size = new Edge({
+    primary: header.element.clock.clock(),
+    secondary: [header.element.area],
+  });
 
   headerSetting.control.clock.hour = {};
 
@@ -725,41 +753,59 @@ headerSetting.clock = (parent) => {
       header.item.render();
       layout.area.assemble();
       headerSetting.disable();
-      headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-      headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-      headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
+      headerSetting.edge.greeting.size.update.primary(
+        header.element.greeting.greeting()
+      );
+      headerSetting.edge.transitional.size.update.primary(
+        header.element.transitional.transitional()
+      );
+      headerSetting.edge.clock.size.update.primary(
+        header.element.clock.clock()
+      );
       headerSetting.edge.date.size.update.primary(header.element.date.date());
-      headerSetting.edge.search.size.update.primary(header.element.search.search());
+      headerSetting.edge.search.size.update.primary(
+        header.element.search.search()
+      );
       headerSetting.control.clock.hour.collapse.update();
       headerSetting.control.clock.collapse.update();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.clock.hour.display = new Control_radio({
     object: state.get.current(),
     radioGroup: [
-      { id: 'header-clock-hour-display-number', labelText: message.get('menuContentHeaderClockHourDisplayNumber'), value: 'number' },
-      { id: 'header-clock-hour-display-word', labelText: message.get('menuContentHeaderClockHourDisplayWord'), value: 'word' }
+      {
+        id: 'header-clock-hour-display-number',
+        labelText: message.get('menuContentHeaderClockHourDisplayNumber'),
+        value: 'number',
+      },
+      {
+        id: 'header-clock-hour-display-word',
+        labelText: message.get('menuContentHeaderClockHourDisplayWord'),
+        value: 'word',
+      },
     ],
     groupName: 'header-clock-hour-display',
     path: 'header.clock.hour.display',
     action: () => {
       header.element.clock.update();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.clock.hour.area = node('div', [
-    headerSetting.control.clock.hour.display.wrap()
+    headerSetting.control.clock.hour.display.wrap(),
   ]);
 
   headerSetting.control.clock.hour.collapse = new Collapse({
     type: 'checkbox',
     checkbox: headerSetting.control.clock.hour.show,
-    target: [{
-      content: headerSetting.control.clock.hour.area
-    }]
+    target: [
+      {
+        content: headerSetting.control.clock.hour.area,
+      },
+    ],
   });
 
   headerSetting.control.clock.minute = {};
@@ -775,41 +821,59 @@ headerSetting.clock = (parent) => {
       header.item.render();
       layout.area.assemble();
       headerSetting.disable();
-      headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-      headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-      headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
+      headerSetting.edge.greeting.size.update.primary(
+        header.element.greeting.greeting()
+      );
+      headerSetting.edge.transitional.size.update.primary(
+        header.element.transitional.transitional()
+      );
+      headerSetting.edge.clock.size.update.primary(
+        header.element.clock.clock()
+      );
       headerSetting.edge.date.size.update.primary(header.element.date.date());
-      headerSetting.edge.search.size.update.primary(header.element.search.search());
+      headerSetting.edge.search.size.update.primary(
+        header.element.search.search()
+      );
       headerSetting.control.clock.minute.collapse.update();
       headerSetting.control.clock.collapse.update();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.clock.minute.display = new Control_radio({
     object: state.get.current(),
     radioGroup: [
-      { id: 'header-clock-minute-display-number', labelText: message.get('menuContentHeaderClockMinuteDisplayNumber'), value: 'number' },
-      { id: 'header-clock-minute-display-word', labelText: message.get('menuContentHeaderClockMinuteDisplayWord'), value: 'word' }
+      {
+        id: 'header-clock-minute-display-number',
+        labelText: message.get('menuContentHeaderClockMinuteDisplayNumber'),
+        value: 'number',
+      },
+      {
+        id: 'header-clock-minute-display-word',
+        labelText: message.get('menuContentHeaderClockMinuteDisplayWord'),
+        value: 'word',
+      },
     ],
     groupName: 'header-clock-minute-display',
     path: 'header.clock.minute.display',
     action: () => {
       header.element.clock.update();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.clock.minute.area = node('div', [
-    headerSetting.control.clock.minute.display.wrap()
+    headerSetting.control.clock.minute.display.wrap(),
   ]);
 
   headerSetting.control.clock.minute.collapse = new Collapse({
     type: 'checkbox',
     checkbox: headerSetting.control.clock.minute.show,
-    target: [{
-      content: headerSetting.control.clock.minute.area
-    }]
+    target: [
+      {
+        content: headerSetting.control.clock.minute.area,
+      },
+    ],
   });
 
   headerSetting.control.clock.second = {};
@@ -825,41 +889,59 @@ headerSetting.clock = (parent) => {
       header.item.render();
       layout.area.assemble();
       headerSetting.disable();
-      headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-      headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-      headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
+      headerSetting.edge.greeting.size.update.primary(
+        header.element.greeting.greeting()
+      );
+      headerSetting.edge.transitional.size.update.primary(
+        header.element.transitional.transitional()
+      );
+      headerSetting.edge.clock.size.update.primary(
+        header.element.clock.clock()
+      );
       headerSetting.edge.date.size.update.primary(header.element.date.date());
-      headerSetting.edge.search.size.update.primary(header.element.search.search());
+      headerSetting.edge.search.size.update.primary(
+        header.element.search.search()
+      );
       headerSetting.control.clock.second.collapse.update();
       headerSetting.control.clock.collapse.update();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.clock.second.display = new Control_radio({
     object: state.get.current(),
     radioGroup: [
-      { id: 'header-clock-second-display-number', labelText: message.get('menuContentHeaderClockSecondDisplayNumber'), value: 'number' },
-      { id: 'header-clock-second-display-word', labelText: message.get('menuContentHeaderClockSecondDisplayWord'), value: 'word' }
+      {
+        id: 'header-clock-second-display-number',
+        labelText: message.get('menuContentHeaderClockSecondDisplayNumber'),
+        value: 'number',
+      },
+      {
+        id: 'header-clock-second-display-word',
+        labelText: message.get('menuContentHeaderClockSecondDisplayWord'),
+        value: 'word',
+      },
     ],
     groupName: 'header-clock-second-display',
     path: 'header.clock.second.display',
     action: () => {
       header.element.clock.update();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.clock.second.area = node('div', [
-    headerSetting.control.clock.second.display.wrap()
+    headerSetting.control.clock.second.display.wrap(),
   ]);
 
   headerSetting.control.clock.second.collapse = new Collapse({
     type: 'checkbox',
     checkbox: headerSetting.control.clock.second.show,
-    target: [{
-      content: headerSetting.control.clock.second.area
-    }]
+    target: [
+      {
+        content: headerSetting.control.clock.second.area,
+      },
+    ],
   });
 
   headerSetting.control.clock.separator = {};
@@ -874,7 +956,7 @@ headerSetting.clock = (parent) => {
       headerSetting.control.clock.separator.collapse.update();
       headerSetting.disable();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.clock.separator.text = new Control_textReset({
@@ -889,19 +971,21 @@ headerSetting.clock = (parent) => {
     action: () => {
       header.element.clock.update();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.clock.separator.area = node('div', [
-    headerSetting.control.clock.separator.text.wrap()
+    headerSetting.control.clock.separator.text.wrap(),
   ]);
 
   headerSetting.control.clock.separator.collapse = new Collapse({
     type: 'checkbox',
     checkbox: headerSetting.control.clock.separator.show,
-    target: [{
-      content: headerSetting.control.clock.separator.area
-    }]
+    target: [
+      {
+        content: headerSetting.control.clock.separator.area,
+      },
+    ],
   });
 
   headerSetting.control.clock.hour24 = {
@@ -914,8 +998,8 @@ headerSetting.clock = (parent) => {
         header.element.clock.update();
         headerSetting.disable();
         data.save();
-      }
-    })
+      },
+    }),
   };
 
   headerSetting.control.clock.meridiem = {
@@ -927,8 +1011,8 @@ headerSetting.clock = (parent) => {
       action: () => {
         header.element.clock.update();
         data.save();
-      }
-    })
+      },
+    }),
   };
 
   headerSetting.control.clock.size = new Control_sliderSlim({
@@ -950,7 +1034,7 @@ headerSetting.clock = (parent) => {
     },
     mouseUpAction: () => {
       headerSetting.edge.clock.size.hide();
-    }
+    },
   });
 
   headerSetting.control.clock.newLine = new Control_checkbox({
@@ -962,7 +1046,7 @@ headerSetting.clock = (parent) => {
     action: () => {
       applyCSSState('header.clock.newLine');
       data.save();
-    }
+    },
   });
 
   headerSetting.control.clock.area = node('div', [
@@ -971,11 +1055,9 @@ headerSetting.clock = (parent) => {
     form.wrap({
       children: [
         form.indent({
-          children: [
-            headerSetting.control.clock.separator.collapse.collapse()
-          ]
-        })
-      ]
+          children: [headerSetting.control.clock.separator.collapse.collapse()],
+        }),
+      ],
     }),
     node('hr'),
     headerSetting.control.clock.hour24.show.wrap(),
@@ -983,15 +1065,21 @@ headerSetting.clock = (parent) => {
     node('hr'),
     headerSetting.control.clock.size.wrap(),
     node('hr'),
-    headerSetting.control.clock.newLine.wrap()
+    headerSetting.control.clock.newLine.wrap(),
   ]);
 
   headerSetting.control.clock.collapse = new Collapse({
     type: 'checkbox',
-    checkbox: [headerSetting.control.clock.hour.show, headerSetting.control.clock.minute.show, headerSetting.control.clock.second.show],
-    target: [{
-      content: headerSetting.control.clock.area
-    }]
+    checkbox: [
+      headerSetting.control.clock.hour.show,
+      headerSetting.control.clock.minute.show,
+      headerSetting.control.clock.second.show,
+    ],
+    target: [
+      {
+        content: headerSetting.control.clock.area,
+      },
+    ],
   });
 
   parent.appendChild(
@@ -1000,49 +1088,42 @@ headerSetting.clock = (parent) => {
       form.wrap({
         children: [
           form.indent({
-            children: [
-              headerSetting.control.clock.hour.collapse.collapse()
-            ]
-          })
-        ]
+            children: [headerSetting.control.clock.hour.collapse.collapse()],
+          }),
+        ],
       }),
       headerSetting.control.clock.minute.show.wrap(),
       form.wrap({
         children: [
           form.indent({
-            children: [
-              headerSetting.control.clock.minute.collapse.collapse()
-            ]
-          })
-        ]
+            children: [headerSetting.control.clock.minute.collapse.collapse()],
+          }),
+        ],
       }),
       headerSetting.control.clock.second.show.wrap(),
       form.wrap({
         children: [
           form.indent({
-            children: [
-              headerSetting.control.clock.second.collapse.collapse()
-            ]
-          })
-        ]
+            children: [headerSetting.control.clock.second.collapse.collapse()],
+          }),
+        ],
       }),
       form.wrap({
         children: [
           form.indent({
-            children: [
-              headerSetting.control.clock.collapse.collapse()
-            ]
-          })
-        ]
-      })
+            children: [headerSetting.control.clock.collapse.collapse()],
+          }),
+        ],
+      }),
     ])
   );
-
 };
 
 headerSetting.date = (parent) => {
-
-  headerSetting.edge.date.size = new Edge({ primary: header.element.date.date(), secondary: [header.element.area] });
+  headerSetting.edge.date.size = new Edge({
+    primary: header.element.date.date(),
+    secondary: [header.element.area],
+  });
 
   headerSetting.control.date.day = {};
 
@@ -1057,22 +1138,38 @@ headerSetting.date = (parent) => {
       header.item.render();
       layout.area.assemble();
       headerSetting.disable();
-      headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-      headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-      headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
+      headerSetting.edge.greeting.size.update.primary(
+        header.element.greeting.greeting()
+      );
+      headerSetting.edge.transitional.size.update.primary(
+        header.element.transitional.transitional()
+      );
+      headerSetting.edge.clock.size.update.primary(
+        header.element.clock.clock()
+      );
       headerSetting.edge.date.size.update.primary(header.element.date.date());
-      headerSetting.edge.search.size.update.primary(header.element.search.search());
+      headerSetting.edge.search.size.update.primary(
+        header.element.search.search()
+      );
       headerSetting.control.date.day.collapse.update();
       headerSetting.control.date.collapse.update();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.date.day.display = new Control_radio({
     object: state.get.current(),
     radioGroup: [
-      { id: 'header-date-day-display-number', labelText: message.get('menuContentHeaderDateDayDisplayNumber'), value: 'number' },
-      { id: 'header-date-day-display-word', labelText: message.get('menuContentHeaderDateDayDisplayWord'), value: 'word' }
+      {
+        id: 'header-date-day-display-number',
+        labelText: message.get('menuContentHeaderDateDayDisplayNumber'),
+        value: 'number',
+      },
+      {
+        id: 'header-date-day-display-word',
+        labelText: message.get('menuContentHeaderDateDayDisplayWord'),
+        value: 'word',
+      },
     ],
     groupName: 'header-date-day-display',
     path: 'header.date.day.display',
@@ -1082,21 +1179,41 @@ headerSetting.date = (parent) => {
       header.item.render();
       layout.area.assemble();
       headerSetting.disable();
-      headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-      headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-      headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
+      headerSetting.edge.greeting.size.update.primary(
+        header.element.greeting.greeting()
+      );
+      headerSetting.edge.transitional.size.update.primary(
+        header.element.transitional.transitional()
+      );
+      headerSetting.edge.clock.size.update.primary(
+        header.element.clock.clock()
+      );
       headerSetting.edge.date.size.update.primary(header.element.date.date());
-      headerSetting.edge.search.size.update.primary(header.element.search.search());
+      headerSetting.edge.search.size.update.primary(
+        header.element.search.search()
+      );
       data.save();
-    }
+    },
   });
 
   headerSetting.control.date.day.weekStart = new Control_radio({
     object: state.get.current(),
     label: message.get('menuContentHeaderDateDayDisplayWeekStartLabel'),
     radioGroup: [
-      { id: 'header-date-day-week-start-monday', labelText: message.get('menuContentHeaderDateDayDisplayWeekStartMonday'), value: 'monday' },
-      { id: 'header-date-day-week-start-sunday', labelText: message.get('menuContentHeaderDateDayDisplayWeekStartSunday'), value: 'sunday' }
+      {
+        id: 'header-date-day-week-start-monday',
+        labelText: message.get(
+          'menuContentHeaderDateDayDisplayWeekStartMonday'
+        ),
+        value: 'monday',
+      },
+      {
+        id: 'header-date-day-week-start-sunday',
+        labelText: message.get(
+          'menuContentHeaderDateDayDisplayWeekStartSunday'
+        ),
+        value: 'sunday',
+      },
     ],
     groupName: 'header-date-day-week-start',
     path: 'header.date.day.weekStart',
@@ -1105,21 +1222,37 @@ headerSetting.date = (parent) => {
       header.item.clear();
       header.item.render();
       layout.area.assemble();
-      headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-      headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-      headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
+      headerSetting.edge.greeting.size.update.primary(
+        header.element.greeting.greeting()
+      );
+      headerSetting.edge.transitional.size.update.primary(
+        header.element.transitional.transitional()
+      );
+      headerSetting.edge.clock.size.update.primary(
+        header.element.clock.clock()
+      );
       headerSetting.edge.date.size.update.primary(header.element.date.date());
-      headerSetting.edge.search.size.update.primary(header.element.search.search());
+      headerSetting.edge.search.size.update.primary(
+        header.element.search.search()
+      );
       data.save();
-    }
+    },
   });
 
   headerSetting.control.date.day.length = new Control_radio({
     object: state.get.current(),
     label: message.get('menuContentHeaderDateDayDisplayLengthLabel'),
     radioGroup: [
-      { id: 'header-date-day-length-long', labelText: message.get('menuContentHeaderDateDayDisplayLengthLong'), value: 'long' },
-      { id: 'header-date-day-length-short', labelText: message.get('menuContentHeaderDateDayDisplayLengthShort'), value: 'short' }
+      {
+        id: 'header-date-day-length-long',
+        labelText: message.get('menuContentHeaderDateDayDisplayLengthLong'),
+        value: 'long',
+      },
+      {
+        id: 'header-date-day-length-short',
+        labelText: message.get('menuContentHeaderDateDayDisplayLengthShort'),
+        value: 'short',
+      },
     ],
     groupName: 'header-date-day-length',
     path: 'header.date.day.length',
@@ -1128,28 +1261,50 @@ headerSetting.date = (parent) => {
       header.item.clear();
       header.item.render();
       layout.area.assemble();
-      headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-      headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-      headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
+      headerSetting.edge.greeting.size.update.primary(
+        header.element.greeting.greeting()
+      );
+      headerSetting.edge.transitional.size.update.primary(
+        header.element.transitional.transitional()
+      );
+      headerSetting.edge.clock.size.update.primary(
+        header.element.clock.clock()
+      );
       headerSetting.edge.date.size.update.primary(header.element.date.date());
-      headerSetting.edge.search.size.update.primary(header.element.search.search());
+      headerSetting.edge.search.size.update.primary(
+        header.element.search.search()
+      );
       data.save();
-    }
+    },
   });
 
   headerSetting.control.date.day.area = node('div', [
     headerSetting.control.date.day.display.radioSet[0].wrap(),
-    form.wrap({ children: [form.indent({ children: [headerSetting.control.date.day.weekStart.wrap()] })] }),
+    form.wrap({
+      children: [
+        form.indent({
+          children: [headerSetting.control.date.day.weekStart.wrap()],
+        }),
+      ],
+    }),
     headerSetting.control.date.day.display.radioSet[1].wrap(),
-    form.wrap({ children: [form.indent({ children: [headerSetting.control.date.day.length.wrap()] })] })
+    form.wrap({
+      children: [
+        form.indent({
+          children: [headerSetting.control.date.day.length.wrap()],
+        }),
+      ],
+    }),
   ]);
 
   headerSetting.control.date.day.collapse = new Collapse({
     type: 'checkbox',
     checkbox: headerSetting.control.date.day.show,
-    target: [{
-      content: headerSetting.control.date.day.area
-    }]
+    target: [
+      {
+        content: headerSetting.control.date.day.area,
+      },
+    ],
   });
 
   headerSetting.control.date.date = {};
@@ -1165,22 +1320,38 @@ headerSetting.date = (parent) => {
       header.item.render();
       layout.area.assemble();
       headerSetting.disable();
-      headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-      headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-      headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
+      headerSetting.edge.greeting.size.update.primary(
+        header.element.greeting.greeting()
+      );
+      headerSetting.edge.transitional.size.update.primary(
+        header.element.transitional.transitional()
+      );
+      headerSetting.edge.clock.size.update.primary(
+        header.element.clock.clock()
+      );
       headerSetting.edge.date.size.update.primary(header.element.date.date());
-      headerSetting.edge.search.size.update.primary(header.element.search.search());
+      headerSetting.edge.search.size.update.primary(
+        header.element.search.search()
+      );
       headerSetting.control.date.date.collapse.update();
       headerSetting.control.date.collapse.update();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.date.date.display = new Control_radio({
     object: state.get.current(),
     radioGroup: [
-      { id: 'header-date-date-display-number', labelText: message.get('menuContentHeaderDateDateDisplayNumber'), value: 'number' },
-      { id: 'header-date-date-display-word', labelText: message.get('menuContentHeaderDateDateDisplayWord'), value: 'word' }
+      {
+        id: 'header-date-date-display-number',
+        labelText: message.get('menuContentHeaderDateDateDisplayNumber'),
+        value: 'number',
+      },
+      {
+        id: 'header-date-date-display-word',
+        labelText: message.get('menuContentHeaderDateDateDisplayWord'),
+        value: 'word',
+      },
     ],
     groupName: 'header-date-date-display',
     path: 'header.date.date.display',
@@ -1189,13 +1360,21 @@ headerSetting.date = (parent) => {
       header.item.clear();
       header.item.render();
       layout.area.assemble();
-      headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-      headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-      headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
+      headerSetting.edge.greeting.size.update.primary(
+        header.element.greeting.greeting()
+      );
+      headerSetting.edge.transitional.size.update.primary(
+        header.element.transitional.transitional()
+      );
+      headerSetting.edge.clock.size.update.primary(
+        header.element.clock.clock()
+      );
       headerSetting.edge.date.size.update.primary(header.element.date.date());
-      headerSetting.edge.search.size.update.primary(header.element.search.search());
+      headerSetting.edge.search.size.update.primary(
+        header.element.search.search()
+      );
       data.save();
-    }
+    },
   });
 
   headerSetting.control.date.date.ordinal = new Control_checkbox({
@@ -1206,20 +1385,22 @@ headerSetting.date = (parent) => {
     action: () => {
       header.element.date.update();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.date.date.area = node('div', [
     headerSetting.control.date.date.display.wrap(),
-    headerSetting.control.date.date.ordinal.wrap()
+    headerSetting.control.date.date.ordinal.wrap(),
   ]);
 
   headerSetting.control.date.date.collapse = new Collapse({
     type: 'checkbox',
     checkbox: headerSetting.control.date.date.show,
-    target: [{
-      content: headerSetting.control.date.date.area
-    }]
+    target: [
+      {
+        content: headerSetting.control.date.date.area,
+      },
+    ],
   });
 
   headerSetting.control.date.month = {};
@@ -1235,22 +1416,38 @@ headerSetting.date = (parent) => {
       header.item.render();
       layout.area.assemble();
       headerSetting.disable();
-      headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-      headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-      headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
+      headerSetting.edge.greeting.size.update.primary(
+        header.element.greeting.greeting()
+      );
+      headerSetting.edge.transitional.size.update.primary(
+        header.element.transitional.transitional()
+      );
+      headerSetting.edge.clock.size.update.primary(
+        header.element.clock.clock()
+      );
       headerSetting.edge.date.size.update.primary(header.element.date.date());
-      headerSetting.edge.search.size.update.primary(header.element.search.search());
+      headerSetting.edge.search.size.update.primary(
+        header.element.search.search()
+      );
       headerSetting.control.date.month.collapse.update();
       headerSetting.control.date.collapse.update();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.date.month.display = new Control_radio({
     object: state.get.current(),
     radioGroup: [
-      { id: 'header-date-month-display-number', labelText: message.get('menuContentHeaderDateMonthDisplayNumber'), value: 'number' },
-      { id: 'header-date-month-display-word', labelText: message.get('menuContentHeaderDateMonthDisplayWord'), value: 'word' }
+      {
+        id: 'header-date-month-display-number',
+        labelText: message.get('menuContentHeaderDateMonthDisplayNumber'),
+        value: 'number',
+      },
+      {
+        id: 'header-date-month-display-word',
+        labelText: message.get('menuContentHeaderDateMonthDisplayWord'),
+        value: 'word',
+      },
     ],
     groupName: 'header-date-month-display',
     path: 'header.date.month.display',
@@ -1260,21 +1457,37 @@ headerSetting.date = (parent) => {
       header.item.render();
       layout.area.assemble();
       headerSetting.disable();
-      headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-      headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-      headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
+      headerSetting.edge.greeting.size.update.primary(
+        header.element.greeting.greeting()
+      );
+      headerSetting.edge.transitional.size.update.primary(
+        header.element.transitional.transitional()
+      );
+      headerSetting.edge.clock.size.update.primary(
+        header.element.clock.clock()
+      );
       headerSetting.edge.date.size.update.primary(header.element.date.date());
-      headerSetting.edge.search.size.update.primary(header.element.search.search());
+      headerSetting.edge.search.size.update.primary(
+        header.element.search.search()
+      );
       data.save();
-    }
+    },
   });
 
   headerSetting.control.date.month.length = new Control_radio({
     object: state.get.current(),
     label: message.get('menuContentHeaderDateMonthDisplayLengthLabel'),
     radioGroup: [
-      { id: 'header-date-month-length-long', labelText: message.get('menuContentHeaderDateMonthDisplayLengthLong'), value: 'long' },
-      { id: 'header-date-month-length-short', labelText: message.get('menuContentHeaderDateMonthDisplayLengthShort'), value: 'short' }
+      {
+        id: 'header-date-month-length-long',
+        labelText: message.get('menuContentHeaderDateMonthDisplayLengthLong'),
+        value: 'long',
+      },
+      {
+        id: 'header-date-month-length-short',
+        labelText: message.get('menuContentHeaderDateMonthDisplayLengthShort'),
+        value: 'short',
+      },
     ],
     groupName: 'header-date-month-length',
     path: 'header.date.month.length',
@@ -1283,13 +1496,21 @@ headerSetting.date = (parent) => {
       header.item.clear();
       header.item.render();
       layout.area.assemble();
-      headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-      headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-      headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
+      headerSetting.edge.greeting.size.update.primary(
+        header.element.greeting.greeting()
+      );
+      headerSetting.edge.transitional.size.update.primary(
+        header.element.transitional.transitional()
+      );
+      headerSetting.edge.clock.size.update.primary(
+        header.element.clock.clock()
+      );
       headerSetting.edge.date.size.update.primary(header.element.date.date());
-      headerSetting.edge.search.size.update.primary(header.element.search.search());
+      headerSetting.edge.search.size.update.primary(
+        header.element.search.search()
+      );
       data.save();
-    }
+    },
   });
 
   headerSetting.control.date.month.ordinal = new Control_checkbox({
@@ -1300,22 +1521,36 @@ headerSetting.date = (parent) => {
     action: () => {
       header.element.date.update();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.date.month.area = node('div', [
     headerSetting.control.date.month.display.radioSet[0].wrap(),
-    form.wrap({ children: [form.indent({ children: [headerSetting.control.date.month.ordinal.wrap()] })] }),
+    form.wrap({
+      children: [
+        form.indent({
+          children: [headerSetting.control.date.month.ordinal.wrap()],
+        }),
+      ],
+    }),
     headerSetting.control.date.month.display.radioSet[1].wrap(),
-    form.wrap({ children: [form.indent({ children: [headerSetting.control.date.month.length.wrap()] })] })
+    form.wrap({
+      children: [
+        form.indent({
+          children: [headerSetting.control.date.month.length.wrap()],
+        }),
+      ],
+    }),
   ]);
 
   headerSetting.control.date.month.collapse = new Collapse({
     type: 'checkbox',
     checkbox: headerSetting.control.date.month.show,
-    target: [{
-      content: headerSetting.control.date.month.area
-    }]
+    target: [
+      {
+        content: headerSetting.control.date.month.area,
+      },
+    ],
   });
 
   headerSetting.control.date.year = {};
@@ -1331,22 +1566,38 @@ headerSetting.date = (parent) => {
       header.item.render();
       layout.area.assemble();
       headerSetting.disable();
-      headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-      headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-      headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
+      headerSetting.edge.greeting.size.update.primary(
+        header.element.greeting.greeting()
+      );
+      headerSetting.edge.transitional.size.update.primary(
+        header.element.transitional.transitional()
+      );
+      headerSetting.edge.clock.size.update.primary(
+        header.element.clock.clock()
+      );
       headerSetting.edge.date.size.update.primary(header.element.date.date());
-      headerSetting.edge.search.size.update.primary(header.element.search.search());
+      headerSetting.edge.search.size.update.primary(
+        header.element.search.search()
+      );
       headerSetting.control.date.year.collapse.update();
       headerSetting.control.date.collapse.update();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.date.year.display = new Control_radio({
     object: state.get.current(),
     radioGroup: [
-      { id: 'header-date-year-display-number', labelText: message.get('menuContentHeaderDateYearDisplayNumber'), value: 'number' },
-      { id: 'header-date-year-display-word', labelText: message.get('menuContentHeaderDateYearDisplayWord'), value: 'word' }
+      {
+        id: 'header-date-year-display-number',
+        labelText: message.get('menuContentHeaderDateYearDisplayNumber'),
+        value: 'number',
+      },
+      {
+        id: 'header-date-year-display-word',
+        labelText: message.get('menuContentHeaderDateYearDisplayWord'),
+        value: 'word',
+      },
     ],
     groupName: 'header-date-year-display',
     path: 'header.date.year.display',
@@ -1355,25 +1606,35 @@ headerSetting.date = (parent) => {
       header.item.clear();
       header.item.render();
       layout.area.assemble();
-      headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-      headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-      headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
+      headerSetting.edge.greeting.size.update.primary(
+        header.element.greeting.greeting()
+      );
+      headerSetting.edge.transitional.size.update.primary(
+        header.element.transitional.transitional()
+      );
+      headerSetting.edge.clock.size.update.primary(
+        header.element.clock.clock()
+      );
       headerSetting.edge.date.size.update.primary(header.element.date.date());
-      headerSetting.edge.search.size.update.primary(header.element.search.search());
+      headerSetting.edge.search.size.update.primary(
+        header.element.search.search()
+      );
       data.save();
-    }
+    },
   });
 
   headerSetting.control.date.year.area = node('div', [
-    headerSetting.control.date.year.display.wrap()
+    headerSetting.control.date.year.display.wrap(),
   ]);
 
   headerSetting.control.date.year.collapse = new Collapse({
     type: 'checkbox',
     checkbox: headerSetting.control.date.year.show,
-    target: [{
-      content: headerSetting.control.date.year.area
-    }]
+    target: [
+      {
+        content: headerSetting.control.date.year.area,
+      },
+    ],
   });
 
   headerSetting.control.date.separator = {};
@@ -1387,13 +1648,21 @@ headerSetting.date = (parent) => {
       header.element.date.update();
       headerSetting.control.date.separator.collapse.update();
       headerSetting.disable();
-      headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-      headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-      headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
+      headerSetting.edge.greeting.size.update.primary(
+        header.element.greeting.greeting()
+      );
+      headerSetting.edge.transitional.size.update.primary(
+        header.element.transitional.transitional()
+      );
+      headerSetting.edge.clock.size.update.primary(
+        header.element.clock.clock()
+      );
       headerSetting.edge.date.size.update.primary(header.element.date.date());
-      headerSetting.edge.search.size.update.primary(header.element.search.search());
+      headerSetting.edge.search.size.update.primary(
+        header.element.search.search()
+      );
       data.save();
-    }
+    },
   });
 
   headerSetting.control.date.separator.text = new Control_textReset({
@@ -1408,34 +1677,44 @@ headerSetting.date = (parent) => {
     action: () => {
       header.element.date.update();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.date.separator.area = node('div', [
-    headerSetting.control.date.separator.text.wrap()
+    headerSetting.control.date.separator.text.wrap(),
   ]);
 
   headerSetting.control.date.separator.collapse = new Collapse({
     type: 'checkbox',
     checkbox: headerSetting.control.date.separator.show,
-    target: [{
-      content: headerSetting.control.date.separator.area
-    }]
+    target: [
+      {
+        content: headerSetting.control.date.separator.area,
+      },
+    ],
   });
 
   headerSetting.control.date.format = new Control_radio({
     object: state.get.current(),
     label: message.get('menuContentHeaderDateFormatLabel'),
     radioGroup: [
-      { id: 'header-date-format-date-month', labelText: message.get('menuContentHeaderDateFormatDateMonth'), value: 'date-month' },
-      { id: 'header-date-format-month-date', labelText: message.get('menuContentHeaderDateFormatMonthDate'), value: 'month-date' }
+      {
+        id: 'header-date-format-date-month',
+        labelText: message.get('menuContentHeaderDateFormatDateMonth'),
+        value: 'date-month',
+      },
+      {
+        id: 'header-date-format-month-date',
+        labelText: message.get('menuContentHeaderDateFormatMonthDate'),
+        value: 'month-date',
+      },
     ],
     groupName: 'header-date-format',
     path: 'header.date.format',
     action: () => {
       header.element.date.update();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.date.size = new Control_sliderSlim({
@@ -1457,7 +1736,7 @@ headerSetting.date = (parent) => {
     },
     mouseUpAction: () => {
       headerSetting.edge.date.size.hide();
-    }
+    },
   });
 
   headerSetting.control.date.newLine = new Control_checkbox({
@@ -1469,7 +1748,7 @@ headerSetting.date = (parent) => {
     action: () => {
       applyCSSState('header.date.newLine');
       data.save();
-    }
+    },
   });
 
   headerSetting.control.date.area = node('div', [
@@ -1478,55 +1757,83 @@ headerSetting.date = (parent) => {
     form.wrap({
       children: [
         form.indent({
-          children: [
-            headerSetting.control.date.separator.collapse.collapse()
-          ]
-        })
-      ]
+          children: [headerSetting.control.date.separator.collapse.collapse()],
+        }),
+      ],
     }),
     node('hr'),
     headerSetting.control.date.format.wrap(),
     node('hr'),
     headerSetting.control.date.size.wrap(),
     node('hr'),
-    headerSetting.control.date.newLine.wrap()
+    headerSetting.control.date.newLine.wrap(),
   ]);
 
   headerSetting.control.date.collapse = new Collapse({
     type: 'checkbox',
-    checkbox: [headerSetting.control.date.day.show, headerSetting.control.date.date.show, headerSetting.control.date.month.show, headerSetting.control.date.year.show],
-    target: [{
-      content: headerSetting.control.date.area
-    }]
+    checkbox: [
+      headerSetting.control.date.day.show,
+      headerSetting.control.date.date.show,
+      headerSetting.control.date.month.show,
+      headerSetting.control.date.year.show,
+    ],
+    target: [
+      {
+        content: headerSetting.control.date.area,
+      },
+    ],
   });
 
   parent.appendChild(
     node('div', [
       headerSetting.control.date.day.show.wrap(),
-      form.wrap({ children: [form.indent({ children: [headerSetting.control.date.day.collapse.collapse()] })] }),
-      headerSetting.control.date.date.show.wrap(),
-      form.wrap({ children: [form.indent({ children: [headerSetting.control.date.date.collapse.collapse()] })] }),
-      headerSetting.control.date.month.show.wrap(),
-      form.wrap({ children: [form.indent({ children: [headerSetting.control.date.month.collapse.collapse()] })] }),
-      headerSetting.control.date.year.show.wrap(),
-      form.wrap({ children: [form.indent({ children: [headerSetting.control.date.year.collapse.collapse()] })] }),
       form.wrap({
         children: [
           form.indent({
-            children: [
-              headerSetting.control.date.collapse.collapse()
-            ]
-          })
-        ]
-      })
+            children: [headerSetting.control.date.day.collapse.collapse()],
+          }),
+        ],
+      }),
+      headerSetting.control.date.date.show.wrap(),
+      form.wrap({
+        children: [
+          form.indent({
+            children: [headerSetting.control.date.date.collapse.collapse()],
+          }),
+        ],
+      }),
+      headerSetting.control.date.month.show.wrap(),
+      form.wrap({
+        children: [
+          form.indent({
+            children: [headerSetting.control.date.month.collapse.collapse()],
+          }),
+        ],
+      }),
+      headerSetting.control.date.year.show.wrap(),
+      form.wrap({
+        children: [
+          form.indent({
+            children: [headerSetting.control.date.year.collapse.collapse()],
+          }),
+        ],
+      }),
+      form.wrap({
+        children: [
+          form.indent({
+            children: [headerSetting.control.date.collapse.collapse()],
+          }),
+        ],
+      }),
     ])
   );
-
 };
 
 headerSetting.search = (parent) => {
-
-  headerSetting.edge.search.size = new Edge({ primary: header.element.search.search(), secondary: [header.element.area] });
+  headerSetting.edge.search.size = new Edge({
+    primary: header.element.search.search(),
+    secondary: [header.element.area],
+  });
 
   headerSetting.control.search.show = new Control_checkbox({
     object: state.get.current(),
@@ -1539,14 +1846,22 @@ headerSetting.search = (parent) => {
       header.item.render();
       layout.area.assemble();
       headerSetting.disable();
-      headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-      headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-      headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
+      headerSetting.edge.greeting.size.update.primary(
+        header.element.greeting.greeting()
+      );
+      headerSetting.edge.transitional.size.update.primary(
+        header.element.transitional.transitional()
+      );
+      headerSetting.edge.clock.size.update.primary(
+        header.element.clock.clock()
+      );
       headerSetting.edge.date.size.update.primary(header.element.date.date());
-      headerSetting.edge.search.size.update.primary(header.element.search.search());
+      headerSetting.edge.search.size.update.primary(
+        header.element.search.search()
+      );
       headerSetting.control.search.collapse.update();
       data.save();
-    }
+    },
   });
 
   headerSetting.control.search.width = {
@@ -1554,8 +1869,22 @@ headerSetting.search = (parent) => {
       object: state.get.current(),
       label: message.get('menuContentHeaderSearchWidthLabel'),
       radioGroup: [
-        { id: 'header-search-width-by-auto', labelText: message.get('menuContentHeaderSearchWidthAutoLabel'), description: message.get('menuContentHeaderSearchWidthAutoDescription'), value: 'auto' },
-        { id: 'header-search-width-by-custom', labelText: message.get('menuContentHeaderSearchWidthCustomLabel'), description: message.get('menuContentHeaderSearchWidthCustomDescription'), value: 'custom' }
+        {
+          id: 'header-search-width-by-auto',
+          labelText: message.get('menuContentHeaderSearchWidthAutoLabel'),
+          description: message.get(
+            'menuContentHeaderSearchWidthAutoDescription'
+          ),
+          value: 'auto',
+        },
+        {
+          id: 'header-search-width-by-custom',
+          labelText: message.get('menuContentHeaderSearchWidthCustomLabel'),
+          description: message.get(
+            'menuContentHeaderSearchWidthCustomDescription'
+          ),
+          value: 'custom',
+        },
       ],
       groupName: 'header-search-width-by',
       path: 'header.search.width.by',
@@ -1564,7 +1893,7 @@ headerSetting.search = (parent) => {
         headerSetting.disable();
         headerSetting.control.search.width.collapse.update();
         data.save();
-      }
+      },
     }),
     size: new Control_sliderSlim({
       object: state.get.current(),
@@ -1585,21 +1914,25 @@ headerSetting.search = (parent) => {
       },
       mouseUpAction: () => {
         headerSetting.edge.search.size.hide();
-      }
-    })
+      },
+    }),
   };
 
   headerSetting.control.search.width.area = node('div', [
-    headerSetting.control.search.width.size.wrap()
+    headerSetting.control.search.width.size.wrap(),
   ]);
 
   headerSetting.control.search.width.collapse = new Collapse({
     type: 'radio',
     radioGroup: headerSetting.control.search.width.by,
-    target: [{
-      id: headerSetting.control.search.width.by.radioSet[headerSetting.control.search.width.by.radioSet.length - 1].radio.value,
-      content: headerSetting.control.search.width.area
-    }]
+    target: [
+      {
+        id: headerSetting.control.search.width.by.radioSet[
+          headerSetting.control.search.width.by.radioSet.length - 1
+        ].radio.value,
+        content: headerSetting.control.search.width.area,
+      },
+    ],
   });
 
   headerSetting.control.search.size = new Control_sliderSlim({
@@ -1621,7 +1954,7 @@ headerSetting.search = (parent) => {
     },
     mouseUpAction: () => {
       headerSetting.edge.search.size.hide();
-    }
+    },
   });
 
   headerSetting.control.search.newLine = new Control_checkbox({
@@ -1633,18 +1966,24 @@ headerSetting.search = (parent) => {
     action: () => {
       applyCSSState('header.search.newLine');
       data.save();
-    }
+    },
   });
 
   const searchEngineList = [];
 
   for (let key in searchEnginePreset) {
-
-    searchEngineList.push({ id: `header-search-engine-selected-${key}`, labelText: searchEnginePreset[key].name, value: key });
-
+    searchEngineList.push({
+      id: `header-search-engine-selected-${key}`,
+      labelText: searchEnginePreset[key].name,
+      value: key,
+    });
   }
 
-  searchEngineList.push({ id: 'header-search-engine-selected-custom', labelText: message.get('menuContentHeaderSearchEngineSelectedCustom'), value: 'custom' });
+  searchEngineList.push({
+    id: 'header-search-engine-selected-custom',
+    labelText: message.get('menuContentHeaderSearchEngineSelectedCustom'),
+    value: 'custom',
+  });
 
   headerSetting.control.search.engine = {
     selected: new Control_radio({
@@ -1659,14 +1998,22 @@ headerSetting.search = (parent) => {
         header.item.render();
         layout.area.assemble();
         headerSetting.disable();
-        headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-        headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-        headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
+        headerSetting.edge.greeting.size.update.primary(
+          header.element.greeting.greeting()
+        );
+        headerSetting.edge.transitional.size.update.primary(
+          header.element.transitional.transitional()
+        );
+        headerSetting.edge.clock.size.update.primary(
+          header.element.clock.clock()
+        );
         headerSetting.edge.date.size.update.primary(header.element.date.date());
-        headerSetting.edge.search.size.update.primary(header.element.search.search());
+        headerSetting.edge.search.size.update.primary(
+          header.element.search.search()
+        );
         headerSetting.control.search.engine.custom.collapse.update();
         data.save();
-      }
+      },
     }),
     custom: {
       name: new Control_text({
@@ -1674,74 +2021,116 @@ headerSetting.search = (parent) => {
         path: 'header.search.engine.custom.name',
         id: 'header-search-engine-custom-name',
         value: state.get.current().header.search.engine.custom.name,
-        placeholder: message.get('menuContentHeaderSearchEngineCustomNamePlaceholder'),
+        placeholder: message.get(
+          'menuContentHeaderSearchEngineCustomNamePlaceholder'
+        ),
         labelText: message.get('menuContentHeaderSearchEngineCustomNameLabel'),
         action: () => {
           header.item.mod.order();
           header.item.clear();
           header.item.render();
           layout.area.assemble();
-          headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-          headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-          headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
-          headerSetting.edge.date.size.update.primary(header.element.date.date());
-          headerSetting.edge.search.size.update.primary(header.element.search.search());
+          headerSetting.edge.greeting.size.update.primary(
+            header.element.greeting.greeting()
+          );
+          headerSetting.edge.transitional.size.update.primary(
+            header.element.transitional.transitional()
+          );
+          headerSetting.edge.clock.size.update.primary(
+            header.element.clock.clock()
+          );
+          headerSetting.edge.date.size.update.primary(
+            header.element.date.date()
+          );
+          headerSetting.edge.search.size.update.primary(
+            header.element.search.search()
+          );
           data.save();
-        }
+        },
       }),
       url: new Control_text({
         object: state.get.current(),
         path: 'header.search.engine.custom.url',
         id: 'header-search-engine-custom-url',
         value: state.get.current().header.search.engine.custom.url,
-        placeholder: message.get('menuContentHeaderSearchEngineCustomUrlPlaceholder'),
+        placeholder: message.get(
+          'menuContentHeaderSearchEngineCustomUrlPlaceholder'
+        ),
         labelText: message.get('menuContentHeaderSearchEngineCustomUrlLabel'),
         action: () => {
           header.item.mod.order();
           header.item.clear();
           header.item.render();
           layout.area.assemble();
-          headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-          headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-          headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
-          headerSetting.edge.date.size.update.primary(header.element.date.date());
-          headerSetting.edge.search.size.update.primary(header.element.search.search());
+          headerSetting.edge.greeting.size.update.primary(
+            header.element.greeting.greeting()
+          );
+          headerSetting.edge.transitional.size.update.primary(
+            header.element.transitional.transitional()
+          );
+          headerSetting.edge.clock.size.update.primary(
+            header.element.clock.clock()
+          );
+          headerSetting.edge.date.size.update.primary(
+            header.element.date.date()
+          );
+          headerSetting.edge.search.size.update.primary(
+            header.element.search.search()
+          );
           data.save();
-        }
+        },
       }),
       urlHelper: new Control_helperText({
         text: [
           message.get('menuContentHeaderSearchEngineCustomUrlHelperPara1'),
-          message.get('menuContentHeaderSearchEngineCustomUrlHelperPara2')
-        ]
+          message.get('menuContentHeaderSearchEngineCustomUrlHelperPara2'),
+        ],
       }),
       queryName: new Control_text({
         object: state.get.current(),
         path: 'header.search.engine.custom.queryName',
         id: 'header-search-engine-custom-queryName',
         value: state.get.current().header.search.engine.custom.queryName,
-        placeholder: message.get('menuContentHeaderSearchEngineCustomQueryNamePlaceholder'),
-        labelText: message.get('menuContentHeaderSearchEngineCustomQueryNameLabel'),
+        placeholder: message.get(
+          'menuContentHeaderSearchEngineCustomQueryNamePlaceholder'
+        ),
+        labelText: message.get(
+          'menuContentHeaderSearchEngineCustomQueryNameLabel'
+        ),
         action: () => {
           header.item.mod.order();
           header.item.clear();
           header.item.render();
           layout.area.assemble();
-          headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-          headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-          headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
-          headerSetting.edge.date.size.update.primary(header.element.date.date());
-          headerSetting.edge.search.size.update.primary(header.element.search.search());
+          headerSetting.edge.greeting.size.update.primary(
+            header.element.greeting.greeting()
+          );
+          headerSetting.edge.transitional.size.update.primary(
+            header.element.transitional.transitional()
+          );
+          headerSetting.edge.clock.size.update.primary(
+            header.element.clock.clock()
+          );
+          headerSetting.edge.date.size.update.primary(
+            header.element.date.date()
+          );
+          headerSetting.edge.search.size.update.primary(
+            header.element.search.search()
+          );
           data.save();
-        }
+        },
       }),
       queryNameHelper: new Control_helperText({
         text: [
-          message.get('menuContentHeaderSearchEngineCustomQueryNameHelperPara1'),
-          message.get('menuContentHeaderSearchEngineCustomQueryNameHelperPara2')
-        ]
-      })
-    }
+          message.get(
+            'menuContentHeaderSearchEngineCustomQueryNameHelperPara1'
+          ),
+          message.get(
+            'menuContentHeaderSearchEngineCustomQueryNameHelperPara2'
+          ),
+        ],
+      }),
+    },
   };
 
   headerSetting.control.search.engine.custom.area = node('div', [
@@ -1749,25 +2138,50 @@ headerSetting.search = (parent) => {
     headerSetting.control.search.engine.custom.url.wrap(),
     headerSetting.control.search.engine.custom.urlHelper.wrap(),
     headerSetting.control.search.engine.custom.queryName.wrap(),
-    headerSetting.control.search.engine.custom.queryNameHelper.wrap()
+    headerSetting.control.search.engine.custom.queryNameHelper.wrap(),
   ]);
 
   headerSetting.control.search.engine.custom.collapse = new Collapse({
     type: 'radio',
     radioGroup: headerSetting.control.search.engine.selected,
-    target: [{
-      id: headerSetting.control.search.engine.selected.radioSet[headerSetting.control.search.engine.selected.radioSet.length - 1].radio.value,
-      content: headerSetting.control.search.engine.custom.area
-    }]
+    target: [
+      {
+        id: headerSetting.control.search.engine.selected.radioSet[
+          headerSetting.control.search.engine.selected.radioSet.length - 1
+        ].radio.value,
+        content: headerSetting.control.search.engine.custom.area,
+      },
+    ],
   });
 
   headerSetting.control.search.text = {
     justify: new Control_radioGrid({
       object: state.get.current(),
       radioGroup: [
-        { id: 'header-search-text-justify-left', labelText: message.get('menuContentHeaderSearchEngineTextJustifyLeft'), value: 'left', position: 1 },
-        { id: 'header-search-text-justify-center', labelText: message.get('menuContentHeaderSearchEngineTextJustifyCenter'), value: 'center', position: 2 },
-        { id: 'header-search-text-justify-right', labelText: message.get('menuContentHeaderSearchEngineTextJustifyRight'), value: 'right', position: 3 }
+        {
+          id: 'header-search-text-justify-left',
+          labelText: message.get(
+            'menuContentHeaderSearchEngineTextJustifyLeft'
+          ),
+          value: 'left',
+          position: 1,
+        },
+        {
+          id: 'header-search-text-justify-center',
+          labelText: message.get(
+            'menuContentHeaderSearchEngineTextJustifyCenter'
+          ),
+          value: 'center',
+          position: 2,
+        },
+        {
+          id: 'header-search-text-justify-right',
+          labelText: message.get(
+            'menuContentHeaderSearchEngineTextJustifyRight'
+          ),
+          value: 'right',
+          position: 3,
+        },
       ],
       label: message.get('menuContentHeaderSearchEngineTextJustifyLabel'),
       groupName: 'header-search-text-justify',
@@ -1776,8 +2190,8 @@ headerSetting.search = (parent) => {
       action: () => {
         applyCSSClass('header.search.text.justify');
         data.save();
-      }
-    })
+      },
+    }),
   };
 
   headerSetting.control.search.newTab = new Control_checkbox({
@@ -1790,13 +2204,21 @@ headerSetting.search = (parent) => {
       header.item.clear();
       header.item.render();
       layout.area.assemble();
-      headerSetting.edge.greeting.size.update.primary(header.element.greeting.greeting());
-      headerSetting.edge.transitional.size.update.primary(header.element.transitional.transitional());
-      headerSetting.edge.clock.size.update.primary(header.element.clock.clock());
+      headerSetting.edge.greeting.size.update.primary(
+        header.element.greeting.greeting()
+      );
+      headerSetting.edge.transitional.size.update.primary(
+        header.element.transitional.transitional()
+      );
+      headerSetting.edge.clock.size.update.primary(
+        header.element.clock.clock()
+      );
       headerSetting.edge.date.size.update.primary(header.element.date.date());
-      headerSetting.edge.search.size.update.primary(header.element.search.search());
+      headerSetting.edge.search.size.update.primary(
+        header.element.search.search()
+      );
       data.save();
-    }
+    },
   });
 
   headerSetting.control.search.area = node('div', [
@@ -1804,11 +2226,9 @@ headerSetting.search = (parent) => {
     form.wrap({
       children: [
         form.indent({
-          children: [
-            headerSetting.control.search.width.collapse.collapse()
-          ]
-        })
-      ]
+          children: [headerSetting.control.search.width.collapse.collapse()],
+        }),
+      ],
     }),
     node('hr'),
     headerSetting.control.search.size.wrap(),
@@ -1820,23 +2240,25 @@ headerSetting.search = (parent) => {
       children: [
         form.indent({
           children: [
-            headerSetting.control.search.engine.custom.collapse.collapse()
-          ]
-        })
-      ]
+            headerSetting.control.search.engine.custom.collapse.collapse(),
+          ],
+        }),
+      ],
     }),
     node('hr'),
     headerSetting.control.search.text.justify.wrap(),
     node('hr'),
-    headerSetting.control.search.newTab.wrap()
+    headerSetting.control.search.newTab.wrap(),
   ]);
 
   headerSetting.control.search.collapse = new Collapse({
     type: 'checkbox',
     checkbox: headerSetting.control.search.show,
-    target: [{
-      content: headerSetting.control.search.area
-    }]
+    target: [
+      {
+        content: headerSetting.control.search.area,
+      },
+    ],
   });
 
   parent.appendChild(
@@ -1845,15 +2267,12 @@ headerSetting.search = (parent) => {
       form.wrap({
         children: [
           form.indent({
-            children: [
-              headerSetting.control.search.collapse.collapse()
-            ]
-          })
-        ]
-      })
+            children: [headerSetting.control.search.collapse.collapse()],
+          }),
+        ],
+      }),
     ])
   );
-
 };
 
 export { headerSetting };

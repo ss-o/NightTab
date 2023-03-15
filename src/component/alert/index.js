@@ -6,35 +6,27 @@ import { node } from '../../utility/node';
 
 import './index.css';
 
-export const Alert = function ({
-  children = [],
-  iconName = false
-} = {}) {
-
+export const Alert = function ({ children = [], iconName = false } = {}) {
   this.element = {
     alert: node('div|class:alert'),
     header: node('div|class:alert-header'),
     body: node('div|class:alert-body'),
     icon: node('div|class:alert-icon'),
-    message: node('div|class:alert-message', children)
+    message: node('div|class:alert-message', children),
   };
 
   this.assemble = () => {
-
     if (iconName) {
-
       this.element.icon.appendChild(icon.render(iconName));
 
       this.element.header.appendChild(this.element.icon);
 
       this.element.alert.appendChild(this.element.header);
-
     }
 
     this.element.body.appendChild(this.element.message);
 
     this.element.alert.appendChild(this.element.body);
-
   };
 
   this.alert = () => {
@@ -43,12 +35,9 @@ export const Alert = function ({
 
   this.wrap = () => {
     return form.wrap({
-      children: [
-        this.element.alert
-      ]
+      children: [this.element.alert],
     });
   };
 
   this.assemble();
-
 };

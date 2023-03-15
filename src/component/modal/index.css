@@ -22,7 +22,8 @@
   overflow: hidden;
   pointer-events: all;
   opacity: 0;
-  transition: background-color var(--layout-transition-extra-fast), opacity var(--layout-transition-extra-fast);
+  transition: background-color var(--layout-transition-extra-fast),
+    opacity var(--layout-transition-extra-fast);
   z-index: var(--z-index-modal);
 }
 
@@ -35,7 +36,8 @@
 }
 
 .modal-content-wrapper {
-  padding: calc((var(--modal-space) / 2) * 0.75em) calc((var(--modal-space) / 2) * 1em);
+  padding: calc((var(--modal-space) / 2) * 0.75em)
+    calc((var(--modal-space) / 2) * 1em);
   position: relative;
   overflow-y: auto;
 }
@@ -50,7 +52,8 @@
 }
 
 .modal-body {
-  border-radius: calc(var(--theme-radius) * 0.01em) calc(var(--theme-radius) * 0.01em) 0 0;
+  border-radius: calc(var(--theme-radius) * 0.01em)
+    calc(var(--theme-radius) * 0.01em) 0 0;
   position: relative;
 }
 
@@ -78,7 +81,8 @@
 
 .modal-control {
   background-color: hsl(var(--theme-primary-010));
-  border-radius: 0 0 calc(var(--theme-radius) * 0.01em) calc(var(--theme-radius) * 0.01em);
+  border-radius: 0 0 calc(var(--theme-radius) * 0.01em)
+    calc(var(--theme-radius) * 0.01em);
   position: relative;
   z-index: 2;
   display: flex;
@@ -101,5 +105,5 @@
 
 .modal-control .modal-control-button:last-child,
 .modal-control .modal-control-button:last-child:after {
-  border-radius: 0 0 calc(var(--theme-radius) * 0.01em) 0
+  border-radius: 0 0 calc(var(--theme-radius) * 0.01em) 0;
 }

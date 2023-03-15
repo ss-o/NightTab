@@ -25,13 +25,11 @@ toolbarSetting.control = {
   opacity: {},
   location: {},
   position: {},
-  controls: {}
+  controls: {},
 };
 
 toolbarSetting.disable = () => {
-
   switch (state.get.current().toolbar.location) {
-
     case 'corner':
       toolbarSetting.control.positionElement.enable();
       toolbarSetting.control.positionElementHelper1.enable();
@@ -43,27 +41,27 @@ toolbarSetting.disable = () => {
       toolbarSetting.control.positionElementHelper1.disable();
       toolbarSetting.control.location.newLine.enable();
       break;
-
   }
-
 };
 
 toolbarSetting.edge = {
-  size: null
+  size: null,
 };
 
 toolbarSetting.size = (parent) => {
-
   switch (state.get.current().toolbar.location) {
-
     case 'header':
-      toolbarSetting.edge.size = new Edge({ primary: toolbar.current.element.toolbar, secondary: [header.element.area] });
+      toolbarSetting.edge.size = new Edge({
+        primary: toolbar.current.element.toolbar,
+        secondary: [header.element.area],
+      });
       break;
 
     case 'corner':
-      toolbarSetting.edge.size = new Edge({ primary: toolbar.current.element.toolbar });
+      toolbarSetting.edge.size = new Edge({
+        primary: toolbar.current.element.toolbar,
+      });
       break;
-
   }
 
   toolbarSetting.control.size = new Control_slider({
@@ -85,23 +83,26 @@ toolbarSetting.size = (parent) => {
     },
     mouseUpAction: () => {
       toolbarSetting.edge.size.hide();
-    }
+    },
   });
 
-  parent.appendChild(
-    node('div', [
-      toolbarSetting.control.size.wrap()
-    ])
-  );
+  parent.appendChild(node('div', [toolbarSetting.control.size.wrap()]));
 };
 
 toolbarSetting.location = (parent) => {
-
   toolbarSetting.control.location.locationElement = new Control_radio({
     object: state.get.current(),
     radioGroup: [
-      { id: 'toolbar-location-corner', labelText: message.get('menuContentToolbarLocationCorner'), value: 'corner' },
-      { id: 'toolbar-location-header', labelText: message.get('menuContentToolbarLocationHeader'), value: 'header' }
+      {
+        id: 'toolbar-location-corner',
+        labelText: message.get('menuContentToolbarLocationCorner'),
+        value: 'corner',
+      },
+      {
+        id: 'toolbar-location-header',
+        labelText: message.get('menuContentToolbarLocationHeader'),
+        value: 'header',
+      },
     ],
     groupName: 'toolbar-location',
     path: 'toolbar.location',
@@ -117,23 +118,26 @@ toolbarSetting.location = (parent) => {
       toolbarSetting.disable();
 
       switch (state.get.current().toolbar.location) {
-
         case 'header':
-          toolbarSetting.edge.size = new Edge({ primary: toolbar.current.element.toolbar, secondary: [layout.element.header] });
+          toolbarSetting.edge.size = new Edge({
+            primary: toolbar.current.element.toolbar,
+            secondary: [layout.element.header],
+          });
           break;
 
         case 'corner':
-          toolbarSetting.edge.size = new Edge({ primary: toolbar.current.element.toolbar });
+          toolbarSetting.edge.size = new Edge({
+            primary: toolbar.current.element.toolbar,
+          });
           break;
-
       }
 
       data.save();
-    }
+    },
   });
 
   toolbarSetting.control.location.locationHelper = new Control_helperText({
-    text: [message.get('menuContentToolbarLocationHelperPara1')]
+    text: [message.get('menuContentToolbarLocationHelperPara1')],
   });
 
   toolbarSetting.control.location.newLine = new Control_checkbox({
@@ -142,14 +146,14 @@ toolbarSetting.location = (parent) => {
     id: 'header-newLine',
     labelText: message.get('menuContentToolbarLocationNewLineLabel'),
     description: message.get('menuContentToolbarLocationNewLineDescription'),
-    action: function() {
+    action: function () {
       applyCSSState('toolbar.newLine');
       data.save();
-    }
+    },
   });
 
   toolbarSetting.control.location.newLineHelper = new Control_helperText({
-    text: [message.get('menuContentToolbarLocationNewLineHelperPara1')]
+    text: [message.get('menuContentToolbarLocationNewLineHelperPara1')],
   });
 
   parent.appendChild(
@@ -158,21 +162,39 @@ toolbarSetting.location = (parent) => {
       toolbarSetting.control.location.locationHelper.wrap(),
       node('hr'),
       toolbarSetting.control.location.newLine.wrap(),
-      toolbarSetting.control.location.newLineHelper.wrap()
+      toolbarSetting.control.location.newLineHelper.wrap(),
     ])
   );
-
 };
 
 toolbarSetting.position = (parent) => {
-
   toolbarSetting.control.positionElement = new Control_radioGrid({
     object: state.get.current(),
     radioGroup: [
-      { id: 'toolbar-position-top-left', labelText: message.get('menuContentToolbarPositionTopLeft'), value: 'top-left', position: 1 },
-      { id: 'toolbar-position-top-right', labelText: message.get('menuContentToolbarPositionTopRight'), value: 'top-right', position: 2 },
-      { id: 'toolbar-position-bottom-left', labelText: message.get('menuContentToolbarPositionBottomLeft'), value: 'bottom-left', position: 3 },
-      { id: 'toolbar-position-bottom-right', labelText: message.get('menuContentToolbarPositionBottomRight'), value: 'bottom-right', position: 4 }
+      {
+        id: 'toolbar-position-top-left',
+        labelText: message.get('menuContentToolbarPositionTopLeft'),
+        value: 'top-left',
+        position: 1,
+      },
+      {
+        id: 'toolbar-position-top-right',
+        labelText: message.get('menuContentToolbarPositionTopRight'),
+        value: 'top-right',
+        position: 2,
+      },
+      {
+        id: 'toolbar-position-bottom-left',
+        labelText: message.get('menuContentToolbarPositionBottomLeft'),
+        value: 'bottom-left',
+        position: 3,
+      },
+      {
+        id: 'toolbar-position-bottom-right',
+        labelText: message.get('menuContentToolbarPositionBottomRight'),
+        value: 'bottom-right',
+        position: 4,
+      },
     ],
     label: message.get('menuContentToolbarPositionLabel'),
     groupName: 'toolbar-position',
@@ -183,29 +205,27 @@ toolbarSetting.position = (parent) => {
       toolbar.current.update.position();
       toolbar.current.update.style();
       data.save();
-    }
+    },
   });
 
   toolbarSetting.control.positionElementHelper1 = new Control_helperText({
-    text: [message.get('menuContentToolbarPositionHelper1Para1')]
+    text: [message.get('menuContentToolbarPositionHelper1Para1')],
   });
 
   toolbarSetting.control.positionElementHelper2 = new Control_helperText({
-    text: [message.get('menuContentToolbarPositionHelper2Para1')]
+    text: [message.get('menuContentToolbarPositionHelper2Para1')],
   });
 
   parent.appendChild(
     node('div', [
       toolbarSetting.control.positionElement.wrap(),
       toolbarSetting.control.positionElementHelper1.wrap(),
-      toolbarSetting.control.positionElementHelper2.wrap()
+      toolbarSetting.control.positionElementHelper2.wrap(),
     ])
   );
-
 };
 
 toolbarSetting.controls = (parent) => {
-
   toolbarSetting.control.controls.accent = new Control_checkbox({
     object: state.get.current(),
     id: 'toolbar-accent-show',
@@ -214,7 +234,7 @@ toolbarSetting.controls = (parent) => {
     action: () => {
       toolbar.current.update.control();
       data.save();
-    }
+    },
   });
 
   toolbarSetting.control.controls.add = new Control_checkbox({
@@ -225,7 +245,7 @@ toolbarSetting.controls = (parent) => {
     action: () => {
       toolbar.current.update.control();
       data.save();
-    }
+    },
   });
 
   toolbarSetting.control.controls.edit = new Control_checkbox({
@@ -236,17 +256,16 @@ toolbarSetting.controls = (parent) => {
     action: () => {
       toolbar.current.update.control();
       data.save();
-    }
+    },
   });
 
   parent.appendChild(
     node('div', [
       toolbarSetting.control.controls.accent.wrap(),
       toolbarSetting.control.controls.add.wrap(),
-      toolbarSetting.control.controls.edit.wrap()
+      toolbarSetting.control.controls.edit.wrap(),
     ])
   );
-
 };
 
 export { toolbarSetting };

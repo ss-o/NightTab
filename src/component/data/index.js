@@ -30,7 +30,7 @@ data.import = {
   state: {
     setup: { include: true },
     bookmark: { include: true, type: 'restore' },
-    theme: { include: true }
+    theme: { include: true },
   },
   reset: () => {
     data.import.state.setup.include = true;
@@ -41,37 +41,27 @@ data.import = {
 
     data.import.state.theme.include = true;
   },
-  file: ({
-    fileList = false,
-    feedback = false,
-    input = false
-  } = {}) => {
+  file: ({ fileList = false, feedback = false, input = false } = {}) => {
     if (fileList.length > 0) {
       data.validate.file({
         fileList: fileList,
         feedback: feedback,
-        input: input
+        input: input,
       });
     }
   },
-  drop: ({
-    fileList = false,
-    feedback = false
-  }) => {
+  drop: ({ fileList = false, feedback = false }) => {
     if (fileList.length > 0) {
       data.validate.file({
         fileList: fileList,
-        feedback: feedback
+        feedback: feedback,
       });
     }
   },
-  paste: ({
-    clipboardData = false,
-    feedback = false
-  }) => {
+  paste: ({ clipboardData = false, feedback = false }) => {
     data.validate.paste({
       clipboardData: clipboardData,
-      feedback: feedback
+      feedback: feedback,
     });
   },
   render: (dataToImport) => {
@@ -83,7 +73,7 @@ data.import = {
 
     const importForm = new ImportForm({
       dataToImport: dataToCheck,
-      state: data.import.state
+      state: data.import.state,
     });
 
     const importModal = new Modal({
@@ -93,7 +83,11 @@ data.import = {
       cancelText: message.get('dataRestoreCancelText'),
       width: 'small',
       successAction: () => {
-        if (data.import.state.setup.include || data.import.state.theme.include || data.import.state.bookmark.include) {
+        if (
+          data.import.state.setup.include ||
+          data.import.state.theme.include ||
+          data.import.state.bookmark.include
+        ) {
           let dataToRestore = JSON.parse(dataToImport);
 
           if (dataToRestore.version !== version.number) {
@@ -111,53 +105,63 @@ data.import = {
 
         data.import.reset();
       },
-      cancelAction: () => { data.import.reset(); },
-      closeAction: () => { data.import.reset(); }
+      cancelAction: () => {
+        data.import.reset();
+      },
+      closeAction: () => {
+        data.import.reset();
+      },
     });
 
     importModal.open();
-  }
+  },
 };
 
 data.validate = {
-  paste: ({
-    feedback = false
-  } = {}) => {
-    navigator.clipboard.readText().then(clipboardData => {
-      // is the data a JSON object
-      if (isJson(clipboardData)) {
-        // is this JSON from this app
-        if (JSON.parse(clipboardData)[APP_NAME] || JSON.parse(clipboardData)[APP_NAME.toLowerCase()]) {
-          data.feedback.clear.render(feedback);
+  paste: ({ feedback = false } = {}) => {
+    navigator.clipboard
+      .readText()
+      .then((clipboardData) => {
+        // is the data a JSON object
+        if (isJson(clipboardData)) {
+          // is this JSON from this app
+          if (
+            JSON.parse(clipboardData)[APP_NAME] ||
+            JSON.parse(clipboardData)[APP_NAME.toLowerCase()]
+          ) {
+            data.feedback.clear.render(feedback);
 
-          data.feedback.success.render(feedback, 'Clipboard data', () => {
-            menu.close();
+            data.feedback.success.render(feedback, 'Clipboard data', () => {
+              menu.close();
 
-            data.import.render(clipboardData);
-          });
+              data.import.render(clipboardData);
+            });
+          } else {
+            data.feedback.clear.render(feedback);
+
+            data.feedback.fail.notClipboardJson.render(
+              feedback,
+              'Clipboard data'
+            );
+          }
         } else {
+          // not a JSON object
+
           data.feedback.clear.render(feedback);
 
-          data.feedback.fail.notClipboardJson.render(feedback, 'Clipboard data');
+          data.feedback.fail.notClipboardJson.render(
+            feedback,
+            'Clipboard data'
+          );
         }
-      } else {
-        // not a JSON object
-
+      })
+      .catch(() => {
         data.feedback.clear.render(feedback);
 
         data.feedback.fail.notClipboardJson.render(feedback, 'Clipboard data');
-      }
-    }).catch(() => {
-      data.feedback.clear.render(feedback);
-
-      data.feedback.fail.notClipboardJson.render(feedback, 'Clipboard data');
-    });
+      });
   },
-  file: ({
-    fileList = false,
-    feedback = false,
-    input = false
-  } = {}) => {
+  file: ({ fileList = false, feedback = false, input = false } = {}) => {
     // make new file reader
     const reader = new window.FileReader();
 
@@ -166,7 +170,10 @@ data.validate = {
       // is this a JSON file
       if (isJson(event.target.result)) {
         // is this JSON from this app
-        if (JSON.parse(event.target.result)[APP_NAME] || JSON.parse(event.target.result)[APP_NAME.toLowerCase()]) {
+        if (
+          JSON.parse(event.target.result)[APP_NAME] ||
+          JSON.parse(event.target.result)[APP_NAME.toLowerCase()]
+        ) {
           data.feedback.clear.render(feedback);
 
           data.feedback.success.render(feedback, fileList[0].name, () => {
@@ -175,13 +182,17 @@ data.validate = {
             data.import.render(event.target.result);
           });
 
-          if (input) { input.value = ''; }
+          if (input) {
+            input.value = '';
+          }
         } else {
           data.feedback.clear.render(feedback);
 
           data.feedback.fail.notAppJson.render(feedback, fileList[0].name);
 
-          if (input) { input.value = ''; }
+          if (input) {
+            input.value = '';
+          }
         }
       } else {
         // not a JSON file
@@ -198,7 +209,7 @@ data.validate = {
 
     // invoke the reader
     reader.readAsText(fileList.item(0));
-  }
+  },
 };
 
 data.export = () => {
@@ -217,11 +228,30 @@ data.export = () => {
   timestamp.date = leadingZero(timestamp.date);
   timestamp.month = leadingZero(timestamp.month + 1);
   timestamp.year = leadingZero(timestamp.year);
-  timestamp = timestamp.year + '.' + timestamp.month + '.' + timestamp.date + ' - ' + timestamp.hours + ' ' + timestamp.minutes + ' ' + timestamp.seconds;
+  timestamp =
+    timestamp.year +
+    '.' +
+    timestamp.month +
+    '.' +
+    timestamp.date +
+    ' - ' +
+    timestamp.hours +
+    ' ' +
+    timestamp.minutes +
+    ' ' +
+    timestamp.seconds;
 
-  const fileName = APP_NAME + ' ' + message.get('dataExportBackup') + ' - ' + timestamp + '.json';
+  const fileName =
+    APP_NAME +
+    ' ' +
+    message.get('dataExportBackup') +
+    ' - ' +
+    timestamp +
+    '.json';
 
-  const dataToExport = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data.load()));
+  const dataToExport =
+    'data:text/json;charset=utf-8,' +
+    encodeURIComponent(JSON.stringify(data.load()));
 
   const link = document.createElement('a');
 
@@ -229,7 +259,9 @@ data.export = () => {
 
   link.setAttribute('download', fileName);
 
-  link.addEventListener('click', () => { link.remove(); });
+  link.addEventListener('click', () => {
+    link.remove();
+  });
 
   document.querySelector('body').appendChild(link);
 
@@ -289,12 +321,15 @@ data.restore = (dataToRestore) => {
 };
 
 data.save = () => {
-  data.set(APP_NAME, JSON.stringify({
-    [APP_NAME]: true,
-    version: version.number,
-    state: state.get.current(),
-    bookmark: bookmark.all
-  }));
+  data.set(
+    APP_NAME,
+    JSON.stringify({
+      [APP_NAME]: true,
+      version: version.number,
+      state: state.get.current(),
+      bookmark: bookmark.all,
+    })
+  );
 };
 
 data.load = () => {
@@ -322,21 +357,24 @@ data.wipe = {
   partial: () => {
     bookmark.reset();
 
-    data.set(APP_NAME, JSON.stringify({
-      [APP_NAME]: true,
-      version: version.number,
-      state: state.get.default(),
-      bookmark: bookmark.all
-    }));
+    data.set(
+      APP_NAME,
+      JSON.stringify({
+        [APP_NAME]: true,
+        version: version.number,
+        state: state.get.default(),
+        bookmark: bookmark.all,
+      })
+    );
 
     data.reload.render();
-  }
+  },
 };
 
 data.reload = {
   render: () => {
     window.location.reload();
-  }
+  },
 };
 
 data.clear = {
@@ -346,18 +384,18 @@ data.clear = {
         heading: message.get('dataClearAllHeading'),
         content: node('div', [
           node(`p:${message.get('dataClearAllContentPara1')}`),
-          node(`p:${message.get('dataClearAllContentPara2')}`)
+          node(`p:${message.get('dataClearAllContentPara2')}`),
         ]),
         successText: message.get('dataClearAllSuccessText'),
         cancelText: message.get('dataClearAllCancelText'),
         width: 'small',
         successAction: () => {
           data.wipe.all();
-        }
+        },
       });
 
       clearModal.open();
-    }
+    },
   },
   partial: {
     render: () => {
@@ -365,69 +403,83 @@ data.clear = {
         heading: message.get('dataClearPartialHeading'),
         content: node('div', [
           node(`p:${message.get('dataClearPartialContentPara1')}`),
-          node(`p:${message.get('dataClearPartialContentPara2')}`)
+          node(`p:${message.get('dataClearPartialContentPara2')}`),
         ]),
         successText: message.get('dataClearPartialSuccessText'),
         cancelText: message.get('dataClearPartialCancelText'),
         width: 35,
         successAction: () => {
           data.wipe.partial();
-        }
+        },
       });
 
       clearModal.open();
-    }
-  }
+    },
+  },
 };
 
 data.feedback = {};
 
 data.feedback.empty = {
   render: (feedback) => {
-    feedback.appendChild(node(`p:${message.get('dataFeedbackEmpty')}|class:muted small`));
-  }
+    feedback.appendChild(
+      node(`p:${message.get('dataFeedbackEmpty')}|class:muted small`)
+    );
+  },
 };
 
 data.feedback.clear = {
   render: (feedback) => {
     clearChildNode(feedback);
-  }
+  },
 };
 
 data.feedback.success = {
   render: (feedback, filename, action) => {
-    feedback.appendChild(node(`p:${message.get('dataFeedbackSuccess')}|class:muted small`));
+    feedback.appendChild(
+      node(`p:${message.get('dataFeedbackSuccess')}|class:muted small`)
+    );
 
     feedback.appendChild(node('p:' + filename));
 
     if (action) {
       data.feedback.animation.set.render(feedback, 'is-pop', action);
     }
-  }
+  },
 };
 
 data.feedback.fail = {
   notJson: {
     render: (feedback, filename) => {
-      feedback.appendChild(node(`p:${message.get('dataFeedbackFailNotJson')}|class:small muted`));
+      feedback.appendChild(
+        node(`p:${message.get('dataFeedbackFailNotJson')}|class:small muted`)
+      );
       feedback.appendChild(complexNode({ tag: 'p', text: filename }));
       data.feedback.animation.set.render(feedback, 'is-shake');
-    }
+    },
   },
   notAppJson: {
     render: (feedback, filename) => {
-      feedback.appendChild(node(`p:${message.get('dataFeedbackFailNotAppJson')}|class:small muted`));
+      feedback.appendChild(
+        node(`p:${message.get('dataFeedbackFailNotAppJson')}|class:small muted`)
+      );
       feedback.appendChild(complexNode({ tag: 'p', text: filename }));
       data.feedback.animation.set.render(feedback, 'is-shake');
-    }
+    },
   },
   notClipboardJson: {
     render: (feedback, name) => {
-      feedback.appendChild(node(`p:${message.get('dataFeedbackFailNotClipboardJson')}|class:small muted`));
+      feedback.appendChild(
+        node(
+          `p:${message.get(
+            'dataFeedbackFailNotClipboardJson'
+          )}|class:small muted`
+        )
+      );
       feedback.appendChild(node('p:' + name));
       data.feedback.animation.set.render(feedback, 'is-shake');
-    }
-  }
+    },
+  },
 };
 
 data.feedback.animation = {
@@ -443,16 +495,19 @@ data.feedback.animation = {
       };
 
       feedback.addEventListener('animationend', animationEndAction);
-    }
+    },
   },
   reset: {
     render: (feedback) => {
       feedback.classList.remove('is-shake');
       feedback.classList.remove('is-pop');
       feedback.classList.remove('is-jello');
-      feedback.removeEventListener('animationend', data.feedback.animation.reset.render);
-    }
-  }
+      feedback.removeEventListener(
+        'animationend',
+        data.feedback.animation.reset.render
+      );
+    },
+  },
 };
 
 data.init = () => {

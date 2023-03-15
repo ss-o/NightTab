@@ -29,100 +29,103 @@ theme.font = {};
 theme.font.display = {
   timer: false,
   delay: () => {
-
     clearTimeout(theme.font.display.timer);
 
     theme.font.display.timer = setTimeout(theme.font.display.load, 600);
-
   },
   load: () => {
-
     const displayFont = trimString(state.get.current().theme.font.display.name);
 
     if (isValidString(displayFont)) {
-
       WebFont.load({
         // fontloading: (familyName, fvd) => { console.log('fontloading:', familyName); },
-        google: { families: [trimString(displayFont) + ':100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i'] }
+        google: {
+          families: [
+            trimString(displayFont) +
+              ':100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i',
+          ],
+        },
       });
-
     }
 
     theme.font.display.render();
-
   },
   render: () => {
-
     const html = document.querySelector('html');
 
-    if (isValidString(trimString(state.get.current().theme.font.display.name))) {
-
-      html.style.setProperty('--theme-font-display-name', '"' + trimString(state.get.current().theme.font.display.name) + '", "Fjalla One", sans-serif');
-
+    if (
+      isValidString(trimString(state.get.current().theme.font.display.name))
+    ) {
+      html.style.setProperty(
+        '--theme-font-display-name',
+        '"' +
+          trimString(state.get.current().theme.font.display.name) +
+          '", "Fjalla One", sans-serif'
+      );
     } else {
-
       html.style.removeProperty('--theme-font-display-name');
-
     }
-
-  }
+  },
 };
 
 theme.font.ui = {
   timer: false,
   delay: () => {
-
     clearTimeout(theme.font.ui.timer);
 
     theme.font.ui.timer = setTimeout(theme.font.ui.load, 600);
-
   },
   load: () => {
-
     const uiFont = trimString(state.get.current().theme.font.ui.name);
 
     if (isValidString(uiFont)) {
-
       WebFont.load({
         // fontloading: (familyName, fvd) => { console.log('fontloading:', familyName); },
-        google: { families: [trimString(uiFont) + ':100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i'] }
+        google: {
+          families: [
+            trimString(uiFont) +
+              ':100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i',
+          ],
+        },
       });
-
     }
 
     theme.font.ui.render();
-
   },
   render: () => {
-
     const html = document.querySelector('html');
 
     if (isValidString(trimString(state.get.current().theme.font.ui.name))) {
-
-      html.style.setProperty('--theme-font-ui-name', '"' + trimString(state.get.current().theme.font.ui.name) + '", "Open Sans", sans-serif');
-
+      html.style.setProperty(
+        '--theme-font-ui-name',
+        '"' +
+          trimString(state.get.current().theme.font.ui.name) +
+          '", "Open Sans", sans-serif'
+      );
     } else {
-
       html.style.removeProperty('--theme-font-ui-name');
-
     }
-
-  }
+  },
 };
 
 theme.color = {
   render: () => {
     const html = document.querySelector('html');
 
-    let shades = (state.get.current().theme.color.contrast.end - state.get.current().theme.color.contrast.start) / (state.get.current().theme.color.shades - 1);
+    let shades =
+      (state.get.current().theme.color.contrast.end -
+        state.get.current().theme.color.contrast.start) /
+      (state.get.current().theme.color.shades - 1);
 
     for (var type in state.get.current().theme.color.range) {
-
       for (var i = 0; i < state.get.current().theme.color.shades; i++) {
+        let hsl = JSON.parse(
+          JSON.stringify(state.get.current().theme.color.range[type])
+        );
 
-        let hsl = JSON.parse(JSON.stringify(state.get.current().theme.color.range[type]));
-
-        hsl.l = Math.round((shades * i) + state.get.current().theme.color.contrast.start);
+        hsl.l = Math.round(
+          shades * i + state.get.current().theme.color.contrast.start
+        );
 
         let rgb = convertColor.hsl.rgb(hsl);
 
@@ -133,57 +136,73 @@ theme.color = {
         for (let key in hsl) {
           html.style.setProperty(`--theme-${type}-${i + 1}-${key}`, hsl[key]);
         }
-
       }
-
     }
 
     for (let i = 1; i <= state.get.current().theme.color.shades; i++) {
-      html.style.setProperty(`--theme-primary-${i}`, `var(--theme-primary-${i}-h), calc(var(--theme-primary-${i}-s) * 1%), calc(var(--theme-primary-${i}-l) * 1%)`);
+      html.style.setProperty(
+        `--theme-primary-${i}`,
+        `var(--theme-primary-${i}-h), calc(var(--theme-primary-${i}-s) * 1%), calc(var(--theme-primary-${i}-l) * 1%)`
+      );
     }
-
-  }
+  },
 };
 
 theme.accent = {};
 
 theme.accent.random = {
   render: () => {
-
     if (state.get.current().theme.accent.random.active) {
-
       const randomAccentType = {
-        any: () => { return { h: randomNumber(0, 360), s: randomNumber(0, 100), l: randomNumber(0, 100) }; },
-        light: () => { return { h: randomNumber(0, 360), s: randomNumber(50, 90), l: randomNumber(50, 90) }; },
-        dark: () => { return { h: randomNumber(0, 360), s: randomNumber(10, 50), l: randomNumber(10, 50) }; },
-        pastel: () => { return { h: randomNumber(0, 360), s: 50, l: 80 }; },
-        saturated: () => { return { h: randomNumber(0, 360), s: 100, l: 50 }; }
+        any: () => {
+          return {
+            h: randomNumber(0, 360),
+            s: randomNumber(0, 100),
+            l: randomNumber(0, 100),
+          };
+        },
+        light: () => {
+          return {
+            h: randomNumber(0, 360),
+            s: randomNumber(50, 90),
+            l: randomNumber(50, 90),
+          };
+        },
+        dark: () => {
+          return {
+            h: randomNumber(0, 360),
+            s: randomNumber(10, 50),
+            l: randomNumber(10, 50),
+          };
+        },
+        pastel: () => {
+          return { h: randomNumber(0, 360), s: 50, l: 80 };
+        },
+        saturated: () => {
+          return { h: randomNumber(0, 360), s: 100, l: 50 };
+        },
       };
 
-      const hsl = randomAccentType[state.get.current().theme.accent.random.style]();
+      const hsl =
+        randomAccentType[state.get.current().theme.accent.random.style]();
 
       const rgb = convertColor.hsl.rgb(hsl);
 
       state.get.current().theme.accent.rgb = rgb;
 
       state.get.current().theme.accent.hsl = hsl;
-
     }
-
-  }
+  },
 };
 
 theme.accent.rainbow = {
   render: () => {
-
     const units = 360 / bookmark.count();
 
     let degree = 0;
 
     bookmark.all.forEach((item) => {
-
       item.items.forEach((item) => {
-
         item.accent.by = 'custom';
 
         item.accent.hsl = { h: Math.round(degree), s: 100, l: 50 };
@@ -191,41 +210,29 @@ theme.accent.rainbow = {
         item.accent.rgb = convertColor.hsl.rgb(item.accent.hsl);
 
         degree = degree + units;
-
       });
-
     });
 
     groupAndBookmark.render();
-
   },
   clear: () => {
-
     bookmark.all.forEach((item) => {
-
       item.items.forEach((item) => {
-
         item.accent = JSON.parse(JSON.stringify(bookmarkDefault.accent));
-
       });
-
     });
 
     groupAndBookmark.render();
-
-  }
+  },
 };
 
 theme.accent.cycle = {
   timer: false,
   bind: () => {
-
     if (state.get.current().theme.accent.cycle.active) {
-
       clearInterval(theme.accent.cycle.timer);
 
       theme.accent.cycle.timer = setInterval(() => {
-
         theme.accent.cycle.render();
 
         if (state.get.current().menu) {
@@ -235,27 +242,27 @@ theme.accent.cycle = {
         if (state.get.current().toolbar.accent.show) {
           toolbar.current.update.accent();
         }
-
       }, state.get.current().theme.accent.cycle.speed);
-
     } else {
-
       clearInterval(theme.accent.cycle.timer);
 
       theme.accent.cycle.timer = false;
-
     }
-
   },
   render: () => {
+    let newValue =
+      state.get.current().theme.accent.hsl.h +
+      state.get.current().theme.accent.cycle.step;
 
-    let newValue = state.get.current().theme.accent.hsl.h + state.get.current().theme.accent.cycle.step;
-
-    if (newValue > 359) { newValue = 0; }
+    if (newValue > 359) {
+      newValue = 0;
+    }
 
     state.get.current().theme.accent.hsl.h = newValue;
 
-    state.get.current().theme.accent.rgb = convertColor.hsl.rgb(state.get.current().theme.accent.hsl);
+    state.get.current().theme.accent.rgb = convertColor.hsl.rgb(
+      state.get.current().theme.accent.hsl
+    );
 
     applyCSSVar([
       'theme.accent.rgb.r',
@@ -263,36 +270,36 @@ theme.accent.cycle = {
       'theme.accent.rgb.b',
       'theme.accent.hsl.h',
       'theme.accent.hsl.s',
-      'theme.accent.hsl.l'
+      'theme.accent.hsl.l',
     ]);
-
-  }
+  },
 };
 
 theme.style = {
   bind: () => {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-      theme.style.initial();
-    });
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', () => {
+        theme.style.initial();
+      });
   },
   initial: () => {
     switch (state.get.current().theme.style) {
-
       case 'dark':
       case 'light':
-
-        localStorage.setItem(APP_NAME + 'Style', state.get.current().theme.style);
+        localStorage.setItem(
+          APP_NAME + 'Style',
+          state.get.current().theme.style
+        );
         break;
 
       case 'system':
-
         if (window.matchMedia('(prefers-color-scheme:dark)').matches) {
           localStorage.setItem(APP_NAME + 'Style', 'dark');
         } else if (window.matchMedia('(prefers-color-scheme:light)').matches) {
           localStorage.setItem(APP_NAME + 'Style', 'light');
         }
         break;
-
     }
   },
   dark: () => {
@@ -307,7 +314,6 @@ theme.style = {
   },
   toggle: () => {
     switch (state.get.current().theme.style) {
-
       case 'dark':
         theme.style.light();
         break;
@@ -315,128 +321,148 @@ theme.style = {
       case 'light':
         theme.style.dark();
         break;
-
     }
-  }
+  },
 };
 
 theme.background = {
   element: {
     background: node('div|class:background'),
     type: {
-      theme: node('div|class:theme-background-type theme-background-type-theme'),
-      accent: node('div|class:theme-background-type theme-background-type-accent'),
-      color: node('div|class:theme-background-type theme-background-type-color'),
-      gradient: node('div|class:theme-background-type theme-background-type-gradient'),
+      theme: node(
+        'div|class:theme-background-type theme-background-type-theme'
+      ),
+      accent: node(
+        'div|class:theme-background-type theme-background-type-accent'
+      ),
+      color: node(
+        'div|class:theme-background-type theme-background-type-color'
+      ),
+      gradient: node(
+        'div|class:theme-background-type theme-background-type-gradient'
+      ),
       image: {
-        imageElement: node('div|class:theme-background-type theme-background-type-image'),
+        imageElement: node(
+          'div|class:theme-background-type theme-background-type-image'
+        ),
         wrap: node('div|class:theme-background-type-image-wrap'),
         accent: node('div|class:theme-background-type-image-accent'),
-        vignette: node('div|class:theme-background-type-image-vignette')
+        vignette: node('div|class:theme-background-type-image-vignette'),
       },
       video: {
-        videoElement: node('div|class:theme-background-type theme-background-type-video'),
+        videoElement: node(
+          'div|class:theme-background-type theme-background-type-video'
+        ),
         wrap: node('div|class:theme-background-type-video-wrap'),
         accent: node('div|class:theme-background-type-video-accent'),
-        vignette: node('div|class:theme-background-type-video-vignette')
+        vignette: node('div|class:theme-background-type-video-vignette'),
       },
     },
-    video: false
-  }
+    video: false,
+  },
 };
 
 theme.background.area = {
   render: () => {
     state.get.option().theme.background.type.forEach((item) => {
-
       switch (item) {
-
         case 'image':
-
-          theme.background.element.type.image.imageElement.appendChild(theme.background.element.type.image.wrap);
-          theme.background.element.type.image.imageElement.appendChild(theme.background.element.type.image.accent);
-          theme.background.element.type.image.imageElement.appendChild(theme.background.element.type.image.vignette);
-          theme.background.element.background.appendChild(theme.background.element.type.image.imageElement);
+          theme.background.element.type.image.imageElement.appendChild(
+            theme.background.element.type.image.wrap
+          );
+          theme.background.element.type.image.imageElement.appendChild(
+            theme.background.element.type.image.accent
+          );
+          theme.background.element.type.image.imageElement.appendChild(
+            theme.background.element.type.image.vignette
+          );
+          theme.background.element.background.appendChild(
+            theme.background.element.type.image.imageElement
+          );
 
           break;
 
         case 'video':
-
-          theme.background.element.type.video.videoElement.appendChild(theme.background.element.type.video.wrap);
-          theme.background.element.type.video.videoElement.appendChild(theme.background.element.type.video.accent);
-          theme.background.element.type.video.videoElement.appendChild(theme.background.element.type.video.vignette);
-          theme.background.element.background.appendChild(theme.background.element.type.video.videoElement);
+          theme.background.element.type.video.videoElement.appendChild(
+            theme.background.element.type.video.wrap
+          );
+          theme.background.element.type.video.videoElement.appendChild(
+            theme.background.element.type.video.accent
+          );
+          theme.background.element.type.video.videoElement.appendChild(
+            theme.background.element.type.video.vignette
+          );
+          theme.background.element.background.appendChild(
+            theme.background.element.type.video.videoElement
+          );
 
           break;
 
         default:
-
-          theme.background.element.background.appendChild(theme.background.element.type[item]);
-
+          theme.background.element.background.appendChild(
+            theme.background.element.type[item]
+          );
       }
-
     });
 
-    document.querySelector('body').appendChild(theme.background.element.background);
-
-  }
+    document
+      .querySelector('body')
+      .appendChild(theme.background.element.background);
+  },
 };
 
 theme.background.image = {
   render: () => {
-
     const html = document.querySelector('html');
 
     if (isValidString(state.get.current().theme.background.image.url)) {
+      const allUrls = trimString(state.get.current().theme.background.image.url)
+        .split(/\s+/)
+        .filter((item) => {
+          return item != '';
+        });
 
-      const allUrls = trimString(state.get.current().theme.background.image.url).split(/\s+/).filter((item) => { return item != ''; });
-
-      html.style.setProperty('--theme-background-image', 'url("' + allUrls[Math.floor(Math.random() * allUrls.length)] + '")');
-
+      html.style.setProperty(
+        '--theme-background-image',
+        'url("' + allUrls[Math.floor(Math.random() * allUrls.length)] + '")'
+      );
     } else {
-
       html.style.removeProperty('--theme-background-image');
-
     }
-
-  }
+  },
 };
 
 theme.background.video = {
   render: () => {
-
     if (isValidString(state.get.current().theme.background.video.url)) {
-
-      const allUrls = trimString(state.get.current().theme.background.video.url).split(/\s+/).filter((item) => { return item != ''; });
+      const allUrls = trimString(state.get.current().theme.background.video.url)
+        .split(/\s+/)
+        .filter((item) => {
+          return item != '';
+        });
 
       theme.background.element.video = new Video({
-        url: allUrls[Math.floor(Math.random() * allUrls.length)]
+        url: allUrls[Math.floor(Math.random() * allUrls.length)],
       });
 
       theme.background.element.video.bind.add();
 
-      theme.background.element.type.video.wrap.appendChild(theme.background.element.video.video);
-
+      theme.background.element.type.video.wrap.appendChild(
+        theme.background.element.video.video
+      );
     } else {
-
       theme.background.video.clear();
-
     }
-
   },
   clear: () => {
-
     if (theme.background.element.video) {
-
       theme.background.element.video.bind.remove();
 
       theme.background.element.video = false;
 
       clearChildNode(theme.background.element.type.video.wrap);
-
     }
-
-  }
+  },
 };
 
 theme.init = () => {
@@ -527,19 +553,16 @@ theme.init = () => {
     'theme.bookmark.color.opacity',
     'theme.bookmark.item.opacity',
     'theme.toolbar.opacity',
-    'theme.group.toolbar.opacity'
+    'theme.group.toolbar.opacity',
   ]);
   applyCSSClass([
     'theme.style',
     'theme.background.type',
     'theme.layout.color.by',
     'theme.header.color.by',
-    'theme.bookmark.color.by'
+    'theme.bookmark.color.by',
   ]);
-  applyCSSState([
-    'theme.layout.divider.size',
-    'theme.accent.cycle.active'
-  ]);
+  applyCSSState(['theme.layout.divider.size', 'theme.accent.cycle.active']);
 };
 
 export { theme };

@@ -24,78 +24,109 @@ const debugSetting = {};
 
 debugSetting.state = {
   input: {
-    radio: { a: 'a', b: 'a', c: 'a', d: 'a', e: 'a', grid3x3: 'a', grid3x1: 'a', grid1x3: 'a' },
-    checkbox: { a: true, b: true, c: false }
-  }
+    radio: {
+      a: 'a',
+      b: 'a',
+      c: 'a',
+      d: 'a',
+      e: 'a',
+      grid3x3: 'a',
+      grid3x1: 'a',
+      grid1x3: 'a',
+    },
+    checkbox: { a: true, b: true, c: false },
+  },
 };
 
 debugSetting.control = {
   input: {},
   button: {},
   bookmark: {},
-  icon: {}
+  icon: {},
 };
 
 debugSetting.input = (parent) => {
-
   debugSetting.control.input.radio = {
     a: new Control_radio({
       object: debugSetting.state,
       radioGroup: [
-        { id: 'input-radio-a-a', labelText: 'Radio A A', description: 'Description for radio A A.', value: 'a' },
-        { id: 'input-radio-a-b', labelText: 'Radio A B', description: 'Description for radio A B.', value: 'b' },
-        { id: 'input-radio-a-c', labelText: 'Radio A C', description: 'Description for radio A C.', value: 'c' }
+        {
+          id: 'input-radio-a-a',
+          labelText: 'Radio A A',
+          description: 'Description for radio A A.',
+          value: 'a',
+        },
+        {
+          id: 'input-radio-a-b',
+          labelText: 'Radio A B',
+          description: 'Description for radio A B.',
+          value: 'b',
+        },
+        {
+          id: 'input-radio-a-c',
+          labelText: 'Radio A C',
+          description: 'Description for radio A C.',
+          value: 'c',
+        },
       ],
       label: 'Radio group A',
       groupName: 'input-radio-a',
       path: 'input.radio.a',
-      action: () => { console.log(debugSetting.state); }
+      action: () => {
+        console.log(debugSetting.state);
+      },
     }),
     b: new Control_radio({
       object: debugSetting.state,
       radioGroup: [
         { id: 'input-radio-b-a', labelText: 'B A', value: 'a' },
         { id: 'input-radio-b-b', labelText: 'B B', value: 'b' },
-        { id: 'input-radio-b-c', labelText: 'B C', value: 'c' }
+        { id: 'input-radio-b-c', labelText: 'B C', value: 'c' },
       ],
       label: 'Radio group',
       groupName: 'input-radio-b',
       path: 'input.radio.b',
-      action: () => { console.log(debugSetting.state); }
+      action: () => {
+        console.log(debugSetting.state);
+      },
     }),
     c: new Control_radio({
       object: debugSetting.state,
       radioGroup: [
         { id: 'input-radio-c-a', labelText: 'C A', value: 'a' },
         { id: 'input-radio-c-b', labelText: 'C B', value: 'b' },
-        { id: 'input-radio-c-c', labelText: 'C C', value: 'c' }
+        { id: 'input-radio-c-c', labelText: 'C C', value: 'c' },
       ],
       label: 'Radio group',
       groupName: 'input-radio-c',
       path: 'input.radio.c',
       inputButton: true,
-      action: () => { console.log(debugSetting.state); }
+      action: () => {
+        console.log(debugSetting.state);
+      },
     }),
     d: new Control_radio({
       object: debugSetting.state,
       radioGroup: [
         { id: 'input-radio-d-a', labelText: 'D A', value: 'a' },
         { id: 'input-radio-d-b', labelText: 'D B', value: 'b' },
-        { id: 'input-radio-d-c', labelText: 'D C', value: 'c' }
+        { id: 'input-radio-d-c', labelText: 'D C', value: 'c' },
       ],
       label: 'Radio group',
       groupName: 'input-radio-d',
       path: 'input.radio.d',
       inputButton: true,
       inputButtonStyle: ['line'],
-      action: () => { console.log(debugSetting.state); }
+      action: () => {
+        console.log(debugSetting.state);
+      },
     }),
     e: new Control_radio({
       object: debugSetting.state,
       radioGroup: [
         { id: 'input-radio-e-a', labelText: 'E A', value: 'a' },
         { id: 'input-radio-e-b', labelText: 'E B', value: 'b' },
-        { id: 'input-radio-e-c', labelText: 'E C', value: 'c' }
+        { id: 'input-radio-e-c', labelText: 'E C', value: 'c' },
       ],
       label: 'Radio group',
       groupName: 'input-radio-e',
@@ -103,53 +134,136 @@ debugSetting.input = (parent) => {
       inputButton: true,
       inputHide: true,
       inputButtonStyle: ['ring'],
-      action: () => { console.log(debugSetting.state); }
+      action: () => {
+        console.log(debugSetting.state);
+      },
     }),
     grid3x3: new Control_radioGrid({
       object: debugSetting.state,
       radioGroup: [
-        { id: 'input-radio-grid3x3-a', labelText: 'A', value: 'a', position: 1 },
-        { id: 'input-radio-grid3x3-b', labelText: 'B', value: 'b', position: 2 },
-        { id: 'input-radio-grid3x3-c', labelText: 'C', value: 'c', position: 3 },
-        { id: 'input-radio-grid3x3-d', labelText: 'D', value: 'd', position: 4 },
-        { id: 'input-radio-grid3x3-e', labelText: 'E', value: 'e', position: 5 },
-        { id: 'input-radio-grid3x3-f', labelText: 'F', value: 'f', position: 6 },
-        { id: 'input-radio-grid3x3-g', labelText: 'G', value: 'g', position: 7 },
-        { id: 'input-radio-grid3x3-h', labelText: 'H', value: 'h', position: 8 },
-        { id: 'input-radio-grid3x3-i', labelText: 'I', value: 'i', position: 9 }
+        {
+          id: 'input-radio-grid3x3-a',
+          labelText: 'A',
+          value: 'a',
+          position: 1,
+        },
+        {
+          id: 'input-radio-grid3x3-b',
+          labelText: 'B',
+          value: 'b',
+          position: 2,
+        },
+        {
+          id: 'input-radio-grid3x3-c',
+          labelText: 'C',
+          value: 'c',
+          position: 3,
+        },
+        {
+          id: 'input-radio-grid3x3-d',
+          labelText: 'D',
+          value: 'd',
+          position: 4,
+        },
+        {
+          id: 'input-radio-grid3x3-e',
+          labelText: 'E',
+          value: 'e',
+          position: 5,
+        },
+        {
+          id: 'input-radio-grid3x3-f',
+          labelText: 'F',
+          value: 'f',
+          position: 6,
+        },
+        {
+          id: 'input-radio-grid3x3-g',
+          labelText: 'G',
+          value: 'g',
+          position: 7,
+        },
+        {
+          id: 'input-radio-grid3x3-h',
+          labelText: 'H',
+          value: 'h',
+          position: 8,
+        },
+        {
+          id: 'input-radio-grid3x3-i',
+          labelText: 'I',
+          value: 'i',
+          position: 9,
+        },
       ],
       label: 'Radio group grid 3x3',
       groupName: 'input-radio-grid3x3',
       path: 'input.radio.grid3x3',
       gridSize: '3x3',
-      action: () => { console.log(debugSetting.state); }
+      action: () => {
+        console.log(debugSetting.state);
+      },
     }),
     grid3x1: new Control_radioGrid({
       object: debugSetting.state,
       radioGroup: [
-        { id: 'input-radio-grid3x1-a', labelText: 'A', value: 'a', position: 1 },
-        { id: 'input-radio-grid3x1-b', labelText: 'B', value: 'b', position: 2 },
-        { id: 'input-radio-grid3x1-c', labelText: 'C', value: 'c', position: 3 }
+        {
+          id: 'input-radio-grid3x1-a',
+          labelText: 'A',
+          value: 'a',
+          position: 1,
+        },
+        {
+          id: 'input-radio-grid3x1-b',
+          labelText: 'B',
+          value: 'b',
+          position: 2,
+        },
+        {
+          id: 'input-radio-grid3x1-c',
+          labelText: 'C',
+          value: 'c',
+          position: 3,
+        },
       ],
       label: 'Radio group grid 3x1',
       groupName: 'input-radio-grid3x1',
       path: 'input.radio.grid3x1',
       gridSize: '3x1',
-      action: () => { console.log(debugSetting.state); }
+      action: () => {
+        console.log(debugSetting.state);
+      },
     }),
     grid1x3: new Control_radioGrid({
       object: debugSetting.state,
       radioGroup: [
-        { id: 'input-radio-grid1x3-a', labelText: 'A', value: 'a', position: 1 },
-        { id: 'input-radio-grid1x3-b', labelText: 'B', value: 'b', position: 2 },
-        { id: 'input-radio-grid1x3-c', labelText: 'C', value: 'c', position: 3 }
+        {
+          id: 'input-radio-grid1x3-a',
+          labelText: 'A',
+          value: 'a',
+          position: 1,
+        },
+        {
+          id: 'input-radio-grid1x3-b',
+          labelText: 'B',
+          value: 'b',
+          position: 2,
+        },
+        {
+          id: 'input-radio-grid1x3-c',
+          labelText: 'C',
+          value: 'c',
+          position: 3,
+        },
       ],
       label: 'Radio group grid 1x3',
       groupName: 'input-radio-grid1x3',
       path: 'input.radio.grid1x3',
       gridSize: '1x3',
-      action: () => { console.log(debugSetting.state); }
-    })
+      action: () => {
+        console.log(debugSetting.state);
+      },
+    }),
   };
 
   debugSetting.control.input.checkbox = {
@@ -158,22 +272,28 @@ debugSetting.input = (parent) => {
       id: 'input-checkbox-a',
       path: 'input.checkbox.a',
       labelText: 'Checkbox A',
-      action: () => { console.log(debugSetting.state); }
+      action: () => {
+        console.log(debugSetting.state);
+      },
     }),
     b: new Control_checkbox({
       object: debugSetting.state,
       id: 'input-checkbox-b',
       path: 'input.checkbox.b',
       labelText: 'Checkbox B',
-      action: () => { console.log(debugSetting.state); }
+      action: () => {
+        console.log(debugSetting.state);
+      },
     }),
     c: new Control_checkbox({
       object: debugSetting.state,
       id: 'input-checkbox-c',
       path: 'input.checkbox.c',
       labelText: 'Checkbox C',
-      action: () => { console.log(debugSetting.state); }
-    })
+      action: () => {
+        console.log(debugSetting.state);
+      },
+    }),
   };
 
   parent.appendChild(
@@ -191,29 +311,57 @@ debugSetting.input = (parent) => {
       node('hr'),
       debugSetting.control.input.checkbox.a.wrap(),
       debugSetting.control.input.checkbox.b.wrap(),
-      debugSetting.control.input.checkbox.c.wrap()
+      debugSetting.control.input.checkbox.c.wrap(),
     ])
   );
-
 };
 
 debugSetting.button = (parent) => {
+  debugSetting.control.button.small = new Button({
+    text: 'Small button',
+    size: 'small',
+  });
 
-  debugSetting.control.button.small = new Button({ text: 'Small button', size: 'small' });
+  debugSetting.control.button.medium = new Button({
+    text: 'Medium button',
+    size: 'medium',
+  });
 
-  debugSetting.control.button.medium = new Button({ text: 'Medium button', size: 'medium' });
+  debugSetting.control.button.large = new Button({
+    text: 'Large button',
+    size: 'large',
+  });
 
-  debugSetting.control.button.large = new Button({ text: 'Large button', size: 'large' });
+  debugSetting.control.button.ring = new Button({
+    text: 'Ring button',
+    size: 'medium',
+    style: ['ring'],
+  });
 
-  debugSetting.control.button.ring = new Button({ text: 'Ring button', size: 'medium', style: ['ring'] });
+  debugSetting.control.button.line = new Button({
+    text: 'Line button',
+    size: 'medium',
+    style: ['line'],
+  });
 
-  debugSetting.control.button.line = new Button({ text: 'Line button', size: 'medium', style: ['line'] });
+  debugSetting.control.button.ring = new Button({
+    text: 'Ring button',
+    size: 'medium',
+    style: ['ring'],
+  });
 
-  debugSetting.control.button.ring = new Button({ text: 'Ring button', size: 'medium', style: ['ring'] });
+  debugSetting.control.button.link = new Button({
+    text: 'Link button',
+    size: 'medium',
+    style: ['link'],
+  });
 
-  debugSetting.control.button.link = new Button({ text: 'Link button', size: 'medium', style: ['link'] });
-
-  debugSetting.control.button.icon = new Button({ text: 'Icon button', size: 'medium', style: ['line'], iconName: 'add' });
+  debugSetting.control.button.icon = new Button({
+    text: 'Icon button',
+    size: 'medium',
+    style: ['line'],
+    iconName: 'add',
+  });
 
   parent.appendChild(
     node('div', [
@@ -224,108 +372,94 @@ debugSetting.button = (parent) => {
       debugSetting.control.button.line.wrap(),
       debugSetting.control.button.ring.wrap(),
       debugSetting.control.button.link.wrap(),
-      debugSetting.control.button.icon.wrap()
+      debugSetting.control.button.icon.wrap(),
     ])
   );
-
 };
 
 debugSetting.bookmark = (parent) => {
-
   debugSetting.control.bookmark.letter = new Button({
     text: 'Only letters',
     style: ['line'],
     func: () => {
-      bookmark.all.forEach(item => {
-        item.items.forEach(item => {
-
+      bookmark.all.forEach((item) => {
+        item.items.forEach((item) => {
           item.display.visual.type = 'letter';
-
         });
       });
       groupAndBookmark.render();
       data.save();
-    }
+    },
   });
 
   debugSetting.control.bookmark.icon = new Button({
     text: 'Only icons',
     style: ['line'],
     func: () => {
-      bookmark.all.forEach(item => {
-        item.items.forEach(item => {
-
+      bookmark.all.forEach((item) => {
+        item.items.forEach((item) => {
           item.display.visual.type = 'icon';
-
         });
       });
       groupAndBookmark.render();
       data.save();
-    }
+    },
   });
 
   debugSetting.control.bookmark.image = new Button({
     text: 'Only images',
     style: ['line'],
     func: () => {
-      bookmark.all.forEach(item => {
-        item.items.forEach(item => {
-
+      bookmark.all.forEach((item) => {
+        item.items.forEach((item) => {
           item.display.visual.type = 'image';
-
         });
       });
       groupAndBookmark.render();
       data.save();
-    }
+    },
   });
 
   debugSetting.control.bookmark.image = new Button({
     text: 'Only images',
     style: ['line'],
     func: () => {
-      bookmark.all.forEach(item => {
-        item.items.forEach(item => {
-
+      bookmark.all.forEach((item) => {
+        item.items.forEach((item) => {
           item.display.visual.type = 'image';
-
         });
       });
       groupAndBookmark.render();
       data.save();
-    }
+    },
   });
 
   debugSetting.control.bookmark.nameShow = new Button({
     text: 'Name show',
     style: ['line'],
     func: () => {
-      bookmark.all.forEach(item => {
-        item.items.forEach(item => {
-
+      bookmark.all.forEach((item) => {
+        item.items.forEach((item) => {
           item.display.name.show = true;
-
         });
       });
       groupAndBookmark.render();
       data.save();
-    }
+    },
   });
 
   debugSetting.control.bookmark.nameHide = new Button({
     text: 'Name hide',
     style: ['line'],
     func: () => {
-      bookmark.all.forEach(item => {
-        item.items.forEach(item => {
-
+      bookmark.all.forEach((item) => {
+        item.items.forEach((item) => {
           item.display.name.show = false;
-
         });
       });
       groupAndBookmark.render();
       data.save();
-    }
+    },
   });
 
   debugSetting.control.bookmark.add = {
@@ -333,10 +467,11 @@ debugSetting.bookmark = (parent) => {
       text: 'Add a group',
       style: ['line'],
       func: () => {
-
         const newGroupData = new StagedGroup();
 
-        newGroupData.group.name.text = randomString({ adjectivesCount: randomNumber(1, 3) });
+        newGroupData.group.name.text = randomString({
+          adjectivesCount: randomNumber(1, 3),
+        });
 
         newGroupData.newGroup();
 
@@ -349,33 +484,37 @@ debugSetting.bookmark = (parent) => {
         layout.area.assemble();
 
         data.save();
-
-      }
+      },
     }),
     bookmark: new Button({
       text: 'Add 10 random bookmarks',
       style: ['line'],
       func: () => {
-
         for (var i = 0; i < 10; i++) {
-
           const newBookmarkData = new StagedBookmark();
 
           newBookmarkData.type.new = true;
 
-          newBookmarkData.position.destination.item = (bookmark.all.length > 0) ? bookmark.all[0].items.length : 0;
+          newBookmarkData.position.destination.item =
+            bookmark.all.length > 0 ? bookmark.all[0].items.length : 0;
 
-          newBookmarkData.position.destination.group = randomNumber(0, (bookmark.all.length - 1));
+          newBookmarkData.position.destination.group = randomNumber(
+            0,
+            bookmark.all.length - 1
+          );
 
           newBookmarkData.link.timestamp = new Date().getTime();
 
           const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-          newBookmarkData.link.display.visual.letter.text = alphabet[randomNumber(0, (alphabet.length - 1))] + alphabet[randomNumber(0, (alphabet.length - 1))];
+          newBookmarkData.link.display.visual.letter.text =
+            alphabet[randomNumber(0, alphabet.length - 1)] +
+            alphabet[randomNumber(0, alphabet.length - 1)];
 
           newBookmarkData.link.display.visual.type = 'icon';
 
-          const randomIcon = fontawesome[randomNumber(0, fontawesome.length - 1)];
+          const randomIcon =
+            fontawesome[randomNumber(0, fontawesome.length - 1)];
 
           newBookmarkData.link.display.visual.icon.label = randomIcon.label;
           newBookmarkData.link.display.visual.icon.name = randomIcon.name;
@@ -386,20 +525,20 @@ debugSetting.bookmark = (parent) => {
             newBookmarkData.link.display.visual.icon.prefix = 'fab';
           }
 
-          newBookmarkData.link.display.name.text = randomString({ adjectivesCount: 1 });
+          newBookmarkData.link.display.name.text = randomString({
+            adjectivesCount: 1,
+          });
 
           newBookmarkData.link.url = randomString({ adjectivesCount: 1 });
 
           bookmark.item.mod.add(newBookmarkData);
-
         }
 
         groupAndBookmark.render();
 
         data.save();
-
-      }
-    })
+      },
+    }),
   };
 
   parent.appendChild(
@@ -417,18 +556,16 @@ debugSetting.bookmark = (parent) => {
               debugSetting.control.bookmark.nameShow.wrap(),
               debugSetting.control.bookmark.nameHide.wrap(),
               debugSetting.control.bookmark.add.group.wrap(),
-              debugSetting.control.bookmark.add.bookmark.wrap()
-            ]
-          })
-        ]
-      })
+              debugSetting.control.bookmark.add.bookmark.wrap(),
+            ],
+          }),
+        ],
+      }),
     ])
   );
-
 };
 
 debugSetting.icon = (parent) => {
-
   debugSetting.control.icon = [];
 
   for (let key in icon.all) {
@@ -437,9 +574,9 @@ debugSetting.icon = (parent) => {
         children: [
           node('div|class:d-flex d-horizontal d-gap d-center', [
             node('div|class:large', [icon.render(key)]),
-            node(`p:${key}|class:small`)
-          ])
-        ]
+            node(`p:${key}|class:small`),
+          ]),
+        ],
       })
     );
   }
@@ -452,13 +589,12 @@ debugSetting.icon = (parent) => {
             gap: 'small',
             wrap: true,
             equalGap: true,
-            children: debugSetting.control.icon
-          })
-        ]
-      })
+            children: debugSetting.control.icon,
+          }),
+        ],
+      }),
     ])
   );
-
 };
 
 export { debugSetting };

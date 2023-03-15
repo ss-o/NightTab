@@ -26,10 +26,7 @@ import { applyCSSState } from '../../utility/applyCSSState';
 
 import './index.css';
 
-export const CustomThemeTile = function({
-  customThemeData = false
-} = {}) {
-
+export const CustomThemeTile = function ({ customThemeData = false } = {}) {
   this.element = {
     tile: node('div|class:theme-custom-tile'),
     front: node('div|class:theme-custom-tile-front'),
@@ -43,22 +40,27 @@ export const CustomThemeTile = function({
       style: ['ring'],
       block: true,
       func: () => {
-
         const newCustomThemeData = JSON.parse(JSON.stringify(customThemeData));
 
-        state.get.current().theme.color.range.primary.h = newCustomThemeData.theme.color.range.primary.h;
+        state.get.current().theme.color.range.primary.h =
+          newCustomThemeData.theme.color.range.primary.h;
 
-        state.get.current().theme.color.range.primary.s = newCustomThemeData.theme.color.range.primary.s;
+        state.get.current().theme.color.range.primary.s =
+          newCustomThemeData.theme.color.range.primary.s;
 
-        state.get.current().theme.color.contrast = newCustomThemeData.theme.color.contrast;
+        state.get.current().theme.color.contrast =
+          newCustomThemeData.theme.color.contrast;
 
-        state.get.current().theme.accent.hsl = newCustomThemeData.theme.accent.hsl;
+        state.get.current().theme.accent.hsl =
+          newCustomThemeData.theme.accent.hsl;
 
-        state.get.current().theme.accent.rgb = newCustomThemeData.theme.accent.rgb;
+        state.get.current().theme.accent.rgb =
+          newCustomThemeData.theme.accent.rgb;
 
         state.get.current().theme.font = newCustomThemeData.theme.font;
 
-        state.get.current().theme.background = newCustomThemeData.theme.background;
+        state.get.current().theme.background =
+          newCustomThemeData.theme.background;
 
         state.get.current().theme.radius = newCustomThemeData.theme.radius;
 
@@ -287,7 +289,7 @@ export const CustomThemeTile = function({
           'theme.bookmark.color.opacity',
           'theme.bookmark.item.opacity',
           'theme.toolbar.opacity',
-          'theme.group.toolbar.opacity'
+          'theme.group.toolbar.opacity',
         ]);
 
         applyCSSClass([
@@ -295,18 +297,22 @@ export const CustomThemeTile = function({
           'theme.background.type',
           'theme.layout.color.by',
           'theme.header.color.by',
-          'theme.bookmark.color.by'
+          'theme.bookmark.color.by',
         ]);
 
-        applyCSSState([
-          'theme.layout.divider.size'
-        ]);
+        applyCSSState(['theme.layout.divider.size']);
 
         layout.area.render();
 
-        bookmark.item.mod.applyVar('border', state.get.current().theme.bookmark.item.border);
+        bookmark.item.mod.applyVar(
+          'border',
+          state.get.current().theme.bookmark.item.border
+        );
 
-        bookmark.item.mod.applyVar('color.opacity', state.get.current().theme.bookmark.item.opacity);
+        bookmark.item.mod.applyVar(
+          'color.opacity',
+          state.get.current().theme.bookmark.item.opacity
+        );
 
         groupAndBookmark.render();
 
@@ -317,9 +323,8 @@ export const CustomThemeTile = function({
         header.element.search.update.style();
 
         data.save();
-
-      }
-    })
+      },
+    }),
   };
 
   this.control = {};
@@ -334,33 +339,39 @@ export const CustomThemeTile = function({
       title: message.get('themeCustomTileControlEdit'),
       classList: ['theme-custom-control-button', 'theme-custom-control-edit'],
       func: () => {
-
         menu.close();
 
-        let newCustomThemeData = new StagedCustomTheme(JSON.parse(JSON.stringify(customThemeData.theme)));
+        let newCustomThemeData = new StagedCustomTheme(
+          JSON.parse(JSON.stringify(customThemeData.theme))
+        );
 
-        newCustomThemeData.position = JSON.parse(JSON.stringify(customThemeData.position));
+        newCustomThemeData.position = JSON.parse(
+          JSON.stringify(customThemeData.position)
+        );
 
-        const bookmarkForm = new CustomThemeForm({ customThemeData: newCustomThemeData });
+        const bookmarkForm = new CustomThemeForm({
+          customThemeData: newCustomThemeData,
+        });
 
         const editModal = new Modal({
-          heading: isValidString(customThemeData.theme.name) ? `${message.get('themeCustomEditHeadingName')} ${customThemeData.theme.name}` : message.get('themeCustomEditHeadingUnnamed'),
+          heading: isValidString(customThemeData.theme.name)
+            ? `${message.get('themeCustomEditHeadingName')} ${
+              customThemeData.theme.name
+            }`
+            : message.get('themeCustomEditHeadingUnnamed'),
           content: bookmarkForm.form(),
           successText: message.get('themeCustomEditSuccessText'),
           cancelText: message.get('themeCustomEditCancelText'),
           width: 'small',
           successAction: () => {
-
             customTheme.item.mod.edit(newCustomThemeData);
 
             data.save();
-
-          }
+          },
         });
 
         editModal.open();
-
-      }
+      },
     }),
     remove: new Button({
       text: message.get('themeCustomTileControlRemove'),
@@ -371,11 +382,14 @@ export const CustomThemeTile = function({
       title: message.get('themeCustomTileControlRemove'),
       classList: ['theme-custom-control-button', 'theme-custom-control-remove'],
       func: () => {
-
         menu.close();
 
         const removeModal = new Modal({
-          heading: isValidString(customThemeData.theme.name) ? `${message.get('themeCustomRemoveHeadingName')} ${customThemeData.theme.name}` : message.get('themeCustomRemoveHeadingUnnamed'),
+          heading: isValidString(customThemeData.theme.name)
+            ? `${message.get('themeCustomRemoveHeadingName')} ${
+              customThemeData.theme.name
+            }`
+            : message.get('themeCustomRemoveHeadingUnnamed'),
           content: message.get('themeCustomRemoveContent'),
           successText: message.get('themeCustomRemoveSuccessText'),
           cancelText: message.get('themeCustomRemoveCancelText'),
@@ -383,13 +397,12 @@ export const CustomThemeTile = function({
           successAction: () => {
             customTheme.item.mod.remove(customThemeData);
             data.save();
-          }
+          },
         });
 
         removeModal.open();
-
-      }
-    })
+      },
+    }),
   };
 
   this.control.disable = () => {
@@ -405,84 +418,132 @@ export const CustomThemeTile = function({
   };
 
   this.previewTile = () => {
-
     const shadeSteps = 4;
 
     let hsl = customThemeData.theme.color.range.primary;
 
-    hsl.l = Math.round(customThemeData.theme.color.contrast.start + ((customThemeData.theme.color.contrast.end - customThemeData.theme.color.contrast.start) / 2));
+    hsl.l = Math.round(
+      customThemeData.theme.color.contrast.start +
+        (customThemeData.theme.color.contrast.end -
+          customThemeData.theme.color.contrast.start) /
+          2
+    );
 
-    let shadeStep = Math.round((customThemeData.theme.color.contrast.end - customThemeData.theme.color.contrast.start) / 10);
+    let shadeStep = Math.round(
+      (customThemeData.theme.color.contrast.end -
+        customThemeData.theme.color.contrast.start) /
+        10
+    );
 
     for (let i = 1; i <= shadeSteps; i++) {
+      let darken = () => {
+        hsl.l = Math.round(hsl.l - shadeStep);
+      };
 
-      let darken = () => { hsl.l = Math.round(hsl.l - shadeStep); };
-
-      let lighten = () => { hsl.l = Math.round(hsl.l + shadeStep); };
+      let lighten = () => {
+        hsl.l = Math.round(hsl.l + shadeStep);
+      };
 
       if (customThemeData.theme.style == 'dark') {
-
         darken();
-
       } else if (customThemeData.theme.style == 'light') {
-
         lighten();
-
       } else if (customThemeData.theme.style == 'system') {
-
         if (window.matchMedia('(prefers-color-scheme:dark)').matches) {
           darken();
         } else if (window.matchMedia('(prefers-color-scheme:light)').matches) {
           lighten();
         }
-
       }
 
-      if (hsl.l < 0) { hsl.l = 0; }
+      if (hsl.l < 0) {
+        hsl.l = 0;
+      }
 
-      if (hsl.l > 100) { hsl.l = 100; }
+      if (hsl.l > 100) {
+        hsl.l = 100;
+      }
 
       let rgb = convertColor.hsl.rgb(hsl);
 
-      this.element.tile.style.setProperty('--theme-custom-background-0' + i + '-rgb-r', rgb.r);
-      this.element.tile.style.setProperty('--theme-custom-background-0' + i + '-rgb-g', rgb.g);
-      this.element.tile.style.setProperty('--theme-custom-background-0' + i + '-rgb-b', rgb.b);
-      this.element.tile.style.setProperty('--theme-custom-background-0' + i + '-hsl-h', hsl.h);
-      this.element.tile.style.setProperty('--theme-custom-background-0' + i + '-hsl-s', hsl.s);
-      this.element.tile.style.setProperty('--theme-custom-background-0' + i + '-hsl-l', hsl.l);
+      this.element.tile.style.setProperty(
+        '--theme-custom-background-0' + i + '-rgb-r',
+        rgb.r
+      );
+      this.element.tile.style.setProperty(
+        '--theme-custom-background-0' + i + '-rgb-g',
+        rgb.g
+      );
+      this.element.tile.style.setProperty(
+        '--theme-custom-background-0' + i + '-rgb-b',
+        rgb.b
+      );
+      this.element.tile.style.setProperty(
+        '--theme-custom-background-0' + i + '-hsl-h',
+        hsl.h
+      );
+      this.element.tile.style.setProperty(
+        '--theme-custom-background-0' + i + '-hsl-s',
+        hsl.s
+      );
+      this.element.tile.style.setProperty(
+        '--theme-custom-background-0' + i + '-hsl-l',
+        hsl.l
+      );
 
-      this.element.tile.style.setProperty('--theme-custom-background-0' + i, 'var(--theme-custom-background-0' + i + '-rgb-r), var(--theme-custom-background-0' + i + '-rgb-g), var(--theme-custom-background-0' + i + '-rgb-b)');
+      this.element.tile.style.setProperty(
+        '--theme-custom-background-0' + i,
+        'var(--theme-custom-background-0' +
+          i +
+          '-rgb-r), var(--theme-custom-background-0' +
+          i +
+          '-rgb-g), var(--theme-custom-background-0' +
+          i +
+          '-rgb-b)'
+      );
 
-      this.element.preview.appendChild(node('span|class:theme-custom-background-0' + i));
-
+      this.element.preview.appendChild(
+        node('span|class:theme-custom-background-0' + i)
+      );
     }
 
-    this.element.tile.style.setProperty('--theme-custom-text', '0, 0%, calc(((((var(--theme-custom-background-01-rgb-r) * var(--theme-t-r)) + (var(--theme-custom-background-01-rgb-g) * var(--theme-t-g)) + (var(--theme-custom-background-01-rgb-b) * var(--theme-t-b))) / 255) - var(--theme-t)) * -10000000%)');
+    this.element.tile.style.setProperty(
+      '--theme-custom-text',
+      '0, 0%, calc(((((var(--theme-custom-background-01-rgb-r) * var(--theme-t-r)) + (var(--theme-custom-background-01-rgb-g) * var(--theme-t-g)) + (var(--theme-custom-background-01-rgb-b) * var(--theme-t-b))) / 255) - var(--theme-t)) * -10000000%)'
+    );
 
-    this.element.tile.style.setProperty('--theme-custom-accent-rgb-r', customThemeData.theme.accent.rgb.r);
-    this.element.tile.style.setProperty('--theme-custom-accent-rgb-g', customThemeData.theme.accent.rgb.g);
-    this.element.tile.style.setProperty('--theme-custom-accent-rgb-b', customThemeData.theme.accent.rgb.b);
+    this.element.tile.style.setProperty(
+      '--theme-custom-accent-rgb-r',
+      customThemeData.theme.accent.rgb.r
+    );
+    this.element.tile.style.setProperty(
+      '--theme-custom-accent-rgb-g',
+      customThemeData.theme.accent.rgb.g
+    );
+    this.element.tile.style.setProperty(
+      '--theme-custom-accent-rgb-b',
+      customThemeData.theme.accent.rgb.b
+    );
 
-    this.element.tile.style.setProperty('--theme-custom-accent', 'var(--theme-custom-accent-rgb-r), var(--theme-custom-accent-rgb-g), var(--theme-custom-accent-rgb-b)');
+    this.element.tile.style.setProperty(
+      '--theme-custom-accent',
+      'var(--theme-custom-accent-rgb-r), var(--theme-custom-accent-rgb-g), var(--theme-custom-accent-rgb-b)'
+    );
 
     this.element.preview.appendChild(node('span|class:theme-custom-accent'));
 
     return node('div|class:theme-custom-tile');
-
   };
 
   this.assemble = () => {
-
     this.previewTile();
 
     this.element.custom.button.appendChild(this.element.preview);
 
     if (isValidString(customThemeData.theme.name)) {
-
       this.element.name.innerHTML = customThemeData.theme.name;
 
       this.element.custom.button.appendChild(this.element.name);
-
     }
 
     this.element.front.appendChild(this.element.custom.button);
@@ -502,15 +563,11 @@ export const CustomThemeTile = function({
     } else {
       this.control.disable();
     }
-
   };
 
   this.tile = () => {
-
     return this.element.tile;
-
   };
 
   this.assemble();
-
 };

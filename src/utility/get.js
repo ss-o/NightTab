@@ -1,16 +1,10 @@
 import { makePath } from './makePath.js';
 
-export const get = ({
-  object = null,
-  path = null
-} = {}) => {
-
+export const get = ({ object = null, path = null } = {}) => {
   const address = makePath(path);
 
   const getValue = () => {
-
     while (address.length > 1) {
-
       // shift off and store the first key
       let currentKey = address.shift();
 
@@ -26,7 +20,6 @@ export const get = ({
 
       // drill down the object with the first key
       object = object[currentKey];
-
     }
 
     let finalKey = address.shift();
@@ -36,7 +29,6 @@ export const get = ({
     } else {
       return object[finalKey];
     }
-
   };
 
   if (object != null && path != null) {
@@ -44,5 +36,4 @@ export const get = ({
   } else {
     return false;
   }
-
 };

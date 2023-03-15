@@ -4,7 +4,10 @@ import { APP_NAME } from '../../../constant';
 export const app = {
   name: APP_NAME + ' (default)',
   color: state.get.default().theme.color,
-  accent: { hsl: state.get.default().theme.accent.hsl, rgb: state.get.default().theme.accent.rgb },
+  accent: {
+    hsl: state.get.default().theme.accent.hsl,
+    rgb: state.get.default().theme.accent.rgb,
+  },
   font: state.get.default().theme.font,
   background: state.get.default().theme.background,
   radius: state.get.default().theme.radius,
@@ -16,5 +19,5 @@ export const app = {
   header: state.get.default().theme.header,
   bookmark: state.get.default().theme.bookmark,
   group: state.get.default().theme.group,
-  toolbar: state.get.default().theme.toolbar
+  toolbar: state.get.default().theme.toolbar,
 };

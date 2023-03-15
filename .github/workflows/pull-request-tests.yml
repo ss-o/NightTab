@@ -11,8 +11,8 @@ jobs:
       - name: Install Dependecies & Test
       - uses: actions/setup-node@v2
         with:
-          node-version: '12' # TODO IDK what version nighttab is built with normally.
-          cache: 'npm'
+          node-version: "12" # TODO IDK what version nighttab is built with normally.
+          cache: "npm"
       - run: |
           npm install
           npm run lint

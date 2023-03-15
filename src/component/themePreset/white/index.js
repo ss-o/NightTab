@@ -2,7 +2,10 @@ import { state } from '../../state';
 
 export const white = {
   name: 'White',
-  color: { range: { primary: { h: 0, s: 0 } }, contrast: { start: 0, end: 100 } },
+  color: {
+    range: { primary: { h: 0, s: 0 } },
+    contrast: { start: 0, end: 100 },
+  },
   accent: { hsl: { h: 0, s: 0, l: 20 }, rgb: { r: 51, g: 51, b: 51 } },
   font: state.get.default().theme.font,
   background: state.get.default().theme.background,
@@ -15,5 +18,5 @@ export const white = {
   header: state.get.default().theme.header,
   bookmark: state.get.default().theme.bookmark,
   group: state.get.default().theme.group,
-  toolbar: state.get.default().theme.toolbar
+  toolbar: state.get.default().theme.toolbar,
 };

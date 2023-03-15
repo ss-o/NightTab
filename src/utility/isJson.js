@@ -1,5 +1,4 @@
 export const isJson = (string) => {
-
   try {
     JSON.parse(string);
   } catch (error) {
@@ -7,5 +6,4 @@ export const isJson = (string) => {
   }
 
   return true;
-
 };

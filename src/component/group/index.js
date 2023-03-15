@@ -26,7 +26,7 @@ import './index.css';
 const group = {};
 
 group.area = {
-  current: []
+  current: [],
 };
 
 group.item = {
@@ -44,12 +44,10 @@ group.item = {
     },
     remove: (groupData) => {
       bookmark.all.splice(groupData.position.origin, 1);
-    }
+    },
   },
   render: () => {
-
     const addGroup = (groupData, groupIndex) => {
-
       const currentGroupkData = new StagedGroup(groupData);
 
       currentGroupkData.position.origin = groupIndex;
@@ -61,153 +59,112 @@ group.item = {
       group.area.current.push(groupArea);
 
       if (state.get.current().search) {
-
-        if (header.element.search.resultCount().group[groupIndex].searchMatch > 0) {
-
+        if (
+          header.element.search.resultCount().group[groupIndex].searchMatch > 0
+        ) {
           bookmark.element.group.appendChild(groupArea.group());
-
         }
-
       } else {
-
         bookmark.element.group.appendChild(groupArea.group());
-
       }
-
     };
 
     const addSearchEmpty = () => {
-
       const searchEmpty = new SearchEmpty();
 
       bookmark.element.group.appendChild(searchEmpty.empty());
-
     };
 
     const addBookmarkEmpty = () => {
-
       const bookmarkEmpty = new BookmarkEmpty();
 
       bookmark.element.group.appendChild(bookmarkEmpty.empty());
-
     };
 
     if (bookmark.all.length > 0) {
-
       if (state.get.current().search) {
-
         // searching
 
         if (header.element.search.resultCount().total > 0) {
-
           bookmark.all.forEach((item, i) => {
-
             const groupIndex = i;
 
             addGroup(item, groupIndex);
-
           });
-
         } else {
-
           addSearchEmpty();
-
         }
-
       } else {
-
         // not searching
 
         bookmark.all.forEach((item, i) => {
-
           const groupIndex = i;
 
           addGroup(item, groupIndex);
-
         });
-
       }
-
     } else {
-
       if (state.get.current().search) {
-
         // searching
 
         addSearchEmpty();
-
       } else {
-
         // not searching
 
         addBookmarkEmpty();
-
       }
-
     }
-
   },
   clear: () => {
-
     group.area.current = [];
 
     clearChildNode(bookmark.element.group);
-
-  }
+  },
 };
 
 group.edit = {
   open: () => {
-
     state.get.current().group.edit = true;
 
     group.edit.render();
-
   },
   close: () => {
-
     state.get.current().group.edit = false;
 
     group.edit.render();
-
   },
   toggle: () => {
-
     if (state.get.current().group.edit) {
       group.edit.close();
     } else {
       group.edit.open();
     }
-
   },
   render: () => {
-
     applyCSSState('group.edit');
 
     if (group.area.current.length > 0) {
-
       group.area.current.forEach((item) => {
-
         if (state.get.current().group.edit) {
           item.control.enable();
         } else {
           item.control.disable();
         }
-
       });
-
     }
-
-  }
+  },
 };
 
 group.add = {
   mod: {
-    open: () => { state.get.current().group.add = true; },
-    close: () => { state.get.current().group.add = false; }
+    open: () => {
+      state.get.current().group.add = true;
+    },
+    close: () => {
+      state.get.current().group.add = false;
+    },
   },
   render: () => {
-
     const newGroupData = new StagedGroup();
 
     newGroupData.newGroup();
@@ -221,21 +178,16 @@ group.add = {
       cancelText: message.get('groupAddCancelText'),
       width: 40,
       openAction: () => {
-
         group.add.mod.open();
 
         data.save();
-
       },
       closeAction: () => {
-
         group.add.mod.close();
 
         data.save();
-
       },
       successAction: () => {
-
         group.item.mod.add(newGroupData);
 
         group.add.mod.close();
@@ -245,26 +197,21 @@ group.add = {
         layout.area.assemble();
 
         data.save();
-
       },
       dismissAction: () => {
-
         group.add.mod.close();
 
         data.save();
-
-      }
+      },
     });
 
     addModal.open();
-
-  }
+  },
 };
 
 group.sort = {
   sortable: null,
   bind: () => {
-
     group.sort.sortable = null;
 
     group.sort.sortable = Sortable.create(bookmark.element.group, {
@@ -273,7 +220,6 @@ group.sort = {
       animation: 500,
       easing: 'cubic-bezier(0.8, 0.8, 0.4, 1.4)',
       onEnd: (event) => {
-
         // console.log('============ debug sort ============');
         // console.log(event);
         // console.log('item:', 'origin', event.oldIndex, 'destination', event.newIndex);
@@ -289,22 +235,14 @@ group.sort = {
         groupAndBookmark.render();
 
         data.save();
-
-      }
+      },
     });
-
-  }
+  },
 };
 
 group.init = () => {
-  applyCSSVar([
-    'group.name.size',
-    'group.toolbar.size'
-  ]);
-  applyCSSClass([
-    'group.area.justify',
-    'group.order'
-  ]);
+  applyCSSVar(['group.name.size', 'group.toolbar.size']);
+  applyCSSClass(['group.area.justify', 'group.order']);
   group.add.mod.close();
   group.edit.render();
 };

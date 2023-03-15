@@ -1,64 +1,69 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: {
-    index: path.resolve(__dirname, 'src', 'index.js')
+    index: path.resolve(__dirname, "src", "index.js"),
   },
   output: {
-    filename: '[name].[contenthash].js',
-    path: path.resolve(__dirname, 'dist/web'),
-    clean: true
+    filename: "[name].[contenthash].js",
+    path: path.resolve(__dirname, "dist/web"),
+    clean: true,
   },
   module: {
     rules: [
       {
         test: /\.ts?$/,
-        use: 'ts-loader',
+        use: "ts-loader",
         exclude: /node_modules/,
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader']
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(ttf|woff|woff2)$/,
-        type: 'asset/resource',
+        type: "asset/resource",
         generator: {
-          filename: 'font/[name][ext]',
-        }
+          filename: "font/[name][ext]",
+        },
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
         generator: {
-          filename: 'image/[name][ext]',
-        }
-      }
-    ]
+          filename: "image/[name][ext]",
+        },
+      },
+    ],
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: [".ts", ".js"],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: "./src/index.html",
     }),
     new CopyPlugin({
-      patterns: [{
-        from: './src/manifest.json',
-        to: './manifest.json'
-      }, {
-        from: './src/icon/',
-        to: './icon/'
-      }, {
-        from: './src/locale',
-        to: './_locales'
-      }, {
-        from: './src/initialBackground.js',
-        to: './initialBackground.js'
-      }]
-    })
-  ]
+      patterns: [
+        {
+          from: "./src/manifest.json",
+          to: "./manifest.json",
+        },
+        {
+          from: "./src/icon/",
+          to: "./icon/",
+        },
+        {
+          from: "./src/locale",
+          to: "./_locales",
+        },
+        {
+          from: "./src/initialBackground.js",
+          to: "./initialBackground.js",
+        },
+      ],
+    }),
+  ],
 };

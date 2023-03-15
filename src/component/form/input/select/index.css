@@ -1,14 +1,13 @@
 select {
   background-color: hsl(var(--form-input-background));
-  background-image:
-    linear-gradient(45deg, transparent 60%, hsl(var(--form-label)) 60%),
+  background-image: linear-gradient(
+      45deg,
+      transparent 60%,
+      hsl(var(--form-label)) 60%
+    ),
     linear-gradient(135deg, hsl(var(--form-label)) 40%, transparent 40%);
-  background-position:
-    calc(100% - 1.5em) 50%,
-    calc(100% - 1em) 50%;
-  background-size:
-    0.5em 0.375em,
-    0.5em 0.375em;
+  background-position: calc(100% - 1.5em) 50%, calc(100% - 1em) 50%;
+  background-size: 0.5em 0.375em, 0.5em 0.375em;
   background-repeat: no-repeat;
   padding: 0 3em 0 1.25em;
   margin: 0;
@@ -24,15 +23,22 @@ select {
   border-width: 0;
   border-radius: calc(var(--theme-radius) * 0.01em);
   cursor: pointer;
-  transition: background-color var(--layout-transition-extra-fast), background-image var(--layout-transition-extra-fast), border-color var(--layout-transition-extra-fast), color var(--layout-transition-extra-fast), box-shadow var(--layout-transition-extra-fast);
+  transition: background-color var(--layout-transition-extra-fast),
+    background-image var(--layout-transition-extra-fast),
+    border-color var(--layout-transition-extra-fast),
+    color var(--layout-transition-extra-fast),
+    box-shadow var(--layout-transition-extra-fast);
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
 }
 
 select:hover {
-  background-image:
-    linear-gradient(45deg, transparent 60%, hsl(var(--form-label-hover)) 60%),
+  background-image: linear-gradient(
+      45deg,
+      transparent 60%,
+      hsl(var(--form-label-hover)) 60%
+    ),
     linear-gradient(135deg, hsl(var(--form-label-hover)) 40%, transparent 40%);
   background-color: hsl(var(--form-input-background-hover));
   color: hsl(var(--form-label-hover));
@@ -42,9 +48,16 @@ select:hover {
 
 select:focus,
 select:active {
-  background-image:
-    linear-gradient(45deg, transparent 60%, hsl(var(--form-label-focus-active)) 60%),
-    linear-gradient(135deg, hsl(var(--form-label-focus-active)) 40%, transparent 40%);
+  background-image: linear-gradient(
+      45deg,
+      transparent 60%,
+      hsl(var(--form-label-focus-active)) 60%
+    ),
+    linear-gradient(
+      135deg,
+      hsl(var(--form-label-focus-active)) 40%,
+      transparent 40%
+    );
   background-color: hsl(var(--form-input-background-border-focus-active));
   color: hsl(var(--form-label-focus-active));
   outline: none;
@@ -57,9 +70,16 @@ select:disabled:hover,
 select:disabled:focus,
 select:disabled:active {
   background-color: hsl(var(--form-input-background-disabled));
-  background-image:
-    linear-gradient(45deg, transparent 60%, hsl(var(--form-input-text-disabled)) 60%),
-    linear-gradient(135deg, hsl(var(--form-input-text-disabled)) 40%, transparent 40%);
+  background-image: linear-gradient(
+      45deg,
+      transparent 60%,
+      hsl(var(--form-input-text-disabled)) 60%
+    ),
+    linear-gradient(
+      135deg,
+      hsl(var(--form-input-text-disabled)) 40%,
+      transparent 40%
+    );
   color: hsl(var(--form-input-text-disabled));
   cursor: default;
   box-shadow: none;

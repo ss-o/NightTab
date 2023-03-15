@@ -19,10 +19,7 @@ import { applyCSSState } from '../../utility/applyCSSState';
 
 import './index.css';
 
-export const PresetThemeTile = function ({
-  presetThemeData = false
-} = {}) {
-
+export const PresetThemeTile = function ({ presetThemeData = false } = {}) {
   this.element = {
     tile: node('div|class:theme-preset-tile'),
     front: node('div|class:theme-preset-tile-front'),
@@ -35,12 +32,13 @@ export const PresetThemeTile = function ({
       style: ['ring'],
       block: true,
       func: () => {
-
         const newPresetData = JSON.parse(JSON.stringify(presetThemeData));
 
-        state.get.current().theme.color.range.primary.h = newPresetData.color.range.primary.h;
+        state.get.current().theme.color.range.primary.h =
+          newPresetData.color.range.primary.h;
 
-        state.get.current().theme.color.range.primary.s = newPresetData.color.range.primary.s;
+        state.get.current().theme.color.range.primary.s =
+          newPresetData.color.range.primary.s;
 
         state.get.current().theme.color.contrast = newPresetData.color.contrast;
 
@@ -279,7 +277,7 @@ export const PresetThemeTile = function ({
           'theme.bookmark.color.opacity',
           'theme.bookmark.item.opacity',
           'theme.toolbar.opacity',
-          'theme.group.toolbar.opacity'
+          'theme.group.toolbar.opacity',
         ]);
 
         applyCSSClass([
@@ -287,18 +285,22 @@ export const PresetThemeTile = function ({
           'theme.background.type',
           'theme.layout.color.by',
           'theme.header.color.by',
-          'theme.bookmark.color.by'
+          'theme.bookmark.color.by',
         ]);
 
-        applyCSSState([
-          'theme.layout.divider.size'
-        ]);
+        applyCSSState(['theme.layout.divider.size']);
 
         layout.area.render();
 
-        bookmark.item.mod.applyVar('border', state.get.current().theme.bookmark.item.border);
+        bookmark.item.mod.applyVar(
+          'border',
+          state.get.current().theme.bookmark.item.border
+        );
 
-        bookmark.item.mod.applyVar('color.opacity', state.get.current().theme.bookmark.item.opacity);
+        bookmark.item.mod.applyVar(
+          'color.opacity',
+          state.get.current().theme.bookmark.item.opacity
+        );
 
         groupAndBookmark.render();
 
@@ -309,90 +311,137 @@ export const PresetThemeTile = function ({
         header.element.search.update.style();
 
         data.save();
-
-      }
-    })
+      },
+    }),
   };
 
   this.previewTile = () => {
-
     const shadeSteps = 4;
 
     let hsl = presetThemeData.color.range.primary;
 
-    hsl.l = Math.round(presetThemeData.color.contrast.start + ((presetThemeData.color.contrast.end - presetThemeData.color.contrast.start) / 2));
+    hsl.l = Math.round(
+      presetThemeData.color.contrast.start +
+        (presetThemeData.color.contrast.end -
+          presetThemeData.color.contrast.start) /
+          2
+    );
 
-    let shadeStep = Math.round((presetThemeData.color.contrast.end - presetThemeData.color.contrast.start) / 10);
+    let shadeStep = Math.round(
+      (presetThemeData.color.contrast.end -
+        presetThemeData.color.contrast.start) /
+        10
+    );
 
     for (let i = 1; i <= shadeSteps; i++) {
+      let darken = () => {
+        hsl.l = Math.round(hsl.l - shadeStep);
+      };
 
-      let darken = () => { hsl.l = Math.round(hsl.l - shadeStep); };
-
-      let lighten = () => { hsl.l = Math.round(hsl.l + shadeStep); };
+      let lighten = () => {
+        hsl.l = Math.round(hsl.l + shadeStep);
+      };
 
       if (presetThemeData.style == 'dark') {
-
         darken();
-
       } else if (presetThemeData.style == 'light') {
-
         lighten();
-
       } else if (presetThemeData.style == 'system') {
-
         if (window.matchMedia('(prefers-color-scheme:dark)').matches) {
           darken();
         } else if (window.matchMedia('(prefers-color-scheme:light)').matches) {
           lighten();
         }
-
       }
 
-      if (hsl.l < 0) { hsl.l = 0; }
+      if (hsl.l < 0) {
+        hsl.l = 0;
+      }
 
-      if (hsl.l > 100) { hsl.l = 100; }
+      if (hsl.l > 100) {
+        hsl.l = 100;
+      }
 
       let rgb = convertColor.hsl.rgb(hsl);
 
-      this.element.tile.style.setProperty('--theme-preset-background-0' + i + '-rgb-r', rgb.r);
-      this.element.tile.style.setProperty('--theme-preset-background-0' + i + '-rgb-g', rgb.g);
-      this.element.tile.style.setProperty('--theme-preset-background-0' + i + '-rgb-b', rgb.b);
-      this.element.tile.style.setProperty('--theme-preset-background-0' + i + '-hsl-h', hsl.h);
-      this.element.tile.style.setProperty('--theme-preset-background-0' + i + '-hsl-s', hsl.s);
-      this.element.tile.style.setProperty('--theme-preset-background-0' + i + '-hsl-l', hsl.l);
+      this.element.tile.style.setProperty(
+        '--theme-preset-background-0' + i + '-rgb-r',
+        rgb.r
+      );
+      this.element.tile.style.setProperty(
+        '--theme-preset-background-0' + i + '-rgb-g',
+        rgb.g
+      );
+      this.element.tile.style.setProperty(
+        '--theme-preset-background-0' + i + '-rgb-b',
+        rgb.b
+      );
+      this.element.tile.style.setProperty(
+        '--theme-preset-background-0' + i + '-hsl-h',
+        hsl.h
+      );
+      this.element.tile.style.setProperty(
+        '--theme-preset-background-0' + i + '-hsl-s',
+        hsl.s
+      );
+      this.element.tile.style.setProperty(
+        '--theme-preset-background-0' + i + '-hsl-l',
+        hsl.l
+      );
 
-      this.element.tile.style.setProperty('--theme-preset-background-0' + i, 'var(--theme-preset-background-0' + i + '-rgb-r), var(--theme-preset-background-0' + i + '-rgb-g), var(--theme-preset-background-0' + i + '-rgb-b)');
+      this.element.tile.style.setProperty(
+        '--theme-preset-background-0' + i,
+        'var(--theme-preset-background-0' +
+          i +
+          '-rgb-r), var(--theme-preset-background-0' +
+          i +
+          '-rgb-g), var(--theme-preset-background-0' +
+          i +
+          '-rgb-b)'
+      );
 
-      this.element.preview.appendChild(node('span|class:theme-preset-background-0' + i));
-
+      this.element.preview.appendChild(
+        node('span|class:theme-preset-background-0' + i)
+      );
     }
 
-    this.element.tile.style.setProperty('--theme-preset-text', '0, 0%, calc(((((var(--theme-preset-background-01-rgb-r) * var(--theme-t-r)) + (var(--theme-preset-background-01-rgb-g) * var(--theme-t-g)) + (var(--theme-preset-background-01-rgb-b) * var(--theme-t-b))) / 255) - var(--theme-t)) * -10000000%)');
+    this.element.tile.style.setProperty(
+      '--theme-preset-text',
+      '0, 0%, calc(((((var(--theme-preset-background-01-rgb-r) * var(--theme-t-r)) + (var(--theme-preset-background-01-rgb-g) * var(--theme-t-g)) + (var(--theme-preset-background-01-rgb-b) * var(--theme-t-b))) / 255) - var(--theme-t)) * -10000000%)'
+    );
 
-    this.element.tile.style.setProperty('--theme-preset-accent-rgb-r', presetThemeData.accent.rgb.r);
-    this.element.tile.style.setProperty('--theme-preset-accent-rgb-g', presetThemeData.accent.rgb.g);
-    this.element.tile.style.setProperty('--theme-preset-accent-rgb-b', presetThemeData.accent.rgb.b);
+    this.element.tile.style.setProperty(
+      '--theme-preset-accent-rgb-r',
+      presetThemeData.accent.rgb.r
+    );
+    this.element.tile.style.setProperty(
+      '--theme-preset-accent-rgb-g',
+      presetThemeData.accent.rgb.g
+    );
+    this.element.tile.style.setProperty(
+      '--theme-preset-accent-rgb-b',
+      presetThemeData.accent.rgb.b
+    );
 
-    this.element.tile.style.setProperty('--theme-preset-accent', 'var(--theme-preset-accent-rgb-r), var(--theme-preset-accent-rgb-g), var(--theme-preset-accent-rgb-b)');
+    this.element.tile.style.setProperty(
+      '--theme-preset-accent',
+      'var(--theme-preset-accent-rgb-r), var(--theme-preset-accent-rgb-g), var(--theme-preset-accent-rgb-b)'
+    );
 
     this.element.preview.appendChild(node('span|class:theme-preset-accent'));
 
     return node('div|class:theme-preset-tile');
-
   };
 
   this.assemble = () => {
-
     this.previewTile();
 
     this.element.preset.button.appendChild(this.element.preview);
 
     if (isValidString(presetThemeData.name)) {
-
       this.element.name.innerHTML = presetThemeData.name;
 
       this.element.preset.button.appendChild(this.element.name);
-
     }
 
     this.element.front.appendChild(this.element.preset.button);
@@ -400,15 +449,11 @@ export const PresetThemeTile = function ({
     this.element.tile.appendChild(this.element.back);
 
     this.element.tile.appendChild(this.element.front);
-
   };
 
   this.tile = () => {
-
     return this.element.tile;
-
   };
 
   this.assemble();
-
 };

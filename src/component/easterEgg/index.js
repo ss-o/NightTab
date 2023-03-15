@@ -15,11 +15,9 @@ const easterEgg = {};
 easterEgg.toaster = {};
 
 easterEgg.toaster.render = () => {
-
   easterEgg.toaster.bind.remove();
 
   if (bookmark.all.length < 1) {
-
     const newGroupData = new StagedGroup();
 
     newGroupData.group.name.text = 'Toaster';
@@ -27,7 +25,6 @@ easterEgg.toaster.render = () => {
     newGroupData.newGroup();
 
     group.item.mod.add(newGroupData);
-
   }
 
   const newBookmarkData = new StagedBookmark();
@@ -36,7 +33,8 @@ easterEgg.toaster.render = () => {
 
   newBookmarkData.link.background.show = true;
 
-  newBookmarkData.link.background.image.url = 'https://github.com/zombieFox/nightTabAssets/blob/main/images/1628494879270.gif?raw=true';
+  newBookmarkData.link.background.image.url =
+    'https://github.com/zombieFox/nightTabAssets/blob/main/images/1628494879270.gif?raw=true';
 
   newBookmarkData.link.display.name.show = false;
 
@@ -46,7 +44,9 @@ easterEgg.toaster.render = () => {
 
   newBookmarkData.link.accent.hsl = { h: randomNumber(0, 360), s: 100, l: 50 };
 
-  newBookmarkData.link.accent.rgb = convertColor.hsl.rgb(newBookmarkData.link.accent.hsl);
+  newBookmarkData.link.accent.rgb = convertColor.hsl.rgb(
+    newBookmarkData.link.accent.hsl
+  );
 
   newBookmarkData.link.color.by = 'custom';
 
@@ -65,24 +65,25 @@ easterEgg.toaster.render = () => {
   menu.close();
 
   data.save();
-
 };
 
 easterEgg.toaster.bind = {
   add: () => {
-
-    menu.element.frame.element.area.addEventListener('animationend', easterEgg.toaster.render);
+    menu.element.frame.element.area.addEventListener(
+      'animationend',
+      easterEgg.toaster.render
+    );
 
     menu.element.frame.element.area.classList.add('is-jello');
-
   },
   remove: () => {
-
-    menu.element.frame.element.area.removeEventListener('animationend', easterEgg.toaster.render);
+    menu.element.frame.element.area.removeEventListener(
+      'animationend',
+      easterEgg.toaster.render
+    );
 
     menu.element.frame.element.area.classList.remove('is-jello');
-
-  }
+  },
 };
 
 export { easterEgg };

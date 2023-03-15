@@ -12,13 +12,12 @@ import { Splash } from '../../splash';
 const appSetting = {};
 
 appSetting.app = (parent) => {
-
   appSetting.app.para1 = node(`p:${message.get('menuContentAppPara1')}`);
 
   appSetting.app.link1 = new Link({
     text: message.get('menuContentAppLink1'),
     href: `https://www.reddit.com/r/${APP_NAME}`,
-    openNew: true
+    openNew: true,
   });
 
   appSetting.app.para2 = node(`p:${message.get('menuContentAppPara2')}`);
@@ -26,13 +25,13 @@ appSetting.app = (parent) => {
   appSetting.app.link2 = new Link({
     text: message.get('menuContentAppLink2'),
     href: `https://github.com/zombieFox/${APP_NAME}`,
-    openNew: true
+    openNew: true,
   });
 
   appSetting.app.link3 = new Link({
     text: message.get('menuContentAppLink3'),
     href: `https://github.com/zombieFox/${APP_NAME}/blob/master/license`,
-    openNew: true
+    openNew: true,
   });
 
   const splash = new Splash();
@@ -45,32 +44,23 @@ appSetting.app = (parent) => {
         children: [
           appSetting.app.para1,
           form.indent({
-            children: [
-              node('p', [
-                appSetting.app.link1.link()
-              ])
-            ]
-          })
-        ]
+            children: [node('p', [appSetting.app.link1.link()])],
+          }),
+        ],
       }),
       form.wrap({
         children: [
           appSetting.app.para2,
           form.indent({
             children: [
-              node('p', [
-                appSetting.app.link2.link()
-              ]),
-              node('p', [
-                appSetting.app.link3.link()
-              ])
-            ]
-          })
-        ]
-      })
+              node('p', [appSetting.app.link2.link()]),
+              node('p', [appSetting.app.link3.link()]),
+            ],
+          }),
+        ],
+      }),
     ])
   );
-
 };
 
 export { appSetting };

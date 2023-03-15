@@ -1,4 +1,3 @@
-
 import { node } from '../../utility/node';
 
 import './index.css';
@@ -7,12 +6,11 @@ export const Collapse = function ({
   type = false,
   radioGroup = false,
   checkbox = false,
-  target = false
+  target = false,
 } = {}) {
-
   target.forEach((item) => {
     item.state = {
-      collapsed: true
+      collapsed: true,
     };
 
     item.area = node('div|class:collapse-area');
@@ -25,7 +23,7 @@ export const Collapse = function ({
   };
 
   this.element = {
-    collapse: node('div|class:collapse')
+    collapse: node('div|class:collapse'),
   };
 
   this.collapse = () => {
@@ -75,9 +73,7 @@ export const Collapse = function ({
   };
 
   this.update = () => {
-
     switch (type) {
-
       case 'radio': {
         const selectedRadioValue = radioGroup.value();
 
@@ -92,17 +88,13 @@ export const Collapse = function ({
         let state = true;
 
         if (checkbox.length > 1) {
-
           let allCheckboxState = [];
 
-          checkbox.forEach(item => allCheckboxState.push(item.checked()));
+          checkbox.forEach((item) => allCheckboxState.push(item.checked()));
 
-          state = allCheckboxState.some(item => item === true);
-
+          state = allCheckboxState.some((item) => item === true);
         } else {
-
           state = checkbox.checked();
-
         }
 
         target.forEach((item) => {
@@ -113,23 +105,17 @@ export const Collapse = function ({
       }
 
       case 'toggle':
-
         target.forEach((item) => {
-
           this.renderTarget(item.state.collapsed, item.area);
 
           if (item.toggle) {
             this.renderToggle(item.state.collapsed, item.toggle);
           }
-
         });
 
         break;
-
     }
-
   };
 
   this.update();
-
 };

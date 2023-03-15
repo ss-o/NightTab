@@ -8,9 +8,8 @@ export const group = function ({
   block = false,
   border = false,
   children = false,
-  justify = 'left'
+  justify = 'left',
 } = {}) {
-
   const group = node('div|class:form-group', children);
 
   switch (direction) {
@@ -36,7 +35,6 @@ export const group = function ({
   }
 
   switch (justify) {
-
     case 'left':
       group.classList.add('form-group-justify-left');
       break;
@@ -48,9 +46,7 @@ export const group = function ({
     case 'space-between':
       group.classList.add('form-group-justify-space-between');
       break;
-
   }
 
   return group;
-
 };

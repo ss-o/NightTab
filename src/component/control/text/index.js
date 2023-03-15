@@ -14,12 +14,11 @@ export const Control_text = function ({
   classList = [],
   labelText = 'Name',
   srOnly = false,
-  action = false
+  action = false,
 } = {}) {
-
   this.label = form.label({
     forInput: id,
-    text: labelText
+    text: labelText,
   });
 
   if (srOnly) {
@@ -30,14 +29,14 @@ export const Control_text = function ({
     id: id,
     classList: classList,
     func: () => {
-
       if (path) {
         set({ object: object, path: path, value: this.text.value });
       }
 
-      if (action) { action(); }
-
-    }
+      if (action) {
+        action();
+      }
+    },
   });
 
   if (value) {
@@ -57,17 +56,12 @@ export const Control_text = function ({
   }
 
   this.update = () => {
-
     this.text.value = get({ object: object, path: path });
-
   };
 
   this.wrap = () => {
     return form.wrap({
-      children: [
-        this.label,
-        this.text
-      ]
+      children: [this.label, this.text],
     });
   };
 
@@ -80,5 +74,4 @@ export const Control_text = function ({
     this.label.classList.remove('disabled');
     this.text.disabled = false;
   };
-
 };

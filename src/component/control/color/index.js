@@ -16,71 +16,82 @@ export const Control_color = function ({
   labelText = 'Name',
   srOnly = false,
   //FIXME deprecated property
-  value = '#000000', //eslint-disable-line
+  value = "#000000", //eslint-disable-line
   defaultValue = false,
   action = false,
   randomColor = false,
-  extraButtons = []
+  extraButtons = [],
 } = {}) {
-
   this.label = form.label({
     forInput: id,
     text: labelText,
-    srOnly: srOnly
+    srOnly: srOnly,
   });
 
   this.color = form.input.color({
     id: id,
-    value: convertColor.rgb.hex(get({
-      object: object,
-      path: path + '.rgb'
-    })),
+    value: convertColor.rgb.hex(
+      get({
+        object: object,
+        path: path + '.rgb',
+      })
+    ),
     classList: ['form-group-item-half'],
     func: () => {
-
       if (path) {
-
-        set({ object: object, path: path + '.rgb', value: convertColor.hex.rgb(this.color.value) });
+        set({
+          object: object,
+          path: path + '.rgb',
+          value: convertColor.hex.rgb(this.color.value),
+        });
 
         set({
           object: object,
           path: path + '.hsl',
-          value: convertColor.rgb.hsl(get({
-            object: object,
-            path: path + '.rgb'
-          }))
+          value: convertColor.rgb.hsl(
+            get({
+              object: object,
+              path: path + '.rgb',
+            })
+          ),
         });
-
       }
 
-      if (action) { action(); }
+      if (action) {
+        action();
+      }
 
-      this.text.value = convertColor.rgb.hex(get({ object: object, path: path + '.rgb' }));
-
-    }
+      this.text.value = convertColor.rgb.hex(
+        get({ object: object, path: path + '.rgb' })
+      );
+    },
   });
 
   this.text = form.input.text({
-    value: convertColor.rgb.hex(get({
-      object: object,
-      path: path + '.rgb'
-    })),
+    value: convertColor.rgb.hex(
+      get({
+        object: object,
+        path: path + '.rgb',
+      })
+    ),
     max: 7,
     classList: ['form-group-item-half'],
     placeholder: message.get('controlColorTextPlaceholder'),
     func: () => {
-
       if (path) {
-
-        set({ object: object, path: path + '.rgb', value: convertColor.hex.rgb(this.text.value) });
-
+        set({
+          object: object,
+          path: path + '.rgb',
+          value: convertColor.hex.rgb(this.text.value),
+        });
       }
 
-      if (action) { action(); }
+      if (action) {
+        action();
+      }
 
       this.update({ delay: true });
-
-    }
+    },
   });
 
   this.reset = new Button({
@@ -91,14 +102,18 @@ export const Control_color = function ({
     title: message.get('controlGeneralReset'),
     srOnly: true,
     func: () => {
-
-      set({ object: object, path: path + '.rgb', value: JSON.parse(JSON.stringify(defaultValue)) });
+      set({
+        object: object,
+        path: path + '.rgb',
+        value: JSON.parse(JSON.stringify(defaultValue)),
+      });
 
       this.update({ all: true });
 
-      if (action) { action(); }
-
-    }
+      if (action) {
+        action();
+      }
+    },
   });
 
   this.random = new Button({
@@ -109,46 +124,54 @@ export const Control_color = function ({
     title: message.get('controlColorRandom'),
     srOnly: true,
     func: () => {
-
-      set({ object: object, path: path + '.hsl', value: { h: randomNumber(0, 360), s: randomNumber(0, 100), l: randomNumber(0, 100) } });
+      set({
+        object: object,
+        path: path + '.hsl',
+        value: {
+          h: randomNumber(0, 360),
+          s: randomNumber(0, 100),
+          l: randomNumber(0, 100),
+        },
+      });
 
       set({
         object: object,
         path: path + '.rgb',
-        value: convertColor.hsl.rgb(get({
-          object: object,
-          path: path + '.hsl'
-        }))
+        value: convertColor.hsl.rgb(
+          get({
+            object: object,
+            path: path + '.hsl',
+          })
+        ),
       });
 
       this.update({ all: true });
 
-      if (action) { action(); }
-
-    }
+      if (action) {
+        action();
+      }
+    },
   });
 
   this.delayedUpdate = null;
 
-  this.update = ({
-    delay = false,
-    all = false
-  } = {}) => {
-
+  this.update = ({ delay = false, all = false } = {}) => {
     const updateControl = () => {
-
-      this.color.value = convertColor.rgb.hex(get({
-        object: object,
-        path: path + '.rgb'
-      }));
+      this.color.value = convertColor.rgb.hex(
+        get({
+          object: object,
+          path: path + '.rgb',
+        })
+      );
 
       if (all) {
-        this.text.value = convertColor.rgb.hex(get({
-          object: object,
-          path: path + '.rgb'
-        }));
+        this.text.value = convertColor.rgb.hex(
+          get({
+            object: object,
+            path: path + '.rgb',
+          })
+        );
       }
-
     };
 
     if (delay) {
@@ -157,24 +180,22 @@ export const Control_color = function ({
     } else {
       updateControl();
     }
-
   };
 
   this.wrap = () => {
-
     const formGroup = form.group({
       block: true,
-      children: [
-        this.color,
-        this.text
-      ]
+      children: [this.color, this.text],
     });
 
     if (randomColor) {
       formGroup.appendChild(this.random.button);
     }
 
-    if (defaultValue || (typeof defaultValue === 'number' && defaultValue === 0)) {
+    if (
+      defaultValue ||
+      (typeof defaultValue === 'number' && defaultValue === 0)
+    ) {
       formGroup.appendChild(this.reset.button);
     }
 
@@ -185,14 +206,10 @@ export const Control_color = function ({
     }
 
     const wrap = form.wrap({
-      children: [
-        this.label,
-        formGroup
-      ]
+      children: [this.label, formGroup],
     });
 
     return wrap;
-
   };
 
   this.disable = () => {
@@ -222,5 +239,4 @@ export const Control_color = function ({
       });
     }
   };
-
 };

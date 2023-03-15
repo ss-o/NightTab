@@ -13,26 +13,25 @@ export const Control_checkbox = function ({
   //FIXME deprecated properties
   inputButton = false, //eslint-disable-line
   inputHide = false, //eslint-disable-line
-  inputButtonStyle = false //eslint-disable-line
+  inputButtonStyle = false, //eslint-disable-line
 } = {}) {
-
   this.checkbox = form.input.checkbox({
     id: id,
     checked: get({ object: object, path: path }),
     func: () => {
-
       set({ object: object, path: path, value: this.checkbox.checked });
 
-      if (action) { action(); }
-
-    }
+      if (action) {
+        action();
+      }
+    },
   });
 
   this.label = form.label({
     forInput: id,
     text: labelText,
     description: description,
-    icon: true
+    icon: true,
   });
 
   this.update = () => {
@@ -40,20 +39,13 @@ export const Control_checkbox = function ({
   };
 
   this.checked = () => {
-
     return get({ object: object, path: path });
-
   };
 
   this.wrap = () => {
-
     return form.wrap({
-      children: [
-        this.checkbox,
-        this.label
-      ]
+      children: [this.checkbox, this.label],
     });
-
   };
 
   this.disable = () => {
@@ -63,5 +55,4 @@ export const Control_checkbox = function ({
   this.enable = () => {
     this.checkbox.disabled = false;
   };
-
 };

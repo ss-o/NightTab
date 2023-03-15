@@ -57,11 +57,15 @@
   overflow-y: auto;
   pointer-events: all;
   box-shadow: var(--theme-shadow-bottom-large);
-  transition: background-color var(--layout-transition-extra-fast), box-shadow var(--layout-transition-extra-fast);
+  transition: background-color var(--layout-transition-extra-fast),
+    box-shadow var(--layout-transition-extra-fast);
 }
 
 .is-edge .menu-area {
-  background-color: hsla(var(--menu-background), calc(var(--menu-edge-opacity) / 100));
+  background-color: hsla(
+    var(--menu-background),
+    calc(var(--menu-edge-opacity) / 100)
+  );
   /* backdrop-filter: blur(0.5em); */
 }
 

@@ -1,12 +1,10 @@
 import { get } from './get';
 
 export const sortArrayOfObject = (array, key) => {
-
   array.sort((a, b) => {
-
     let textA = get({
       object: a,
-      path: key
+      path: key,
     });
 
     if (typeof textA == 'string') {
@@ -15,7 +13,7 @@ export const sortArrayOfObject = (array, key) => {
 
     let textB = get({
       object: b,
-      path: key
+      path: key,
     });
 
     if (typeof textB == 'string') {
@@ -29,9 +27,7 @@ export const sortArrayOfObject = (array, key) => {
     } else {
       return 0;
     }
-
   });
 
   return array;
-
 };

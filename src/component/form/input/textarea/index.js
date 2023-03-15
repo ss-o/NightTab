@@ -7,9 +7,8 @@ export const textarea = function ({
   value = false,
   placeholder = false,
   classList = [],
-  func = false
+  func = false,
 } = {}) {
-
   const textarea = node('textarea|tabindex:1,spellcheck:false');
 
   if (id) {
@@ -25,21 +24,16 @@ export const textarea = function ({
   }
 
   if (classList.length > 0) {
-
     classList.forEach((item) => {
       textarea.classList.add(item);
     });
-
   }
 
   if (func) {
-
     textarea.addEventListener('input', () => {
       func();
     });
-
   }
 
   return textarea;
-
 };

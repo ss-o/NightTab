@@ -27,60 +27,79 @@ groupSetting.control = {
   alignment: {},
   name: {},
   collapse: {},
-  toolbar: {}
+  toolbar: {},
 };
 
 groupSetting.edge = {
   name: {
     update: () => {
-
       if (state.get.current().bookmark.show && group.area.current.length > 0) {
-
         if (groupSetting.findIndex.name() !== null) {
-
-          groupSetting.edge.name.size = new Edge({ primary: group.area.current[groupSetting.findIndex.name()].element.name.name, secondary: [group.area.current[groupSetting.findIndex.name()].element.header] });
-
+          groupSetting.edge.name.size = new Edge({
+            primary:
+              group.area.current[groupSetting.findIndex.name()].element.name
+                .name,
+            secondary: [
+              group.area.current[groupSetting.findIndex.name()].element.header,
+            ],
+          });
         }
-
       } else {
-
         groupSetting.edge.name.size = null;
-
       }
-
-    }
+    },
   },
   toolbar: {
     update: () => {
-
       if (state.get.current().bookmark.show && group.area.current.length > 0) {
-
-        if (groupSetting.findIndex.toolbar.collapse() !== null && groupSetting.findIndex.toolbar.openAll() !== null) {
-
-          groupSetting.edge.toolbar.size = new Edge({ primary: group.area.current[groupSetting.findIndex.toolbar.openAll()].element.toolbar.toolbar, secondary: [group.area.current[groupSetting.findIndex.toolbar.openAll()].element.header] });
-
-        } else if (groupSetting.findIndex.toolbar.collapse() !== null && groupSetting.findIndex.toolbar.openAll() === null) {
-
-          groupSetting.edge.toolbar.size = new Edge({ primary: group.area.current[groupSetting.findIndex.toolbar.collapse()].element.toolbar.toolbar, secondary: [group.area.current[groupSetting.findIndex.toolbar.collapse()].element.header] });
-
-        } else if (groupSetting.findIndex.toolbar.collapse() === null && groupSetting.findIndex.toolbar.openAll() !== null) {
-
-          groupSetting.edge.toolbar.size = new Edge({ primary: group.area.current[groupSetting.findIndex.toolbar.openAll()].element.toolbar.toolbar, secondary: [group.area.current[groupSetting.findIndex.toolbar.openAll()].element.header] });
-
+        if (
+          groupSetting.findIndex.toolbar.collapse() !== null &&
+          groupSetting.findIndex.toolbar.openAll() !== null
+        ) {
+          groupSetting.edge.toolbar.size = new Edge({
+            primary:
+              group.area.current[groupSetting.findIndex.toolbar.openAll()]
+                .element.toolbar.toolbar,
+            secondary: [
+              group.area.current[groupSetting.findIndex.toolbar.openAll()]
+                .element.header,
+            ],
+          });
+        } else if (
+          groupSetting.findIndex.toolbar.collapse() !== null &&
+          groupSetting.findIndex.toolbar.openAll() === null
+        ) {
+          groupSetting.edge.toolbar.size = new Edge({
+            primary:
+              group.area.current[groupSetting.findIndex.toolbar.collapse()]
+                .element.toolbar.toolbar,
+            secondary: [
+              group.area.current[groupSetting.findIndex.toolbar.collapse()]
+                .element.header,
+            ],
+          });
+        } else if (
+          groupSetting.findIndex.toolbar.collapse() === null &&
+          groupSetting.findIndex.toolbar.openAll() !== null
+        ) {
+          groupSetting.edge.toolbar.size = new Edge({
+            primary:
+              group.area.current[groupSetting.findIndex.toolbar.openAll()]
+                .element.toolbar.toolbar,
+            secondary: [
+              group.area.current[groupSetting.findIndex.toolbar.openAll()]
+                .element.header,
+            ],
+          });
         } else {
-
           groupSetting.edge.toolbar.size = null;
-
         }
-
       }
-
-    }
-  }
+    },
+  },
 };
 
 groupSetting.disable = () => {
-
   if (state.get.current().bookmark.show) {
     groupSetting.control.alignment.justify.enable();
     groupSetting.control.alignment.order.enable();
@@ -118,17 +137,30 @@ groupSetting.disable = () => {
     groupSetting.control.toolbar.openAll.show.disable();
     groupSetting.control.toolbar.openAll.helper.disable();
   }
-
 };
 
 groupSetting.alignment = (parent) => {
-
   groupSetting.control.alignment.justify = new Control_radioGrid({
     object: state.get.current(),
     radioGroup: [
-      { id: 'group-area-justify-left', labelText: message.get('menuContentGroupAlignmentJustifyLeft'), value: 'left', position: 1 },
-      { id: 'group-area-justify-center', labelText: message.get('menuContentGroupAlignmentJustifyCenter'), value: 'center', position: 2 },
-      { id: 'group-area-justify-right', labelText: message.get('menuContentGroupAlignmentJustifyRight'), value: 'right', position: 3 }
+      {
+        id: 'group-area-justify-left',
+        labelText: message.get('menuContentGroupAlignmentJustifyLeft'),
+        value: 'left',
+        position: 1,
+      },
+      {
+        id: 'group-area-justify-center',
+        labelText: message.get('menuContentGroupAlignmentJustifyCenter'),
+        value: 'center',
+        position: 2,
+      },
+      {
+        id: 'group-area-justify-right',
+        labelText: message.get('menuContentGroupAlignmentJustifyRight'),
+        value: 'right',
+        position: 3,
+      },
     ],
     label: message.get('menuContentGroupAlignmentJustifyLabel'),
     groupName: 'group-area-justify',
@@ -137,92 +169,92 @@ groupSetting.alignment = (parent) => {
     action: () => {
       applyCSSClass('group.area.justify');
       data.save();
-    }
+    },
   });
 
   groupSetting.control.alignment.order = new Control_radio({
     object: state.get.current(),
     label: message.get('menuContentGroupAlignmentOrderLabel'),
     radioGroup: [
-      { id: 'group-order-header-body', labelText: message.get('menuContentGroupAlignmentOrderHeaderBodyLabel'), description: message.get('menuContentGroupAlignmentOrderHeaderBodyDescription'), value: 'header-body' },
-      { id: 'group-order-body-header', labelText: message.get('menuContentGroupAlignmentOrderBodyHeaderLabel'), description: message.get('menuContentGroupAlignmentOrderBodyHeaderDescription'), value: 'body-header' }
+      {
+        id: 'group-order-header-body',
+        labelText: message.get('menuContentGroupAlignmentOrderHeaderBodyLabel'),
+        description: message.get(
+          'menuContentGroupAlignmentOrderHeaderBodyDescription'
+        ),
+        value: 'header-body',
+      },
+      {
+        id: 'group-order-body-header',
+        labelText: message.get('menuContentGroupAlignmentOrderBodyHeaderLabel'),
+        description: message.get(
+          'menuContentGroupAlignmentOrderBodyHeaderDescription'
+        ),
+        value: 'body-header',
+      },
     ],
     groupName: 'group-order',
     path: 'group.order',
     action: () => {
       applyCSSClass('group.order');
       data.save();
-    }
+    },
   });
 
   parent.appendChild(
     node('div', [
       groupSetting.control.alignment.justify.wrap(),
       node('hr'),
-      groupSetting.control.alignment.order.wrap()
+      groupSetting.control.alignment.order.wrap(),
     ])
   );
-
 };
 
 groupSetting.findIndex = {
   name: () => {
-
     let nameIndex = null;
 
     if (state.get.current().bookmark.show && group.area.current.length > 0) {
       bookmark.all.forEach((item, i) => {
-
         if (item.name.show && nameIndex === null) {
           nameIndex = i;
         }
-
       });
     }
 
     return nameIndex;
-
   },
   toolbar: {
     collapse: () => {
-
       let collapseIndex = null;
 
       if (state.get.current().bookmark.show && group.area.current.length > 0) {
         bookmark.all.forEach((item, i) => {
-
           if (item.toolbar.collapse.show && collapseIndex === null) {
             collapseIndex = i;
           }
-
         });
       }
 
       return collapseIndex;
-
     },
     openAll: () => {
-
       let openAllIndex = null;
 
       if (state.get.current().bookmark.show && group.area.current.length > 0) {
         bookmark.all.forEach((item, i) => {
-
           if (item.toolbar.openAll.show && openAllIndex === null) {
             openAllIndex = i;
           }
-
         });
       }
 
       return openAllIndex;
-
-    }
-  }
+    },
+  },
 };
 
 groupSetting.name = (parent) => {
-
   groupSetting.edge.name.update();
 
   groupSetting.control.name.size = new Control_slider({
@@ -238,46 +270,42 @@ groupSetting.name = (parent) => {
       applyCSSVar('group.name.size');
 
       if (state.get.current().bookmark.show && group.area.current.length > 0) {
-
         if (bookmark.all[0].name.show) {
-
           groupSetting.edge.name.size.track();
-
         }
-
       }
 
       data.save();
     },
     mouseDownAction: () => {
       if (state.get.current().bookmark.show && group.area.current.length > 0) {
-
-        if (groupSetting.findIndex.name() == 0 || groupSetting.findIndex.name()) {
-
+        if (
+          groupSetting.findIndex.name() == 0 ||
+          groupSetting.findIndex.name()
+        ) {
           groupSetting.edge.name.size.show();
-
         }
       }
     },
     mouseUpAction: () => {
       if (state.get.current().bookmark.show && group.area.current.length > 0) {
-
-        if (groupSetting.findIndex.name() == 0 || groupSetting.findIndex.name()) {
-
+        if (
+          groupSetting.findIndex.name() == 0 ||
+          groupSetting.findIndex.name()
+        ) {
           groupSetting.edge.name.size.hide();
-
         }
-
       }
-    }
+    },
   });
 
   groupSetting.control.name.show = new Button({
     text: message.get('menuContentGroupNameShow'),
     style: ['line'],
     func: () => {
-
-      bookmark.all.forEach(item => { item.name.show = true; });
+      bookmark.all.forEach((item) => {
+        item.name.show = true;
+      });
 
       groupAndBookmark.render();
 
@@ -286,16 +314,16 @@ groupSetting.name = (parent) => {
       groupSetting.edge.toolbar.update();
 
       data.save();
-
-    }
+    },
   });
 
   groupSetting.control.name.hide = new Button({
     text: message.get('menuContentGroupNameHide'),
     style: ['line'],
     func: () => {
-
-      bookmark.all.forEach(item => { item.name.show = false; });
+      bookmark.all.forEach((item) => {
+        item.name.show = false;
+      });
 
       groupAndBookmark.render();
 
@@ -304,12 +332,11 @@ groupSetting.name = (parent) => {
       groupSetting.edge.toolbar.update();
 
       data.save();
-
-    }
+    },
   });
 
   groupSetting.control.name.helper = new Control_helperText({
-    text: [message.get('menuContentGroupNameHelperPara1')]
+    text: [message.get('menuContentGroupNameHelperPara1')],
   });
 
   parent.appendChild(
@@ -321,24 +348,23 @@ groupSetting.name = (parent) => {
         equalGap: true,
         children: [
           groupSetting.control.name.show.wrap(),
-          groupSetting.control.name.hide.wrap()
-        ]
+          groupSetting.control.name.hide.wrap(),
+        ],
       }),
-      groupSetting.control.name.helper.wrap()
+      groupSetting.control.name.helper.wrap(),
     ])
   );
-
 };
 
 groupSetting.collapse = (parent) => {
-
   groupSetting.control.collapse = {
     show: new Button({
       text: message.get('menuContentGroupCollapseShow'),
       style: ['line'],
       func: () => {
-
-        bookmark.all.forEach(item => { item.collapse = false; });
+        bookmark.all.forEach((item) => {
+          item.collapse = false;
+        });
 
         groupAndBookmark.render();
 
@@ -347,15 +373,15 @@ groupSetting.collapse = (parent) => {
         groupSetting.edge.toolbar.update();
 
         data.save();
-
-      }
+      },
     }),
     hide: new Button({
       text: message.get('menuContentGroupCollapseHide'),
       style: ['line'],
       func: () => {
-
-        bookmark.all.forEach(item => { item.collapse = true; });
+        bookmark.all.forEach((item) => {
+          item.collapse = true;
+        });
 
         groupAndBookmark.render();
 
@@ -364,9 +390,8 @@ groupSetting.collapse = (parent) => {
         groupSetting.edge.toolbar.update();
 
         data.save();
-
-      }
-    })
+      },
+    }),
   };
 
   parent.appendChild(
@@ -377,16 +402,14 @@ groupSetting.collapse = (parent) => {
         equalGap: true,
         children: [
           groupSetting.control.collapse.show.wrap(),
-          groupSetting.control.collapse.hide.wrap()
-        ]
-      })
+          groupSetting.control.collapse.hide.wrap(),
+        ],
+      }),
     ])
   );
-
 };
 
 groupSetting.toolbar = (parent) => {
-
   groupSetting.edge.toolbar.update();
 
   groupSetting.control.toolbar.size = new Control_slider({
@@ -402,64 +425,55 @@ groupSetting.toolbar = (parent) => {
       applyCSSVar('group.toolbar.size');
 
       if (state.get.current().bookmark.show && group.area.current.length > 0) {
-
         if (
-          (groupSetting.findIndex.toolbar.collapse() == 0 || groupSetting.findIndex.toolbar.collapse()) ||
-          (groupSetting.findIndex.toolbar.openAll() == 0 || groupSetting.findIndex.toolbar.openAll())
+          groupSetting.findIndex.toolbar.collapse() == 0 ||
+          groupSetting.findIndex.toolbar.collapse() ||
+          groupSetting.findIndex.toolbar.openAll() == 0 ||
+          groupSetting.findIndex.toolbar.openAll()
         ) {
-
           groupSetting.edge.toolbar.size.track();
-
         }
-
       }
 
       data.save();
     },
     mouseDownAction: () => {
-
       if (state.get.current().bookmark.show && group.area.current.length > 0) {
-
         if (
-          (groupSetting.findIndex.toolbar.collapse() == 0 || groupSetting.findIndex.toolbar.collapse()) ||
-          (groupSetting.findIndex.toolbar.openAll() == 0 || groupSetting.findIndex.toolbar.openAll())
+          groupSetting.findIndex.toolbar.collapse() == 0 ||
+          groupSetting.findIndex.toolbar.collapse() ||
+          groupSetting.findIndex.toolbar.openAll() == 0 ||
+          groupSetting.findIndex.toolbar.openAll()
         ) {
-
           groupSetting.edge.toolbar.size.show();
-
         }
-
       }
-
     },
     mouseUpAction: () => {
-
       if (state.get.current().bookmark.show && group.area.current.length > 0) {
-
         if (
-          (groupSetting.findIndex.toolbar.collapse() == 0 || groupSetting.findIndex.toolbar.collapse()) ||
-          (groupSetting.findIndex.toolbar.openAll() == 0 || groupSetting.findIndex.toolbar.openAll())
+          groupSetting.findIndex.toolbar.collapse() == 0 ||
+          groupSetting.findIndex.toolbar.collapse() ||
+          groupSetting.findIndex.toolbar.openAll() == 0 ||
+          groupSetting.findIndex.toolbar.openAll()
         ) {
-
           groupSetting.edge.toolbar.size.hide();
-
         }
-
       }
-
-    }
+    },
   });
 
   groupSetting.control.toolbar.collapse = {
     label: new Control_label({
-      text: message.get('menuContentGroupToolbarCollapseLabel')
+      text: message.get('menuContentGroupToolbarCollapseLabel'),
     }),
     show: new Button({
       text: message.get('menuContentGroupToolbarCollapseShow'),
       style: ['line'],
       func: () => {
-
-        bookmark.all.forEach(item => { item.toolbar.collapse.show = true; });
+        bookmark.all.forEach((item) => {
+          item.toolbar.collapse.show = true;
+        });
 
         groupAndBookmark.render();
 
@@ -468,15 +482,15 @@ groupSetting.toolbar = (parent) => {
         groupSetting.edge.toolbar.update();
 
         data.save();
-
-      }
+      },
     }),
     hide: new Button({
       text: message.get('menuContentGroupToolbarCollapseHide'),
       style: ['line'],
       func: () => {
-
-        bookmark.all.forEach(item => { item.toolbar.collapse.show = false; });
+        bookmark.all.forEach((item) => {
+          item.toolbar.collapse.show = false;
+        });
 
         groupAndBookmark.render();
 
@@ -485,24 +499,24 @@ groupSetting.toolbar = (parent) => {
         groupSetting.edge.toolbar.update();
 
         data.save();
-
-      }
+      },
     }),
     helper: new Control_helperText({
-      text: [message.get('menuContentGroupToolbarCollapseHelperPara1')]
-    })
+      text: [message.get('menuContentGroupToolbarCollapseHelperPara1')],
+    }),
   };
 
   groupSetting.control.toolbar.openAll = {
     label: new Control_label({
-      text: message.get('menuContentGroupToolbarOpenAllLabel')
+      text: message.get('menuContentGroupToolbarOpenAllLabel'),
     }),
     show: new Button({
       text: message.get('menuContentGroupToolbarOpenAllShow'),
       style: ['line'],
       func: () => {
-
-        bookmark.all.forEach(item => { item.toolbar.openAll.show = true; });
+        bookmark.all.forEach((item) => {
+          item.toolbar.openAll.show = true;
+        });
 
         groupAndBookmark.render();
 
@@ -511,15 +525,15 @@ groupSetting.toolbar = (parent) => {
         groupSetting.edge.toolbar.update();
 
         data.save();
-
-      }
+      },
     }),
     hide: new Button({
       text: message.get('menuContentGroupToolbarOpenAllHide'),
       style: ['line'],
       func: () => {
-
-        bookmark.all.forEach(item => { item.toolbar.openAll.show = false; });
+        bookmark.all.forEach((item) => {
+          item.toolbar.openAll.show = false;
+        });
 
         groupAndBookmark.render();
 
@@ -528,12 +542,11 @@ groupSetting.toolbar = (parent) => {
         groupSetting.edge.toolbar.update();
 
         data.save();
-
-      }
+      },
     }),
     helper: new Control_helperText({
-      text: [message.get('menuContentGroupToolbarOpenAllHelperPara1')]
-    })
+      text: [message.get('menuContentGroupToolbarOpenAllHelperPara1')],
+    }),
   };
 
   parent.appendChild(
@@ -549,10 +562,10 @@ groupSetting.toolbar = (parent) => {
             equalGap: true,
             children: [
               groupSetting.control.toolbar.openAll.show.wrap(),
-              groupSetting.control.toolbar.openAll.hide.wrap()
-            ]
-          })
-        ]
+              groupSetting.control.toolbar.openAll.hide.wrap(),
+            ],
+          }),
+        ],
       }),
       groupSetting.control.toolbar.openAll.helper.wrap(),
       node('hr'),
@@ -565,15 +578,14 @@ groupSetting.toolbar = (parent) => {
             equalGap: true,
             children: [
               groupSetting.control.toolbar.collapse.show.wrap(),
-              groupSetting.control.toolbar.collapse.hide.wrap()
-            ]
-          })
-        ]
+              groupSetting.control.toolbar.collapse.hide.wrap(),
+            ],
+          }),
+        ],
       }),
-      groupSetting.control.toolbar.collapse.helper.wrap()
+      groupSetting.control.toolbar.collapse.helper.wrap(),
     ])
   );
-
 };
 
 export { groupSetting };

@@ -20,7 +20,9 @@
 
 .tab-nav {
   background-color: hsl(var(--theme-primary-020));
-  border-radius: calc((var(--theme-radius) * 0.01em) + ((var(--tab-size) / 4) * 0.125em));
+  border-radius: calc(
+    (var(--theme-radius) * 0.01em) + ((var(--tab-size) / 4) * 0.125em)
+  );
   padding: calc((var(--tab-size) / 4) * 0.125em);
   grid-area: nav;
   display: flex;
@@ -58,7 +60,9 @@
 .tab-nav-button.active {
   background-color: transparent;
   color: hsl(var(--theme-accent-text));
-  transition: background-color var(--layout-duration-01), border-color var(--layout-transition-extra-fast), color var(--layout-transition-extra-fast);
+  transition: background-color var(--layout-duration-01),
+    border-color var(--layout-transition-extra-fast),
+    color var(--layout-transition-extra-fast);
 }
 
 .tab-nav-indicator {
@@ -76,7 +80,10 @@
 
 .tab-nav-indicator-active .tab-nav-indicator {
   animation: none;
-  transition: top var(--layout-transition-extra-fast), left var(--layout-transition-extra-fast), width var(--layout-transition-extra-fast), height var(--layout-transition-extra-fast);
+  transition: top var(--layout-transition-extra-fast),
+    left var(--layout-transition-extra-fast),
+    width var(--layout-transition-extra-fast),
+    height var(--layout-transition-extra-fast);
 }
 
 .tab-content {

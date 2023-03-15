@@ -24,11 +24,28 @@ import { default as vi } from '../../locale/vi/messages.json';
 const message = {};
 
 message.language = {
-  pack: { bn, de, en_GB, en_US, es, fil, fr, gu, hi, id, it, ja, ms, pt, ru, uk, vi }
+  pack: {
+    bn,
+    de,
+    en_GB,
+    en_US,
+    es,
+    fil,
+    fr,
+    gu,
+    hi,
+    id,
+    it,
+    ja,
+    ms,
+    pt,
+    ru,
+    uk,
+    vi,
+  },
 };
 
 message.language.list = () => {
-
   const list = [
     { code: 'bn', name: 'বাংলা' }, // Bengali
     { code: 'de', name: 'Deutsch' }, // German
@@ -46,40 +63,42 @@ message.language.list = () => {
     { code: 'pt', name: 'Português' }, // Portuguese
     { code: 'ru', name: 'Pусский' }, // Russian
     { code: 'uk', name: 'український' }, // Ukrainian
-    { code: 'vi', name: 'англійська' } // Vietnamese
+    { code: 'vi', name: 'англійська' }, // Vietnamese
   ];
 
   list.forEach((item) => {
-
     if (item.code.indexOf('_') > -1) {
-      item.name = `${item.name} — ${(item.code.substring(0, item.code.indexOf('_'))).toUpperCase()} (${item.code.substring(item.code.indexOf('_') + 1, item.code.length)})`;
+      item.name = `${item.name} — ${item.code
+        .substring(0, item.code.indexOf('_'))
+        .toUpperCase()} (${item.code.substring(
+        item.code.indexOf('_') + 1,
+        item.code.length
+      )})`;
     } else {
-      item.name = `${item.name} — ${(item.code).toUpperCase()}`;
+      item.name = `${item.name} — ${item.code.toUpperCase()}`;
     }
-
   });
 
   list.unshift({ name: '—', disabled: true });
 
-  list.unshift({ code: 'system', name: message.get('menuContentLanguageSystem') });
+  list.unshift({
+    code: 'system',
+    name: message.get('menuContentLanguageSystem'),
+  });
 
   return list;
-
 };
 
-message.language.name = () => message.language.list().map(item => item.name);
+message.language.name = () => message.language.list().map((item) => item.name);
 
-message.language.code = () => message.language.list().map(item => item.code);
+message.language.code = () => message.language.list().map((item) => item.code);
 
 message.get = (stringId) => {
-
   let string;
 
   switch (state.get.current().language) {
-
     // use system language
     case 'system':
-
       if (browserDetect().chrome && typeof chrome != 'undefined') {
         // if browser is chrome
 
@@ -87,13 +106,9 @@ message.get = (stringId) => {
           // if installed as extension
 
           string = chrome.i18n.getMessage(stringId);
-
         } else {
-
           string = message.language.pack.en_GB[stringId].message;
-
         }
-
       } else if (browserDetect().firefox && typeof browser != 'undefined') {
         // if browser is firefox
 
@@ -101,48 +116,34 @@ message.get = (stringId) => {
           // if installed as addon
 
           string = browser.i18n.getMessage(stringId);
-
         } else {
-
           string = message.language.pack.en_GB[stringId].message;
-
         }
-
       } else {
-
         string = message.language.pack.en_GB[stringId].message;
-
       }
 
       break;
 
-      // use manually selected language
+    // use manually selected language
     default:
-
       if (stringId in message.language.pack[state.get.current().language]) {
-
         // string found in chosen language
-        string = message.language.pack[state.get.current().language][stringId].message;
-
+        string =
+          message.language.pack[state.get.current().language][stringId].message;
       } else {
-
         // or use default language
         string = message.language.pack.en_GB[stringId].message;
-
       }
 
       break;
-
   }
 
   if (string.indexOf('{appName}') > -1) {
-
     string = string.replaceAll('{appName}', APP_NAME);
-
   }
 
   return string;
-
 };
 
 export { message };

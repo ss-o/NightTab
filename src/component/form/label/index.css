@@ -30,9 +30,9 @@ label.disabled {
   gap: 0.25em;
 }
 
-input:disabled+label .label-block-item,
-input:disabled:hover+label .label-block-item,
-input:disabled:focus+label .label-block-item {
+input:disabled + label .label-block-item,
+input:disabled:hover + label .label-block-item,
+input:disabled:focus + label .label-block-item {
   color: hsl(var(--form-label-disabled));
   cursor: default;
 }

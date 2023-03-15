@@ -1,21 +1,21 @@
-const { merge } = require('webpack-merge');
-const common = require('./webpack.common.js');
-const path = require('path');
-const ZipPlugin = require('zip-webpack-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
+const { merge } = require("webpack-merge");
+const common = require("./webpack.common.js");
+const path = require("path");
+const ZipPlugin = require("zip-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
-const version = require('./src/manifest.json').version;
-const name = require('./src/locale/en_GB/messages.json').appName.message;
+const version = require("./src/manifest.json").version;
+const name = require("./src/locale/en_GB/messages.json").appName.message;
 
 module.exports = merge(common, {
-  mode: 'production',
+  mode: "production",
   optimization: {
     minimize: true,
     minimizer: [
       new CssMinimizerPlugin({
-        minify: CssMinimizerPlugin.cleanCssMinify
+        minify: CssMinimizerPlugin.cleanCssMinify,
       }),
       new TerserPlugin({
         terserOptions: {
@@ -24,22 +24,24 @@ module.exports = merge(common, {
           },
         },
         extractComments: false,
-      })
-    ]
+      }),
+    ],
   },
   module: {
-    rules: [{
-      test: /\.css$/i,
-      use: [MiniCssExtractPlugin.loader, 'css-loader'],
-    }],
+    rules: [
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css'
+      filename: "[name].[contenthash].css",
     }),
     new ZipPlugin({
-      path: path.resolve(__dirname, 'dist/extension'),
-      filename: name + '_' + version + '.zip'
-    })
-  ]
+      path: path.resolve(__dirname, "dist/extension"),
+      filename: name + "_" + version + ".zip",
+    }),
+  ],
 });

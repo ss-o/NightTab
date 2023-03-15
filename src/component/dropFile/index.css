@@ -13,7 +13,8 @@
   border-style: solid;
   border-color: hsl(var(--drop-file-border));
   border-radius: calc(var(--theme-radius) * 0.01em);
-  padding: calc(((var(--alert-space) * 2) / 4) * 1em) calc((var(--alert-space) / 4) * 1em);
+  padding: calc(((var(--alert-space) * 2) / 4) * 1em)
+    calc((var(--alert-space) / 4) * 1em);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -21,10 +22,13 @@
   justify-content: center;
   gap: 1em;
   transform: scale(1);
-  transition: background-color var(--layout-transition-extra-fast), border var(--layout-transition-extra-fast), transform var(--layout-transition-extra-fast);
+  transition: background-color var(--layout-transition-extra-fast),
+    border var(--layout-transition-extra-fast),
+    transform var(--layout-transition-extra-fast);
 }
 
-.drop-file-heading {}
+.drop-file-heading {
+}
 
 .drop-file-over {
   background: hsl(var(--drop-file-background));

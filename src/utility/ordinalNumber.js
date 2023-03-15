@@ -1,5 +1,4 @@
 export const ordinalNumber = (number) => {
-
   var j = number % 10;
 
   var k = number % 100;
@@ -17,5 +16,4 @@ export const ordinalNumber = (number) => {
   }
 
   return number + 'th';
-
 };

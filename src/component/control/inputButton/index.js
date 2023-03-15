@@ -15,9 +15,8 @@ export const Control_inputButton = function ({
   labelText = 'Name',
   srOnly = false,
   inputButtonStyle = [],
-  action = false
+  action = false,
 } = {}) {
-
   this.input;
 
   switch (type) {
@@ -28,7 +27,7 @@ export const Control_inputButton = function ({
           if (action) {
             action();
           }
-        }
+        },
       });
 
       break;
@@ -36,57 +35,57 @@ export const Control_inputButton = function ({
     case 'color':
       this.input = form.input.color({
         id: id,
-        value: convertColor.rgb.hex(get({
-          object: object,
-          path: path + '.rgb'
-        })),
+        value: convertColor.rgb.hex(
+          get({
+            object: object,
+            path: path + '.rgb',
+          })
+        ),
         classList: classList,
         func: () => {
           if (path) {
             set({
               object: object,
               path: path + '.rgb',
-              value: convertColor.hex.rgb(this.input.value)
+              value: convertColor.hex.rgb(this.input.value),
             });
             set({
               object: object,
               path: path + '.hsl',
-              value: convertColor.rgb.hsl(get({
-                object: object,
-                path: path + '.rgb'
-              }))
+              value: convertColor.rgb.hsl(
+                get({
+                  object: object,
+                  path: path + '.rgb',
+                })
+              ),
             });
           }
           if (action) {
             action();
           }
-        }
+        },
       });
 
       break;
-
   }
 
   this.label = form.label({
     text: labelText,
-    forInput: id
+    forInput: id,
   });
 
   this.button = form.input.inputButton({
     style: inputButtonStyle,
     inputHide: inputHide,
-    srOnly: srOnly
+    srOnly: srOnly,
   });
 
   this.inputButtonStyle = {};
 
   this.inputButtonStyle.add = (inputButtonStyle) => {
-
     if (inputButtonStyle) {
       if (inputButtonStyle.length > 0) {
-
         inputButtonStyle.forEach((item) => {
-
           switch (item) {
             case 'link':
               this.button.classList.add('form-input-button-link');
@@ -104,16 +103,12 @@ export const Control_inputButton = function ({
               this.button.classList.add('input-color-dot');
               break;
           }
-
         });
-
       }
     }
-
   };
 
   this.inputButtonStyle.remove = () => {
-
     this.button.classList.remove('form-input-button-link');
 
     this.button.classList.remove('form-input-button-line');
@@ -121,25 +116,20 @@ export const Control_inputButton = function ({
     this.button.classList.remove('form-input-button-ring');
 
     this.button.classList.remove('input-color-dot');
-
   };
 
   this.inputButtonStyle.update = (inputButtonStyle) => {
-
     this.inputButtonStyle.remove();
 
     this.inputButtonStyle.add(inputButtonStyle);
-
   };
 
   this.inputButtonStyle.add(inputButtonStyle);
 
   if (inputButtonClassList.length > 0) {
-
     inputButtonClassList.forEach((item) => {
       this.button.classList.add(item);
     });
-
   }
 
   this.button.appendChild(this.input);
@@ -149,10 +139,12 @@ export const Control_inputButton = function ({
   this.update = () => {
     switch (type) {
       case 'color':
-        this.input.value = convertColor.rgb.hex(get({
-          object: object,
-          path: path + '.rgb'
-        }));
+        this.input.value = convertColor.rgb.hex(
+          get({
+            object: object,
+            path: path + '.rgb',
+          })
+        );
 
         break;
     }
@@ -160,9 +152,7 @@ export const Control_inputButton = function ({
 
   this.wrap = () => {
     return form.wrap({
-      children: [
-        this.button
-      ]
+      children: [this.button],
     });
   };
 
@@ -175,5 +165,4 @@ export const Control_inputButton = function ({
     this.label.classList.remove('disabled');
     this.input.disabled = false;
   };
-
 };

@@ -45,7 +45,8 @@
 .logo-cross-x {
   animation-name: grow-x, spin;
   animation-duration: 0.4s, 0.6s;
-  animation-timing-function: var(--layout-timing-bounce), var(--layout-timing-ease);
+  animation-timing-function: var(--layout-timing-bounce),
+    var(--layout-timing-ease);
   animation-iteration-count: 1, 1;
   animation-delay: 0.4s, 0.8s;
   animation-fill-mode: backwards, forwards;
@@ -54,7 +55,8 @@
 .logo-cross-y {
   animation-name: grow-y, spin;
   animation-duration: 0.4s, 0.6s;
-  animation-timing-function: var(--layout-timing-bounce), var(--layout-timing-ease);
+  animation-timing-function: var(--layout-timing-bounce),
+    var(--layout-timing-ease);
   animation-iteration-count: 1, 1;
   animation-delay: 0.2s, 0.8s;
   animation-fill-mode: backwards, forwards;

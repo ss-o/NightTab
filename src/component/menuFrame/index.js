@@ -13,14 +13,11 @@ import { clearChildNode } from '../../utility/clearChildNode';
 
 import './index.css';
 
-export const MenuFrame = function ({
-  navData = []
-} = {}) {
-
+export const MenuFrame = function ({ navData = [] } = {}) {
   this.element = {
     menu: node('section|class:menu'),
     area: node('div|class:menu-area'),
-    content: node('div|class:menu-content')
+    content: node('div|class:menu-content'),
   };
 
   this.menuNav = new MenuNav({
@@ -28,7 +25,7 @@ export const MenuFrame = function ({
     action: () => {
       this.content();
       this.element.content.scrollTop = 0;
-    }
+    },
   });
 
   this.menuClose = new MenuClose();
@@ -36,7 +33,6 @@ export const MenuFrame = function ({
   this.shade = new Shade();
 
   this.class = () => {
-
     const html = document.querySelector('html');
 
     if (state.get.current().menu) {
@@ -44,11 +40,9 @@ export const MenuFrame = function ({
     } else {
       html.classList.remove('is-menu-open');
     }
-
   };
 
   this.open = () => {
-
     state.get.current().menu = true;
 
     data.save();
@@ -58,13 +52,12 @@ export const MenuFrame = function ({
     this.element.menu.classList.add('is-transparent');
 
     this.element.menu.addEventListener('transitionend', (event) => {
-
-      if (event.propertyName === 'opacity' && getComputedStyle(this.element.menu).opacity == 0) {
-
+      if (
+        event.propertyName === 'opacity' &&
+        getComputedStyle(this.element.menu).opacity == 0
+      ) {
         body.removeChild(this.element.menu);
-
       }
-
     });
 
     this.shade.open();
@@ -90,11 +83,9 @@ export const MenuFrame = function ({
     this.class();
 
     pageLock.render();
-
   };
 
   this.close = () => {
-
     state.get.current().menu = false;
 
     data.save();
@@ -116,32 +107,30 @@ export const MenuFrame = function ({
     clearTimeout(this.delayedForceRemove);
 
     this.delayedForceRemove = setTimeout(() => {
-
       const body = document.querySelector('body');
 
       if (body.contains(this.element.menu)) {
         body.removeChild(this.element.menu);
       }
-
     }, 6000);
-
   };
 
   this.delayedForceRemove = null;
 
   this.locationReset = () => {
-
     const location = window.location;
 
     if ('pushState' in history) {
-      history.pushState('', document.title, location.origin + location.pathname + location.search);
+      history.pushState(
+        '',
+        document.title,
+        location.origin + location.pathname + location.search
+      );
     }
-
   };
 
   this.bind = {
     add: () => {
-
       window.addEventListener('mouseup', this.clickOut);
 
       window.addEventListener('keydown', this.focus.loop);
@@ -151,10 +140,8 @@ export const MenuFrame = function ({
       this.ctrAltA.add();
 
       this.ctrAltG.add();
-
     },
     remove: () => {
-
       window.removeEventListener('mouseup', this.clickOut);
 
       window.removeEventListener('keydown', this.focus.loop);
@@ -164,15 +151,14 @@ export const MenuFrame = function ({
       this.ctrAltA.remove();
 
       this.ctrAltG.remove();
-
-    }
+    },
   };
 
   this.esc = new KeyboardShortcut({
     keycode: 27,
     action: () => {
       this.close();
-    }
+    },
   });
 
   this.ctrAltA = new KeyboardShortcut({
@@ -181,7 +167,7 @@ export const MenuFrame = function ({
     alt: true,
     action: () => {
       this.close();
-    }
+    },
   });
 
   this.ctrAltG = new KeyboardShortcut({
@@ -190,62 +176,53 @@ export const MenuFrame = function ({
     alt: true,
     action: () => {
       this.close();
-    }
+    },
   });
 
   this.clickOut = (event) => {
-
     const path = event.path || (event.composedPath && event.composedPath());
 
     if (!path.includes(this.element.menu)) {
       this.close();
     }
-
   };
 
   this.focus = {
     set: () => {
-
-      const allFocusElement = document.querySelector('.menu').querySelectorAll('[tabindex]');
+      const allFocusElement = document
+        .querySelector('.menu')
+        .querySelectorAll('[tabindex]');
 
       allFocusElement[0].focus();
-
     },
     loop: (event) => {
-
-      const allFocusElement = document.querySelector('.menu').querySelectorAll('[tabindex]');
+      const allFocusElement = document
+        .querySelector('.menu')
+        .querySelectorAll('[tabindex]');
 
       if (allFocusElement.length > 0) {
-
         const firstElement = allFocusElement[0];
 
         const lastElement = allFocusElement[allFocusElement.length - 1];
 
         if (event.keyCode == 9 && event.shiftKey) {
-
           if (document.activeElement === firstElement) {
             lastElement.focus();
 
             event.preventDefault();
           }
-
         } else if (event.keyCode == 9) {
-
           if (document.activeElement === lastElement) {
             firstElement.focus();
 
             event.preventDefault();
           }
-
         }
-
       }
-
-    }
+    },
   };
 
   this.assemble = () => {
-
     this.element.area.appendChild(this.menuNav.nav());
 
     this.element.area.appendChild(this.menuClose.close());
@@ -253,17 +230,13 @@ export const MenuFrame = function ({
     this.element.area.appendChild(this.element.content);
 
     this.element.menu.appendChild(this.element.area);
-
   };
 
   this.content = () => {
-
     clearChildNode(this.element.content);
 
     navData.forEach((item) => {
-
       if (item.active) {
-
         if (item.overscroll) {
           this.element.content.classList.add('menu-content-overscroll');
         } else {
@@ -272,15 +245,11 @@ export const MenuFrame = function ({
 
         const menuContent = new MenuContent({
           activeNavData: item,
-          container: this.element.content
+          container: this.element.content,
         });
 
         menuContent.content();
-
       }
-
     });
-
   };
-
 };

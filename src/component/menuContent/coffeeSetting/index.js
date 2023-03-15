@@ -10,28 +10,28 @@ import { complexNode } from '../../../utility/complexNode';
 const coffeeSetting = {};
 
 coffeeSetting.coffee = (parent) => {
-
   parent.appendChild(
     node('div', [
       complexNode({
         tag: 'p',
-        text: message.get('menuContentCoffeePara')
+        text: message.get('menuContentCoffeePara'),
       }),
       form.wrap({
-        children: [(new Link({
-          text: message.get('menuContentCoffeeButton'),
-          href: 'https://www.buymeacoffee.com/zombieFox',
-          iconName: 'coffee',
-          iconPosition: 'left',
-          linkButton: true,
-          openNew: true,
-          style: ['line'],
-          classList: ['button-line', 'button-extra-large']
-        })).link()]
-      })
+        children: [
+          new Link({
+            text: message.get('menuContentCoffeeButton'),
+            href: 'https://www.buymeacoffee.com/zombieFox',
+            iconName: 'coffee',
+            iconPosition: 'left',
+            linkButton: true,
+            openNew: true,
+            style: ['line'],
+            classList: ['button-line', 'button-extra-large'],
+          }).link(),
+        ],
+      }),
     ])
   );
-
 };
 
 export { coffeeSetting };

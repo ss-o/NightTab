@@ -8,10 +8,7 @@ import { node } from '../../utility/node';
 import { randomString } from '../../utility/randomString';
 import { randomNumber } from '../../utility/randomNumber';
 
-export const CustomThemeForm = function({
-  customThemeData = false
-} = {}) {
-
+export const CustomThemeForm = function ({ customThemeData = false } = {}) {
   this.element = {
     form: node('form|class:theme-custom-form'),
     main: node('div|class:theme-custom-form-main'),
@@ -21,34 +18,31 @@ export const CustomThemeForm = function({
       id: 'name',
       value: customThemeData.theme.name,
       placeholder: message.get('themeCustomFormNamePlaceholder'),
-      labelText: message.get('themeCustomFormNameLabel')
+      labelText: message.get('themeCustomFormNameLabel'),
     }),
     randomName: new Button({
       text: message.get('themeCustomFormRandom'),
       style: ['line'],
       func: () => {
-        customThemeData.theme.name = randomString({ adjectivesCount: randomNumber(1, 3) });
+        customThemeData.theme.name = randomString({
+          adjectivesCount: randomNumber(1, 3),
+        });
         this.element.text.update();
-      }
-    })
+      },
+    }),
   };
 
   this.assemble = () => {
-
     this.element.main.appendChild(this.element.text.wrap());
 
     this.element.main.appendChild(this.element.randomName.wrap());
 
     this.element.form.appendChild(this.element.main);
-
   };
 
   this.form = () => {
-
     return this.element.form;
-
   };
 
   this.assemble();
-
 };

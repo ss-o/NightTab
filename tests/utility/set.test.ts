@@ -7,7 +7,6 @@ beforeEach(() => {
   object = { theme: { accent: { rgb: { r: 'Hello there!' } } } };
 });
 
-
 /**
  * It seems, unlike get, set doesn't mutate objects when it doesn't find keys
  */

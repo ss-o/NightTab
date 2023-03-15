@@ -36,7 +36,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  transition: background-color var(--layout-transition-extra-fast), height var(--layout-transition-extra-fast), box-shadow var(--layout-transition-extra-fast), border-radius var(--layout-transition-extra-fast);
+  transition: background-color var(--layout-transition-extra-fast),
+    height var(--layout-transition-extra-fast),
+    box-shadow var(--layout-transition-extra-fast),
+    border-radius var(--layout-transition-extra-fast);
 }
 
 .theme-preset-tile-front {
@@ -58,7 +61,12 @@
   line-height: 1.6;
   display: block;
   overflow: hidden;
-  transition: background-color var(--layout-transition-extra-fast), border-color var(--layout-transition-extra-fast), color var(--layout-transition-extra-fast), height var(--layout-transition-extra-fast), box-shadow var(--layout-transition-extra-fast), border-radius var(--layout-transition-extra-fast);
+  transition: background-color var(--layout-transition-extra-fast),
+    border-color var(--layout-transition-extra-fast),
+    color var(--layout-transition-extra-fast),
+    height var(--layout-transition-extra-fast),
+    box-shadow var(--layout-transition-extra-fast),
+    border-radius var(--layout-transition-extra-fast);
 }
 
 .theme-preset-preview {
@@ -90,18 +98,58 @@
 }
 
 .theme-preset-background-02 {
-  --theme-preset-preview-shift-02: calc((var(--theme-preset-preview-shift) / 4) + 2);
+  --theme-preset-preview-shift-02: calc(
+    (var(--theme-preset-preview-shift) / 4) + 2
+  );
   background-color: rgb(var(--theme-preset-background-02));
   z-index: 2;
-  clip-path: polygon(100% calc(100% - (var(--theme-preset-preview-shift-02) * ((var(--theme-preset-preview-gap) / 4) * 1em))), 100% 100%, calc(100% - (var(--theme-preset-preview-shift-02) * ((var(--theme-preset-preview-gap) / 4) * 1em))) 100%);
+  clip-path: polygon(
+    100%
+      calc(
+        100% -
+          (
+            var(--theme-preset-preview-shift-02) *
+              ((var(--theme-preset-preview-gap) / 4) * 1em)
+          )
+      ),
+    100% 100%,
+    calc(
+        100% -
+          (
+            var(--theme-preset-preview-shift-02) *
+              ((var(--theme-preset-preview-gap) / 4) * 1em)
+          )
+      )
+      100%
+  );
   transition-delay: var(--layout-duration-03);
 }
 
 .theme-preset-background-03 {
-  --theme-preset-preview-shift-03: calc((var(--theme-preset-preview-shift) / 4) + 1);
+  --theme-preset-preview-shift-03: calc(
+    (var(--theme-preset-preview-shift) / 4) + 1
+  );
   background-color: rgb(var(--theme-preset-background-03));
   z-index: 3;
-  clip-path: polygon(100% calc(100% - (var(--theme-preset-preview-shift-03) * ((var(--theme-preset-preview-gap) / 4) * 1em))), 100% 100%, calc(100% - (var(--theme-preset-preview-shift-03) * ((var(--theme-preset-preview-gap) / 4) * 1em))) 100%);
+  clip-path: polygon(
+    100%
+      calc(
+        100% -
+          (
+            var(--theme-preset-preview-shift-03) *
+              ((var(--theme-preset-preview-gap) / 4) * 1em)
+          )
+      ),
+    100% 100%,
+    calc(
+        100% -
+          (
+            var(--theme-preset-preview-shift-03) *
+              ((var(--theme-preset-preview-gap) / 4) * 1em)
+          )
+      )
+      100%
+  );
   transition-delay: var(--layout-duration-02);
 }
 
@@ -109,7 +157,25 @@
   --theme-preset-preview-shift-04: calc(var(--theme-preset-preview-shift) / 4);
   background-color: rgb(var(--theme-preset-background-04));
   z-index: 4;
-  clip-path: polygon(100% calc(100% - (var(--theme-preset-preview-shift-04) * ((var(--theme-preset-preview-gap) / 4) * 1em))), 100% 100%, calc(100% - (var(--theme-preset-preview-shift-04) * ((var(--theme-preset-preview-gap) / 4) * 1em))) 100%);
+  clip-path: polygon(
+    100%
+      calc(
+        100% -
+          (
+            var(--theme-preset-preview-shift-04) *
+              ((var(--theme-preset-preview-gap) / 4) * 1em)
+          )
+      ),
+    100% 100%,
+    calc(
+        100% -
+          (
+            var(--theme-preset-preview-shift-04) *
+              ((var(--theme-preset-preview-gap) / 4) * 1em)
+          )
+      )
+      100%
+  );
   transition-delay: var(--layout-duration-01);
 }
 
@@ -142,5 +208,10 @@
   text-overflow: ellipsis;
   white-space: initial;
   transform: scale(1);
-  transition: color var(--layout-transition-extra-fast), transform var(--layout-transition-extra-fast), max-width var(--layout-transition-extra-fast), max-height var(--layout-transition-extra-fast), top var(--layout-transition-extra-fast), left var(--layout-transition-extra-fast);
+  transition: color var(--layout-transition-extra-fast),
+    transform var(--layout-transition-extra-fast),
+    max-width var(--layout-transition-extra-fast),
+    max-height var(--layout-transition-extra-fast),
+    top var(--layout-transition-extra-fast),
+    left var(--layout-transition-extra-fast);
 }

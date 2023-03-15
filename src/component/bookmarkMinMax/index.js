@@ -5,19 +5,35 @@ export const bookmarkMinMax = {
     gutter: { min: 0, max: 500 },
     visual: {
       size: { min: 5, max: 400 },
-      shadow: { size: { min: 0, max: 100 } }
+      shadow: { size: { min: 0, max: 100 } },
     },
-    name: { size: { min: 5, max: 400 } }
+    name: { size: { min: 5, max: 400 } },
   },
   accent: {
-    hsl: { h: { min: 0, max: 359 }, s: { min: 0, max: 100 }, l: { min: 0, max: 100 } },
-    rgb: { r: { min: 0, max: 255 }, g: { min: 0, max: 255 }, b: { min: 0, max: 255 } }
+    hsl: {
+      h: { min: 0, max: 359 },
+      s: { min: 0, max: 100 },
+      l: { min: 0, max: 100 },
+    },
+    rgb: {
+      r: { min: 0, max: 255 },
+      g: { min: 0, max: 255 },
+      b: { min: 0, max: 255 },
+    },
   },
   color: {
-    hsl: { h: { min: 0, max: 359 }, s: { min: 0, max: 100 }, l: { min: 0, max: 100 } },
-    rgb: { r: { min: 0, max: 255 }, g: { min: 0, max: 255 }, b: { min: 0, max: 255 } },
-    opacity: { min: 0, max: 100 }
+    hsl: {
+      h: { min: 0, max: 359 },
+      s: { min: 0, max: 100 },
+      l: { min: 0, max: 100 },
+    },
+    rgb: {
+      r: { min: 0, max: 255 },
+      g: { min: 0, max: 255 },
+      b: { min: 0, max: 255 },
+    },
+    opacity: { min: 0, max: 100 },
   },
   border: { min: 0, max: 20 },
-  background: { opacity: { min: 0, max: 100 } }
+  background: { opacity: { min: 0, max: 100 } },
 };

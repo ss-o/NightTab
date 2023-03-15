@@ -6,9 +6,8 @@ export const inputButton = function ({
   children = false,
   inputHide = false,
   srOnly = false,
-  style = []
+  style = [],
 } = {}) {
-
   const inputButtonElement = node('div|class:form-input-button', children);
 
   if (style.length > 0) {
@@ -29,7 +28,6 @@ export const inputButton = function ({
         case 'dot':
           inputButtonElement.classList.add('input-color-dot');
           break;
-
       }
     });
   }
@@ -43,5 +41,4 @@ export const inputButton = function ({
   }
 
   return inputButtonElement;
-
 };

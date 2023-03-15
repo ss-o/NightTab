@@ -8,9 +8,8 @@ export const radio = function ({
   value = false,
   checked = false,
   classList = [],
-  func = false
+  func = false,
 } = {}) {
-
   const input = node('input|type:radio,tabindex:1');
 
   if (id) {
@@ -30,11 +29,9 @@ export const radio = function ({
   }
 
   if (classList.length > 0) {
-
     classList.forEach((item) => {
       input.classList.add(item);
     });
-
   }
 
   if (func) {
@@ -44,5 +41,4 @@ export const radio = function ({
   }
 
   return input;
-
 };

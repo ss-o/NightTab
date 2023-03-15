@@ -99,7 +99,9 @@
 
 @media (min-width: 700px) {
   .menu-nav-tab {
-    padding-left: calc(((var(--menu-nav-space) / 8) + (var(--theme-radius) * 0.0025)) * 1em);
+    padding-left: calc(
+      ((var(--menu-nav-space) / 8) + (var(--theme-radius) * 0.0025)) * 1em
+    );
     height: calc((var(--menu-nav-space) / 4) * 1em);
     justify-content: flex-start;
   }
@@ -117,7 +119,8 @@
     flex-wrap: nowrap;
     overflow: hidden;
     height: 0;
-    transition: background-color var(--layout-transition-extra-fast), height var(--layout-transition-extra-fast);
+    transition: background-color var(--layout-transition-extra-fast),
+      height var(--layout-transition-extra-fast);
   }
 
   .is-edge .menu-subnav {
@@ -143,7 +146,9 @@
     margin: 0;
     padding-top: 0;
     padding-bottom: 0;
-    padding-left: calc(((var(--menu-nav-space) / 4) + (var(--theme-radius) * 0.0025)) * 1em);
+    padding-left: calc(
+      ((var(--menu-nav-space) / 4) + (var(--theme-radius) * 0.0025)) * 1em
+    );
     border-radius: 0;
     height: calc((var(--menu-nav-space) / 4) * 1em);
     min-height: 3em;

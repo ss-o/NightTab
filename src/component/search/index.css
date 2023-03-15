@@ -4,7 +4,10 @@
 }
 
 .search input[type="search"] {
-  background-color: hsla(var(--button-background), calc(var(--theme-header-search-opacity) / 100));
+  background-color: hsla(
+    var(--button-background),
+    calc(var(--theme-header-search-opacity) / 100)
+  );
 }
 
 .is-header-search-text-justify-left .search input[type="search"] {
@@ -20,16 +23,25 @@
 }
 
 input[type="search"]:hover {
-  background-color: hsla(var(--form-input-background-hover), calc(var(--theme-header-search-opacity) / 100));
+  background-color: hsla(
+    var(--form-input-background-hover),
+    calc(var(--theme-header-search-opacity) / 100)
+  );
 }
 
 input[type="search"]:focus,
 input[type="search"]:active {
-  background-color: hsla(var(--form-input-background-focus-active), calc(var(--theme-header-search-opacity) / 100));
+  background-color: hsla(
+    var(--form-input-background-focus-active),
+    calc(var(--theme-header-search-opacity) / 100)
+  );
 }
 
 input[type="search"]:disabled {
-  background-color: hsla(var(--form-input-background-disabled), calc(var(--theme-header-search-opacity) / 100));
+  background-color: hsla(
+    var(--form-input-background-disabled),
+    calc(var(--theme-header-search-opacity) / 100)
+  );
 }
 
 .search-clear {

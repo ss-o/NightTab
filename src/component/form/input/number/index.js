@@ -10,10 +10,17 @@ export const number = ({
   value = false,
   placeholder = false,
   classList = [],
-  func = false
+  func = false,
 } = {}) => {
-
-  const input = node('input|type:number,min:' + min + ',max:' + max + ',step:' + step + ',tabindex:1');
+  const input = node(
+    'input|type:number,min:' +
+      min +
+      ',max:' +
+      max +
+      ',step:' +
+      step +
+      ',tabindex:1'
+  );
 
   if (id) {
     input.setAttribute('id', id);
@@ -28,21 +35,16 @@ export const number = ({
   }
 
   if (classList.length > 0) {
-
     classList.forEach((item) => {
       input.classList.add(item);
     });
-
   }
 
   if (func) {
-
     input.addEventListener('input', () => {
       func();
     });
-
   }
 
   return input;
-
 };

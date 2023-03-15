@@ -40,5 +40,5 @@ export const component = {
   form,
   toolbar,
   groupAndBookmark,
-  message
+  message,
 };

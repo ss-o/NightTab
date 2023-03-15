@@ -12,9 +12,8 @@ export const Control_radio = function ({
   action = false,
   inputButton = false,
   inputHide = false,
-  inputButtonStyle = false
+  inputButtonStyle = false,
 } = {}) {
-
   this.radioSet = [];
 
   const radioGroupName = groupName;
@@ -26,7 +25,7 @@ export const Control_radio = function ({
   if (label) {
     this.label = form.label({
       text: label,
-      noPadding: true
+      noPadding: true,
     });
   }
 
@@ -37,27 +36,24 @@ export const Control_radio = function ({
           id: item.id,
           radioGroup: radioGroupName,
           value: item.value,
-          checked: (get({ object: object, path: radioGroupPath }) === item.value),
+          checked: get({ object: object, path: radioGroupPath }) === item.value,
           func: () => {
-
             set({ object: object, path: radioGroupPath, value: item.value });
 
-            if (action) { action(); }
-
-          }
+            if (action) {
+              action();
+            }
+          },
         }),
         label: form.label({
           forInput: item.id,
           text: item.labelText,
           description: item.description,
-          icon: true
+          icon: true,
         }),
         wrap: () => {
           return form.wrap({
-            children: [
-              radioAndLabel.radio,
-              radioAndLabel.label
-            ]
+            children: [radioAndLabel.radio, radioAndLabel.label],
           });
         },
         inputButton: () => {
@@ -65,16 +61,14 @@ export const Control_radio = function ({
             inputButton: inputButton,
             inputHide: inputHide,
             style: inputButtonStyle,
-            children: [
-              radioAndLabel.radio,
-              radioAndLabel.label
-            ]
+            children: [radioAndLabel.radio, radioAndLabel.label],
           });
-        }
+        },
       };
 
       radioAndLabel.radio.update = () => {
-        radioAndLabel.radio.checked = (get({ object: object, path: radioGroupPath }) === item.value);
+        radioAndLabel.radio.checked =
+          get({ object: object, path: radioGroupPath }) === item.value;
       };
 
       radioAndLabel.radio.disable = () => {
@@ -90,7 +84,6 @@ export const Control_radio = function ({
   }
 
   this.value = () => {
-
     let currentSelectedRadio = false;
 
     this.radioSet.forEach((item) => {
@@ -100,19 +93,15 @@ export const Control_radio = function ({
     });
 
     return currentSelectedRadio;
-
   };
 
   this.update = () => {
-
     this.radioSet.forEach((item) => {
       item.radio.update();
     });
-
   };
 
   this.wrap = () => {
-
     const wrap = form.wrap();
 
     if (this.label) {
@@ -120,47 +109,36 @@ export const Control_radio = function ({
     }
 
     this.radioSet.forEach((item) => {
-      wrap.appendChild(
-        item.wrap()
-      );
+      wrap.appendChild(item.wrap());
     });
 
     return wrap;
-
   };
 
   this.inputButton = () => {
-
     const wrap = form.wrap();
 
     const group = form.group();
 
     this.radioSet.forEach((item) => {
-      group.appendChild(
-        item.inputButton()
-      );
+      group.appendChild(item.inputButton());
     });
 
     wrap.appendChild(group);
 
     return wrap;
-
   };
 
   this.inline = () => {
-
     const inline = form.inline({
       gap: 'large',
-      wrap: true
+      wrap: true,
     });
 
     this.radioSet.forEach((item) => {
       inline.appendChild(
         form.wrap({
-          children: [
-            item.radio,
-            item.label
-          ]
+          children: [item.radio, item.label],
         })
       );
     });
@@ -174,7 +152,6 @@ export const Control_radio = function ({
     wrap.appendChild(form.wrap({ children: [inline] }));
 
     return wrap;
-
   };
 
   this.disable = () => {
@@ -196,5 +173,4 @@ export const Control_radio = function ({
       this.label.classList.remove('disabled');
     }
   };
-
 };

@@ -10,9 +10,8 @@ export const Control_radioGrid = function ({
   groupName = 'group',
   path = false,
   gridSize = '3x3',
-  action = false
+  action = false,
 } = {}) {
-
   this.radioSet = [];
 
   const radioGroupName = groupName;
@@ -25,7 +24,7 @@ export const Control_radioGrid = function ({
 
   if (label) {
     this.label = form.label({
-      text: label
+      text: label,
     });
   }
 
@@ -39,14 +38,14 @@ export const Control_radioGrid = function ({
         id: item.id,
         radioGroup: radioGroupName,
         value: item.value,
-        checked: (get({ object: object, path: radioGroupPath, }) === item.value),
+        checked: get({ object: object, path: radioGroupPath }) === item.value,
         func: () => {
-
           set({ object: object, path: radioGroupPath, value: item.value });
 
-          if (action) { action(); }
-
-        }
+          if (action) {
+            action();
+          }
+        },
       });
 
       radioAndLabel.label = form.label({
@@ -54,22 +53,18 @@ export const Control_radioGrid = function ({
         text: item.labelText,
         description: item.description,
         srOnly: true,
-        icon: true
+        icon: true,
       });
 
       radioAndLabel.wrap = () => {
         return form.wrap({
-          children: [
-            radioAndLabel.radio,
-            radioAndLabel.label
-          ]
+          children: [radioAndLabel.radio, radioAndLabel.label],
         });
       };
 
       radioAndLabel.radio.update = () => {
-
-        radioAndLabel.radio.checked = (get({ object: object, path: radioGroupPath }) === item.value);
-
+        radioAndLabel.radio.checked =
+          get({ object: object, path: radioGroupPath }) === item.value;
       };
 
       radioAndLabel.radio.disable = () => {
@@ -125,10 +120,7 @@ export const Control_radioGrid = function ({
 
     this.radioSet.forEach((item) => {
       const wrap = form.wrap({
-        children: [
-          item.radio,
-          item.label
-        ]
+        children: [item.radio, item.label],
       });
 
       wrap.style.setProperty('--form-grid-cell', 'cell-' + item.position);
@@ -168,5 +160,4 @@ export const Control_radioGrid = function ({
       this.label.classList.remove('disabled');
     }
   };
-
 };

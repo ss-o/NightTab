@@ -126,8 +126,8 @@ li {
   margin: 0;
 }
 
-li>ul,
-li>ol {
+li > ul,
+li > ol {
   margin: 0;
 }
 
@@ -135,8 +135,8 @@ li:not(:last-child) {
   margin-bottom: 0.5em;
 }
 
-li>ul:not(:last-child),
-li>ol:not(:last-child) {
+li > ul:not(:last-child),
+li > ol:not(:last-child) {
   margin-bottom: 0.5em;
 }
 

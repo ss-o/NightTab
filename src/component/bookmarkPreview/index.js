@@ -6,10 +6,7 @@ import { node } from '../../utility/node';
 
 import './index.css';
 
-export const BookmarkPreview = function({
-  bookmarkData = false
-} = {}) {
-
+export const BookmarkPreview = function ({ bookmarkData = false } = {}) {
   this.area = node('div|class:bookmark-preview-area');
 
   this.grid = node('div|class:bookmark-preview-grid');
@@ -17,7 +14,6 @@ export const BookmarkPreview = function({
   this.title = node('div|class:bookmark-preview-title small muted');
 
   this.shape = () => {
-
     if (bookmarkData.link.shape.tall) {
       this.grid.classList.add('bookmark-preview-grid-tall');
     } else {
@@ -35,12 +31,11 @@ export const BookmarkPreview = function({
     } else {
       this.title.textContent = message.get('bookmarkPreviewFull');
     }
-
   };
 
   this.bookmarkTile = new BookmarkTile({
     bookmarkData: bookmarkData,
-    preview: true
+    preview: true,
   });
 
   this.update = {};
@@ -62,7 +57,7 @@ export const BookmarkPreview = function({
 
     this.bookmarkTile = new BookmarkTile({
       bookmarkData: bookmarkData,
-      preview: true
+      preview: true,
     });
 
     this.shape();
@@ -85,5 +80,4 @@ export const BookmarkPreview = function({
   this.preview = () => {
     return this.area;
   };
-
 };

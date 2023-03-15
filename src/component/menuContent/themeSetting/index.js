@@ -57,11 +57,10 @@ themeSetting.control = {
   layout: {},
   header: {},
   bookmark: {},
-  background: {}
+  background: {},
 };
 
 themeSetting.disable = () => {
-
   if (state.get.current().theme.accent.random.active) {
     themeSetting.control.accent.random.style.enable();
     themeSetting.control.accent.randomiseNow.enable();
@@ -81,7 +80,6 @@ themeSetting.disable = () => {
   }
 
   switch (state.get.current().theme.header.by) {
-
     case 'theme':
       themeSetting.control.header.color.color.disable();
       themeSetting.control.header.color.opacity.disable();
@@ -91,11 +89,9 @@ themeSetting.disable = () => {
       themeSetting.control.header.color.color.enable();
       themeSetting.control.header.color.opacity.enable();
       break;
-
   }
 
   switch (state.get.current().theme.background.type) {
-
     case 'theme':
     case 'accent':
       themeSetting.control.background.color.disable();
@@ -221,11 +217,9 @@ themeSetting.disable = () => {
       themeSetting.control.background.video.vignette.opacity.enable();
       themeSetting.control.background.video.vignette.range.enable();
       break;
-
   }
 
   switch (state.get.current().theme.layout.color.by) {
-
     case 'theme':
       themeSetting.control.layout.color.color.disable();
       themeSetting.control.layout.color.opacity.disable();
@@ -239,11 +233,9 @@ themeSetting.disable = () => {
       themeSetting.control.layout.color.blur.enable();
       themeSetting.control.layout.color.blurHelper.enable();
       break;
-
   }
 
   switch (state.get.current().theme.header.color.by) {
-
     case 'theme':
       themeSetting.control.header.color.color.disable();
       themeSetting.control.header.color.opacity.disable();
@@ -253,11 +245,9 @@ themeSetting.disable = () => {
       themeSetting.control.header.color.color.enable();
       themeSetting.control.header.color.opacity.enable();
       break;
-
   }
 
   switch (state.get.current().theme.bookmark.color.by) {
-
     case 'theme':
       themeSetting.control.bookmark.color.color.disable();
       themeSetting.control.bookmark.color.opacity.disable();
@@ -267,52 +257,40 @@ themeSetting.disable = () => {
       themeSetting.control.bookmark.color.color.enable();
       themeSetting.control.bookmark.color.opacity.enable();
       break;
-
   }
-
 };
 
 themeSetting.preset = (parent) => {
-
   themeSetting.control.preset.presetHelper = new Control_helperText({
-    text: [message.get('menuContentThemePresetHelperPara1')]
+    text: [message.get('menuContentThemePresetHelperPara1')],
   });
 
   const preset = () => {
-
     const themePresetElement = node('div|class:theme-preset');
 
     themePreset.get().forEach((item) => {
-
       const presetTheme = new PresetThemeTile({
-        presetThemeData: item
+        presetThemeData: item,
       });
 
       themePresetElement.appendChild(presetTheme.tile());
-
     });
 
     return themePresetElement;
-
   };
 
   parent.appendChild(
-    node('div', [
-      preset(),
-      themeSetting.control.preset.presetHelper.wrap()
-    ])
+    node('div', [preset(), themeSetting.control.preset.presetHelper.wrap()])
   );
-
 };
 
 themeSetting.saved = (parent) => {
-
   customTheme.edit.close();
 
   themeSetting.control.saved = {
     savedElement: node('div|class:theme-custom'),
     customHelper: new Control_helperText({
-      text: [message.get('menuContentThemeSavedHelperPara1')]
+      text: [message.get('menuContentThemeSavedHelperPara1')],
     }),
     saveButton: new Button({
       text: message.get('menuContentThemeSavedSave'),
@@ -320,7 +298,7 @@ themeSetting.saved = (parent) => {
       func: () => {
         menu.close();
         customTheme.add.render();
-      }
+      },
     }),
     edit: new Button({
       text: message.get('menuContentThemeSavedEdit'),
@@ -330,12 +308,11 @@ themeSetting.saved = (parent) => {
       func: () => {
         customTheme.edit.toggle();
         data.save();
-      }
-    })
+      },
+    }),
   };
 
   if (state.get.current().theme.custom.all.length > 0) {
-
     parent.appendChild(
       node('div', [
         customTheme.item.render(themeSetting.control.saved.savedElement),
@@ -348,17 +325,15 @@ themeSetting.saved = (parent) => {
               equalGap: true,
               children: [
                 themeSetting.control.saved.saveButton.wrap(),
-                themeSetting.control.saved.edit.wrap()
-              ]
-            })
-          ]
+                themeSetting.control.saved.edit.wrap(),
+              ],
+            }),
+          ],
         }),
-        themeSetting.control.saved.customHelper.wrap()
+        themeSetting.control.saved.customHelper.wrap(),
       ])
     );
-
   } else {
-
     parent.appendChild(
       node('div', [
         form.wrap({
@@ -367,28 +342,38 @@ themeSetting.saved = (parent) => {
               gap: 'small',
               wrap: true,
               equalGap: true,
-              children: [
-                themeSetting.control.saved.saveButton.wrap()
-              ]
-            })
-          ]
+              children: [themeSetting.control.saved.saveButton.wrap()],
+            }),
+          ],
         }),
-        themeSetting.control.saved.customHelper.wrap()
+        themeSetting.control.saved.customHelper.wrap(),
       ])
     );
-
   }
-
 };
 
 themeSetting.style = (parent) => {
-
   themeSetting.control.style = new Control_radio({
     object: state.get.current(),
     radioGroup: [
-      { id: 'theme-style-dark', labelText: message.get('menuContentThemeStyleDarkLabel'), description: false, value: 'dark' },
-      { id: 'theme-style-light', labelText: message.get('menuContentThemeStyleLightLabel'), description: false, value: 'light' },
-      { id: 'theme-style-system', labelText: message.get('menuContentThemeStyleAutomaticLabel'), description: message.get('menuContentThemeStyleAutomaticDescription'), value: 'system' }
+      {
+        id: 'theme-style-dark',
+        labelText: message.get('menuContentThemeStyleDarkLabel'),
+        description: false,
+        value: 'dark',
+      },
+      {
+        id: 'theme-style-light',
+        labelText: message.get('menuContentThemeStyleLightLabel'),
+        description: false,
+        value: 'light',
+      },
+      {
+        id: 'theme-style-system',
+        labelText: message.get('menuContentThemeStyleAutomaticLabel'),
+        description: message.get('menuContentThemeStyleAutomaticDescription'),
+        value: 'system',
+      },
     ],
     groupName: 'theme-style',
     path: 'theme.style',
@@ -396,26 +381,19 @@ themeSetting.style = (parent) => {
       theme.style.initial();
       applyCSSClass('theme.style');
       data.save();
-    }
+    },
   });
 
-  parent.appendChild(
-    node('div', [
-      themeSetting.control.style.wrap()
-    ])
-  );
-
+  parent.appendChild(node('div', [themeSetting.control.style.wrap()]));
 };
 
 themeSetting.color = (parent) => {
-
   const shade = () => {
-
     const formSticky = form.sticky();
 
     const formGroup = form.group({
       block: true,
-      border: true
+      border: true,
     });
 
     const shadeCount = state.get.current().theme.color.shades;
@@ -429,7 +407,7 @@ themeSetting.color = (parent) => {
 
       formGroup.appendChild(
         node('div|class:form-group-text form-group-text-borderless', [
-          node('div|class:theme-color-box theme-color-shade-' + count + '')
+          node('div|class:theme-color-box theme-color-shade-' + count + ''),
         ])
       );
     }
@@ -455,7 +433,7 @@ themeSetting.color = (parent) => {
           action: () => {
             theme.color.render();
             data.save();
-          }
+          },
         }),
         s: new Control_slider({
           object: state.get.current(),
@@ -470,9 +448,9 @@ themeSetting.color = (parent) => {
           action: () => {
             theme.color.render();
             data.save();
-          }
-        })
-      }
+          },
+        }),
+      },
     },
     contrast: new Control_sliderDouble({
       object: state.get.current(),
@@ -489,7 +467,7 @@ themeSetting.color = (parent) => {
         action: () => {
           theme.color.render();
           data.save();
-        }
+        },
       },
       right: {
         path: 'theme.color.contrast.end',
@@ -502,24 +480,24 @@ themeSetting.color = (parent) => {
         action: () => {
           theme.color.render();
           data.save();
-        }
-      }
+        },
+      },
     }),
     contrastHelper: new Control_helperText({
       text: [
         message.get('menuContentThemeColorContrastHelperPara1'),
-        message.get('menuContentThemeColorContrastHelperPara2')
-      ]
+        message.get('menuContentThemeColorContrastHelperPara2'),
+      ],
     }),
     shade: {
       helper: new Control_helperText({
         text: [
           message.get('menuContentThemeColorShadeHelperPara1'),
           message.get('menuContentThemeColorShadeHelperPara2'),
-          message.get('menuContentThemeColorShadeHelperPara3')
-        ]
-      })
-    }
+          message.get('menuContentThemeColorShadeHelperPara3'),
+        ],
+      }),
+    },
   };
 
   parent.appendChild(
@@ -530,16 +508,13 @@ themeSetting.color = (parent) => {
       themeSetting.control.color.range.primary.h.wrap(),
       themeSetting.control.color.range.primary.s.wrap(),
       themeSetting.control.color.contrast.wrap(),
-      themeSetting.control.color.contrastHelper.wrap()
+      themeSetting.control.color.contrastHelper.wrap(),
     ])
   );
-
 };
 
 themeSetting.accent = (parent) => {
-
   const preset = () => {
-
     const allPreset = accentPreset.get();
 
     const formWrap = form.wrap();
@@ -547,19 +522,16 @@ themeSetting.accent = (parent) => {
     const themeAccentPreset = node('div|class:theme-accent-preset');
 
     allPreset.forEach((item) => {
-
       const presetButton = new AccentPresetButton({
-        presetData: item
+        presetData: item,
       });
 
       themeAccentPreset.appendChild(presetButton.button());
-
     });
 
     formWrap.appendChild(themeAccentPreset);
 
     return formWrap;
-
   };
 
   themeSetting.control.accent.color = new Control_colorMixer({
@@ -577,12 +549,12 @@ themeSetting.accent = (parent) => {
         'theme.accent.rgb.b',
         'theme.accent.hsl.h',
         'theme.accent.hsl.s',
-        'theme.accent.hsl.l'
+        'theme.accent.hsl.l',
       ]);
       toolbar.current.update.style();
       toolbar.current.update.accent();
       data.save();
-    }
+    },
   });
 
   themeSetting.control.accent.random = {};
@@ -596,23 +568,43 @@ themeSetting.accent = (parent) => {
       themeSetting.disable();
       themeSetting.control.accent.random.collapse.update();
       data.save();
-    }
+    },
   });
 
   themeSetting.control.accent.random.style = new Control_radio({
     object: state.get.current(),
     radioGroup: [
-      { id: 'theme-accent-random-style-any', labelText: message.get('menuContentThemeAccentRandomStyleAny'), value: 'any' },
-      { id: 'theme-accent-random-style-light', labelText: message.get('menuContentThemeAccentRandomStyleLight'), value: 'light' },
-      { id: 'theme-accent-random-style-dark', labelText: message.get('menuContentThemeAccentRandomStyleDark'), value: 'dark' },
-      { id: 'theme-accent-random-style-pastel', labelText: message.get('menuContentThemeAccentRandomStylePastel'), value: 'pastel' },
-      { id: 'theme-accent-random-style-saturated', labelText: message.get('menuContentThemeAccentRandomStyleSaturated'), value: 'saturated' },
+      {
+        id: 'theme-accent-random-style-any',
+        labelText: message.get('menuContentThemeAccentRandomStyleAny'),
+        value: 'any',
+      },
+      {
+        id: 'theme-accent-random-style-light',
+        labelText: message.get('menuContentThemeAccentRandomStyleLight'),
+        value: 'light',
+      },
+      {
+        id: 'theme-accent-random-style-dark',
+        labelText: message.get('menuContentThemeAccentRandomStyleDark'),
+        value: 'dark',
+      },
+      {
+        id: 'theme-accent-random-style-pastel',
+        labelText: message.get('menuContentThemeAccentRandomStylePastel'),
+        value: 'pastel',
+      },
+      {
+        id: 'theme-accent-random-style-saturated',
+        labelText: message.get('menuContentThemeAccentRandomStyleSaturated'),
+        value: 'saturated',
+      },
     ],
     groupName: 'theme-accent-random-style',
     path: 'theme.accent.random.style',
     action: () => {
       data.save();
-    }
+    },
   });
 
   themeSetting.control.accent.randomiseNow = new Button({
@@ -626,26 +618,28 @@ themeSetting.accent = (parent) => {
         'theme.accent.rgb.b',
         'theme.accent.hsl.h',
         'theme.accent.hsl.s',
-        'theme.accent.hsl.l'
+        'theme.accent.hsl.l',
       ]);
       toolbar.current.update.style();
       toolbar.current.update.accent();
       themeSetting.control.accent.color.update();
       data.save();
-    }
+    },
   });
 
   themeSetting.control.accent.random.area = node('div', [
     themeSetting.control.accent.random.style.inline(),
-    themeSetting.control.accent.randomiseNow.wrap()
+    themeSetting.control.accent.randomiseNow.wrap(),
   ]);
 
   themeSetting.control.accent.random.collapse = new Collapse({
     type: 'checkbox',
     checkbox: themeSetting.control.accent.random.active,
-    target: [{
-      content: themeSetting.control.accent.random.area
-    }]
+    target: [
+      {
+        content: themeSetting.control.accent.random.area,
+      },
+    ],
   });
 
   themeSetting.control.accent.cycle = {};
@@ -653,8 +647,8 @@ themeSetting.accent = (parent) => {
   themeSetting.control.accent.cycle.alert = new Alert({
     iconName: 'info',
     children: [
-      node(`p:${message.get('menuContentThemeAccentCycleAlert')}|class:small`)
-    ]
+      node(`p:${message.get('menuContentThemeAccentCycleAlert')}|class:small`),
+    ],
   });
 
   themeSetting.control.accent.cycle.active = new Control_checkbox({
@@ -668,7 +662,7 @@ themeSetting.accent = (parent) => {
       themeSetting.disable();
       applyCSSState('theme.accent.cycle.active');
       data.save();
-    }
+    },
   });
 
   themeSetting.control.accent.cycle.speed = new Control_slider({
@@ -683,7 +677,7 @@ themeSetting.accent = (parent) => {
     action: () => {
       theme.accent.cycle.bind();
       data.save();
-    }
+    },
   });
 
   themeSetting.control.accent.cycle.step = new Control_slider({
@@ -698,26 +692,28 @@ themeSetting.accent = (parent) => {
     action: () => {
       theme.accent.cycle.bind();
       data.save();
-    }
+    },
   });
 
   themeSetting.control.accent.cycle.stepHelper = new Control_helperText({
-    text: [message.get('menuContentThemeAccentCycleHelperPara1')]
+    text: [message.get('menuContentThemeAccentCycleHelperPara1')],
   });
 
   themeSetting.control.accent.cycle.area = node('div', [
     themeSetting.control.accent.cycle.alert.wrap(),
     themeSetting.control.accent.cycle.speed.wrap(),
     themeSetting.control.accent.cycle.step.wrap(),
-    themeSetting.control.accent.cycle.stepHelper.wrap()
+    themeSetting.control.accent.cycle.stepHelper.wrap(),
   ]);
 
   themeSetting.control.accent.cycle.collapse = new Collapse({
     type: 'checkbox',
     checkbox: themeSetting.control.accent.cycle.active,
-    target: [{
-      content: themeSetting.control.accent.cycle.area
-    }]
+    target: [
+      {
+        content: themeSetting.control.accent.cycle.area,
+      },
+    ],
   });
 
   parent.appendChild(
@@ -730,30 +726,24 @@ themeSetting.accent = (parent) => {
       form.wrap({
         children: [
           form.indent({
-            children: [
-              themeSetting.control.accent.random.collapse.collapse()
-            ]
-          })
-        ]
+            children: [themeSetting.control.accent.random.collapse.collapse()],
+          }),
+        ],
       }),
       node('hr'),
       themeSetting.control.accent.cycle.active.wrap(),
       form.wrap({
         children: [
           form.indent({
-            children: [
-              themeSetting.control.accent.cycle.collapse.collapse()
-            ]
-          })
-        ]
-      })
+            children: [themeSetting.control.accent.cycle.collapse.collapse()],
+          }),
+        ],
+      }),
     ])
   );
-
 };
 
 themeSetting.font = (parent) => {
-
   const fontWeight = { light: 300, regular: 400, bold: 700 };
 
   themeSetting.control.font.display = {
@@ -768,16 +758,20 @@ themeSetting.font = (parent) => {
       action: () => {
         theme.font.display.delay();
         data.save();
-      }
+      },
     }),
     nameHelper: new Control_helperText({
       complexText: true,
       text: [
         message.get('menuContentThemeFontDisplayNameHelperPara1'),
-        (new Link({ text: message.get('menuContentThemeFontDisplayNameHelperLink'), href: 'https://fonts.google.com/', openNew: true })).link().outerHTML,
+        new Link({
+          text: message.get('menuContentThemeFontDisplayNameHelperLink'),
+          href: 'https://fonts.google.com/',
+          openNew: true,
+        }).link().outerHTML,
         message.get('menuContentThemeFontDisplayNameHelperPara2'),
-        message.get('menuContentThemeFontDisplayNameHelperPara3')
-      ]
+        message.get('menuContentThemeFontDisplayNameHelperPara3'),
+      ],
     }),
     weight: new Control_slider({
       object: state.get.current(),
@@ -792,7 +786,7 @@ themeSetting.font = (parent) => {
       action: () => {
         applyCSSVar('theme.font.display.weight');
         data.save();
-      }
+      },
     }),
     weightLight: new Button({
       text: message.get('menuContentThemeFontDisplayWeightLight'),
@@ -802,7 +796,7 @@ themeSetting.font = (parent) => {
         applyCSSVar('theme.font.display.weight');
         themeSetting.control.font.display.weight.update();
         data.save();
-      }
+      },
     }),
     weightRegular: new Button({
       text: message.get('menuContentThemeFontDisplayWeightRegular'),
@@ -812,7 +806,7 @@ themeSetting.font = (parent) => {
         applyCSSVar('theme.font.display.weight');
         themeSetting.control.font.display.weight.update();
         data.save();
-      }
+      },
     }),
     weightBold: new Button({
       text: message.get('menuContentThemeFontDisplayWeightBold'),
@@ -822,16 +816,24 @@ themeSetting.font = (parent) => {
         applyCSSVar('theme.font.display.weight');
         themeSetting.control.font.display.weight.update();
         data.save();
-      }
+      },
     }),
     weightHelper: new Control_helperText({
-      text: [message.get('menuContentThemeFontDisplayWeightHelperPara1')]
+      text: [message.get('menuContentThemeFontDisplayWeightHelperPara1')],
     }),
     style: new Control_radio({
       object: state.get.current(),
       radioGroup: [
-        { id: 'theme-font-display-style-normal', labelText: message.get('menuContentThemeFontDisplayStyleNormal'), value: 'normal' },
-        { id: 'theme-font-display-style-italic', labelText: message.get('menuContentThemeFontDisplayStyleItalic'), value: 'italic' }
+        {
+          id: 'theme-font-display-style-normal',
+          labelText: message.get('menuContentThemeFontDisplayStyleNormal'),
+          value: 'normal',
+        },
+        {
+          id: 'theme-font-display-style-italic',
+          labelText: message.get('menuContentThemeFontDisplayStyleItalic'),
+          value: 'italic',
+        },
       ],
       groupName: 'theme-font-display-style',
       path: 'theme.font.display.style',
@@ -841,8 +843,8 @@ themeSetting.font = (parent) => {
       action: () => {
         applyCSSVar('theme.font.display.style');
         data.save();
-      }
-    })
+      },
+    }),
   };
 
   themeSetting.control.font.ui = {
@@ -857,16 +859,20 @@ themeSetting.font = (parent) => {
       action: () => {
         theme.font.ui.delay();
         data.save();
-      }
+      },
     }),
     nameHelper: new Control_helperText({
       complexText: true,
       text: [
         message.get('menuContentThemeFontUiNameHelperPara1'),
-        (new Link({ text: message.get('menuContentThemeFontUiNameHelperLink'), href: 'https://fonts.google.com/', openNew: true })).link().outerHTML,
+        new Link({
+          text: message.get('menuContentThemeFontUiNameHelperLink'),
+          href: 'https://fonts.google.com/',
+          openNew: true,
+        }).link().outerHTML,
         message.get('menuContentThemeFontUiNameHelperPara2'),
-        message.get('menuContentThemeFontUiNameHelperPara3')
-      ]
+        message.get('menuContentThemeFontUiNameHelperPara3'),
+      ],
     }),
     weight: new Control_slider({
       object: state.get.current(),
@@ -881,7 +887,7 @@ themeSetting.font = (parent) => {
       action: () => {
         applyCSSVar('theme.font.ui.weight');
         data.save();
-      }
+      },
     }),
     weightLight: new Button({
       text: message.get('menuContentThemeFontUiWeightLight'),
@@ -891,7 +897,7 @@ themeSetting.font = (parent) => {
         applyCSSVar('theme.font.ui.weight');
         themeSetting.control.font.ui.weight.update();
         data.save();
-      }
+      },
     }),
     weightRegular: new Button({
       text: message.get('menuContentThemeFontUiWeightRegular'),
@@ -901,7 +907,7 @@ themeSetting.font = (parent) => {
         applyCSSVar('theme.font.ui.weight');
         themeSetting.control.font.ui.weight.update();
         data.save();
-      }
+      },
     }),
     weightBold: new Button({
       text: message.get('menuContentThemeFontUiWeightBold'),
@@ -911,16 +917,24 @@ themeSetting.font = (parent) => {
         applyCSSVar('theme.font.ui.weight');
         themeSetting.control.font.ui.weight.update();
         data.save();
-      }
+      },
     }),
     weightHelper: new Control_helperText({
-      text: [message.get('menuContentThemeFontUiWeightHelperPara1')]
+      text: [message.get('menuContentThemeFontUiWeightHelperPara1')],
     }),
     style: new Control_radio({
       object: state.get.current(),
       radioGroup: [
-        { id: 'theme-font-ui-style-normal', labelText: message.get('menuContentThemeFontUiStyleNormal'), value: 'normal' },
-        { id: 'theme-font-ui-style-italic', labelText: message.get('menuContentThemeFontUiStyleItalic'), value: 'italic' }
+        {
+          id: 'theme-font-ui-style-normal',
+          labelText: message.get('menuContentThemeFontUiStyleNormal'),
+          value: 'normal',
+        },
+        {
+          id: 'theme-font-ui-style-italic',
+          labelText: message.get('menuContentThemeFontUiStyleItalic'),
+          value: 'italic',
+        },
       ],
       groupName: 'theme-font-ui-style',
       path: 'theme.font.ui.style',
@@ -930,8 +944,8 @@ themeSetting.font = (parent) => {
       action: () => {
         applyCSSVar('theme.font.ui.style');
         data.save();
-      }
-    })
+      },
+    }),
   };
 
   parent.appendChild(
@@ -949,16 +963,16 @@ themeSetting.font = (parent) => {
                     children: [
                       themeSetting.control.font.display.weightLight.button,
                       themeSetting.control.font.display.weightRegular.button,
-                      themeSetting.control.font.display.weightBold.button
-                    ]
-                  })
-                ]
+                      themeSetting.control.font.display.weightBold.button,
+                    ],
+                  }),
+                ],
               }),
               themeSetting.control.font.display.style.inputButton(),
-              themeSetting.control.font.display.weightHelper.wrap()
-            ]
-          })
-        ]
+              themeSetting.control.font.display.weightHelper.wrap(),
+            ],
+          }),
+        ],
       }),
       node('hr'),
       themeSetting.control.font.ui.name.wrap(),
@@ -974,24 +988,22 @@ themeSetting.font = (parent) => {
                     children: [
                       themeSetting.control.font.ui.weightLight.button,
                       themeSetting.control.font.ui.weightRegular.button,
-                      themeSetting.control.font.ui.weightBold.button
-                    ]
-                  })
-                ]
+                      themeSetting.control.font.ui.weightBold.button,
+                    ],
+                  }),
+                ],
               }),
               themeSetting.control.font.ui.style.inputButton(),
-              themeSetting.control.font.ui.weightHelper.wrap()
-            ]
-          })
-        ]
-      })
+              themeSetting.control.font.ui.weightHelper.wrap(),
+            ],
+          }),
+        ],
+      }),
     ])
   );
-
 };
 
 themeSetting.radius = (parent) => {
-
   themeSetting.control.radius = new Control_slider({
     object: state.get.current(),
     path: 'theme.radius',
@@ -1004,19 +1016,13 @@ themeSetting.radius = (parent) => {
     action: () => {
       applyCSSVar('theme.radius');
       data.save();
-    }
+    },
   });
 
-  parent.appendChild(
-    node('div', [
-      themeSetting.control.radius.wrap()
-    ])
-  );
-
+  parent.appendChild(node('div', [themeSetting.control.radius.wrap()]));
 };
 
 themeSetting.shadow = (parent) => {
-
   themeSetting.control.shadow = new Control_slider({
     object: state.get.current(),
     path: 'theme.shadow',
@@ -1029,19 +1035,13 @@ themeSetting.shadow = (parent) => {
     action: () => {
       applyCSSVar('theme.shadow');
       data.save();
-    }
+    },
   });
 
-  parent.appendChild(
-    node('div', [
-      themeSetting.control.shadow.wrap()
-    ])
-  );
-
+  parent.appendChild(node('div', [themeSetting.control.shadow.wrap()]));
 };
 
 themeSetting.shade = (parent) => {
-
   themeSetting.control.shade = {
     opacity: new Control_slider({
       object: state.get.current(),
@@ -1055,7 +1055,7 @@ themeSetting.shade = (parent) => {
       action: () => {
         applyCSSVar('theme.shade.opacity');
         data.save();
-      }
+      },
     }),
     blur: new Control_slider({
       object: state.get.current(),
@@ -1069,25 +1069,23 @@ themeSetting.shade = (parent) => {
       action: () => {
         applyCSSVar('theme.shade.blur');
         data.save();
-      }
+      },
     }),
     blurHelper: new Control_helperText({
-      text: [message.get('menuContentThemeShadeBlurHelperPara1')]
-    })
+      text: [message.get('menuContentThemeShadeBlurHelperPara1')],
+    }),
   };
 
   parent.appendChild(
     node('div', [
       themeSetting.control.shade.opacity.wrap(),
       themeSetting.control.shade.blur.wrap(),
-      themeSetting.control.shade.blurHelper.wrap()
+      themeSetting.control.shade.blurHelper.wrap(),
     ])
   );
-
 };
 
 themeSetting.opacity = (parent) => {
-
   themeSetting.control.opacity.general = new Control_slider({
     object: state.get.current(),
     path: 'theme.opacity.general',
@@ -1098,14 +1096,17 @@ themeSetting.opacity = (parent) => {
     min: state.get.minMax().theme.opacity.general.min,
     max: state.get.minMax().theme.opacity.general.max,
     action: () => {
+      state.get.current().theme.bookmark.item.opacity =
+        state.get.current().theme.opacity.general;
 
-      state.get.current().theme.bookmark.item.opacity = state.get.current().theme.opacity.general;
+      state.get.current().theme.toolbar.opacity =
+        state.get.current().theme.opacity.general;
 
-      state.get.current().theme.toolbar.opacity = state.get.current().theme.opacity.general;
+      state.get.current().theme.header.search.opacity =
+        state.get.current().theme.opacity.general;
 
-      state.get.current().theme.header.search.opacity = state.get.current().theme.opacity.general;
-
-      state.get.current().theme.group.toolbar.opacity = state.get.current().theme.opacity.general;
+      state.get.current().theme.group.toolbar.opacity =
+        state.get.current().theme.opacity.general;
 
       themeSetting.control.opacity.toolbar.update();
 
@@ -1120,10 +1121,13 @@ themeSetting.opacity = (parent) => {
         'theme.toolbar.opacity',
         'theme.bookmark.item.opacity',
         'theme.header.search.opacity',
-        'theme.group.toolbar.opacity'
+        'theme.group.toolbar.opacity',
       ]);
 
-      bookmark.item.mod.applyVar('color.opacity', state.get.current().theme.bookmark.item.opacity);
+      bookmark.item.mod.applyVar(
+        'color.opacity',
+        state.get.current().theme.bookmark.item.opacity
+      );
 
       groupAndBookmark.render();
 
@@ -1132,15 +1136,14 @@ themeSetting.opacity = (parent) => {
       header.element.search.update.style();
 
       data.save();
-
-    }
+    },
   });
 
   themeSetting.control.opacity.generalHelper = new Control_helperText({
     text: [
       message.get('menuContentThemeOpacityGeneralHelperPara1'),
-      message.get('menuContentThemeOpacityGeneralHelperPara2')
-    ]
+      message.get('menuContentThemeOpacityGeneralHelperPara2'),
+    ],
   });
 
   themeSetting.control.opacity.toolbar = new Control_sliderSlim({
@@ -1153,14 +1156,12 @@ themeSetting.opacity = (parent) => {
     min: state.get.minMax().theme.toolbar.opacity.min,
     max: state.get.minMax().theme.toolbar.opacity.max,
     action: () => {
-
       applyCSSVar('theme.toolbar.opacity');
 
       toolbar.current.update.style();
 
       data.save();
-
-    }
+    },
   });
 
   themeSetting.control.opacity.bookmark = new Control_sliderSlim({
@@ -1173,16 +1174,17 @@ themeSetting.opacity = (parent) => {
     min: state.get.minMax().theme.bookmark.item.opacity.min,
     max: state.get.minMax().theme.bookmark.item.opacity.max,
     action: () => {
-
       applyCSSVar('theme.bookmark.item.opacity');
 
-      bookmark.item.mod.applyVar('color.opacity', state.get.current().theme.bookmark.item.opacity);
+      bookmark.item.mod.applyVar(
+        'color.opacity',
+        state.get.current().theme.bookmark.item.opacity
+      );
 
       groupAndBookmark.render();
 
       data.save();
-
-    }
+    },
   });
 
   themeSetting.control.opacity.search = new Control_sliderSlim({
@@ -1195,14 +1197,12 @@ themeSetting.opacity = (parent) => {
     min: state.get.minMax().theme.header.search.opacity.min,
     max: state.get.minMax().theme.header.search.opacity.max,
     action: () => {
-
       applyCSSVar('theme.header.search.opacity');
 
       header.element.search.update.style();
 
       data.save();
-
-    }
+    },
   });
 
   themeSetting.control.opacity.group = {
@@ -1216,21 +1216,17 @@ themeSetting.opacity = (parent) => {
       min: state.get.minMax().theme.group.toolbar.opacity.min,
       max: state.get.minMax().theme.group.toolbar.opacity.max,
       action: () => {
-
         applyCSSVar('theme.group.toolbar.opacity');
 
         if (group.area.current.length > 0) {
-
           group.area.current.forEach((item) => {
             item.update.style();
           });
-
         }
 
         data.save();
-
-      }
-    })
+      },
+    }),
   };
 
   parent.appendChild(
@@ -1244,22 +1240,19 @@ themeSetting.opacity = (parent) => {
               themeSetting.control.opacity.toolbar.wrap(),
               themeSetting.control.opacity.bookmark.wrap(),
               themeSetting.control.opacity.search.wrap(),
-              themeSetting.control.opacity.group.toolbar.wrap()
-            ]
-          })
-        ]
-      })
+              themeSetting.control.opacity.group.toolbar.wrap(),
+            ],
+          }),
+        ],
+      }),
     ])
   );
-
 };
 
 themeSetting.background = (parent) => {
-
   const supportLink = supportSetting.supportPage.get();
 
   const updateVideoPlayState = () => {
-
     if (theme.background.element.video) {
       if (themeSetting.control.background.type.value() === 'video') {
         theme.background.element.video.play();
@@ -1267,19 +1260,48 @@ themeSetting.background = (parent) => {
         theme.background.element.video.pause();
       }
     }
-
   };
 
   themeSetting.control.background = {
     type: new Control_radio({
       object: state.get.current(),
       radioGroup: [
-        { id: 'theme-background-type-theme', labelText: message.get('menuContentThemeBackgroundTypeThemeLabel'), description: message.get('menuContentThemeBackgroundTypeThemeDescription'), value: 'theme' },
-        { id: 'theme-background-type-accent', labelText: message.get('menuContentThemeBackgroundTypeAccentLabel'), description: message.get('menuContentThemeBackgroundTypeAccentDescription'), value: 'accent' },
-        { id: 'theme-background-type-color', labelText: message.get('menuContentThemeBackgroundTypeColor'), value: 'color' },
-        { id: 'theme-background-type-gradient', labelText: message.get('menuContentThemeBackgroundTypeGradient'), value: 'gradient' },
-        { id: 'theme-background-type-image', labelText: message.get('menuContentThemeBackgroundTypeImage'), value: 'image' },
-        { id: 'theme-background-type-video', labelText: message.get('menuContentThemeBackgroundTypeVideo'), value: 'video' }
+        {
+          id: 'theme-background-type-theme',
+          labelText: message.get('menuContentThemeBackgroundTypeThemeLabel'),
+          description: message.get(
+            'menuContentThemeBackgroundTypeThemeDescription'
+          ),
+          value: 'theme',
+        },
+        {
+          id: 'theme-background-type-accent',
+          labelText: message.get('menuContentThemeBackgroundTypeAccentLabel'),
+          description: message.get(
+            'menuContentThemeBackgroundTypeAccentDescription'
+          ),
+          value: 'accent',
+        },
+        {
+          id: 'theme-background-type-color',
+          labelText: message.get('menuContentThemeBackgroundTypeColor'),
+          value: 'color',
+        },
+        {
+          id: 'theme-background-type-gradient',
+          labelText: message.get('menuContentThemeBackgroundTypeGradient'),
+          value: 'gradient',
+        },
+        {
+          id: 'theme-background-type-image',
+          labelText: message.get('menuContentThemeBackgroundTypeImage'),
+          value: 'image',
+        },
+        {
+          id: 'theme-background-type-video',
+          labelText: message.get('menuContentThemeBackgroundTypeVideo'),
+          value: 'video',
+        },
       ],
       groupName: 'theme-background-type',
       path: 'theme.background.type',
@@ -1290,7 +1312,7 @@ themeSetting.background = (parent) => {
         themeSetting.disable();
         updateVideoPlayState();
         data.save();
-      }
+      },
     }),
     color: new Control_colorMixer({
       object: state.get.current(),
@@ -1307,11 +1329,11 @@ themeSetting.background = (parent) => {
           'theme.background.color.rgb.b',
           'theme.background.color.hsl.h',
           'theme.background.color.hsl.s',
-          'theme.background.color.hsl.l'
+          'theme.background.color.hsl.l',
         ]);
         toolbar.current.update.style();
         data.save();
-      }
+      },
     }),
     gradient: {
       angle: new Control_slider({
@@ -1327,7 +1349,7 @@ themeSetting.background = (parent) => {
           applyCSSVar('theme.background.gradient.angle');
           toolbar.current.update.style();
           data.save();
-        }
+        },
       }),
       start: new Control_colorMixer({
         object: state.get.current(),
@@ -1344,11 +1366,11 @@ themeSetting.background = (parent) => {
             'theme.background.gradient.start.rgb.b',
             'theme.background.gradient.start.hsl.h',
             'theme.background.gradient.start.hsl.s',
-            'theme.background.gradient.start.hsl.l'
+            'theme.background.gradient.start.hsl.l',
           ]);
           toolbar.current.update.style();
           data.save();
-        }
+        },
       }),
       end: new Control_colorMixer({
         object: state.get.current(),
@@ -1365,40 +1387,58 @@ themeSetting.background = (parent) => {
             'theme.background.gradient.end.rgb.b',
             'theme.background.gradient.end.hsl.h',
             'theme.background.gradient.end.hsl.s',
-            'theme.background.gradient.end.hsl.l'
+            'theme.background.gradient.end.hsl.l',
           ]);
           toolbar.current.update.style();
           data.save();
-        }
-      })
+        },
+      }),
     },
     image: {
       alert: new Alert({
         iconName: 'info',
         children: [
-          node(`p:${message.get('menuContentThemeBackgroundImageAlertPara1')}|class:small`),
-          complexNode({ tag: 'p', attr: [{ key: 'class', value: 'small' }], node: [(new Link({ text: message.get('menuContentThemeBackgroundImageAlertPara2'), href: supportLink.baseUrl + supportLink.page.localBackgroundImage.url, openNew: true })).link()] })
-        ]
+          node(
+            `p:${message.get(
+              'menuContentThemeBackgroundImageAlertPara1'
+            )}|class:small`
+          ),
+          complexNode({
+            tag: 'p',
+            attr: [{ key: 'class', value: 'small' }],
+            node: [
+              new Link({
+                text: message.get('menuContentThemeBackgroundImageAlertPara2'),
+                href:
+                  supportLink.baseUrl +
+                  supportLink.page.localBackgroundImage.url,
+                openNew: true,
+              }).link(),
+            ],
+          }),
+        ],
       }),
       url: new Control_textarea({
         object: state.get.current(),
         path: 'theme.background.image.url',
         id: 'theme-background-image-url',
         value: state.get.current().theme.background.image.url,
-        placeholder: message.get('menuContentThemeBackgroundImageUrlPlaceholder'),
+        placeholder: message.get(
+          'menuContentThemeBackgroundImageUrlPlaceholder'
+        ),
         labelText: message.get('menuContentThemeBackgroundImageUrlLabel'),
         action: () => {
           theme.background.image.render();
           data.save();
-        }
+        },
       }),
       urlHelper: new Control_helperText({
         text: [
           message.get('menuContentThemeBackgroundImageUrlHelperPara1'),
           message.get('menuContentThemeBackgroundImageUrlHelperPara2'),
           message.get('menuContentThemeBackgroundImageUrlHelperPara3'),
-          message.get('menuContentThemeBackgroundImageUrlHelperPara4')
-        ]
+          message.get('menuContentThemeBackgroundImageUrlHelperPara4'),
+        ],
       }),
       blur: new Control_sliderSlim({
         object: state.get.current(),
@@ -1412,7 +1452,7 @@ themeSetting.background = (parent) => {
         action: () => {
           applyCSSVar('theme.background.image.blur');
           data.save();
-        }
+        },
       }),
       grayscale: new Control_sliderSlim({
         object: state.get.current(),
@@ -1426,7 +1466,7 @@ themeSetting.background = (parent) => {
         action: () => {
           applyCSSVar('theme.background.image.grayscale');
           data.save();
-        }
+        },
       }),
       scale: new Control_sliderSlim({
         object: state.get.current(),
@@ -1440,7 +1480,7 @@ themeSetting.background = (parent) => {
         action: () => {
           applyCSSVar('theme.background.image.scale');
           data.save();
-        }
+        },
       }),
       accent: new Control_sliderSlim({
         object: state.get.current(),
@@ -1454,7 +1494,7 @@ themeSetting.background = (parent) => {
         action: () => {
           applyCSSVar('theme.background.image.accent');
           data.save();
-        }
+        },
       }),
       opacity: new Control_sliderSlim({
         object: state.get.current(),
@@ -1468,83 +1508,112 @@ themeSetting.background = (parent) => {
         action: () => {
           applyCSSVar('theme.background.image.opacity');
           data.save();
-        }
+        },
       }),
       vignette: {
         opacity: new Control_sliderSlim({
           object: state.get.current(),
           path: 'theme.background.image.vignette.opacity',
           id: 'theme-background-image-vignette-opacity',
-          labelText: message.get('menuContentThemeBackgroundImageVignetteOpacity'),
+          labelText: message.get(
+            'menuContentThemeBackgroundImageVignetteOpacity'
+          ),
           value: state.get.current().theme.background.image.vignette.opacity,
-          defaultValue: state.get.default().theme.background.image.vignette.opacity,
+          defaultValue:
+            state.get.default().theme.background.image.vignette.opacity,
           min: state.get.minMax().theme.background.image.vignette.opacity.min,
           max: state.get.minMax().theme.background.image.vignette.opacity.max,
           action: () => {
             applyCSSVar('theme.background.image.vignette.opacity');
             data.save();
-          }
+          },
         }),
         range: new Control_sliderDouble({
           object: state.get.current(),
-          labelText: message.get('menuContentThemeBackgroundImageVignetteRangeLabel'),
+          labelText: message.get(
+            'menuContentThemeBackgroundImageVignetteRangeLabel'
+          ),
           left: {
             path: 'theme.background.image.vignette.end',
             id: 'theme-background-image-vignette-end',
-            labelText: message.get('menuContentThemeBackgroundImageVignetteRangeLeft'),
+            labelText: message.get(
+              'menuContentThemeBackgroundImageVignetteRangeLeft'
+            ),
             value: state.get.current().theme.background.image.vignette.end,
-            defaultValue: state.get.default().theme.background.image.vignette.end,
+            defaultValue:
+              state.get.default().theme.background.image.vignette.end,
             min: state.get.minMax().theme.background.image.vignette.end.min,
             max: state.get.minMax().theme.background.image.vignette.end.max,
             action: () => {
               applyCSSVar('theme.background.image.vignette.start');
               applyCSSVar('theme.background.image.vignette.end');
               data.save();
-            }
+            },
           },
           right: {
             path: 'theme.background.image.vignette.start',
             id: 'theme-background-image-vignette-start',
-            labelText: message.get('menuContentThemeBackgroundImageVignetteRangeRight'),
+            labelText: message.get(
+              'menuContentThemeBackgroundImageVignetteRangeRight'
+            ),
             value: state.get.current().theme.background.image.vignette.start,
-            defaultValue: state.get.default().theme.background.image.vignette.start,
+            defaultValue:
+              state.get.default().theme.background.image.vignette.start,
             min: state.get.minMax().theme.background.image.vignette.start.min,
             max: state.get.minMax().theme.background.image.vignette.start.max,
             action: () => {
               applyCSSVar('theme.background.image.vignette.start');
               applyCSSVar('theme.background.image.vignette.end');
               data.save();
-            }
-          }
-        })
-      }
+            },
+          },
+        }),
+      },
     },
     video: {
       alert: new Alert({
         iconName: 'info',
         children: [
-          node(`p:${message.get('menuContentThemeBackgroundVideoAlertPara1')}.|class:small`),
-          complexNode({ tag: 'p', attr: [{ key: 'class', value: 'small' }], node: [(new Link({ text: message.get('menuContentThemeBackgroundVideoAlertPara2'), href: supportLink.baseUrl + supportLink.page.backgroundImageVideo.url, openNew: true })).link()] })
-        ]
+          node(
+            `p:${message.get(
+              'menuContentThemeBackgroundVideoAlertPara1'
+            )}.|class:small`
+          ),
+          complexNode({
+            tag: 'p',
+            attr: [{ key: 'class', value: 'small' }],
+            node: [
+              new Link({
+                text: message.get('menuContentThemeBackgroundVideoAlertPara2'),
+                href:
+                  supportLink.baseUrl +
+                  supportLink.page.backgroundImageVideo.url,
+                openNew: true,
+              }).link(),
+            ],
+          }),
+        ],
       }),
       url: new Control_textarea({
         object: state.get.current(),
         path: 'theme.background.video.url',
         id: 'theme-background-video-url',
         value: state.get.current().theme.background.video.url,
-        placeholder: message.get('menuContentThemeBackgroundVideoUrlPlaceholder'),
+        placeholder: message.get(
+          'menuContentThemeBackgroundVideoUrlPlaceholder'
+        ),
         labelText: message.get('menuContentThemeBackgroundVideoUrlLabel'),
         action: () => {
           theme.background.video.clear();
           theme.background.video.render();
           data.save();
-        }
+        },
       }),
       urlHelper: new Control_helperText({
         text: [
           message.get('menuContentThemeBackgroundVideoUrlHelperPara1'),
-          message.get('menuContentThemeBackgroundVideoUrlHelperPara2')
-        ]
+          message.get('menuContentThemeBackgroundVideoUrlHelperPara2'),
+        ],
       }),
       blur: new Control_sliderSlim({
         object: state.get.current(),
@@ -1558,7 +1627,7 @@ themeSetting.background = (parent) => {
         action: () => {
           applyCSSVar('theme.background.video.blur');
           data.save();
-        }
+        },
       }),
       grayscale: new Control_sliderSlim({
         object: state.get.current(),
@@ -1572,7 +1641,7 @@ themeSetting.background = (parent) => {
         action: () => {
           applyCSSVar('theme.background.video.grayscale');
           data.save();
-        }
+        },
       }),
       scale: new Control_sliderSlim({
         object: state.get.current(),
@@ -1586,7 +1655,7 @@ themeSetting.background = (parent) => {
         action: () => {
           applyCSSVar('theme.background.video.scale');
           data.save();
-        }
+        },
       }),
       accent: new Control_sliderSlim({
         object: state.get.current(),
@@ -1600,7 +1669,7 @@ themeSetting.background = (parent) => {
         action: () => {
           applyCSSVar('theme.background.video.accent');
           data.save();
-        }
+        },
       }),
       opacity: new Control_sliderSlim({
         object: state.get.current(),
@@ -1614,67 +1683,78 @@ themeSetting.background = (parent) => {
         action: () => {
           applyCSSVar('theme.background.video.opacity');
           data.save();
-        }
+        },
       }),
       vignette: {
         opacity: new Control_sliderSlim({
           object: state.get.current(),
           path: 'theme.background.video.vignette.opacity',
           id: 'theme-background-video-vignette-opacity',
-          labelText: message.get('menuContentThemeBackgroundVideoVignetteOpacity'),
+          labelText: message.get(
+            'menuContentThemeBackgroundVideoVignetteOpacity'
+          ),
           value: state.get.current().theme.background.video.vignette.opacity,
-          defaultValue: state.get.default().theme.background.video.vignette.opacity,
+          defaultValue:
+            state.get.default().theme.background.video.vignette.opacity,
           min: state.get.minMax().theme.background.video.vignette.opacity.min,
           max: state.get.minMax().theme.background.video.vignette.opacity.max,
           action: () => {
             applyCSSVar('theme.background.video.vignette.opacity');
             data.save();
-          }
+          },
         }),
         range: new Control_sliderDouble({
           object: state.get.current(),
-          labelText: message.get('menuContentThemeBackgroundVideoVignetteRangeLabel'),
+          labelText: message.get(
+            'menuContentThemeBackgroundVideoVignetteRangeLabel'
+          ),
           left: {
             path: 'theme.background.video.vignette.end',
             id: 'theme-background-video-vignette-end',
-            labelText: message.get('menuContentThemeBackgroundVideoVignetteRangeLeft'),
+            labelText: message.get(
+              'menuContentThemeBackgroundVideoVignetteRangeLeft'
+            ),
             value: state.get.current().theme.background.video.vignette.end,
-            defaultValue: state.get.default().theme.background.video.vignette.end,
+            defaultValue:
+              state.get.default().theme.background.video.vignette.end,
             min: state.get.minMax().theme.background.video.vignette.end.min,
             max: state.get.minMax().theme.background.video.vignette.end.max,
             action: () => {
               applyCSSVar('theme.background.video.vignette.start');
               applyCSSVar('theme.background.video.vignette.end');
               data.save();
-            }
+            },
           },
           right: {
             path: 'theme.background.video.vignette.start',
             id: 'theme-background-video-vignette-start',
-            labelText: message.get('menuContentThemeBackgroundVideoVignetteRangeRight'),
+            labelText: message.get(
+              'menuContentThemeBackgroundVideoVignetteRangeRight'
+            ),
             value: state.get.current().theme.background.video.vignette.start,
-            defaultValue: state.get.default().theme.background.video.vignette.start,
+            defaultValue:
+              state.get.default().theme.background.video.vignette.start,
             min: state.get.minMax().theme.background.video.vignette.start.min,
             max: state.get.minMax().theme.background.video.vignette.start.max,
             action: () => {
               applyCSSVar('theme.background.video.vignette.start');
               applyCSSVar('theme.background.video.vignette.end');
               data.save();
-            }
-          }
-        })
-      }
-    }
+            },
+          },
+        }),
+      },
+    },
   };
 
   const themeBackgroundColorArea = node('div', [
-    themeSetting.control.background.color.wrap()
+    themeSetting.control.background.color.wrap(),
   ]);
 
   const themeBackgroundGradientArea = node('div', [
     themeSetting.control.background.gradient.angle.wrap(),
     themeSetting.control.background.gradient.start.wrap(),
-    themeSetting.control.background.gradient.end.wrap()
+    themeSetting.control.background.gradient.end.wrap(),
   ]);
 
   const themeBackgroundImageArea = node('div', [
@@ -1691,11 +1771,11 @@ themeSetting.background = (parent) => {
       children: [
         form.indent({
           children: [
-            themeSetting.control.background.image.vignette.range.wrap()
-          ]
-        })
-      ]
-    })
+            themeSetting.control.background.image.vignette.range.wrap(),
+          ],
+        }),
+      ],
+    }),
   ]);
 
   const themeBackgroundVideoArea = node('div', [
@@ -1712,29 +1792,34 @@ themeSetting.background = (parent) => {
       children: [
         form.indent({
           children: [
-            themeSetting.control.background.video.vignette.range.wrap()
-          ]
-        })
-      ]
-    })
+            themeSetting.control.background.video.vignette.range.wrap(),
+          ],
+        }),
+      ],
+    }),
   ]);
 
   themeSetting.control.background.typeCollapse = new Collapse({
     type: 'radio',
     radioGroup: themeSetting.control.background.type,
-    target: [{
-      id: themeSetting.control.background.type.radioSet[2].radio.value,
-      content: themeBackgroundColorArea
-    }, {
-      id: themeSetting.control.background.type.radioSet[3].radio.value,
-      content: themeBackgroundGradientArea
-    }, {
-      id: themeSetting.control.background.type.radioSet[4].radio.value,
-      content: themeBackgroundImageArea
-    }, {
-      id: themeSetting.control.background.type.radioSet[5].radio.value,
-      content: themeBackgroundVideoArea
-    }]
+    target: [
+      {
+        id: themeSetting.control.background.type.radioSet[2].radio.value,
+        content: themeBackgroundColorArea,
+      },
+      {
+        id: themeSetting.control.background.type.radioSet[3].radio.value,
+        content: themeBackgroundGradientArea,
+      },
+      {
+        id: themeSetting.control.background.type.radioSet[4].radio.value,
+        content: themeBackgroundImageArea,
+      },
+      {
+        id: themeSetting.control.background.type.radioSet[5].radio.value,
+        content: themeBackgroundVideoArea,
+      },
+    ],
   });
 
   parent.appendChild(
@@ -1743,26 +1828,36 @@ themeSetting.background = (parent) => {
       form.wrap({
         children: [
           form.indent({
-            children: [
-              themeSetting.control.background.typeCollapse.collapse()
-            ]
-          })
-        ]
-      })
+            children: [themeSetting.control.background.typeCollapse.collapse()],
+          }),
+        ],
+      }),
     ])
   );
-
 };
 
 themeSetting.layout = (parent) => {
-
   themeSetting.control.layout.color = {};
 
   themeSetting.control.layout.color.by = new Control_radio({
     object: state.get.current(),
     radioGroup: [
-      { id: 'theme-layout-by-theme', labelText: message.get('menuContentThemeLayoutColorByTransparentLabel'), description: message.get('menuContentThemeLayoutColorByTransparentDescription'), value: 'theme' },
-      { id: 'theme-layout-by-custom', labelText: message.get('menuContentThemeLayoutColorByCustomLabel'), description: message.get('menuContentThemeLayoutColorByCustomDescription'), value: 'custom' }
+      {
+        id: 'theme-layout-by-theme',
+        labelText: message.get('menuContentThemeLayoutColorByTransparentLabel'),
+        description: message.get(
+          'menuContentThemeLayoutColorByTransparentDescription'
+        ),
+        value: 'theme',
+      },
+      {
+        id: 'theme-layout-by-custom',
+        labelText: message.get('menuContentThemeLayoutColorByCustomLabel'),
+        description: message.get(
+          'menuContentThemeLayoutColorByCustomDescription'
+        ),
+        value: 'custom',
+      },
     ],
     label: message.get('menuContentThemeLayoutColorLabel'),
     groupName: 'theme-layout-by',
@@ -1772,7 +1867,7 @@ themeSetting.layout = (parent) => {
       themeSetting.disable();
       themeSetting.control.layout.color.collapse.update();
       data.save();
-    }
+    },
   });
 
   themeSetting.control.layout.color.color = new Control_colorMixer({
@@ -1789,10 +1884,10 @@ themeSetting.layout = (parent) => {
         'theme.layout.color.rgb.b',
         'theme.layout.color.hsl.h',
         'theme.layout.color.hsl.s',
-        'theme.layout.color.hsl.l'
+        'theme.layout.color.hsl.l',
       ]);
       data.save();
-    }
+    },
   });
 
   themeSetting.control.layout.color.opacity = new Control_slider({
@@ -1805,11 +1900,9 @@ themeSetting.layout = (parent) => {
     min: state.get.minMax().theme.layout.color.opacity.min,
     max: state.get.minMax().theme.layout.color.opacity.max,
     action: () => {
-      applyCSSVar([
-        'theme.layout.color.opacity'
-      ]);
+      applyCSSVar(['theme.layout.color.opacity']);
       data.save();
-    }
+    },
   });
 
   themeSetting.control.layout.color.blur = new Control_slider({
@@ -1822,31 +1915,31 @@ themeSetting.layout = (parent) => {
     min: state.get.minMax().theme.layout.color.blur.min,
     max: state.get.minMax().theme.layout.color.blur.max,
     action: () => {
-      applyCSSVar([
-        'theme.layout.color.blur'
-      ]);
+      applyCSSVar(['theme.layout.color.blur']);
       data.save();
-    }
+    },
   });
 
   themeSetting.control.layout.color.blurHelper = new Control_helperText({
-    text: [message.get('menuContentThemeLayoutColorBlurHelperPara1')]
+    text: [message.get('menuContentThemeLayoutColorBlurHelperPara1')],
   });
 
   themeSetting.control.layout.color.area = node('div', [
     themeSetting.control.layout.color.color.wrap(),
     themeSetting.control.layout.color.opacity.wrap(),
     themeSetting.control.layout.color.blur.wrap(),
-    themeSetting.control.layout.color.blurHelper.wrap()
+    themeSetting.control.layout.color.blurHelper.wrap(),
   ]);
 
   themeSetting.control.layout.color.collapse = new Collapse({
     type: 'radio',
     radioGroup: themeSetting.control.layout.color.by,
-    target: [{
-      id: themeSetting.control.layout.color.by.radioSet[1].radio.value,
-      content: themeSetting.control.layout.color.area
-    }]
+    target: [
+      {
+        id: themeSetting.control.layout.color.by.radioSet[1].radio.value,
+        content: themeSetting.control.layout.color.area,
+      },
+    ],
   });
 
   themeSetting.control.layout.divider = {
@@ -1860,16 +1953,12 @@ themeSetting.layout = (parent) => {
       min: state.get.minMax().theme.layout.divider.size.min,
       max: state.get.minMax().theme.layout.divider.size.max,
       action: () => {
-        applyCSSVar([
-          'theme.layout.divider.size'
-        ]);
-        applyCSSState([
-          'theme.layout.divider.size'
-        ]);
+        applyCSSVar(['theme.layout.divider.size']);
+        applyCSSState(['theme.layout.divider.size']);
         layout.area.render();
         data.save();
-      }
-    })
+      },
+    }),
   };
 
   parent.appendChild(
@@ -1878,28 +1967,38 @@ themeSetting.layout = (parent) => {
       form.wrap({
         children: [
           form.indent({
-            children: [
-              themeSetting.control.layout.color.collapse.collapse()
-            ]
-          })
-        ]
+            children: [themeSetting.control.layout.color.collapse.collapse()],
+          }),
+        ],
       }),
       node('hr'),
-      themeSetting.control.layout.divider.size.wrap()
+      themeSetting.control.layout.divider.size.wrap(),
     ])
   );
-
 };
 
 themeSetting.header = (parent) => {
-
   themeSetting.control.header.color = {};
 
   themeSetting.control.header.color.by = new Control_radio({
     object: state.get.current(),
     radioGroup: [
-      { id: 'theme-header-by-theme', labelText: message.get('menuContentThemeHeaderColorByTransparentLabel'), description: message.get('menuContentThemeHeaderColorByTransparentDescription'), value: 'theme' },
-      { id: 'theme-header-by-custom', labelText: message.get('menuContentThemeHeaderColorByCustomLabel'), description: message.get('menuContentThemeHeaderColorByCustomDescription'), value: 'custom' }
+      {
+        id: 'theme-header-by-theme',
+        labelText: message.get('menuContentThemeHeaderColorByTransparentLabel'),
+        description: message.get(
+          'menuContentThemeHeaderColorByTransparentDescription'
+        ),
+        value: 'theme',
+      },
+      {
+        id: 'theme-header-by-custom',
+        labelText: message.get('menuContentThemeHeaderColorByCustomLabel'),
+        description: message.get(
+          'menuContentThemeHeaderColorByCustomDescription'
+        ),
+        value: 'custom',
+      },
     ],
     label: message.get('menuContentThemeHeaderColorLabel'),
     groupName: 'theme-header-by',
@@ -1909,7 +2008,7 @@ themeSetting.header = (parent) => {
       themeSetting.disable();
       themeSetting.control.header.color.collapse.update();
       data.save();
-    }
+    },
   });
 
   themeSetting.control.header.color.color = new Control_colorMixer({
@@ -1926,10 +2025,10 @@ themeSetting.header = (parent) => {
         'theme.header.color.rgb.b',
         'theme.header.color.hsl.h',
         'theme.header.color.hsl.s',
-        'theme.header.color.hsl.l'
+        'theme.header.color.hsl.l',
       ]);
       data.save();
-    }
+    },
   });
 
   themeSetting.control.header.color.opacity = new Control_slider({
@@ -1942,25 +2041,25 @@ themeSetting.header = (parent) => {
     min: state.get.minMax().theme.header.color.opacity.min,
     max: state.get.minMax().theme.header.color.opacity.max,
     action: () => {
-      applyCSSVar([
-        'theme.header.color.opacity'
-      ]);
+      applyCSSVar(['theme.header.color.opacity']);
       data.save();
-    }
+    },
   });
 
   themeSetting.control.header.color.area = node('div', [
     themeSetting.control.header.color.color.wrap(),
-    themeSetting.control.header.color.opacity.wrap()
+    themeSetting.control.header.color.opacity.wrap(),
   ]);
 
   themeSetting.control.header.color.collapse = new Collapse({
     type: 'radio',
     radioGroup: themeSetting.control.header.color.by,
-    target: [{
-      id: themeSetting.control.header.color.by.radioSet[1].radio.value,
-      content: themeSetting.control.header.color.area
-    }]
+    target: [
+      {
+        id: themeSetting.control.header.color.by.radioSet[1].radio.value,
+        content: themeSetting.control.header.color.area,
+      },
+    ],
   });
 
   parent.appendChild(
@@ -1969,26 +2068,38 @@ themeSetting.header = (parent) => {
       form.wrap({
         children: [
           form.indent({
-            children: [
-              themeSetting.control.header.color.collapse.collapse()
-            ]
-          })
-        ]
-      })
+            children: [themeSetting.control.header.color.collapse.collapse()],
+          }),
+        ],
+      }),
     ])
   );
-
 };
 
 themeSetting.bookmark = (parent) => {
-
   themeSetting.control.bookmark.color = {};
 
   themeSetting.control.bookmark.color.by = new Control_radio({
     object: state.get.current(),
     radioGroup: [
-      { id: 'theme-bookmark-by-theme', labelText: message.get('menuContentThemeBookmarkColorByTransparentLabel'), description: message.get('menuContentThemeBookmarkColorByTransparentDescription'), value: 'theme' },
-      { id: 'theme-bookmark-by-custom', labelText: message.get('menuContentThemeBookmarkColorByCustomLabel'), description: message.get('menuContentThemeBookmarkColorByCustomDescription'), value: 'custom' }
+      {
+        id: 'theme-bookmark-by-theme',
+        labelText: message.get(
+          'menuContentThemeBookmarkColorByTransparentLabel'
+        ),
+        description: message.get(
+          'menuContentThemeBookmarkColorByTransparentDescription'
+        ),
+        value: 'theme',
+      },
+      {
+        id: 'theme-bookmark-by-custom',
+        labelText: message.get('menuContentThemeBookmarkColorByCustomLabel'),
+        description: message.get(
+          'menuContentThemeBookmarkColorByCustomDescription'
+        ),
+        value: 'custom',
+      },
     ],
     label: message.get('menuContentThemeBookmarkColorLabel'),
     groupName: 'theme-bookmark-by',
@@ -1998,7 +2109,7 @@ themeSetting.bookmark = (parent) => {
       themeSetting.disable();
       themeSetting.control.bookmark.color.collapse.update();
       data.save();
-    }
+    },
   });
 
   themeSetting.control.bookmark.color.color = new Control_colorMixer({
@@ -2015,10 +2126,10 @@ themeSetting.bookmark = (parent) => {
         'theme.bookmark.color.rgb.b',
         'theme.bookmark.color.hsl.h',
         'theme.bookmark.color.hsl.s',
-        'theme.bookmark.color.hsl.l'
+        'theme.bookmark.color.hsl.l',
       ]);
       data.save();
-    }
+    },
   });
 
   themeSetting.control.bookmark.color.opacity = new Control_slider({
@@ -2031,25 +2142,25 @@ themeSetting.bookmark = (parent) => {
     min: state.get.minMax().theme.bookmark.color.opacity.min,
     max: state.get.minMax().theme.bookmark.color.opacity.max,
     action: () => {
-      applyCSSVar([
-        'theme.bookmark.color.opacity'
-      ]);
+      applyCSSVar(['theme.bookmark.color.opacity']);
       data.save();
-    }
+    },
   });
 
   themeSetting.control.bookmark.color.area = node('div', [
     themeSetting.control.bookmark.color.color.wrap(),
-    themeSetting.control.bookmark.color.opacity.wrap()
+    themeSetting.control.bookmark.color.opacity.wrap(),
   ]);
 
   themeSetting.control.bookmark.color.collapse = new Collapse({
     type: 'radio',
     radioGroup: themeSetting.control.bookmark.color.by,
-    target: [{
-      id: themeSetting.control.bookmark.color.by.radioSet[1].radio.value,
-      content: themeSetting.control.bookmark.color.area
-    }]
+    target: [
+      {
+        id: themeSetting.control.bookmark.color.by.radioSet[1].radio.value,
+        content: themeSetting.control.bookmark.color.area,
+      },
+    ],
   });
 
   themeSetting.control.bookmark.item = {};
@@ -2064,17 +2175,20 @@ themeSetting.bookmark = (parent) => {
     min: state.get.minMax().theme.bookmark.item.border.min,
     max: state.get.minMax().theme.bookmark.item.border.max,
     action: () => {
-      bookmark.item.mod.applyVar('border', state.get.current().theme.bookmark.item.border);
+      bookmark.item.mod.applyVar(
+        'border',
+        state.get.current().theme.bookmark.item.border
+      );
       groupAndBookmark.render();
       data.save();
-    }
+    },
   });
 
   themeSetting.control.bookmark.item.borderHelper = new Control_helperText({
     text: [
       message.get('menuContentThemeBookmarkItemBorderHelperPara1'),
-      message.get('menuContentThemeBookmarkItemBorderHelperPara2')
-    ]
+      message.get('menuContentThemeBookmarkItemBorderHelperPara2'),
+    ],
   });
 
   themeSetting.control.bookmark.item.rainbow = {
@@ -2084,7 +2198,7 @@ themeSetting.bookmark = (parent) => {
       func: () => {
         theme.accent.rainbow.render();
         data.save();
-      }
+      },
     }),
     remove: new Button({
       text: message.get('menuContentThemeBookmarkItemRainbowRemove'),
@@ -2092,11 +2206,11 @@ themeSetting.bookmark = (parent) => {
       func: () => {
         theme.accent.rainbow.clear();
         data.save();
-      }
+      },
     }),
     helper: new Control_helperText({
-      text: [message.get('menuContentThemeBookmarkItemRainbowHelperPara1')]
-    })
+      text: [message.get('menuContentThemeBookmarkItemRainbowHelperPara1')],
+    }),
   };
 
   parent.appendChild(
@@ -2105,11 +2219,9 @@ themeSetting.bookmark = (parent) => {
       form.wrap({
         children: [
           form.indent({
-            children: [
-              themeSetting.control.bookmark.color.collapse.collapse()
-            ]
-          })
-        ]
+            children: [themeSetting.control.bookmark.color.collapse.collapse()],
+          }),
+        ],
       }),
       node('hr'),
       themeSetting.control.bookmark.item.border.wrap(),
@@ -2124,14 +2236,13 @@ themeSetting.bookmark = (parent) => {
             children: [
               themeSetting.control.bookmark.item.rainbow.add.wrap(),
               themeSetting.control.bookmark.item.rainbow.remove.wrap(),
-            ]
-          })
-        ]
+            ],
+          }),
+        ],
       }),
-      themeSetting.control.bookmark.item.rainbow.helper.wrap()
+      themeSetting.control.bookmark.item.rainbow.helper.wrap(),
     ])
   );
-
 };
 
 export { themeSetting };

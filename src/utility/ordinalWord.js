@@ -1,12 +1,12 @@
 export const ordinalWord = (word) => {
-
   const endsWithDoubleZeroPattern = /(hundred|thousand|(m|b|tr|quadr)illion)$/;
 
   const endsWithTeenPattern = /teen$/;
 
   const endsWithYPattern = /y$/;
 
-  const endsWithZeroThroughTwelvePattern = /(Zero|One|Two|Three|Four|Five|Six|Seven|Eight|Nine|Ten|Eleven|Twelve)$/;
+  const endsWithZeroThroughTwelvePattern =
+    /(Zero|One|Two|Three|Four|Five|Six|Seven|Eight|Nine|Ten|Eleven|Twelve)$/;
 
   const ordinalLessThanThirteen = {
     Zero: 'Zeroth',
@@ -21,7 +21,7 @@ export const ordinalWord = (word) => {
     Nine: 'Ninth',
     Ten: 'Tenth',
     Eleven: 'Eleventh',
-    Twelve: 'Twelfth'
+    Twelve: 'Twelfth',
   };
 
   const replaceWithOrdinalVariant = (match, numberWord) => {
@@ -36,9 +36,11 @@ export const ordinalWord = (word) => {
     return word.replace(endsWithYPattern, 'ieth');
     // Ends with one through twelve
   } else if (endsWithZeroThroughTwelvePattern.test(word)) {
-    return word.replace(endsWithZeroThroughTwelvePattern, replaceWithOrdinalVariant);
+    return word.replace(
+      endsWithZeroThroughTwelvePattern,
+      replaceWithOrdinalVariant
+    );
   }
 
   return word;
-
 };

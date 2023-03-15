@@ -6,19 +6,17 @@ import { node } from '../../utility/node';
 
 import './index.css';
 
-export const HeaderItem = function ({
-  name = false,
-  child = false
-} = {}) {
-
+export const HeaderItem = function ({ name = false, child = false } = {}) {
   this.element = {
     item: node('div|class:header-item header-item-' + name),
     content: node('div|class:header-item-content'),
     body: node('div|class:header-item-body'),
     control: {
       control: node('div|class:header-item-control'),
-      group: node('div|class:header-item-control-group form-group form-group-horizontal')
-    }
+      group: node(
+        'div|class:header-item-control-group form-group form-group-horizontal'
+      ),
+    },
   };
 
   this.control = {};
@@ -31,7 +29,7 @@ export const HeaderItem = function ({
       style: ['line'],
       title: 'Drag header item to reorder',
       classList: ['header-control-button', 'header-control-sort'],
-    })
+    }),
   };
 
   this.control.disable = () => {
@@ -54,19 +52,15 @@ export const HeaderItem = function ({
     this.element.content.appendChild(this.element.control.control);
 
     if (child) {
-
       this.element.body.appendChild(child);
 
       this.element.content.appendChild(this.element.body);
-
     }
 
     this.element.item.appendChild(this.element.content);
-
   };
 
   this.item = () => {
-
     this.assemble();
 
     if (state.get.current().group.edit) {
@@ -76,7 +70,5 @@ export const HeaderItem = function ({
     }
 
     return this.element.item;
-
   };
-
 };

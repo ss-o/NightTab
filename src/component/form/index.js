@@ -26,5 +26,5 @@ export {
   label,
   sticky,
   wrap,
-  input
+  input,
 };

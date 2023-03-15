@@ -77,36 +77,50 @@
   --button-text-disabled: var(--theme-background-color-text);
 }
 
-
 .toolbar-item.button,
-.toolbar-item.form-input-button input[type="color"]+label {
-  background-color: hsla(var(--button-background), calc(var(--theme-toolbar-opacity) / 100));
+.toolbar-item.form-input-button input[type="color"] + label {
+  background-color: hsla(
+    var(--button-background),
+    calc(var(--theme-toolbar-opacity) / 100)
+  );
 }
 
 .toolbar-item.button:focus,
 .toolbar-item.button:hover,
-.toolbar-item.form-input-button:focus input[type="color"]+label,
-.toolbar-item.form-input-button:hover input[type="color"]+label {
-  background-color: hsla(var(--button-background-focus-hover), calc(var(--theme-toolbar-opacity) / 100));
+.toolbar-item.form-input-button:focus input[type="color"] + label,
+.toolbar-item.form-input-button:hover input[type="color"] + label {
+  background-color: hsla(
+    var(--button-background-focus-hover),
+    calc(var(--theme-toolbar-opacity) / 100)
+  );
 }
 
 .toolbar-item.button:active,
-.toolbar-item.form-input-button:active input[type="color"]+label {
-  background-color: hsla(var(--button-background-focus-hover), calc(var(--theme-toolbar-opacity) / 100));
+.toolbar-item.form-input-button:active input[type="color"] + label {
+  background-color: hsla(
+    var(--button-background-focus-hover),
+    calc(var(--theme-toolbar-opacity) / 100)
+  );
 }
 
 .toolbar-item.button.active,
-.toolbar-item.form-input-button.active input[type="color"]+label {
-  background-color: hsla(var(--button-background-active), calc(var(--theme-toolbar-opacity) / 100));
+.toolbar-item.form-input-button.active input[type="color"] + label {
+  background-color: hsla(
+    var(--button-background-active),
+    calc(var(--theme-toolbar-opacity) / 100)
+  );
 }
 
 .toolbar-item.button.disabled,
 .toolbar-item.button.disabled:hover,
 .toolbar-item.button.disabled:focus,
 .toolbar-item.button.disabled:active,
-.toolbar-item.form-input-button input[type="color"]:disabled+label,
-.toolbar-item.form-input-button input[type="color"]:disabled:hover+label,
-.toolbar-item.form-input-button input[type="color"]:disabled:focus+label,
-.toolbar-item.form-input-button input[type="color"]:disabled:active+label {
-  background-color: hsla(var(--button-background-disabled), calc(var(--theme-toolbar-opacity) / 100));
+.toolbar-item.form-input-button input[type="color"]:disabled + label,
+.toolbar-item.form-input-button input[type="color"]:disabled:hover + label,
+.toolbar-item.form-input-button input[type="color"]:disabled:focus + label,
+.toolbar-item.form-input-button input[type="color"]:disabled:active + label {
+  background-color: hsla(
+    var(--button-background-disabled),
+    calc(var(--theme-toolbar-opacity) / 100)
+  );
 }

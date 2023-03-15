@@ -1,21 +1,20 @@
 import * as form from '../../form';
 
-export const Control_label = function({
+export const Control_label = function ({
   text = 'label',
   description = false,
   srOnly = false,
   icon = false,
   noPadding = false,
-  classList = []
+  classList = [],
 } = {}) {
-
   this.label = form.label({
     text: text,
     description: description,
     srOnly: srOnly,
     icon: icon,
     noPadding: noPadding,
-    classList: classList
+    classList: classList,
   });
 
   this.disable = () => {
@@ -28,10 +27,9 @@ export const Control_label = function({
 
   this.wrap = () => {
     const formWrap = form.wrap({
-      children: this.label
+      children: this.label,
     });
 
     return formWrap;
   };
-
 };

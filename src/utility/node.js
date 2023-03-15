@@ -1,5 +1,4 @@
 export const node = (string, node) => {
-
   // set element
   let tag;
 
@@ -27,83 +26,73 @@ export const node = (string, node) => {
     element.innerHTML = text;
   }
 
-  let attributes = string.slice(string.indexOf('|') + 1, string.length).split(',');
+  let attributes = string
+    .slice(string.indexOf('|') + 1, string.length)
+    .split(',');
 
   // set attributes
   if (string.indexOf('|') > 0 && string.indexOf('|') < string.length - 1) {
-
     attributes.forEach((item, i) => {
       if (item.indexOf(':') > 0) {
         // if key and value
-        var pair = item.substring(0, item.indexOf(':')) + ',' + item.substring(item.indexOf(':') + 1, item.length);
+        var pair =
+          item.substring(0, item.indexOf(':')) +
+          ',' +
+          item.substring(item.indexOf(':') + 1, item.length);
         pair = pair.split(',');
         attributes[i] = {
           key: pair[0],
-          value: pair[1]
+          value: pair[1],
         };
       } else {
         // if key only
         attributes[i] = {
           key: item,
-          value: undefined
+          value: undefined,
         };
       }
     });
 
     attributes.forEach((item) => {
-      if ('key' in item && item.key != undefined && 'value' in item && item.value != undefined) {
+      if (
+        'key' in item &&
+        item.key != undefined &&
+        'value' in item &&
+        item.value != undefined
+      ) {
         element.setAttribute(item.key, item.value);
       } else if ('key' in item && item.key != undefined) {
         element.setAttribute(item.key, '');
       }
     });
-
   }
 
   if (node) {
-
     if (typeof node != 'string') {
-
       if (node.length > 0) {
-
         node.forEach((item) => {
-
           if (item instanceof HTMLElement) {
-
             element.appendChild(item);
-
           } else {
-
             let div = document.createElement('div');
 
             div.innerHTML = item;
 
             element.appendChild(div.firstChild);
-
           }
-
         });
-
       } else {
-
         if (node instanceof HTMLElement) {
-
           element.appendChild(node);
-
         } else {
-
           let div = document.createElement('div');
 
           div.innerHTML = node;
 
           element.appendChild(div.firstChild);
-
         }
-
       }
-
     }
-
   }
 
   return element;

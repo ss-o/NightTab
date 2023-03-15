@@ -6,14 +6,13 @@ import { node } from '../../utility/node';
 
 import './index.css';
 
-export const GroupEmpty = function ({
-  groupIndex = false
-} = {}) {
-
+export const GroupEmpty = function ({ groupIndex = false } = {}) {
   this.element = {
     empty: node('div|class:group-empty'),
     control: node('div|class:group-empty-control'),
-    headline: node('p:No Bookmarks in this Group|class:group-empty-headline small muted')
+    headline: node(
+      'p:No Bookmarks in this Group|class:group-empty-headline small muted'
+    ),
   };
 
   this.control = {};
@@ -25,28 +24,23 @@ export const GroupEmpty = function ({
       size: 'small',
       func: () => {
         bookmark.add.render({
-          groupIndex: groupIndex
+          groupIndex: groupIndex,
         });
-      }
-    })
+      },
+    }),
   };
 
   this.assemble = () => {
-
     this.element.empty.appendChild(this.element.headline);
 
     this.element.control.appendChild(this.control.button.bookmark.button);
 
     this.element.empty.appendChild(this.element.control);
-
   };
 
   this.empty = () => {
-
     this.assemble();
 
     return this.element.empty;
-
   };
-
 };

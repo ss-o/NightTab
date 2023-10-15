@@ -8,5 +8,5 @@ export const searchEnginePreset = {
   },
   giphy: { url: 'https://giphy.com/search/', name: 'Giphy' },
   bing: { url: 'https://www.bing.com/search?q=', name: 'Bing' },
-  startpage: { url: 'https://www.startpage.com/do/search?q=', name 'Startpage' }  
+  startpage: { url: 'https://www.startpage.com/do/search?q=', name: 'Startpage' }  
 };

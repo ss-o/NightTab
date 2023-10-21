@@ -20,28 +20,28 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: ✅ Check out code from GitHub
+      - name: ✅  Check out code from GitHub
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: 📦 Setup PNPM
+      - name: 📦  Setup PNPM
         uses: pnpm/action-setup@v2
-      - name: ⎔ Setup Node
+      - name: ⎔  Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: "lts/*"
           cache: "pnpm"
-      - name: ✨ Prepare Source
+      - name: ✨  Prepare Source
         run: |
           pnpm i && pnpm lint
           pnpm test && pnpm build
-      - name: 🏗 Setup Pages
+      - name: 🏗  Setup Pages
         if: github.ref == 'refs/heads/main'
         uses: actions/configure-pages@v3
-      - name: 🚀 Upload artifact
+      - name: 🚀  Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: "./dist"
-      - name: 🛳 Deploy to GitHub Pages
+          path: ./dist/web
+      - name: 🛳  Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2

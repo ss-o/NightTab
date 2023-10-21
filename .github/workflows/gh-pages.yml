@@ -1,41 +1,47 @@
 ---
-name: 🚀 Deploy
-
+name: 🛳 Deploy static content
 on:
   push:
-    branches:
-      - main
-  pull_request: {}
+    branches: ["main"]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - uses: actions/checkout@v3.3.0
+      - name: ✅ Check out code from GitHub
+        uses: actions/checkout@v4
         with:
-          persist-credentials: false
-      - name: Setup Node
-        uses: actions/setup-node@v3.6.0
+          fetch-depth: 0
+      - name: 📦 Setup PNPM
+        uses: pnpm/action-setup@v2
+      - name: ⎔ Setup Node
+        uses: actions/setup-node@v3
         with:
-          node-version: "18"
-      - name: Cache dependencies
-        uses: actions/cache@v3
+          node-version: "lts/*"
+          cache: "pnpm"
+      - name: ✨ Prepare Source
+        run: |
+          pnpm i && pnpm lint
+          pnpm test && pnpm build
+      - name: 🏗 Setup Pages
+        if: github.ref == 'refs/heads/main'
+        uses: actions/configure-pages@v3
+      - name: 🚀 Upload artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - run: npm install
-      - run: npm run lint
-      - run: npm test
-      - run: npm run build
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/main' }}
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/web
+          path: "./dist"
+      - name: 🛳 Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
